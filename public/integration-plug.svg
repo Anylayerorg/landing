@@ -1,0 +1,31 @@
+<svg width="53" height="52" viewBox="0 0 53 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_1_36894)">
+<rect x="4.5" y="4" width="44" height="44" rx="12" fill="url(#paint0_radial_1_36894)" shape-rendering="crispEdges"/>
+<rect x="5" y="4.5" width="43" height="43" rx="11.5" stroke="url(#paint1_linear_1_36894)" shape-rendering="crispEdges"/>
+<path d="M34 18.5L36 16.5" stroke="#0CFF85" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+<path d="M17 35.5L19 33.5" stroke="#0CFF85" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+<path d="M27.2607 31.0003L21.5005 25.2402L18.6206 28.1203L18.2607 32.0803L20.4207 34.2402L24.3807 33.8802L27.2607 31.0003Z" stroke="#0CFF85" stroke-width="1.5"/>
+<path d="M25.7402 21.0002L31.5005 26.7603L34.3804 23.8802L34.7402 19.9202L32.5802 17.7603L28.6202 18.1202L25.7402 21.0002Z" stroke="#0CFF85" stroke-width="1.5"/>
+<path d="M23 26.5L25 24.5M26 29.5L28 27.5" stroke="#0CFF85" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_d_1_36894" x="0.5" y="0" width="52" height="52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0470588 0 0 0 0 1 0 0 0 0 0.521569 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_36894"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_36894" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_1_36894" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 6.5) rotate(46.1535) scale(52.6901)">
+<stop stop-color="#272727"/>
+<stop offset="1"/>
+</radialGradient>
+<linearGradient id="paint1_linear_1_36894" x1="8.5" y1="6.5" x2="44" y2="48" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-color="#2D2D2D"/>
+</linearGradient>
+</defs>
+</svg>
