@@ -304,6 +304,21 @@ if (userScore.creditRating > 700) {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   const handleCopy = (code: string, index: number | null) => {
     navigator.clipboard.writeText(code);
     setCopiedIndex(index);
@@ -345,30 +360,42 @@ if (userScore.creditRating > 700) {
                     transition={{ duration: 0.3 }}
                     className="hidden md:flex items-center gap-x-14"
                   >
-                    <a
-                      href="#"
-                      className={`transition-colors text-gray-300 hover:text-white`}
+                    <button
+                      onClick={() => scrollToSection('trust')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
                     >
-                      Developers
-                    </a>
-                    <a
-                      href="/docs"
-                      className={`transition-colors text-gray-300 hover:text-white`}
+                      Trust
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('reputation')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
                     >
-                      Documentation
-                    </a>
-                    <a
-                      href="/"
-                      className={`transition-colors text-gray-300 hover:text-white`}
+                      Reputation
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('integration')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
                     >
-                      Explorer
-                    </a>
-                    <a
-                      href="#"
-                      className={`transition-colors text-gray-300 hover:text-white`}
+                      Integration
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('capital')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
                     >
-                      FAQ
-                    </a>
+                      Capital
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('public-good')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
+                    >
+                      Public Good
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('trustscore')}
+                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer`}
+                    >
+                      Trustscore
+                    </button>
                     <a
                       href="https://app.zkscore.io"
                       target="_blank"
@@ -408,34 +435,42 @@ if (userScore.creditRating > 700) {
                       className="md:hidden overflow-hidden"
                     >
                       <nav className="flex flex-col gap-4 py-6 border-t border-gray-800 mt-4">
-                        <a
-                          href="#"
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                        <button
+                          onClick={() => scrollToSection('trust')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          Developers
-                        </a>
-                        <a
-                          href="/docs"
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          Trust
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('reputation')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          Documentation
-                        </a>
-                        <a
-                          href="/"
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          Reputation
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('integration')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          Explorer
-                        </a>
-                        <a
-                          href="#"
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          Integration
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('capital')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          FAQ
-                        </a>
+                          Capital
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('public-good')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
+                        >
+                          Public Good
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('trustscore')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
+                        >
+                          Trustscore
+                        </button>
                         <a
                           href="https://app.zkscore.io"
                           target="_blank"
@@ -466,7 +501,7 @@ if (userScore.creditRating > 700) {
                 >
                   <div className="space-y-6 z-10 text-center md:text-left">
                     <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.25rem] font-medium leading-tight">
-                      Where Humans, Wallets and AI Agents Trust Intersect.
+                      Where Human, Wallet and AI Agent Trust Intersect.
                     </h1>
                     <p className="text-white text-lg opacity-70">
                       A zero-knowledge infrastructure for privacy-preserving reputation, designed to enhance capital efficiency for Humans and AI agents.
@@ -532,7 +567,7 @@ if (userScore.creditRating > 700) {
         <ClientsLogo />
 
         {/* Section 1 */}
-        <section className="relative pb-10 md:pb-20 pt-10 md:pt-40 overflow-hidden">
+        <section id="trust" className="relative pb-10 md:pb-20 pt-10 md:pt-40 overflow-hidden">
           <div className="relative max-w-screen-xl mx-auto px-5">
             <div className="text-center max-w-2xl mx-auto">
               <motion.div
@@ -670,7 +705,7 @@ if (userScore.creditRating > 700) {
         </section>
 
         {/* Section 2 */}
-        <section className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
+        <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-start gap-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -798,7 +833,7 @@ if (userScore.creditRating > 700) {
         </section>
 
         {/* Section 3 */}
-        <section className="py-10 md:py-20 bg-[url('/code-block-bg.png')] bg-contain bg-left bg-no-repeat">
+        <section id="integration" className="py-10 md:py-20 bg-[url('/code-block-bg.png')] bg-contain bg-left bg-no-repeat">
           <div className="px-5 max-w-screen-xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
               {/* Left Side */}
@@ -897,7 +932,7 @@ if (userScore.creditRating > 700) {
         </section>
 
         {/* Section 4 */}
-        <section className="px-5 pt-6 md:pt-14 pb-12 md:pb-24 max-w-screen-xl mx-auto overflow-x-hidden">
+        <section id="capital" className="px-5 pt-6 md:pt-14 pb-12 md:pb-24 max-w-screen-xl mx-auto overflow-x-hidden">
           <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1006,7 +1041,7 @@ if (userScore.creditRating > 700) {
         </section>
 
         {/* Section 5 */}
-        <section className="px-5 py-10 md:py-20  max-w-screen-xl mx-auto">
+        <section id="public-good" className="px-5 py-10 md:py-20  max-w-screen-xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1118,7 +1153,7 @@ if (userScore.creditRating > 700) {
         </section>
 
         {/* Section 7  */}
-        <section className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
+        <section id="trustscore" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="text-center mb-20 ">
             <motion.div initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
