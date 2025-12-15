@@ -1,260 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  Shield, 
-  TrendingUp, 
-  Users, 
-  Zap, 
-  Award,
-  BarChart3,
-  Lock,
-  Globe,
-  ArrowRight,
-  CheckCircle,
-  Code,
-  Layers,
-  Database,
-  Network,
-  Coins,
-  Target,
-  Trophy,
-  FileText,
-  Eye
-} from 'lucide-react';
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
+import ParallelCards from './ParallelCards';
+import TabsCard from './TabsCard';
+import CodeIntegration from './CodeIntegration';
+import Faqs from './Faqs';
+import { Footer } from './layout/Footer';
 
 
-const features = [
-  {
-    title: "Capital Efficiency",
-    description: "Improve lending and borrowing mechanics in DeFi.",
-    image: "/efficiency.svg",
-  },
-  {
-    title: "Sybil Resistance",
-    description: "Prevent gaming of rewards and airdrops.",
-    image: "/resistance.svg",
-  },
-  {
-    title: "Wallet Verification",
-    description:
-      "Offer a zk-proof of wallet alternative to KYC-style verification.",
-    image: "/wallet-verification.svg",
-  },
-  {
-    title: "Reputation-Based Identity",
-    description: "Serve as a reputation passport across Web3 ecosystems.",
-    image: "/identity.svg",
-  },
-];
-
-const tabs = [
-  { id: "defi", label: "DeFi Protocols" },
-  { id: "loyalty", label: "Loyalty & Consumer Brands" },
-  { id: "rwa", label: "RWA & Insurance Platforms" },
-  { id: "users", label: "Everyday Users" },
-] as const;
-
-const tabContent = {
-  defi: {
-    title: "DeFi Protocols",
-    description:
-      "Anylayer helps lending, trading, and yield platforms build safer, more efficient markets.",
-    features: [
-      {
-        title: "Trust-Based LTVs",
-        description: "Participate in protocol governance and voting.",
-      },
-      {
-        title: "Credible Liquidity Providers",
-        description: "Participate in protocol governance and voting.",
-      },
-      {
-        title: "Reputation-Weighted Rewards",
-        description: "Participate in protocol governance and voting.",
-      },
-      {
-        title: "Wallet-Gated Access",
-        description: "Exclusive access for wallets with 2K trust.",
-      },
-    ],
-    diagram: '/dfi-protocols.svg',
-  },
-  loyalty: {
-    title: "Loyalty & Consumer Brands",
-    description:
-      "Reward real engagement and authenticity by replacing spend-based metrics with wallet-verified reputation.",
-    features: [
-      {
-        title: "Sybil-Resistant Programs",
-        description: "Reward authentic users, not bots or fakes.",
-      },
-      {
-        title: "Real Engagement Tracking",
-        description: "Track true participation without personal data.",
-      },
-      {
-        title: "Tiered Rewards by Trustscore",
-        description: "Reward tiers built on wallet reputation strength.",
-      },
-      {
-        title: "Perks for Loyal Wallets",
-        description: "Special perks for long-standing verified wallets.",
-      },
-    ],
-    diagram: '/loyality-tab.svg',
-  },
-  rwa: {
-    title: "RWA Platforms & Lenders",
-    description:
-      "Bring transparency, fairness, and efficiency to real-world lending using zk-powered reputation signals.",
-    features: [
-      {
-        title: "Reduced KYC With ZK-Proofs",
-        description: "Simplified onboarding without exposing personal info.",
-      },
-      {
-        title: "Trust-Based Underwriting",
-        description: "Automated lending powered by wallet trust.",
-      },
-      {
-        title: "Credit Lines for Strong Wallets",
-        description: "Instant credit access for credible users.",
-      },
-      {
-        title: "Institutional Trust Benchmark",
-        description: "Universal zk trust layer for institutions.",
-      },
-    ],
-    diagram: '/rwa-platforms.svg',
-  },
-  users: {
-    title: "Everyday Users",
-    description: "Empower users to prove credibility, earn trust, and access better Web3 opportunities privately.",
-    features: [
-      {
-        title: "Prove Credibility Privately",
-        description: "Show reliability without sharing private data.",
-      },
-      {
-        title: "Earn Reputation via Activity",
-        description: "Gain trust through consistent on-chain actions.",
-      },
-      {
-        title: "Portable Trust Identity",
-        description: "One reputation carried across all ecosystems.",
-      },
-      {
-        title: "Unlock Better Rewards",
-        description: "Access perks based on earned trustscore.",
-      },
-    ],
-    diagram: '/everyday-user.svg',
-  },
-};
-
-const data = [
-  {
-    title: "Wallet Age",
-    description: "Older wallets demonstrate long-term commitment to DeFi.",
-    image: "/hourglass.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "DEX Trading",
-    description:
-      "Trade on decentralized exchanges to build trading reputation.",
-    image: "/coins-swap.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "Liquidity",
-    description: "Provide liquidity to earn fees and build reputation.",
-    image: "/droplet.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "Lending",
-    description: "Supply liquidity and borrow assets responsibly.",
-    image: "/blockchain-04.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "NFT Trading",
-    description: "Trade NFTs and participate in digital asset markets.",
-    image: "/ticket.svg",
-    btnText: "1.5 score per bridge",
-  },
-
-  {
-    title: "Bridge",
-    description: "Move assets across different blockchain networks.",
-    image: "/orbit.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "Governance",
-    description: "Participate in protocol governance and voting.",
-    image: "/ai-brain.svg",
-    btnText: "1.5 score per bridge",
-  },
-  {
-    title: "Staking",
-    description: "Stake tokens and participate in network security.",
-    image: "/hourglass.svg",
-    btnText: "1.5 score per bridge",
-  },
-];
-
-const faqs = [
-  {
-    title: "What is Anylayer and how does it work?",
-    description:
-      "Anylayer is a decentralized identity and reputation system. Mint a unique .zks name (like yourname.zks) that serves as your Web3 passport. Your Trust Score is calculated from wallet age, achievements, DeFi activity, and NFT trading—all verified on-chain using zero-knowledge proofs",
-  },
-  {
-    title: "How do I get started with Anylayer?",
-    description:
-      "Connect your wallet → Search for a .zks name → Mint it → Activate scoring by signing in. Once activated, your Trust Score updates automatically based on your on-chain activity, and your identity becomes soulbound (non-transferable)",
-  },
-  {
-    title: "How does the scoring system work?",
-    description:
-      "Your Trust Score updates automatically based on four key metrics: Wallet Age (based on account history), Achievements (from milestones), DeFi Activity (from protocol interactions), and NFT Trading (from marketplace activity). All activities contribute points with no caps—the more you engage, the higher your score. Scores are calculated in real-time and synced on-chain every 72 hours for permanent verification",
-  },
-  {
-    title: "What is a Trust Score and why does it matter?",
-    description:
-      "Your Trust Score represents your Web3 credibility, calculated from: Wallet Age, Achievements, DeFi Activity, and NFT Trading. It unlocks airdrops, reduces DeFi collateral requirements, enables governance participation, and builds trust with collaborators. Scores sync on-chain every 72 hours with an 'On-Chain Verified' badge",
-  },
-  {
-    title: "How are scores verified and stored on the blockchain?",
-    description:
-      "We use a hybrid system: On-chain (total score stored in ScoreRegistry smart contract, syncs every 72 hours, cryptographically verified on the blockchain) and Off-chain (detailed breakdowns, real-time updates, historical data). This combines blockchain trustlessness with database speed. Verify your score anytime via 'View on Explorer' on your dashboard",
-  },
-  {
-    title: "What are Achievements and how do I earn them?",
-    description:
-      "Achievements are verifiable milestones earned through on-chain actions. Examples: Early Adopter (100 pts), Wallet Veteran (150 pts), NFT Collector (200 pts), DeFi Pioneer (250 pts), Referral Champion (100-500 pts). They're automatically detected from your wallet activity and permanently displayed on your profile. Check your dashboard to track progress!",
-  },
-  {
-    title: "Can I transfer or sell my .zks identity?",
-    description:
-      "Yes, but only before activating scoring. After minting, your .zks name can be traded like any NFT. However, once you activate scoring (by signing in and building your Trust Score), it becomes a Soulbound Token (SBT) and cannot be transferred or sold. This ensures your reputation remains authentic and prevents fraud",
-  },
-  {
-    title: "What happens if my .zks identity expires?",
-    description:
-      "If your identity expires, you retain access to your .zks name, but your scoring will stop and existing Trust Scores will gradually decay. Your name won't be available for others to mint while you still hold it. If you don't activate scoring at all, your name remains yours but you won't earn any Trust Score points.",
-  },
-  {
-    title: "Is my data private and secure on Anylayer?",
-    description:
-      "Yes! Privacy features include zero-knowledge proofs (prove reputation without revealing details), wallet-based authentication (no email/password needed), and selective disclosure (choose what to share). Security: audited smart contracts, open-source code, non-custodial, GDPR compliant. Public: .zks name, on-chain score, wallet address. Private: score breakdowns, profile info, email (encrypted).",
-  },
-];
-
+const trustScoreFeatures = [
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      title: "Sybil resistance",
+      description: "prevents gaming of rewards and airdrops."
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      ),
+      title: "AI + Human scoring",
+      description: "manually, or let AI agents auto-assign"
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      ),
+      title: "zero-knowledge prove",
+      description: "actions before they are performed by the AI agents"
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      title: "Cross-chain comparability",
+      description: "and trigger actions based on the customer history"
+    }
+  ];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -267,40 +59,11 @@ interface LandingPageProps {
 export function LandingPage({ enableRevolvingAnimation = false }: LandingPageProps = {}) {
   const { scrollY } = useScroll();
   const [headerStyle, setHeaderStyle] = useState('transparent');
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<keyof typeof tabContent>("defi");
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
   const [resourcesDropdownTimeout, setResourcesDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  const handleVideoPlay = () => {
-    setIsVideoPlaying(true);
-  };
-
-  const codeBlocks = [
-    {
-      title: "Install Anylayer SDK",
-      code: "Install anylayer-sdk",
-    },
-    {
-      title: "Initialize And Get User Score",
-      code: `import { Anylayer } from '@anylayer/sdk';
-
-const anylayer = new Anylayer({
-  apiKey: 'your-api-key',
-  network: 'mainnet'
-});
-
-const userScore = await anylayer.getScore(userAddress);
-
-// Use score for loan decisions
-if (userScore.creditRating > 700) {
-  enableUndercollateralizedLoan();
-}`,
-    },
-    // Add more code blocks here as needed
-  ];
+  
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -319,12 +82,6 @@ if (userScore.creditRating > 700) {
       });
       setIsMobileMenuOpen(false);
     }
-  };
-
-  const handleCopy = (code: string, index: number | null) => {
-    navigator.clipboard.writeText(code);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
   };
 
   useEffect(() => {
@@ -347,13 +104,23 @@ if (userScore.creditRating > 700) {
     };
   }, [resourcesDropdownTimeout]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
   return (
     <>
-    <div className="relative bg-black w-full min-w-full overflow-x-hidden">
+    <div className="relative w-full min-w-full overflow-x-hidden">
         {/* Header & Banner */}
-        <section className="relative pt-20 lg:pt-24 overflow-hidden bg-[url('/pattern-dotted.png')] bg-cover bg-center ">
+        <section className="relative pt-20 lg:pt-24 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
           <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent backdrop-blur-md`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `} // backdrop-blur-md
             // initial={{ y: -100 }}
             // animate={{ y: 0 }}
             // transition={{ duration: 0.5 }}
@@ -362,7 +129,7 @@ if (userScore.creditRating > 700) {
               <div className="max-w-screen-xl mx-auto px-5 py-5">
                 <div className="flex items-center justify-between h-16">
                   {/* Logo */}
-                  <Image src="/zkscore-logo.svg" alt="Anylayer logo" width="160" height="64" />
+                  <Image src="/logo-anylayer.svg" alt="Anylayer logo" width="160" height="64" />
 
                   {/* Desktop Navigation */}
                   <motion.nav
@@ -373,31 +140,31 @@ if (userScore.creditRating > 700) {
                   >
                     <button
                       onClick={() => scrollToSection('trust')}
-                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
                     >
                       Trust
                     </button>
                     <button
                       onClick={() => scrollToSection('reputation')}
-                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
                     >
                       Features
                     </button>
                     <button
                       onClick={() => scrollToSection('integration')}
-                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
                     >
                       Integration
                     </button>
                     <button
                       onClick={() => scrollToSection('capital')}
-                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
                     >
                       Capital
                     </button>
                     <button
                       onClick={() => scrollToSection('public-good')}
-                      className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
                     >
                       Reputation
                     </button>
@@ -419,7 +186,7 @@ if (userScore.creditRating > 700) {
                       }}
                     >
                       <button
-                        className={`transition-colors text-gray-300 hover:text-white cursor-pointer text-sm whitespace-nowrap flex items-center gap-1`}
+                        className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap flex items-center gap-1`}
                       >
                         Resources
                         <svg 
@@ -486,16 +253,16 @@ if (userScore.creditRating > 700) {
                         </div>
                       )}
                     </div>
-                    <a
+                  </motion.nav>
+                  <a
                       href="https://app.anylayer.org"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="outline outline-[#0CFF85]/20 bg-gradient-to-b from-[#079950] to-[#0CFF85] text-white py-2.5 px-4 lg:px-6 rounded-full font-medium flex items-center justify-center gap-2 lg:gap-3 transition-all duration-300 shadow-[inset_0_2px_0_0_rgba(255,255,255,0.4)] whitespace-nowrap flex-shrink-0"
+                      className="text-[#CCD1E9] rounded-full font-medium flex items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0"
                     >
-                      <Image src="/sparkles.svg" alt="launch app" width="20" height="18" className="w-5 h-5 lg:w-[27px] lg:h-[24px]" />
                       <span className="text-sm lg:text-base">Launch App</span>
+                      <Image src="/filled-arrow.svg" alt="launch app" width="20" height="18" className="w-3 h-3 lg:w-[18px] lg:h-[18px]" />
                     </a>
-                  </motion.nav>
 
                   {/* Mobile Menu Button */}
                   <button
@@ -634,77 +401,43 @@ if (userScore.creditRating > 700) {
           </motion.header>
 
           {/* Banner Section */}
-          <div className="relative text-white overflow-hidden ">
-            <div className="relative max-w-screen-xl mx-auto px-5 pt-16 pb-10 md:pb-20">
-              <div className="grid lg:grid-cols-2 gap-2 items-center">
-                {/* Left Content */}
+          <div className="relative overflow-hidden ">
+            <div className="relative max-w-4xl mx-auto px-5 pt-16 pb-10 md:pb-20">
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.8 }}
-                  className="text-left"
+                  className="text-center"
                 >
-                  <div className="space-y-6 z-10 text-center md:text-left">
-                    <h1 className="text-[1.5rem] md:text-[2.5rem] lg:text-[3.25rem] font-medium leading-tight">
-                      Where Human, Wallet and AI Agent Trust Intersect.
+                  <div className="space-y-6 z-10 text-center">
+                    <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-tight text-primaryText">
+                      Multi-layered Trust Engine for <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Humans</span> 
                     </h1>
-                    <p className="text-white text-lg opacity-70">
-                      A zero-knowledge infrastructure for privacy-preserving reputation, designed to enhance capital efficiency for Humans and AI agents.
+                    <p className="text-primaryText/60 text-lg opacity-70">
+                      A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-4 items-center pt-0 md:pt-4">
+                    <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
                       <a
                         href="https://app.anylayer.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#0CFF85] hover:bg-[#0CFF85]/80 text-black font-medium max-w-44 md:max-w-40 w-full px-4 md:px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm md:text-base lg:text-base text-center"
+                        className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-44 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
                       >
-                        Create ID
+                        <span>Create ID</span>
+                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
                       </a>
                       <a
                         href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-neutral-900 hover:bg-neutral-700 border border-solid border-white/20 text-white font-light px-4 md:px-8 py-3 max-w-44 w-full md:max-w-full md:w-auto rounded-lg transition-all duration-300 text-sm md:text-base lg:text-base text-center"
+                        className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-44 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
                       >
                         Documentation
                       </a>
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Right Content - Circular Diagram */}
-                <div className="relative flex justify-center lg:justify-end">
-                  {enableRevolvingAnimation ? (
-                    <div 
-                      style={{
-                        animation: 'revolve 20s linear infinite',
-                      }}
-                    >
-                      <Image
-                        src="/banner-graphics.svg"
-                        alt="Banner Image"
-                        width="500"
-                        height="510"
-                      />
-                    </div>
-                  ) : (
-                    <motion.div
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                      <Image
-                        src="/banner-graphics.svg"
-                        alt="Banner Image"
-                        width="500"
-                        height="510"
-                      />
-                    </motion.div>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -712,187 +445,52 @@ if (userScore.creditRating > 700) {
         {/* Partner Logos */}
         <ClientsLogo />
 
-        {/* Section 1 */}
-        <section id="trust" className="relative pb-10 md:pb-20 pt-10 md:pt-40 overflow-hidden">
-          <div className="relative max-w-screen-xl mx-auto px-5">
-            <div className="text-center max-w-2xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-2xl md:text-3xl lg:text-[2.5rem] font-medium mb-8 text-white ">
-                  Turning Trust Into Utility
-                </h2>
-                <p className="opacity-70 text-base text-white">
-                  Converts multi-chain activity into a portable, privacy-first
-                  trustscore. Share a proof of your history to qualify for
-                  better terms across multi DeFi applications and Loyalty
-                  Rewards.
-                </p>
-              </motion.div>
-            </div>
-
-            <div className="relative my-20">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Image
-                  src="/turning-trust-large.svg"
-                  alt="Turning Trust Into Utility"
-                  width="1074"
-                  height="400"
-                  className="w-full h-full object-contain hidden md:block"
-                />
-                <Image
-                  src="/turning-trust.svg"
-                  alt="Turning Trust Into Utility"
-                  width="419"
-                  height="1280"
-                  className="w-full h-full object-contain block md:hidden"
-                />
-              </motion.div>
-            </div>
-
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Card 1 */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative group border border-[#ffffff1a] bg-[#0A0A0A] rounded-2xl p-6"
-              >
-                <div className="relative flex gap-4">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_4px_rgba(12,255,133,1)] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#272727] to-black to-75%">
-                    <Image
-                      src="/wallet-01.svg"
-                      alt="Turning Trust Into Utility"
-                      width="24"
-                      height="24"
-                      className=""
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl md:text-3xl lg:text-[2.5rem] font-medium text-white font-mono mb-2">
-                      820M
-                    </h4>
-                    <p className="opacity-70 text-white text-base">
-                      Unique wallets active globally
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Card 2 */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative group border border-[#ffffff1a] bg-[#0A0A0A] rounded-2xl p-6"
-              >
-                <div className="relative flex gap-4">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_4px_rgba(12,255,133,1)] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#272727] to-black to-75%">
-                    <Image
-                      src="/blockchain.svg"
-                      alt="Turning Trust Into Utility"
-                      width="24"
-                      height="24"
-                      className=""
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl md:text-3xl lg:text-[2.5rem] font-medium text-white font-mono mb-2">
-                      12+
-                    </h4>
-                    <p className="opacity-70 text-white text-base">
-                      Multi-Chain Coverage
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Card 3 */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative group border border-[#ffffff1a] bg-[#0A0A0A] rounded-2xl p-6"
-              >
-                <div className="relative flex gap-4">
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 shadow-[0_0_4px_rgba(12,255,133,1)] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#272727] to-black to-75%">
-                    <Image
-                      src="/plug-socket.svg"
-                      alt="Turning Trust Into Utility"
-                      width="24"
-                      height="24"
-                      className=""
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl md:text-3xl lg:text-[2.5rem] font-medium text-white font-mono mb-2">
-                      9000
-                    </h4>
-                    <p className="opacity-70 text-white text-base">
-                      Makes trust score easy to integrate
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 2 */}
+        {/* Section 2 charts */}
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
-          <div className="flex flex-wrap justify-between items-start gap-2">
+          <div className="flex flex-wrap justify-between items-center gap-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-[38rem]"
+              className="max-w-[39rem] mx-auto flex flex-wrap justify-center items-center"
             >
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
+              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+                <span className="text-sm text-white/50">Trust Engine</span>
+              </div>
+              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
                 {" "}
-                Reputation backbone For decentralized applications
+                Understand and verify <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> trust </span> across every <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Signal</span>
               </h2>
-              <p className="opacity-70 text-white text-base">
-                A public good that bridges fragmented ecosystems through a
-                unified, privacy-preserving trust layer.
+              <p className="text-primaryText/60 text-base text-center px-10">
+                Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
               </p>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-20">
             {/* Wallet ID */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className='md:col-span-2'
             >
-              <div className="px-6 pb-7 pt-10 border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#ffffff0f] to-transparent">
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/wallet-id.svg"
-                  alt="Turning Trust Into Utility"
-                  width="270"
-                  height="252"
-                  className="w-full h-[252px] object-contain mb-10"
+                  src="/double-cards.svg"
+                  alt="See what drives reputation clearly"
+                  width="400"
+                  height="319"
+                  className="w-full h-[319px] object-contain mb-10"
                 />
-                <h3 className="text-white text-2xl font-medium mb-1">
-                  {"Wallet ID"}
+                <h3 className="text-primaryText text-2xl font-medium mb-1 tracking-tighter">
+                  {"See what drives reputation clearly"}
                 </h3>
-                <p className="text-white opacity-70 text-sm">
+                <p className="text-primaryText/60 text-base tracking-tighter">
                   {
-                    "Your unique on-chain identity, securing reputation without depending on personal information."
+                    "Break down trust into identity, behavior, and wallet activity at a glance for everyone."
                   }
                 </p>
               </div>
@@ -902,51 +500,50 @@ if (userScore.creditRating > 700) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="md:col-span-2"
+              className="md:col-span-3"
             >
-              <div className="px-6 pb-7 pt-10 border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#ffffff0f] to-transparent h-full">
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/zk-privacy.svg"
-                  alt="Turning Trust Into Utility"
-                  width="565"
-                  height="252"
-                  className="w-full h-[252px] object-contain mb-10"
+                  src="/line-chart.svg"
+                  alt="Real-time trust, always up-to-date"
+                  width="658"
+                  height="319"
+                  className="w-full h-[319px] object-contain mb-10"
                 />
-                <h3 className="text-white text-2xl font-medium mb-1">
-                  {"ZK privacy"}
+                <h3 className="text-primaryText text-2xl font-medium mb-1 tracking-tighter">
+                  {"Real-time trust, always up-to-date"}
                 </h3>
-                <p className="text-white opacity-70 text-sm">
+                <p className="text-primaryText/60 text-base tracking-tighter">
                   {
-                    "Prove your reputation without revealing sensitive transaction details. "
+                    "Track every score change instantly across identity, wallets, and actions, allowing you to monitor growth, risks, and performance without revealing sensitive data."
                   }
                 </p>
               </div>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mt-6">
-            {/* Wallet ID */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-5">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:col-span-2"
+              className="md:col-span-3"
             >
-              <div className="px-6 pb-7 pt-10 border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#ffffff0f] to-transparent h-full">
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/realtime-analytics.svg"
-                  alt="Real Time Analytics"
-                  width="693"
-                  height="252"
-                  className="w-full h-[252px] object-contain"
+                  src="/trust-history.svg"
+                  alt="Follow every action that shapes trust"
+                  width="690"
+                  height="350"
+                  className="w-full h-[350px] object-contain"
                 />
-                <h3 className="text-white text-2xl font-medium mb-1">
-                  {"Real Time Analytics"}
+                <h3 className="text-primaryText text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                  {"Follow every action that shapes trust"}
                 </h3>
-                <p className="text-white opacity-70 text-sm">
+                <p className="text-primaryText/60 text-base tracking-tighter">
                   {
-                    "Monitor reputation metrics in real-time with our advanced analytics dashboard."
+                    "View history, scores, and signals from swaps, claims, bridges, and governance, helping you understand how each action contributes to reputation growth and long-term credibility."
                   }
                 </p>
               </div>
@@ -956,19 +553,20 @@ if (userScore.creditRating > 700) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="md:col-span-2"
             >
-              <div className="px-6 pb-7 pt-10 border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#ffffff0f] to-transparent">
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/achievements.svg"
-                  alt="Achievements"
-                  width="270"
-                  height="252"
-                  className="w-full h-[252px] object-contain"
+                  src="/chain-card.svg"
+                  alt="Verify credibility anywhere on-chain"
+                  width="400"
+                  height="350"
+                  className="w-full h-[350px] object-contain"
                 />
-                <h3 className="text-white text-2xl font-medium mb-1">
-                  {"Achievements"}
+                <h3 className="text-primaryText text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                  {"Verify credibility anywhere on-chain"}
                 </h3>
-                <p className="text-white opacity-70 text-sm">
+                <p className="text-primaryText/60 text-base tracking-tighter">
                   {
                     "Gamified reputation building with rewards and special recognition."
                   }
@@ -978,584 +576,322 @@ if (userScore.creditRating > 700) {
           </div>
         </section>
 
-        {/* Section 3 */}
-        <section id="integration" className="py-10 md:py-20 bg-[url('/code-block-bg.png')] bg-contain bg-left bg-no-repeat">
-          <div className="px-5 max-w-screen-xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-              {/* Left Side */}
-              <div>
-                  <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="max-w-[31.25rem]"
-              >
-                  <h2 className="text-[24px] md:text-[30px] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
-                    Easy Integration With Anylayer SDK
-                  </h2>
-                  <p className="opacity-70 text-white text-base">
-                    Anylayer's SDK makes it seamless to integrate reputation data
-                    into your dApp or protocol. In just a few lines of code, you
-                    can access wallet trust scores, request zk-proofs, and
-                    tailor experiences for users based on verified credibility.
-                  </p>
-
-                  <a
-                    href="https://docs.onzks.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#0CFF85] hover:bg-[#0CFF85]/80 text-black font-semibold px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 mt-4 md:mt-14"
-                  >
-                    Build with Anylayer
-                  </a>
-              </motion.div>
-              </div>
-              {/* Right Side Code Editor */}
-              <div className="codeBlock">
-                {codeBlocks.map((block, index) => (
-                  <motion.div
-                  key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className={`relative bg-[#ffffff0a] p-6 border rounded-lg border-[#ffffff1a] ${
-                      index < codeBlocks.length - 1 ? "mb-6" : ""
-                    }`}
-              >
-                {/* Header with title and copy button */}
-                    <div className="flex items-center justify-between mb-8">
-                      <h2 className="text-white text-xl font-medium">
-                        {block.title}
-                      </h2>
-                      <button
-                        onClick={() => handleCopy(block.code, index)}
-                        className="p-2 hover:bg-white/5 rounded-lg transition-colors flex-shrink-0"
-                        aria-label="Copy to clipboard"
-                      >
-                        {copiedIndex === index ? (
-                          <svg
-                            className="w-5 h-5 text-[#0CFF85]"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            className="w-5 h-5 text-gray-400 hover:text-white transition-colors"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                            />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Code content */}
-                    <pre className="text-[#0CFF85] text-sm font-mono overflow-x-auto leading-relaxed">
-                      {block.code}
-                    </pre>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 4 */}
-        <section id="capital" className="px-5 pt-6 md:pt-14 pb-12 md:pb-24 max-w-screen-xl mx-auto overflow-x-hidden">
-          <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex justify-between flex-wrap items-start mb-10"
-              >
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-3 md:mb-6 leading-tight max-w-[31.438rem] w-full">
-                Unlock capital, not your data
-              </h2>
-              <p className="opacity-70 text-white text-base md:basis-2/4 max-w-[38rem] w-full">
-                Anylayer is more than a credit score for Web3. It's a trust layer
-                designed for different groups in the ecosystem, each with unique
-                ways to benefit from portable zk-verified reputation.
-              </p>
-              </motion.div>
-
-          <div className="">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center mb-6 bg-black rounded-md overflow-x-auto"
-              >
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`text-base px-5 py-4 rounded-lg text-center border-none whitespace-nowrap
-                  ${
-                    activeTab === tab.id
-                      ? "bg-[#ffffff1a] text-white font-medium"
-                      : "bg-transparent text-white opacity-70 font-normal"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </motion.div>
-            {/* Protocols Sec Left */}
+        {/* Section Architecture */}
+        <section id="architecture" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
+          <div className="flex flex-wrap justify-between items-center gap-2 ">
             <motion.div
-               initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-               className="">
-                <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start px-6 md:px-10 py-6 md:py-14 border border-[#ffffff1a] rounded-3xl bg-[#ffffff0a]">
-                  <div className="">
-                    <h2 className="text-[1.5rem] md:text-[1.5rem] lg:text-[2rem] text-white font-medium">
-                      {tabContent[activeTab].title}
-                    </h2>
-                    <p className="text-white opacity-70 mt-2 md:mt-4">
-                      {tabContent[activeTab].description}
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-7 gap-x-4 mt-10">
-                      {tabContent[activeTab].features.map((feature, index) => (
-                        <div key={index}>
-                          <h3 className="text-white font-medium text-base mb-2">
-                            {feature.title}
-                          </h3>
-                          <p className="text-white opacity-70 text-sm leading-relaxed">
-                            {feature.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Protocols Sec Right */}
-                  {/* border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#0CFF850a] to-[#0000000a] p-6 flex justify-center items-center h-full */}
-                  {/* <div className="flex justify-center lg:justify-end"> */}
-                    <motion.div initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: 0.3 }} className="flex justify-center lg:justify-end">
-                      <Image
-                        src={tabContent[activeTab].diagram}
-                        alt="Tabs"
-                        width="568"
-                        height="360"
-                        className="w-full h-auto md:h-[340px] object-contain object-right"
-                      />
-                    </motion.div>
-                  {/* </div> */}
-                </div>
-               </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.3 }} className="flex items-center justify-between px-3 md:px-10 py-4 mt-6 border border-[#ffffff1a] bg-[#ffffff0a] rounded-3xl flex-col md:flex-row gap-10 md:gap-2">
-              <div className="flex items-center gap-6 justify-between md:justify-start w-full md:w-auto" >
-                <h2 className="text-white text-[2rem] md:text-[3rem] lg:text-[64px] font-mono">$300</h2>{" "}
-                <p className="text-white text-base md:text-xl font-medium">Starter Credits</p>
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center"
+            >
+              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+                <span className="text-sm text-white/50">Trust Engine</span>
               </div>
-              <div className="flex items-center gap-2 md:gap-6 flex-col md:flex-row w-full md:w-auto" >
-                <p className="text-white opacity-70">
-                  No credit required
-                </p>
-                <button className="bg-[#0CFF85] hover:bg-[#0CFF85]/80 text-black font-semibold px-4 md:px-8 py-3 w-full md:w-auto rounded-lg transition-all duration-300 transform hover:scale-105">
-                  Join Waitlist
-                </button>
-              </div>
+              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
+                {" "}
+                A <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> four-layer </span> trust architecture built for <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> digital economy</span>
+              </h2>
+              <p className="text-primaryText/60 text-base text-center px-10">
+                Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
+              </p>
             </motion.div>
           </div>
-        </section>
 
-        {/* Section 5 */}
-        <section id="public-good" className="px-5 py-10 md:py-20  max-w-screen-xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }} className="max-w-[38rem]">
-            <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
-              Anylayer For Public Good
-            </h2>
-            <p className="opacity-70 text-white text-base">
-              In Web3, every wallet starts from zero, no portable reputation, no
-              shared benchmark of reliability. This creates inefficiencies:
-              over-collateralized lending, sybil attacks in governance, spam in
-              airdrops, and high barriers to real-world adoption.
-            </p>
-          </motion.div>
-
-          {/* Feature Section with Flex */}
-          <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {features.map((item, index) => (
-              <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-                key={index}
-                className="px-6 pb-7 pt-10 border border-[#ffffff1a] rounded-2xl text-center md:text-left bg-gradient-to-br from-[#ffffff0f] to-transparent"
+          {/* Layer Architecture Images */}
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="w-full max-w-6xl">
+              <div className="relative flex flex-col items-center">
+                {/* Stacked Layers Icon at Top */}
+                <motion.div 
+                  className="relative z-10 mb-8"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                <h3 className="text-white text-2xl font-medium mb-2 md:mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-white opacity-70 text-sm w-full md:max-w-64 leading-normal ">
-                  {item.description}
-                </p>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={693}
-                  height={252}
-                  className="w-[528px] md:-mt-16 -mb-20 float-right object-contain"
-                />
-                </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Section 6 */}
-        <section className="px-5 py-10 max-w-screen-xl mx-auto">
-          <div className="text-center">
-            <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                >
-
-                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
-                  From Wallet Activity <br /> To Verifiable Trust.
-                </h2>
-                <p className="opacity-70 text-white text-base mb-20 max-w-5xl mx-auto">
-                  Anylayer turns everyday onchain actions into a portable trustscore
-                  that protocols and apps can use for lending, rewards, governance,
-                  and more. Built with zero-knowledge proofs, your reputation
-                  remains private while still being fully verifiable.
-                </p>
+                  {/* Layer Image here */}
                 </motion.div>
 
-            {/* Video Container */}
-            <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#ffffff1a] bg-[#ffffff0a]">
-              {/* Logo and Text positioned left of play button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex items-center gap-6">
-                  <div className="absolute inset-0 top-2/4 left-2/4 transform -translate-x-20 -translate-y-9 ">
-                    <Image src="/zkscore-logo.svg" alt="Anylayer logo" width="160" height="64" />
-                  </div>
-                  {/* Play Button */}
-                  <button
-                    onClick={handleVideoPlay}
-                    className="relative group"
-                    aria-label="Play video"
-                  >
-                    {/* Main button */}
-                    <div className="relative w-24 h-24 rounded-full flex items-center justify-center bg-transparent backdrop-blur-sm border border-[#ffffff33] group-hover:border-emerald-500/50 transition-all duration-300">
-                      {/* Play icon */}
-                      <div className="relative ml-1">
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none"
-                          className="drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
-                        >
-                          <path d="M10 8L24 16L10 24V8Z" fill="white" />
-                        </svg>
+                {/* Vertical Line */}
+                <div className="absolute top-28 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-345px)] bg-gradient-to-b from-[#DCCFFF] to-[#A683FF] z-20"></div>
+
+                {/* Layer Items */}
+                <motion.div 
+                  className="w-full mt-12"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {/* Identity Layer */}
+                  <motion.div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[218px]" variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.6,
+                          ease: 'easeOut'
+                        }
+                      }
+                    }}>
+                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-white font-semibold text-lg">Identity Layer</h3>
+                          <p className="text-gray-500 text-sm">2k5 name service</p>
+                        </div>
                       </div>
                     </div>
-                  </button>
-                </div>
-              </div>
+                    
+                    <div className="relative z-20">
+                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="" />
+                    </div>
 
-              {/* Optional: Actual video element (hidden until play) */}
-              {isVideoPlaying && (
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/D0UnqGm_miA?si=Ix08PWqqhgdxw52A?autoplay=1"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              )}
+                    <div className="flex max-w-72 ">
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Enables every participant to mint a digital identity as a human-readable ZKS name
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Reputation Layer */}
+                  <motion.div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[141px] -mt-6 z-20" variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            duration: 0.6,
+                            ease: 'easeOut'
+                          }
+                        }
+                      }}>
+                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-white font-semibold text-lg">Reputation Layer</h3>
+                          <p className="text-gray-500 text-sm">on-chain trustworthiness</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="relative z-20">
+                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="" />
+                    </div>
+
+                    <div className="flex max-w-72">
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Transforms behavioral, financial, and operational data into a dynamic Trust Score
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Proof Layer */}
+                  <motion.div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[152px] -mt-10 z-10" variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.6,
+                          ease: 'easeOut'
+                        }
+                      }
+                    }}>
+                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-white font-semibold text-lg">Proof layer</h3>
+                          <p className="text-gray-500 text-sm">Proof of Trust with Privacy</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="relative z-20">
+                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="" />
+                    </div>
+
+                    <div className="flex max-w-72">
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Generate proofs that confirm thresholds without disclosing your data.
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Utility Layer */}
+                  <motion.div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[312px] -mt-10" variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.6,
+                          ease: 'easeOut'
+                        }
+                      }
+                    }}>
+                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-white font-semibold text-lg">Utility Layer</h3>
+                          <p className="text-gray-500 text-sm">Reputation based applications</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="relative z-20">
+                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="" />
+                    </div>
+
+                    <div className="flex max-w-72">
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Build trust-based features with SDKs/APIs and Smart contracts.
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Section 7  */}
-        <section id="trustscore" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
-          <div className="text-center mb-20 ">
-            <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                >
-
-                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
-                  Trustscore Through On-Chain Behavior
-                </h2>
-                <p className="max-w-[978px] mx-auto opacity-70 text-white text-base">
-                  A trustscore that grows directly from on-chain behavior. Every
-                  wallet has the ability to earn credibility through activity and
-                  time, with scores awarded for transactions and wallet age. The
-                  result is a score that is fair, transparent, and truly
-                  decentralized.
-                </p>
-                </motion.div>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-10 pt-6 border-t border-[#ffffff33]">
-            {data.map((item, index) => (
-              <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-                key={index}
-                className="px-4 pb-4 md:border-r last:border-r-0 lg:[&:nth-child(4n)]:border-r-0 relative border-[#ffffff33] 
-        before:content-[''] before:absolute before:right-0 before:-bottom-5 before:w-full before:h-[1px] before:bg-[#ffffff33] text-center md:text-left"
-                >
-                {/* <img
-                  className="w-12 mb-4 md:mb-8"
-                  src={item.image}
-                  alt={item.title}
-                /> */}
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mx-auto md:ml-0 mb-4 md:mb-8 shadow-[0_0_4px_rgba(12,255,133,1)] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#272727] to-black to-75%">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width="24"
-                    height="24"
-                  />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-white text-lg md:text-xl mb-2 md:mb-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#b2b4b3] text-base mb-4 md:mb-8">
-                    {item.description}
-                  </p>
-                </div>
-                <button className="px-3 py-1 text-base text-center rounded-md bg-[#ffffff1a] hover:bg-neutral-700 border border-solid border-white/10 text-white/70 font-normal">
-                  {item.btnText}
-                </button>
-                </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Section 8  */}
-        <section className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
-          <div className="text-center mb-10 md:mb-20 ">
-            <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                >
-
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white mb-6 leading-tight">
-                Meet Macro most trusted partners
+        {/* Section Trust Score */}
+        <section id="trustScore" className="py-10 md:pt-10 md:pb-20 px-5 max-w-screen-xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
+            >
+              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+                <span className="text-sm text-white/50">Trust Engine</span>
+              </div>
+              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight">
+                {" "}
+                Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
               </h2>
-              <p className="max-w-[978px] mx-auto opacity-70 text-white text-base">
-                Lorem ipsum dolor sit amet consectetur. Vitae euismod nulla erat
-                morbi amet duis mattis. Ut neque facilisis etiam dolor mauris leo
-                nisl. Sed dictum a eget vestibulum vel vitae et enim turpis. Nunc
-                facilisi sed dignissim purus erat adipiscing adipiscing
-                pellentesque.
+              <p className="text-primaryText/60 text-base">
+                Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
               </p>
-                </motion.div>
-          </div>
-          <ClientsLogo />
-        </section>
+            </motion.div>
 
-        {/* Section 9 */}
-        <section id="faq" className="py-10 md:py-20 bg-[url('/green-circle-background.png')] bg-contain bg-right bg-no-repeat">
-          <div className="text-center mb-10 md:mb-20 px-5 max-w-screen-xl mx-auto ">
-            <motion.div initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                >
+            {/* Right Content - Trust Score Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative pb-10"
+            >
+              <div className="relative bg-[#1C1C26]/90 rounded-2xl p-4 border border-gray-800/50 max-w-[365px]">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
+                    <div className="text-[#636475] text-sm uppercase">WALLET</div>
+                    <div className="text-[#CCD1E9] text-sm">0xA6...91F2</div>
+                </div>
 
-                  <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[2.5rem] font-medium text-white leading-tight">
-                    Frequently Asked Questions
-                  </h2>
-                </motion.div>
-          </div>
-
-          <div className="space-y-4 px-5 max-w-screen-xl mx-auto">
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group border border-[#ffffff1a] bg-[#ffffff0f] rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden"
-                open={index === 0}
-              >
-                <summary className="flex items-center justify-between gap-1.5 text-white">
-                  <h2 className="text-xl font-medium">{faq.title}</h2>
-
-                  <div className="w-11 h-11 flex items-center justify-center rounded-md bg-[#ffffff1a]">
-                    <svg
-                      className="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
+                {/* Left Side Labels */}
+                <div className="space-y-4 mt-3">
+                  <div className="flex justify-between items-center">
+                      <div className="text-[#636475] text-sm uppercase">HUMAN</div>
+                      <div className="text-[#CCD1E9] text-sm ">Verified</div>
                   </div>
-                </summary>
+                  <div className="flex justify-between items-center">
+                      <div className="text-[#636475] text-sm uppercase">WALLET AGE</div>
+                      <div className="text-[#CCD1E9] text-sm ">90+ Days</div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                      <div className="text-[#636475] text-sm uppercase">ACTIVITY</div>
+                      <div className="text-[#CCD1E9] text-sm ">consistent</div>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
+                    <div className="text-[#636475] text-sm uppercase">SCORE</div>
+                    <div className="text-[#CCD1E9] text-sm ">72</div>
+                </div>
+              </div>
+              <div className="bg-[#1C1C26]/90 rounded-xl p-6 border border-gray-700/20 max-w-[343px] w-full absolute right-0 bottom-0">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-12 h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
+                        <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
+                      </div>
+                      <span className="text-[#C9D1D9] text-lg font-medium font-geist">Total Trust Score</span>
+                    </div>
+                  </div>
 
-                <p className="pt-4 text-white opacity-70">{faq.description}</p>
-              </details>
+                  <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-14 mb-5'/>
+
+                  <div className="flex items-center justify-between">
+                    <motion.div
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="text-2xl font-bold text-[#CCD1E9] font-mono"
+                    >
+                      120
+                    </motion.div>
+                    <div className="text-[#A683FF] text-sm font-geist">+39 this month</div>
+                  </div>
+                </div>
+            </motion.div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid sm:grid-cols-4 gap-6 mt-20">
+            {trustScoreFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                className="flex items-center gap-2"
+              >
+                <div className="w-10 h-10 text-primaryText">
+                  {feature.icon}
+                </div>
+                <div>
+                  <p className="text-[#9095A4] text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="py-10 md:py-20 bg-[#ffffff0a]">
-          <div className="px-5 max-w-screen-xl mx-auto">
-            <div className="flex justify-between flex-wrap gap-10">
-              <div className="max-w-[588px] w-full">
-                <Image src="/zkscore-logo.svg" alt="logo" width="160" height="64" />
-                <div className="">
-                  <h3 className="text-2xl text-white font-medium mt-6 mb-6">
-                    Privacy-first trust for every wallet.
-                  </h3>
-                  <p className="text-base text-white opacity-70">
-                    be the first to know about new features, upcoming events,
-                    and everything happening in the world of Anylayer.
-                  </p>
-                  <div
-                    className="mt-3 flex flex-wrap md:flex-nowrap justify-center items-center bg-[#ffffff0a] p-[6px] rounded-lg"
-                    style={{
-                      boxShadow: "inset 0 0 8px 0 rgba(255, 255, 255, 0.1)",
-                    }}
-                  >
-                    <input
-                      type="email"
-                      placeholder="Enter Your Email"
-                      className="
-                    bg-transparent 
-                    w-[588px]
-                    px-[20px]
-                    py-4
-                    md:py-0
-                    text-white 
-                    placeholder:text-[#7a7a7a] 
-                    outline-none 
-                    border-none
-                  "
-                    />
+        <ParallelCards />
 
-                    <button className="bg-[#0CFF85] w-full md:max-w-[181px] px-10 text-black flex items-center justify-center py-3 text-base rounded-md font-medium">
-                      <span className="mr-2"> Subscribe</span>
-                      <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="transition-transform duration-300 group-hover:translate-x-1 w-4 h-4 md:w-8 md:h-8"
-                      >
-                        <path
-                          d="M5 12H19M19 12L12 5M19 12L12 19"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                  {/* social icons */}
-                  <div className="flex items-center gap-3 mt-6">
-                    <a href="https://t.me/zksnews#" target="_blank" className="flex items-center justify-center w-8 h-8 bg-white rounded-lg">
-                    <Image src="/telegram.svg" alt="telegram" width="17" height="14" />
-                    </a>
-                    <a href="https://discord.gg/ZmnsPMKgjw" target="_blank" className="flex items-center justify-center w-8 h-8 bg-white rounded-lg">
-                    <Image src="/discord.svg" alt="discord" width="16" height="12" />
-                    </a>
-                    <a href="https://www.linkedin.com/company/anylayer" target="_blank" className="flex items-center justify-center w-8 h-8 bg-white rounded-lg">
-                    <Image src="/linkedin.svg" alt="linkedin" width="17" height="17" />
-                    </a>
-                <a href="https://x.com/buildonzks" target="_blank" className="flex items-center justify-center w-8 h-8 bg-white rounded-lg">
-                    <Image src="/twitter.svg" alt="twitter" width="12" height="12" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="w-[532px] flex flex-wrap gap-4 md:gap-20">
-                <div className="w-[130px] md:w-[102px]">
-                  <h3 className="font-semibold text-xl text-white mb-6">
-                    Products
-                  </h3>
-                  <ul className="space-y-3 list-none text-white opacity-70">
-                    <li>Overview</li>
-                    <li>How It Works</li>
-                    <li>Integrations</li>
-                    <li>Docs</li>
-                    <li>API Access</li>
-                  </ul>
-                </div>
+        <TabsCard />
 
-                {/* ECOSYSTEM */}
-                <div className="w-[170px] md:w-[149px]">
-                  <h3 className="font-semibold text-xl text-white mb-6">
-                    Ecosystem
-                  </h3>
-                  <ul className="space-y-3 text-white opacity-70 list-none">
-                    <li>For DAOs</li>
-                    <li>For DeFi Platforms</li>
-                    <li>For Wallets</li>
-                    <li>Partners</li>
-                    <li>Community Grants</li>
-                  </ul>
-                </div>
+        <CodeIntegration />
 
-                {/* COMPANY */}
-                <div className="w-[80px] md:w-[107px]">
-                  <h3 className="font-semibold text-xl text-white mb-6">
-                    Company
-                  </h3>
-                  <ul className="space-y-3 list-none text-white opacity-70">
-                    <li>About</li>
-                    <li>Blog</li>
-                    <li>Careers</li>
-                    <li>Terms</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            {/* BOTTOM FOOTER */}
-            <div className="flex justify-center md:justify-between flex-wrap mt-10 md:mt-20 gap-4 items-center text-white opacity-70">
-              <p className="text-base">Copyright 2025. All Rights Reserved.</p>
+        <Faqs />
 
-              <div className="flex gap-4 md:gap-8">
-                <p>Privacy Policy</p>
-                <p>Terms Of Services</p>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
