@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
@@ -62,7 +62,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
   const [resourcesDropdownTimeout, setResourcesDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
-
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
 
   const toggleMenu = () => {
@@ -83,6 +83,18 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       setIsMobileMenuOpen(false);
     }
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsResourcesDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = scrollY.onChange(latest => {
@@ -125,8 +137,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             // animate={{ y: 0 }}
             // transition={{ duration: 0.5 }}
           >
-            <div className='headerMain relative'>
-              <div className="max-w-screen-xl mx-auto px-5 py-5">
+            <div className="headerMain relative">
+              <div className="max-w-screen-xl mx-auto px-5 py-2">
                 <div className="flex items-center justify-between h-16">
                   {/* Logo */}
                   <Image src="/logo-anylayer.svg" alt="Anylayer logo" width="160" height="64" />
@@ -136,57 +148,44 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="hidden md:flex items-center gap-x-4 lg:gap-x-6 relative"
+                    className="hidden md:flex items-center gap-x-4 lg:gap-x-8 "
                   >
                     <button
                       onClick={() => scrollToSection('trust')}
-                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
                     >
                       Trust
                     </button>
                     <button
-                      onClick={() => scrollToSection('reputation')}
-                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      onClick={() => scrollToSection('architecture')}
+                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
                     >
-                      Features
+                      Architecture
                     </button>
                     <button
-                      onClick={() => scrollToSection('integration')}
-                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      onClick={() => scrollToSection('opportunity')}
+                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
                     >
-                      Integration
+                      Opportunity
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('dimension')}
+                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
+                    >
+                      Dimension
                     </button>
                     <button
                       onClick={() => scrollToSection('capital')}
-                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
+                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
                     >
                       Capital
                     </button>
-                    <button
-                      onClick={() => scrollToSection('public-good')}
-                      className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap`}
-                    >
-                      Reputation
-                    </button>
+
                     {/* Resources Dropdown */}
-                    <div 
-                      className="relative"
-                      onMouseEnter={() => {
-                        if (resourcesDropdownTimeout) {
-                          clearTimeout(resourcesDropdownTimeout);
-                          setResourcesDropdownTimeout(null);
-                        }
-                        setIsResourcesDropdownOpen(true);
-                      }}
-                      onMouseLeave={() => {
-                        const timeout = setTimeout(() => {
-                          setIsResourcesDropdownOpen(false);
-                        }, 100);
-                        setResourcesDropdownTimeout(timeout);
-                      }}
-                    >
+                    <div className="" ref={dropdownRef}>
                       <button
-                        className={`transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap flex items-center gap-1`}
+                        onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
+                        className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5 flex items-center gap-1"
                       >
                         Resources
                         <svg 
@@ -198,71 +197,100 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {isResourcesDropdownOpen && (
-                        <div className="absolute top-full left-0 w-80 z-50 -mt-1 pt-1">
-                          <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-6">
-                            <div className="grid grid-cols-1 gap-6 px-6">
-                              <div>
-                                <button
-                                  onClick={() => {
-                                    scrollToSection('trustscore');
-                                    setIsResourcesDropdownOpen(false);
-                                  }}
-                                  className="block w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded transition-colors text-sm"
-                                >
-                                  Trustscore
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    scrollToSection('faq');
-                                    setIsResourcesDropdownOpen(false);
-                                  }}
-                                  className="block w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded transition-colors text-sm"
-                                >
-                                  FAQs
-                                </button>
-                              </div>
-                              <div>
-                                <a
-                                  href="https://docs.onzks.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded transition-colors text-sm"
-                                >
-                                  Builder
-                                </a>
-                                <a
-                                  href="https://docs.onzks.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded transition-colors text-sm"
-                                >
-                                  Documentation
-                                </a>
-                                <a
-                                  href="https://branding.anylayer.org"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded transition-colors text-sm"
-                                >
-                                  Brand Assets
-                                </a>
+
+                      <AnimatePresence>
+                        {isResourcesDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-0 left-0 mt-0 w-full z-[-1]"
+                          >
+                            <div className="bg-[#1A1A24]/95 backdrop-blur-2xl pt-[120px] pb-10 border border-gray-800/50 shadow-2xl overflow-hidden">
+                              <div className="p-6 max-w-screen-xl mx-auto flex items-center justify-between">
+                                {/* Left Column */}
+                                <div className="max-w-[508px]">
+                                  <p className='font-geist font-medium text-[32px] text-white leading-tight'>Everything you need to stay informed and build with Anylayer.</p>
+                                </div>
+                                {/* Right Column */}
+                                <div className='flex gap-20'>
+                                  <div className="space-y-2">
+                                    <button
+                                      onClick={() => {
+                                        scrollToSection('trustscore');
+                                        setIsResourcesDropdownOpen(false);
+                                      }}
+                                      className="flex items-center gap-3 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
+                                    >
+                                      <svg className="w-8 h-8 text-primaryText" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      </svg>
+                                      <div>
+                                        <div className="text-2xl font-medium font-geist">Explorer</div>
+                                      </div>
+                                    </button>
+                                    <button
+                                      onClick={() => {
+                                        scrollToSection('faq');
+                                        setIsResourcesDropdownOpen(false);
+                                      }}
+                                      className="flex items-center gap-3 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
+                                    >
+                                      <svg className="w-8 h-8 text-primaryText" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                      </svg>
+                                      <div>
+                                        <div className="text-2xl font-medium font-geist">Roadmap</div>
+                                      </div>
+                                    </button>
+                                  </div>
+                                  <div className="space-y-2">
+                                    <a
+                                      href="https://docs.onzks.com"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-3 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
+                                    >
+                                      <svg className="w-8 h-8 text-primaryText" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                      </svg>
+                                      <div>
+                                        <div className="text-2xl font-medium font-geist">Builders</div>
+                                      </div>
+                                    </a>
+                                    <a
+                                      href="https://docs.onzks.com"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-3 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
+                                    >
+                                      <svg className="w-8 h-8 text-primaryText" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                      </svg>
+                                      <div>
+                                        <div className="text-2xl font-medium font-geist">Whitepaper</div>
+                                      </div>
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </motion.nav>
+
                   <a
-                      href="https://app.anylayer.org"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#CCD1E9] rounded-full font-medium flex items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0"
-                    >
-                      <span className="text-sm lg:text-base">Launch App</span>
-                      <Image src="/filled-arrow.svg" alt="launch app" width="20" height="18" className="w-3 h-3 lg:w-[18px] lg:h-[18px]" />
-                    </a>
+                    href="https://app.anylayer.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden md:flex text-[#CCD1E9] rounded-full font-medium items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0 hover:opacity-80"
+                  >
+                    <span className="text-sm lg:text-base">Launch App</span>
+                    <Image src="/filled-arrow.svg" alt="launch app" width="20" height="18" className="w-3 h-3 lg:w-[18px] lg:h-[18px]" />
+                  </a>
 
                   {/* Mobile Menu Button */}
                   <button
@@ -283,6 +311,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 </div>
 
                 {/* Mobile Menu */}
+                <AnimatePresence>
                   {isMobileMenuOpen && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
@@ -299,28 +328,28 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                           Trust
                         </button>
                         <button
-                          onClick={() => scrollToSection('reputation')}
+                          onClick={() => scrollToSection('architecture')}
                           className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          Features
+                          Architecture
                         </button>
                         <button
-                          onClick={() => scrollToSection('integration')}
+                          onClick={() => scrollToSection('opportunity')}
                           className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
-                          Integration
+                          Opportunity
+                        </button>
+                        <button
+                          onClick={() => scrollToSection('dimension')}
+                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
+                        >
+                          Dimension
                         </button>
                         <button
                           onClick={() => scrollToSection('capital')}
                           className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
                         >
                           Capital
-                        </button>
-                        <button
-                          onClick={() => scrollToSection('public-good')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Reputation
                         </button>
                         <div className="border-t border-gray-800 pt-4">
                           <button
@@ -337,72 +366,74 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                             </svg>
                           </button>
-                          {isResourcesDropdownOpen && (
-                            <div className="mt-2 pl-4 space-y-2">
-                              <button
-                                onClick={() => {
-                                  scrollToSection('trustscore');
-                                  setIsResourcesDropdownOpen(false);
-                                }}
-                                className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
+                          <AnimatePresence>
+                            {isResourcesDropdownOpen && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="mt-2 pl-4 space-y-2 overflow-hidden"
                               >
-                                Trustscore
-                              </button>
-                              <button
-                                onClick={() => {
-                                  scrollToSection('faq');
-                                  setIsResourcesDropdownOpen(false);
-                                }}
-                                className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                              >
-                                FAQs
-                              </button>
-                              <a
-                                href="https://docs.onzks.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                              >
-                                Builder
-                              </a>
-                              <a
-                                href="https://docs.onzks.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                              >
-                                Documentation
-                              </a>
-                              <a
-                                href="https://branding.anylayer.org"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                              >
-                                Brand Assets
-                              </a>
-                            </div>
-                          )}
+                                <button
+                                  onClick={() => {
+                                    scrollToSection('trustscore');
+                                    setIsResourcesDropdownOpen(false);
+                                  }}
+                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
+                                >
+                                  Explorer
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    scrollToSection('faq');
+                                    setIsResourcesDropdownOpen(false);
+                                  }}
+                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
+                                >
+                                  Roadmap
+                                </button>
+                                <a
+                                  href="https://docs.onzks.com"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
+                                >
+                                  Builders
+                                </a>
+                                <a
+                                  href="https://docs.onzks.com"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
+                                >
+                                  Whitepaper
+                                </a>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                         <a
                           href="https://app.anylayer.org"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full outline outline-[#0CFF85]/20 bg-gradient-to-b from-[#079950] to-[#0CFF85] text-white py-2.5 px-6 rounded-full font-medium flex items-center justify-start gap-3 transition-all duration-300 shadow-[inset_0_2px_0_0_rgba(255,255,255,0.4)]"
+                          className="text-white rounded-full font-medium flex items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0 py-2 hover:opacity-80"
                         >
-                          <Image src="/sparkles.svg" alt="launch app" width="27" height="24" />
-                          <span>Launch App</span>
+                          <span className="text-sm lg:text-base">Launch App</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
                         </a>
                       </nav>
                     </motion.div>
                   )}
+                </AnimatePresence>
               </div>
             </div>
           </motion.header>
 
           {/* Banner Section */}
-          <div className="relative overflow-hidden ">
-            <div className="relative max-w-4xl mx-auto px-5 pt-16 pb-10 md:pb-20">
+          <div className="relative overflow-hidden max-w-screen-xl mx-auto">
+            <div className="relative max-w-[773px] mx-auto px-5 pt-16 md:pt-20 pb-10 md:pb-24 z-10">
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -411,10 +442,13 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   className="text-center"
                 >
                   <div className="space-y-6 z-10 text-center">
-                    <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-tight text-primaryText">
+                    <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+                      <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
+                    </div>
+                    <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-[-4%]">
                       Multi-layered Trust Engine for <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Humans</span> 
                     </h1>
-                    <p className="text-primaryText/60 text-lg opacity-70">
+                    <p className="text-primaryText/60 text-lg tracking-[-2%]">
                       A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                     </p>
                     <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
@@ -439,6 +473,55 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </div>
                 </motion.div>
             </div>
+            <Image src={'/left-banner-angle.svg'} alt='Left Angle' width={544} height={544} className="absolute left-52 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/>
+            <Image src={'/right-banner-angle.svg'} alt='Right Angle' width={544} height={544} className="absolute right-64 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/>
+            {/* Right side shield box */}
+            <div className="bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[278px] w-full absolute right-0 top-10 opacity-15">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
+                    <Image src={'/knight-shield.svg'} alt='Shield' width={16} height={16} />
+                  </div>
+                  <div className='flex flex-col'>
+                    <span className="text-[#C9D1D9] text-xs font-medium font-geist">Current Tier</span>
+                    <span className="text-lg font-bold text-[#CCD1E9] font-mono">Bronze</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3'/>
+
+              <div className="flex items-center justify-between">
+                <div className="text-[#CCD1E9] text-xs font-geist">Progress to Silver</div>
+                <div className="text-[#CCD1E9] text-xs font-geist">6%</div>
+              </div>
+              <div className='w-full h-1 bg-[#A683FF] mt-2'/>
+            </div>
+            {/* Left side trust score box */}
+            <div className="bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[237px] w-full absolute left-0 bottom-0 opacity-15">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
+                    <Image src={'/knight-shield.svg'} alt='Shield' width={16} height={16} />
+                  </div>
+                  <span className="text-[#C9D1D9] text-xs font-medium font-geist">Total Trust Score</span>
+                </div>
+              </div>
+
+              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3'/>
+
+              <div className="flex items-center justify-between">
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-lg font-bold text-[#CCD1E9] font-mono"
+                >
+                  120
+                </motion.div>
+                <div className="text-[#A683FF] text-xs font-geist">+39 this month</div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -447,6 +530,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         {/* Section 2 charts */}
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
+          <Image src="/bg-purple-effect.svg" alt="Background Gradient" width="1440" height="400" className="absolute top-0 left-0 w-full h-full"/>
           <div className="flex flex-wrap justify-between items-center gap-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
