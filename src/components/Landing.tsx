@@ -14,22 +14,22 @@ const trustScoreFeatures = [
     {
       icon: '/knight-shield.svg',
       title: "Sybil resistance",
-      description: "prevents gaming of rewards and airdrops."
+      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
     },
     {
       icon: '/robotic.svg',
       title: "AI + Human scoring",
-      description: "manually, or let AI agents auto-assign"
+      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
     },
     {
       icon: '/circle-lock.svg',
       title: "zero-knowledge prove",
-      description: "actions before they are performed by the AI agents"
+      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
     },
     {
       icon: '/flow.svg',
       title: "Cross-chain comparability",
-      description: "and trigger actions based on the customer history"
+      description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
     }
   ];
 
@@ -457,7 +457,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-[-4px]">
                       Multi-layered Trust Engine for{' '}
-                      <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
+                      <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[357px] text-left">
                         {currentText}
                         <span className="animate-pulse">|</span>
                       </span>
@@ -487,8 +487,35 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </div>
                 </motion.div>
             </div>
-            <Image src={'/left-banner-angle.svg'} alt='Left Angle' width={544} height={544} className="absolute left-52 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/>
-            <Image src={'/right-banner-angle.svg'} alt='Right Angle' width={544} height={544} className="absolute right-64 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/>
+            <motion.div
+              initial={{ opacity: 0, rotate: 100 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+              className="absolute left-52 top-0"
+            >
+              <Image 
+                src={'/left-banner-angle.svg'} 
+                alt='Left Angle' 
+                width={544} 
+                height={544} 
+                className="w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, rotate: 100 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+              className="absolute right-64 top-0"
+            >
+              <Image 
+                src={'/right-banner-angle.svg'} 
+                alt='Right Angle' 
+                width={544} 
+                height={544} 
+                className="w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"
+              />
+            </motion.div>
+            {/* <Image src={'/right-banner-angle.svg'} alt='Right Angle' width={544} height={544} className="absolute right-64 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/> */}
             {/* Right side shield box */}
             <div className="bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[278px] w-full absolute right-0 top-10 opacity-15">
               <div className="flex items-start justify-between mb-4">
@@ -589,7 +616,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/double-cards.svg"
+                  src="/updated-trust-cards.svg"
                   alt="See what drives reputation clearly"
                   width="400"
                   height="319"
@@ -907,6 +934,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               className="relative pb-10"
             >
               <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[365px]">
@@ -971,12 +1000,14 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="flex items-center gap-4"
               >
                 <div className="w-5 h-5 text-primaryText">
                   <Image src={feature.icon} alt='Shield' width={20} height={20} className='w-full h-full'/>
                 </div>
-                <div>
+                <div className='flex-1'>
                   <p className="text-[#9095A4] text-sm leading-relaxed">
                     {feature.description}
                   </p>
