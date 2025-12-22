@@ -36,18 +36,19 @@ const footerIcon = [
 export function Footer() {
   return (
     <footer className="py-10 md:py-20">
-        <div className="px-20 py-10 md:py-20 bg-[#121219] max-w-screen-xl mx-auto rounded-[24px]">
+        <div className="px-20 py-10 md:py-20 bg-[#121219] max-w-screen-xl mx-auto rounded-[24px] relative">
+          <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="100" height="100" className="absolute -top-12 -left-12" />
           <div className="flex justify-between flex-wrap gap-10">
             <div className="max-w-[538px] w-full">
               <div className="">
-                <h3 className="text-[32px] text-primaryText font-medium mb-6 leading-snug">
+                <h3 className="text-[32px] text-primaryText font-medium mb-6 leading-[128%] tracking-tighter">
                   Subscribe to the{" "}
                   <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
                     Anylayer
                   </span>{" "}
                   Newsletter for trust, identity, and reputation updates.
                 </h3>
-                <p className="text-base text-primaryText opacity-70">
+                <p className="text-base text-primaryText/60">
                   Get updates on trust scoring, identity, and on-chain
                   reputation. For educational content only.
                 </p>
@@ -92,7 +93,7 @@ export function Footer() {
                     </svg> */}
                   </button>
                 </div>
-                <span className="text-[#E3E8FF66] ">
+                <span className="text-primaryText/40 ">
                   We’ll only use this for spam.
                 </span>
                 {/* social icons */}
@@ -139,8 +140,8 @@ export function Footer() {
             </div>
           </div>
           {/* BOTTOM FOOTER */}
-          <div className="flex justify-center md:justify-between flex-wrap mt-10 md:mt-20 gap-4 items-center text-[#E3E8FF66] opacity-70">
-            <p className="text-base">Copyright 2025. All Rights Reserved.</p>
+          <div className="flex justify-center md:justify-between flex-wrap mt-10 md:mt-20 gap-4 items-center text-primaryText/40 opacity-70">
+            <p className="text-base font-normal">Copyright 2025. All Rights Reserved.</p>
             <div className="flex items-center gap-3 ">
               {footerIcon.map((item) => (
                 <a
@@ -160,8 +161,8 @@ export function Footer() {
             </div>
 
             <div className="flex gap-4 md:gap-8">
-              <p>Privacy Policy</p>
-              <p>Terms Of Services</p>
+              <p className='font-normal'>Privacy Policy</p>
+              <p className='font-normal'>Terms Of Services</p>
             </div>
           </div>
         </div>

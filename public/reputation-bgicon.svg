@@ -1,0 +1,17 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="38" height="38" rx="7" fill="url(#paint0_radial_2280_2072)"/>
+<rect x="1" y="1" width="38" height="38" rx="7" stroke="url(#paint1_linear_2280_2072)" stroke-width="2"/>
+<path d="M19.9972 11.6667C17.4907 11.6667 15.8655 13.3492 13.9435 13.9625C13.1619 14.2119 12.7712 14.3365 12.613 14.5123C12.4549 14.688 12.4086 14.9449 12.316 15.4585C11.3249 20.9551 13.4911 26.0367 18.6573 28.0146C19.2124 28.2272 19.4899 28.3334 19.9999 28.3334C20.51 28.3334 20.7875 28.2271 21.3425 28.0146C26.5084 26.0367 28.6725 20.9551 27.6812 15.4585C27.5885 14.9448 27.5422 14.6879 27.384 14.5122C27.2258 14.3364 26.8351 14.2118 26.0536 13.9626C24.1308 13.3494 22.5038 11.6667 19.9972 11.6667Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.332 20.4167C18.332 20.4167 18.7487 20.4167 19.1654 21.25C19.1654 21.25 20.4889 19.1667 21.6654 18.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.1654 20.0002C24.1654 22.3013 22.2999 24.1668 19.9987 24.1668C17.6975 24.1668 15.832 22.3013 15.832 20.0002C15.832 17.699 17.6975 15.8335 19.9987 15.8335C22.2999 15.8335 24.1654 17.699 24.1654 20.0002Z" stroke="white" stroke-linecap="round"/>
+<defs>
+<radialGradient id="paint0_radial_2280_2072" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(3.18182 2.27273) rotate(46.1535) scale(47.9001)">
+<stop stop-color="#272727"/>
+<stop offset="1" stop-color="#0C0C11"/>
+</radialGradient>
+<linearGradient id="paint1_linear_2280_2072" x1="3.63636" y1="2.27273" x2="35.9091" y2="40" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0C0C11"/>
+<stop offset="1" stop-color="#A683FF"/>
+</linearGradient>
+</defs>
+</svg>

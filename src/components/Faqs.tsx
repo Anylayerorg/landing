@@ -75,7 +75,7 @@ const Faqs = () => {
                 <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                   <span className="text-sm text-white/50">Faqs</span>
                 </div>
-                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight tracking-tighter">
+                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%] tracking-tighter">
                   Frequently Asked{" "}
                   <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
                     Questions
@@ -110,7 +110,7 @@ const Faqs = () => {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="px-6 pb-5 pt-2">
+                    <div className="px-6 pb-5">
                       <p className="text-primaryText/60 leading-relaxed">
                         {faq.answer}
                       </p>

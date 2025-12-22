@@ -1,6 +1,7 @@
 import { Activity, BarChart3, Briefcase, DollarSign, Fingerprint, GraduationCap, Target, TrendingUp, User, Users, Wallet } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 const humainWalletAiSection = [
   {
@@ -62,17 +63,19 @@ const humainWalletAiSection = [
   },
 ];
 
-const ParallelCards = () => {
+const ParallelCards = ({sectionId}: {sectionId: string}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
   return (
-    <section className="px-5 py-10 md:py-20 relative">
+    <section id={sectionId} className="px-5 py-10 md:py-20 relative "  ref={containerRef} >
         {/* <div className='bg-gradient-to-t from-transparent via-[#5B6CDE]/60 to-transparent h-screen w-full sticky top-0' /> */}
-        <div className="flex flex-wrap justify-between items-center gap-2 mb-20">
+        <div className="flex flex-wrap justify-between items-center gap-2 mb-20 z-10 relative">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center"
+              className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center "
             >
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Human, Wallet & AI Agent</span>
