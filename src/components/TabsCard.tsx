@@ -118,7 +118,7 @@ const TabsCard = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }} 
           className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3"
         >
@@ -127,7 +127,7 @@ const TabsCard = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-between flex-wrap items-start mb-10"
         >
@@ -157,7 +157,7 @@ const TabsCard = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center mb-6 bg-[#413D57]/20 p-1.5 rounded-lg overflow-x-auto "
           >
@@ -180,7 +180,7 @@ const TabsCard = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className=""
           >
@@ -211,7 +211,7 @@ const TabsCard = () => {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex justify-center lg:justify-end"
               >

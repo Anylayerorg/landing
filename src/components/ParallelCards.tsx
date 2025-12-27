@@ -1,157 +1,212 @@
-import { Activity, BarChart3, Briefcase, DollarSign, Fingerprint, GraduationCap, Target, TrendingUp, User, Users, Wallet } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+"use client";
 
-const humainWalletAiSection = [
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
+import {
+  Briefcase,
+  GraduationCap,
+  User,
+  Linkedin,
+  ArrowLeftRight,
+  Layers,
+  Landmark,
+  ImageIcon,
+  Cpu,
+} from "lucide-react";
+
+const data = [
   {
-    id: 1,
     title: "Human identity signals",
     description:
-      "Evaluates how trustworthy a blockchain wallet is—based entirely on on-chain patterns, behavior, risk signals, and historical performance.",
-
-    image: '/human-identity.svg',
+      "Human Trust measures the credibility, reliability, and behavioral consistency of a real person without exposing their private data. ",
+    line2: "It is built from identity proofs, behavioral signals, achievements, and verifiable reputation.",
+    image: "/human-identity.svg",
     signals: [
-      { icon: Users },
-      { icon: Briefcase },
-      { icon: GraduationCap },
-      { icon: User },
-    ],
-    features: [
-      { number: "01", title: "HUMAN IDENTITY SIGNALS" },
-      { number: "02", title: "WALLET ACTIVITY ROTATION" },
-      { number: "03", title: "AI VERIFIED BEHAVIOR" },
+      { icon: Linkedin, label: "Socials" },
+      { icon: Briefcase, label: "Profession" },
+      { icon: GraduationCap, label: "Education" },
+      { icon: User, label: "Identity" },
     ],
   },
   {
-    id: 2,
     title: "Wallet activity rotation",
-    description: [
-      "Evaluates how trustworthy a blockchain wallet is—based entirely on on-chain patterns, behavior, risk signals, and historical performance.",
-    ],
-    image: '/wallet-activity.svg',
+    description:
+      "Wallet Trust evaluates how trustworthy a blockchain wallet is based entirely on on-chain patterns, behavior, risk signals, and historical performance. ",
+    line2: "It is not just wallet age, It is risk intelligence + behavioral analytics + reputation scoring combined into a trust value.",
+    image: "/wallet-activity.svg",
     signals: [
-      { icon: Activity, label: "Activity" },
-      { icon: TrendingUp, label: "Trading" },
-      { icon: DollarSign, label: "Transactions" },
-      { icon: Target, label: "DeFi" },
-    ],
-    features: [
-      { number: "01", title: "HUMAN IDENTITY SIGNALS" },
-      { number: "02", title: "WALLET ACTIVITY ROTATION" },
-      { number: "03", title: "AI VERIFIED BEHAVIOR" },
+      { icon: ArrowLeftRight, label: "Swaps" },
+      { icon: Layers, label: "Staking" },
+      { icon: Landmark, label: "Governance" },
+      { icon: ImageIcon, label: "NFTs" },
     ],
   },
   {
-    id: 3,
     title: "AI verified behavior",
-    description: [
-      "Evaluates how trustworthy a blockchain wallet is—based entirely on on-chain patterns, behavior, risk signals, and historical performance.",
-    ],
-    image: '/ai-verified.svg',
+    description:
+      "AI Agent Trust measures how reliable, predictable, and safe an autonomous agent is. As AI systems begin performing tasks, making decisions, or even moving funds, they need identity, accountability, and trust—just like humans. ",
+    line2: "Anylayer gives every AI agent a .zks identity and evaluates its behavior over time.",
+    image: "/ai-verified.svg",
     signals: [
-      { icon: Activity, label: "Patterns" },
-      { icon: Target, label: "Detection" },
-      { icon: TrendingUp, label: "Analysis" },
-      { icon: BarChart3, label: "Insights" },
-    ],
-    features: [
-      { number: "01", title: "HUMAN IDENTITY SIGNALS" },
-      { number: "02", title: "WALLET ACTIVITY ROTATION" },
-      { number: "03", title: "AI VERIFIED BEHAVIOR" },
+      { icon: Cpu, label: "Automation" },
     ],
   },
 ];
 
-const ParallelCards = ({sectionId}: {sectionId: string}) => {
+export default function ParallelCards({sectionId}: {sectionId: string}) {
+  const CARD_HEIGHT = 662;
+  const IMAGE_VIEWPORT_HEIGHT = 534; // visible image area
   const containerRef = useRef<HTMLDivElement>(null);
-  
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const total = data.length;
+  const [active, setActive] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+  /** Sticky gradient reveal (vertical, not opacity) */
+  const gradientY = useTransform(
+    scrollYProgress,
+    [0.05, 0.3],
+    ["20%", "0%"]
+  );
+
+  /* 🔑 ONE IMAGE PER SCROLL STEP */
+  const translateY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -(total - 1) * IMAGE_VIEWPORT_HEIGHT]
+  );
+
+  /* Active index */
+  useEffect(() => {
+    return scrollYProgress.on("change", (v) => {
+      setActive(Math.min(total - 1, Math.floor(v * total)));
+    });
+  }, [scrollYProgress]);
+
   return (
-    <section id={sectionId} className="px-5 py-10 md:py-20 relative "  ref={containerRef} >
-        {/* <div className='bg-gradient-to-t from-transparent via-[#5B6CDE]/60 to-transparent h-screen w-full sticky top-0' /> */}
-        <div className="flex flex-wrap justify-between items-center gap-2 mb-20 z-10 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center "
-            >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                <span className="text-sm text-white/50">Human, Wallet & AI Agent</span>
-              </div>
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
-                {" "}
-                Three dimension of trust for the digital internet
-              </h2>
-              <p className="text-primaryText/60 text-base text-center px-10 max-w-[413px]">
-                Trust becomes a reusable asset that follows users across applications and chains.
-              </p>
-            </motion.div>
+    <section className="py-32 relative" id={sectionId}
+      ref={sectionRef}>
+      <div className="flex flex-wrap justify-between items-center gap-2 z-10 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center "
+        >
+          <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+            <span className="text-sm text-white/50">Human, Wallet & AI Agent</span>
           </div>
-        {/* Updated Layout */}
-        {humainWalletAiSection.map((section, sectionIndex) => {
-          const ImageComponent = section.image;
-          return (
-            <div
-              key={section.id}
-              className="relative bg-[#121119] mt-5 rounded-[20px] h-[662px] py-16 px-10 overflow-hidden max-w-screen-xl mx-auto"
-            >
-              {/* Subtle grid pattern overlay */}
-              {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div> */}
+          <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
+            {" "}
+            Three dimension of trust for the digital internet
+          </h2>
+          <p className="text-primaryText/60 text-base text-center px-10 max-w-[413px]">
+            Trust becomes a reusable asset that follows users across applications and chains.
+          </p>
+        </motion.div>
+      </div>
 
-              <div className="relative h-full">
-                <div className="grid lg:grid-cols-2 gap-16 items-center h-full">
-                  {/* Left Side - Icon Visual */}
-                  <div className="relative flex justify-center">
-                    <Image src={ImageComponent} alt={section.title} width={300} height={300} className="w-72 h-72 md:w-full md:h-auto object-contain" />
-                  </div>
+      <div
+        ref={containerRef}
+        style={{ height: `${total * 100}vh` }}
+        className="relative"
+      >
+        <div className="sticky top-0 h-screen flex items-center">
+          {/* Gradient — bound to card sticky */}
+          <motion.div
+            style={{ y: gradientY }}
+            className="absolute inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
+          />
+          <div
+            className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
+            style={{ height: CARD_HEIGHT }}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full">
+              {/* IMAGE COLUMN */}
+              <div
+                className="relative overflow-hidden flex justify-center"
+                style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+              >
+                <motion.div style={{ y: translateY }}>
+                  {data.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center justify-center"
+                      style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={320}
+                        height={320}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
 
-                  {/* Right Side - Content */}
-                  <div className="space-y-8 h-full flex justify-between flex-col">
-                    <div>
-                      <h2 className="text-xl md:text-[32px] font-medium text-primaryText leading-tight mb-6">
-                        {section.title}
-                      </h2>
-                      <p className="text-primaryText/60 text-base leading-relaxed">
-                        {section.description}
-                      </p>
-                      {/* Signal badges */}
-                      <div className="flex flex-wrap gap-4 mt-14">
-                        {section.signals.map((signal, index) => (
-                          <signal.icon className="w-4 h-4 text-slate-400 group-hover:text-indigo-400 transition-colors" />
-                        ))}
+              {/* TEXT COLUMN */}
+              <div className="flex flex-col justify-between">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <h3 className="text-3xl text-white mb-6">
+                    {data[active].title}
+                  </h3>
+                  <p className="text-white/60">
+                    {data[active].description}
+                  </p>
+                  <p className="text-white/60">
+                    {data[active].line2}
+                  </p>
+
+                  {/* Signal badges */}
+                      <div className="flex flex-wrap gap-3 mt-10">
+                        {data[active].signals.map((signal, index) => {
+                          const SignalIcon = signal.icon;
+                          return (
+                            <div 
+                              key={index}
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5"
+                            >
+                              <SignalIcon className="w-5 h-5 text-white/50" />
+                              <span className="text-sm text-white/50">{signal.label}</span>
+                            </div>
+                          );
+                        })}
                       </div>
-                    </div>
+                </motion.div>
 
-                    {/* Feature list */}
-                    <div className="space-y-3 pt-8">
-                      {section.features.map((feature, index) => (
-                        <div
-                          key={index}
-                          className={`flex items-center gap-4 py-2 transition-all duration-300 ${
-                            index === sectionIndex
-                              ? "text-primaryText"
-                              : "text-slate-500"
-                          }`}
-                        >
-                          <span className="text-sm">
-                            {feature.number}
-                          </span>
-                          <span className="text-sm">
-                            {feature.title}
-                          </span>
-                        </div>
-                      ))}
+                {/* INDICATORS */}
+                <div className="space-y-3 pt-10">
+                  {data.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`flex gap-4 ${
+                        i === active ? "text-white" : "text-white/40"
+                      }`}
+                    >
+                      <span>{String(i + 1).padStart(2, "0")}</span>
+                      <span className="uppercase text-sm">
+                        {item.title}
+                      </span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
-          );
-        })}
-      </section>
-  )
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
-
-export default ParallelCards

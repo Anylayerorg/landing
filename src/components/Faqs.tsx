@@ -68,7 +68,7 @@ const Faqs = () => {
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.4 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="max-w-[32.25rem]"
               >
@@ -86,8 +86,12 @@ const Faqs = () => {
             {/* Left Column */}
             <div className="space-y-5">
               {FAQs.slice(0, 3).map((faq, index) => (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-gradient-to-b from-[#413D57]/15 to-transparent border border-white/10 rounded-2xl overflow-hidden transition-all duration-300"
                 >
                   <button
@@ -116,7 +120,7 @@ const Faqs = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -125,8 +129,12 @@ const Faqs = () => {
             {FAQs.slice(3, 9).map((faq, index) => {
               const globalIndex = index + 6;
               return (
-                <div
+                <motion.div
                   key={globalIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: globalIndex * 0.1 }}
                   className="bg-gradient-to-b from-[#413D57]/15 to-transparent border border-white/10 rounded-2xl overflow-hidden transition-all duration-300"
                 >
                   <button
@@ -155,7 +163,7 @@ const Faqs = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
@@ -52,10 +52,16 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  };  
+
+  // For add background on header scroll
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -149,10 +155,15 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         {/* Header & Banner */}
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
           <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `} // backdrop-blur-md
-            // initial={{ y: -100 }}
-            // animate={{ y: 0 }}
-            // transition={{ duration: 0.5 }}
+            animate={{
+              backgroundColor: isScrolled ? 'rgba(26, 26, 36, 0.4)' : 'rgba(26, 26, 36, 0)',
+              backdropFilter: isScrolled ? 'blur(24px)' : 'blur(0px)',
+              borderBottomColor: isScrolled
+                ? 'rgba(227, 227, 254, 0.1)'
+                : 'rgba(227, 227, 254, 0)',
+            }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `} 
           >
             <div className="headerMain relative border-b border-[#E3E3FE]/10">
               <div className="max-w-screen-xl mx-auto px-5 py-2">
@@ -573,22 +584,14 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute top-96 left-0"/>
         <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute bottom-96 left-0"/>
         <Image src="/right-shade.svg" alt="Background Gradient" width="722" height="1966" className="absolute bottom-32 right-0"/>
-        <div className="absolute top-[-400px] left-0 w-full h-full">
-          <Image 
-            src="/gradient-background.png" 
-            alt="Background Gradient" 
-            width={1920} 
-            height={1966} 
-            className="w-full h-full object-contain"
-          />
-        </div>
+
         {/* Section 2 charts */}
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-[39rem] mx-auto flex flex-wrap justify-center items-center"
             >
@@ -610,7 +613,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className='md:col-span-2'
             >
@@ -635,7 +638,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="md:col-span-3"
             >
@@ -663,7 +666,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="md:col-span-3"
             >
@@ -688,7 +691,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="md:col-span-2"
             >
@@ -719,7 +722,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.5 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center"
             >
@@ -743,8 +746,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 {/* Stacked Layers Icon at Top */}
                 <motion.div 
                   className="relative z-10 mt-24"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   {/* Layer Image here */}
@@ -913,7 +916,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ amount: 0.6 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
             >
@@ -932,10 +935,9 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             {/* Right Content - Trust Score Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ amount: 0.6 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
               className="relative pb-10"
             >
               <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[365px]">
@@ -980,7 +982,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <div className="flex items-center justify-between">
                     <motion.div
                       initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
                       className="text-2xl font-bold text-[#CCD1E9] font-mono"
                     >
@@ -997,11 +999,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             {trustScoreFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.6 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-center gap-4"
               >
                 <div className="w-5 h-5 text-primaryText">

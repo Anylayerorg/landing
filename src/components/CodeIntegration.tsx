@@ -47,7 +47,7 @@ const CodeIntegration = () => {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="max-w-[32.25rem]"
               >
@@ -86,7 +86,7 @@ const CodeIntegration = () => {
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ amount: 0.2 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className={`relative border rounded-lg border-[#ffffff1a] ${
                     index < codeBlocks.length - 1 ? "mb-6" : ""
