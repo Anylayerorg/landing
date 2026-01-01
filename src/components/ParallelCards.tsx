@@ -3,17 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import {
-  Briefcase,
-  GraduationCap,
-  User,
-  Linkedin,
-  ArrowLeftRight,
-  Layers,
-  Landmark,
-  ImageIcon,
-  Cpu,
-} from "lucide-react";
+import { SplitText } from "./SplitText";
+
 
 const data = [
   {
@@ -23,10 +14,12 @@ const data = [
     line2: "It is built from identity proofs, behavioral signals, achievements, and verifiable reputation.",
     image: "/human-identity.svg",
     signals: [
-      { icon: Linkedin, label: "Socials" },
-      { icon: Briefcase, label: "Profession" },
-      { icon: GraduationCap, label: "Education" },
-      { icon: User, label: "Identity" },
+      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
+      { icon: "ic-anthropic.svg", label: "Anthropic" },
+      { icon: "ic-mistral.svg", label: "Mistral" },
+      { icon: "ic-meta.svg", label: "Meta" },
+      { icon: "ic-docker.svg", label: "Docker" },
+      { icon: "ic-gemini.svg", label: "Gemini" },
     ],
   },
   {
@@ -36,10 +29,12 @@ const data = [
     line2: "It is not just wallet age, It is risk intelligence + behavioral analytics + reputation scoring combined into a trust value.",
     image: "/wallet-activity.svg",
     signals: [
-      { icon: ArrowLeftRight, label: "Swaps" },
-      { icon: Layers, label: "Staking" },
-      { icon: Landmark, label: "Governance" },
-      { icon: ImageIcon, label: "NFTs" },
+      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
+      { icon: "ic-anthropic.svg", label: "Anthropic" },
+      { icon: "ic-mistral.svg", label: "Mistral" },
+      { icon: "ic-meta.svg", label: "Meta" },
+      { icon: "ic-docker.svg", label: "Docker" },
+      { icon: "ic-gemini.svg", label: "Gemini" },
     ],
   },
   {
@@ -49,7 +44,12 @@ const data = [
     line2: "Anylayer gives every AI agent a .zks identity and evaluates its behavior over time.",
     image: "/ai-verified.svg",
     signals: [
-      { icon: Cpu, label: "Automation" },
+      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
+      { icon: "ic-anthropic.svg", label: "Anthropic" },
+      { icon: "ic-mistral.svg", label: "Mistral" },
+      { icon: "ic-meta.svg", label: "Meta" },
+      { icon: "ic-docker.svg", label: "Docker" },
+      { icon: "ic-gemini.svg", label: "Gemini" },
     ],
   },
 ];
@@ -70,7 +70,7 @@ export default function ParallelCards({sectionId}: {sectionId: string}) {
   const gradientY = useTransform(
     scrollYProgress,
     [0.05, 0.3],
-    ["20%", "0%"]
+    ["0%", "0%"]
   );
 
   /* 🔑 ONE IMAGE PER SCROLL STEP */
@@ -91,36 +91,47 @@ export default function ParallelCards({sectionId}: {sectionId: string}) {
     <section className="py-32 relative" id={sectionId}
       ref={sectionRef}>
       <div className="flex flex-wrap justify-between items-center gap-2 z-10 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.6 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <div
           className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center "
         >
-          <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+          <motion.div initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.6 }}
+          transition={{ duration: 0.6, }} className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
             <span className="text-sm text-white/50">Human, Wallet & AI Agent</span>
-          </div>
-          <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
+          </motion.div>
+          {/* <motion.h2 initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.1 }} className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
             {" "}
             Three dimension of trust for the digital internet
+          </motion.h2> */}
+          <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight text-center">
+            <SplitText text="Three dimension of trust for the digital internet" />
           </h2>
-          <p className="text-primaryText/60 text-base text-center px-10 max-w-[413px]">
-            Trust becomes a reusable asset that follows users across applications and chains.
+          <p className="text-primaryText/60 text-base text-center px-10 max-w-[417px]">
+            <SplitText text="Trust becomes a reusable asset that follows users across applications and chains.  " />
           </p>
-        </motion.div>
+          {/* <motion.p initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }} className="text-primaryText/60 text-base text-center px-10 max-w-[413px]">
+            Trust becomes a reusable asset that follows users across applications and chains.
+          </motion.p> */}
+        </div>
       </div>
 
       <div
         ref={containerRef}
         style={{ height: `${total * 100}vh` }}
-        className="relative"
+        className="relative mt-10"
       >
-        <div className="sticky top-0 h-screen flex items-center">
+        <div className="sticky top-20 h-screen flex">
           {/* Gradient — bound to card sticky */}
           <motion.div
             style={{ y: gradientY }}
-            className="absolute inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
+            className="absolute -top-40 h-full inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
           />
           <div
             className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
@@ -153,38 +164,36 @@ export default function ParallelCards({sectionId}: {sectionId: string}) {
 
               {/* TEXT COLUMN */}
               <div className="flex flex-col justify-between">
-                <motion.div
+                <div
                   key={active}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
                 >
-                  <h3 className="text-3xl text-white mb-6">
+                  <motion.h3
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }} 
+                  className="text-3xl text-white mb-6">
                     {data[active].title}
-                  </h3>
-                  <p className="text-white/60">
+                  </motion.h3>
+                  <motion.p initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-white/60">
                     {data[active].description}
-                  </p>
-                  <p className="text-white/60">
+                  </motion.p>
+                  <motion.p initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-white/60">
                     {data[active].line2}
-                  </p>
+                  </motion.p>
 
                   {/* Signal badges */}
-                      <div className="flex flex-wrap gap-3 mt-10">
-                        {data[active].signals.map((signal, index) => {
-                          const SignalIcon = signal.icon;
-                          return (
-                            <div 
-                              key={index}
-                              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5"
-                            >
-                              <SignalIcon className="w-5 h-5 text-white/50" />
-                              <span className="text-sm text-white/50">{signal.label}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                </motion.div>
+                  <motion.div initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-4 mt-10">
+                    {data[active].signals.map((signal, index) => (
+                      <Image key={index} src={signal.icon} alt={signal.label} width={18} height={18} />
+                    ))}
+                  </motion.div>
+                </div>
 
                 {/* INDICATORS */}
                 <div className="space-y-3 pt-10">

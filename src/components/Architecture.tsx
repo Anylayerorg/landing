@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Counter from './Counter';
+import { SplitGradientText } from './SplitGradientText';
 
 const stats = [
   { value: 3.8, suffix: 'T', label: 'Total Market Coverage' },
@@ -30,10 +31,32 @@ const Architecture = () => {
   return (
     <section className="relative py-20 px-6 overflow-hidden bg-[url('/architecture-bg.png')] bg-no-repeat bg-center bg-cover">
       <div className="max-w-screen-xl mx-auto px-5 relative z-10">
+        {/* Right side credibility layer */}
+          <div className="absolute right-[2rem] top-14 h-[400px] bottom-0 flex flex-col items-center justify-center opacity-40">
+            {/* Top circle */}
+            <div className="relative mb-2">
+              <div className="w-[112px] h-[112px] rounded-full bg-primaryText/5 border-4 border-primaryText/20 flex items-center justify-center">
+                {/* Chevron */}
+                <Image src="/architecture-angle.svg" alt="Chevron down" width={60} height={28} />
+              </div>
+            </div>
+
+            {/* Vertical line */}
+            <div className="relative flex-1 w-px bg-primaryText/20">
+              {/* Center dot */}
+              {/* <div className="absolute top-[250px] -translate-y-1/2 -left-[3px] w-2 h-2 rounded-full bg-primaryText/20" /> */}
+            </div>
+
+            {/* Rotated text */}
+            <div className="absolute top-2/3 right-[-52px] -translate-y-1/2 rotate-90 origin-center">
+              <span className="text-primaryText/60 text-[20px] whitespace-nowrap">
+                Credibility Layer
+              </span>
+            </div>
+          </div>
 
         {/* Header */}
         <div className="mb-20">
-
           {/* Chip */}
           <motion.div
             variants={fadeUp}
@@ -47,7 +70,17 @@ const Architecture = () => {
           </motion.div>
 
           {/* Heading */}
-          <motion.h2
+          <SplitGradientText
+            className="text-[36px] font-normal tracking-tighter leading-[100%] max-w-3xl text-primaryText"
+            chunks={[
+              { type: "text", value: "Anylayer unifies trust across" },
+              { type: "gradient", value: "identities and assets" },
+              { type: "text", value: "creating the credibility layer needed for" },
+              { type: "gradient", value: "capital efficiency" },
+              { type: "text", value: "in the digital world." },
+            ]}
+          />
+          {/* <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -64,7 +97,7 @@ const Architecture = () => {
               capital efficiency
             </span>{' '}
             in the digital world.
-          </motion.h2>
+          </motion.h2> */}
 
         </div>
 
@@ -106,7 +139,7 @@ const Architecture = () => {
                   <span className="absolute -top-8 text-[20px] text-primaryText/60 whitespace-nowrap">
                     {features[index].label}
                   </span>
-                  <div className="w-full h-px bg-primaryText/20" />
+                  <div className="w-full h-px bg-primaryText/20 absolute min-w-52 top-2" />
                 </div>
               )}
             </React.Fragment>

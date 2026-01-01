@@ -13,7 +13,7 @@ const tabContent = {
   defi: {
     title: "DeFi Protocols",
     description:
-      "ZKScore helps lending, trading, and yield platforms build safer, more efficient markets.",
+      "Anylayer helps lending, trading, and yield platforms build safer, more efficient markets.",
     features: [
       {
         title: "Credible Liquidity Providers",

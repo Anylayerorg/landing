@@ -8,6 +8,8 @@ import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import Architecture from './Architecture';
+import { SplitGradientText } from './SplitGradientText';
+import { SplitText } from './SplitText';
 
 
 const trustScoreFeatures = [
@@ -697,7 +699,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/chain-card.svg"
+                  src="/chain-card-updated.svg"
                   alt="Verify credibility anywhere on-chain"
                   width="400"
                   height="350"
@@ -913,29 +915,39 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <section id="trustScore" className="py-10 md:pt-10 md:pb-20 px-5 max-w-screen-xl mx-auto z-10 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.6 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div              
               className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
             >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+              <motion.div initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.5 }}
+              transition={{ duration: 0.2 }} className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Trust Engine</span>
-              </div>
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
+              </motion.div>
+              <SplitGradientText
+                className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]"
+                chunks={[
+                  { type: "text", value: "Trustscore that" },
+                  { type: "gradient", value: "unlocks" },
+                  { type: "text", value: "Anything" },
+                ]}
+              />
+              <p className="text-primaryText/60 text-base">
+                <SplitText text="Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified." />
+              </p>
+              {/* <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
                 {" "}
                 Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
-              </h2>
-              <p className="text-primaryText/60 text-base">
+              </h2> */}
+              {/* <p className="text-primaryText/60 text-base">
                 Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
-              </p>
-            </motion.div>
+              </p> */}
+            </div>
 
             {/* Right Content - Trust Score Card */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.6 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative pb-10"

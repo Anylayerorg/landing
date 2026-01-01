@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 const FAQs = [
   {
-    question: "What is ZKScore?",
+    question: "What is Anylayer?",
     answer:
-      'ZKScore is a decentralized reputation layer that uses zero-knowledge proofs to verify wallet credibility without exposing personal information. It\'s like a "trust passport" for Web3.',
+      'Anylayer is a decentralized reputation layer that uses zero-knowledge proofs to verify wallet credibility without exposing personal information. It\'s like a "trust passport" for Web3.',
   },
   {
-    question: "How does ZKScore protect my privacy?",
+    question: "How does Anylayer protect my privacy?",
     answer:
-      "ZKScore uses zero-knowledge proofs to verify your credentials and activities without revealing the underlying data. Your personal information stays private while your reputation becomes portable and verifiable.",
+      "Anylayer uses zero-knowledge proofs to verify your credentials and activities without revealing the underlying data. Your personal information stays private while your reputation becomes portable and verifiable.",
   },
   {
     question: "Why is wallet reputation important?",
@@ -19,9 +19,9 @@ const FAQs = [
       "Wallet reputation helps establish trust in decentralized systems, enables better access to DeFi protocols, reduces fraud, and creates accountability without compromising privacy.",
   },
   {
-    question: "Can I use ZKScore across multiple platforms?",
+    question: "Can I use Anylayer across multiple platforms?",
     answer:
-      "Yes, ZKScore is designed to be interoperable across different platforms and protocols. Your reputation score can be used wherever ZKScore is integrated.",
+      "Yes, Anylayer is designed to be interoperable across different platforms and protocols. Your reputation score can be used wherever Anylayer is integrated.",
   },
   {
     question: "What kinds of activities affect my score?",
@@ -29,14 +29,14 @@ const FAQs = [
       "Your score is influenced by on-chain activities, transaction history, protocol interactions, governance participation, and verified credentials from trusted sources.",
   },
   {
-    question: "How does ZKScore protect user privacy?",
+    question: "How does Anylayer protect user privacy?",
     answer:
       "We use advanced cryptographic techniques including zero-knowledge proofs to verify information without exposing it. Your data remains encrypted and under your control at all times.",
   },
   {
-    question: "Can projects integrate ZKScore into existing contracts?",
+    question: "Can projects integrate Anylayer into existing contracts?",
     answer:
-      "Yes, ZKScore provides easy-to-use SDKs and smart contract modules that can be integrated into existing protocols with minimal code changes.",
+      "Yes, Anylayer provides easy-to-use SDKs and smart contract modules that can be integrated into existing protocols with minimal code changes.",
   },
   {
     question: "What types of data are used to build a reputation score?",
@@ -44,9 +44,9 @@ const FAQs = [
       "We analyze on-chain transaction patterns, protocol interactions, governance participation, verified credentials, and behavioral consistency while maintaining privacy.",
   },
   {
-    question: "Is ZKScore compatible with multiple chains?",
+    question: "Is Anylayer compatible with multiple chains?",
     answer:
-      "Yes, ZKScore is designed to work across multiple blockchain networks, allowing you to build a unified reputation across different ecosystems.",
+      "Yes, Anylayer is designed to work across multiple blockchain networks, allowing you to build a unified reputation across different ecosystems.",
   },
 ];
 
@@ -65,13 +65,7 @@ const Faqs = () => {
         {/* FAQ Grid */}
         <div className="grid lg:grid-cols-2 gap-6">
           <div>
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 0.4 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="max-w-[32.25rem]"
-              >
+            <div className="max-w-[32.25rem]">
                 <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                   <span className="text-sm text-white/50">Faqs</span>
                 </div>
@@ -81,17 +75,12 @@ const Faqs = () => {
                     Questions
                   </span>
                 </h2>        
-            </motion.div>
+            </div>
 
             {/* Left Column */}
             <div className="space-y-5">
               {FAQs.slice(0, 3).map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                <div key={index}
                   className="bg-gradient-to-b from-[#413D57]/15 to-transparent border border-white/10 rounded-2xl overflow-hidden transition-all duration-300"
                 >
                   <button
@@ -120,7 +109,7 @@ const Faqs = () => {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -129,12 +118,8 @@ const Faqs = () => {
             {FAQs.slice(3, 9).map((faq, index) => {
               const globalIndex = index + 6;
               return (
-                <motion.div
+                <div
                   key={globalIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: globalIndex * 0.1 }}
                   className="bg-gradient-to-b from-[#413D57]/15 to-transparent border border-white/10 rounded-2xl overflow-hidden transition-all duration-300"
                 >
                   <button
@@ -163,7 +148,7 @@ const Faqs = () => {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>

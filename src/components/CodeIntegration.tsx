@@ -62,7 +62,7 @@ const CodeIntegration = () => {
                   SDK/API
                 </h2>
                 <p className="text-primaryText/60 text-base">
-                  ZKScore’s SDK makes it seamless to integrate reputation data
+                  Anylayer’s SDK makes it seamless to integrate reputation data
                   into your dApp or protocol. In just a few lines of code, you
                   can access wallet trustscores, request zk-proofs, and tailor
                   experiences for users based on verified credibility.
@@ -135,7 +135,7 @@ const CodeIntegration = () => {
                   </div>
 
                   {/* Code content */}
-                  <pre className="text-[#A683FF] bg-gradient-to-b from-[#413D57]/15 to-transparent text-sm font-mono overflow-x-auto leading-relaxed px-6 py-3">
+                  <pre className="text-primaryText/60 bg-gradient-to-b from-[#413D57]/15 to-transparent text-sm font-mono overflow-x-auto leading-relaxed px-6 py-3">
                     {block.code}
                   </pre>
                 </motion.div>
