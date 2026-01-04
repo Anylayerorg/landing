@@ -68,7 +68,7 @@ const Faqs = () => {
                 <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                   <span className="text-sm text-white/50">Faqs</span>
                 </div>
-                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%] tracking-tighter">
+                <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%] tracking-tighter">
                   Frequently Asked{" "}
                   <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
                     Questions
@@ -86,7 +86,7 @@ const Faqs = () => {
                     onClick={() => toggleFAQ(index)}
                     className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors"
                   >
-                    <span className="text-primaryText font-medium text-lg pr-4">
+                    <span className="text-primaryText font-medium text-base md:text-lg pr-4">
                       {faq.question}
                     </span>
                     <ChevronDown
@@ -103,7 +103,7 @@ const Faqs = () => {
                     }`}
                   >
                     <div className="px-6 pb-5">
-                      <p className="text-primaryText/60 leading-relaxed">
+                      <p className="text-primaryText/60 leading-relaxed text-sm md:text-base">
                         {faq.answer}
                       </p>
                     </div>
@@ -125,7 +125,7 @@ const Faqs = () => {
                     onClick={() => toggleFAQ(globalIndex)}
                     className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors"
                   >
-                    <span className="text-primaryText font-medium text-lg pr-4">
+                    <span className="text-primaryText font-medium text-base md:text-lg pr-4">
                       {faq.question}
                     </span>
                     <ChevronDown
@@ -142,7 +142,7 @@ const Faqs = () => {
                     }`}
                   >
                     <div className="px-6 pb-5 pt-2">
-                      <p className="text-slate-400 leading-relaxed">
+                      <p className="text-slate-400 leading-relaxed text-sm md:text-base">
                         {faq.answer}
                       </p>
                     </div>

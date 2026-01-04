@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
@@ -8,8 +8,6 @@ import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import Architecture from './Architecture';
-import { SplitGradientText } from './SplitGradientText';
-import { SplitText } from './SplitText';
 
 
 const trustScoreFeatures = [
@@ -468,14 +466,14 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                       <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
                     </div>
-                    <h1 className="text-[1.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-[-4px]">
+                    <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
                       Multi-layered Trust Engine for{' '}
-                      <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[357px] text-left">
+                      <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                         {currentText}
                         <span className="animate-pulse">|</span>
                       </span>
                     </h1>
-                    <p className="text-primaryText/60 text-lg tracking-[-2%]">
+                    <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
                       A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                     </p>
                     <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
@@ -530,7 +528,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             </motion.div>
             {/* <Image src={'/right-banner-angle.svg'} alt='Right Angle' width={544} height={544} className="absolute right-64 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/> */}
             {/* Right side shield box */}
-            <div className="bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[278px] w-full absolute right-0 top-10 opacity-15">
+            <div className="hidden md:block bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[278px] w-full absolute right-0 top-10 opacity-15">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
@@ -552,7 +550,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className='w-full h-1 bg-[#A683FF] mt-2'/>
             </div>
             {/* Left side trust score box */}
-            <div className="bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[237px] w-full absolute left-0 bottom-0 opacity-15">
+            <div className="hidden md:block bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[237px] w-full absolute left-0 bottom-0 opacity-15">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
@@ -596,7 +594,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Trust Engine</span>
               </div>
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
+              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
                 {" "}
                 Understand and verify <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> trust </span> across every <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Signal</span>
               </h2>
@@ -617,12 +615,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   alt="See what drives reputation clearly"
                   width="400"
                   height="319"
-                  className="w-full h-[319px] object-contain mb-10"
+                  className="w-full h-[240px] md:h-[319px] object-contain mb-6 md:mb-10"
                 />
-                <h3 className="text-primaryText text-2xl font-medium mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
                   {"See what drives reputation clearly"}
                 </h3>
-                <p className="text-primaryText/60 text-base tracking-tighter">
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
                   {
                     "Break down trust into identity, behavior, and wallet activity at a glance for everyone."
                   }
@@ -638,12 +636,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   alt="Real-time trust, always up-to-date"
                   width="658"
                   height="319"
-                  className="w-full h-[319px] object-contain mb-10"
+                  className="w-full h-[190px] md:h-[319px] object-contain mb-6 md:mb-10"
                 />
-                <h3 className="text-primaryText text-2xl font-medium mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
                   {"Real-time trust, always up-to-date"}
                 </h3>
-                <p className="text-primaryText/60 text-base tracking-tighter">
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
                   {
                     "Track every score change instantly across identity, wallets, and actions, allowing you to monitor growth, risks, and performance without revealing sensitive data."
                   }
@@ -662,12 +660,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   alt="Follow every action that shapes trust"
                   width="690"
                   height="350"
-                  className="w-full h-[350px] object-contain"
+                  className="w-full h-[200px] md:h-[350px] object-contain"
                 />
-                <h3 className="text-primaryText text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
                   {"Follow every action that shapes trust"}
                 </h3>
-                <p className="text-primaryText/60 text-base tracking-tighter">
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
                   {
                     "View history, scores, and signals from swaps, claims, bridges, and governance, helping you understand how each action contributes to reputation growth and long-term credibility."
                   }
@@ -683,12 +681,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   alt="Verify credibility anywhere on-chain"
                   width="400"
                   height="350"
-                  className="w-full h-[350px] object-contain"
+                  className="w-full h-[270px] md:h-[350px] object-contain"
                 />
-                <h3 className="text-primaryText text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
                   {"Verify credibility anywhere on-chain"}
                 </h3>
-                <p className="text-primaryText/60 text-base tracking-tighter">
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
                   {
                     "Gamified reputation building with rewards and special recognition."
                   }
@@ -707,11 +705,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Architecture</span>
               </div>
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
+              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
                 {" "}
                 A <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> four-layer </span> trust architecture built for <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> digital economy</span>
               </h2>
-              <p className="text-primaryText/60 text-base text-center px-10">
+              <p className="text-primaryText/60 text-sm md:text-base text-center px-10">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
               </p>
             </div>
@@ -726,111 +724,111 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   className="relative z-10 mt-24"
                 >
                   {/* Layer Image here */}
-                  <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="174" height="146" className="" />
+                  <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="174" height="146" className="w-32 h-auto md:w-auto" />
                 </div>
 
                 {/* Vertical Line */}
-                <div className="absolute top-60 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-485px)] bg-gradient-to-b from-[#DCCFFF] to-[#A683FF] z-20"></div>
+                <div className="absolute top-52 md:top-60 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-345px)] md:h-[calc(100%-485px)] bg-gradient-to-b from-[#DCCFFF] to-[#A683FF] z-20"></div>
 
                 {/* Layer Items */}
                 <div 
                   className="w-full mt-12"
                 >
                   {/* Identity Layer */}
-                  <div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[218px]">
-                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                  <div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[140px] md:h-[218px]">
+                    <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/identity-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
-                          <h3 className="text-white font-medium text-lg">Identity Layer</h3>
-                          <p className="text-white/70 text-sm">2k5 name service</p>
+                          <h3 className="text-white font-medium text-xs md:text-lg">Identity Layer</h3>
+                          <p className="text-white/70 text-[10px] md:text-sm">2k5 name service</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="" />
+                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
                     </div>
 
-                    <div className="flex max-w-72 ">
-                      <p className="text-white/70 text-sm leading-relaxed">
+                    <div className="flex max-w-32 md:max-w-72">
+                      <p className="text-white/70 text-[10px] md:text-sm leading-relaxed">
                         Enables every participant to mint a digital identity as a human-readable ZKS name
                       </p>
                     </div>
                   </div>
 
                   {/* Reputation Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[141px] -mt-6 z-20">
-                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                  <div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[130px] md:h-[141px] -mt-6 z-20">
+                    <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/reputation-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
-                          <h3 className="text-white font-medium text-lg">Reputation Layer</h3>
-                          <p className="text-white/70 text-sm">on-chain trustworthiness</p>
+                          <h3 className="text-white font-medium text-xs md:text-lg">Reputation Layer</h3>
+                          <p className="text-white/70 text-[10px] md:text-sm">on-chain trustworthiness</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="" />
+                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
                     </div>
 
-                    <div className="flex max-w-72">
-                      <p className="text-white/70 text-sm leading-relaxed">
+                    <div className="flex max-w-32 md:max-w-72">
+                      <p className="text-white/70 text-[10px] md:text-sm leading-relaxed">
                         Transforms behavioral, financial, and operational data into a dynamic Trust Score
                       </p>
                     </div>
                   </div>
 
                   {/* Proof Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[152px] -mt-10 z-10">
-                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                  <div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[120px] md:h-[152px] -mt-10 z-10">
+                    <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/proof-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
-                          <h3 className="text-white font-medium text-lg">Proof layer</h3>
-                          <p className="text-white/70 text-sm">Proof of Trust with Privacy</p>
+                          <h3 className="text-white font-medium text-xs md:text-lg">Proof layer</h3>
+                          <p className="text-white/70 text-[10px] md:text-sm">Proof of Trust with Privacy</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="" />
+                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
                     </div>
 
-                    <div className="flex max-w-72">
-                      <p className="text-white/70 text-sm leading-relaxed">
+                    <div className="flex max-w-32 md:max-w-72">
+                      <p className="text-white/70 text-[10px] md:text-sm leading-relaxed">
                         Generate proofs that confirm thresholds without disclosing your data.
                       </p>
                     </div>
                   </div>
 
                   {/* Utility Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[312px] -mt-10">
-                    <div className="flex-1 flex items-start gap-4 max-w-72">
+                  <div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[200px] md:h-[312px] -mt-10">
+                    <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/utility-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
-                          <h3 className="text-white font-medium text-lg">Utility Layer</h3>
-                          <p className="text-white/70 text-sm">Reputation based applications</p>
+                          <h3 className="text-white font-medium text-xs md:text-lg">Utility Layer</h3>
+                          <p className="text-white/70 text-[10px] md:text-sm">Reputation based applications</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="" />
+                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
                     </div>
 
-                    <div className="flex max-w-72">
-                      <p className="text-white/70 text-sm leading-relaxed">
+                    <div className="flex max-w-32 md:max-w-72">
+                      <p className="text-white/70 text-[10px] md:text-sm leading-relaxed">
                         Build trust-based features with SDKs/APIs and Smart contracts.
                       </p>
                     </div>
@@ -851,11 +849,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Trust Engine</span>
               </div>
-              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
+              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
                 {" "}
                 Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
               </h2>
-              <p className="text-primaryText/60 text-base">
+              <p className="text-primaryText/60 text-sm md:text-base">
                 Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
               </p>
             </div>
@@ -864,52 +862,52 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <div
               className="relative pb-10"
             >
-              <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[365px]">
+              <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[265px] md:max-w-[365px]">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                    <div className="text-[#636475] text-sm uppercase">WALLET</div>
-                    <div className="text-[#CCD1E9] text-sm">0xA6...91F2</div>
+                <div className="flex justify-between items-center mb-6 md:mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
+                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET</div>
+                    <div className="text-[#CCD1E9] text-[10px] md:text-sm">0xA6...91F2</div>
                 </div>
 
                 {/* Left Side Labels */}
-                <div className="space-y-4 mt-3">
+                <div className="space-y-2 mt-3">
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-sm uppercase">HUMAN</div>
-                      <div className="text-[#CCD1E9] text-sm ">Verified</div>
+                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">HUMAN</div>
+                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">Verified</div>
                   </div>
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-sm uppercase">WALLET AGE</div>
-                      <div className="text-[#CCD1E9] text-sm ">90+ Days</div>
+                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET AGE</div>
+                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">90+ Days</div>
                   </div>
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-sm uppercase">ACTIVITY</div>
-                      <div className="text-[#CCD1E9] text-sm ">consistent</div>
+                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">ACTIVITY</div>
+                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">consistent</div>
                   </div>
                 </div>
-                <div className="flex justify-between items-center mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                    <div className="text-[#636475] text-sm uppercase">SCORE</div>
-                    <div className="text-[#CCD1E9] text-sm ">72</div>
+                <div className="flex justify-between items-center mt-6 md:mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
+                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">SCORE</div>
+                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">72</div>
                 </div>
               </div>
-              <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[343px] w-full absolute right-0 bottom-0">
+              <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[265px] md:max-w-[343px] w-full absolute right-0 bottom-0">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-12 h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
+                      <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
                         <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
                       </div>
-                      <span className="text-[#C9D1D9] text-lg font-medium font-geist">Total Trust Score</span>
+                      <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
                     </div>
                   </div>
 
-                  <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-14 mb-5'/>
+                  <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5'/>
 
                   <div className="flex items-center justify-between">
                     <div
-                      className="text-2xl font-bold text-[#CCD1E9] font-mono"
+                      className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
                     >
                       120
                     </div>
-                    <div className="text-[#A683FF] text-sm font-geist">+39 this month</div>
+                    <div className="text-[#A683FF] text-xs md:text-sm font-geist">+39 this month</div>
                   </div>
                 </div>
             </div>

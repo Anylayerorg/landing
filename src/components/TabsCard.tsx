@@ -120,9 +120,9 @@ const TabsCard = () => {
             <span className="text-sm text-white/50">Capital efficiency</span>
         </div>
         <div
-          className="flex justify-between flex-wrap items-start mb-10"
+          className="flex justify-between flex-wrap items-start mb-10 gap-5"
         >
-            <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText leading-[110%] tracking-tighter max-w-[34rem] w-full">
+            <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText leading-[110%] tracking-tighter max-w-[34rem] w-full">
             {" "}
             Unlock{" "}
             <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
@@ -137,7 +137,7 @@ const TabsCard = () => {
             </span>
             , not your data
           </h2> */}
-          <p className="text-primaryText/60 text-base leading-[160%] tracking-tighter md:basis-2/4 max-w-[38rem] w-full">
+          <p className="text-primaryText/60 text-sm md:text-base leading-[160%] tracking-tighter md:basis-2/4 max-w-[38rem] w-full">
             Anylayer is more than a credit score for Web3. It's a trust layer
             designed for different groups in the ecosystem, each with unique
             ways to benefit from portable zk-verified reputation.
@@ -146,7 +146,7 @@ const TabsCard = () => {
 
         <div className="">
           <div
-            className="inline-flex items-center mb-6 bg-[#413D57]/20 p-1.5 rounded-lg overflow-x-auto "
+            className="inline-flex items-center mb-6 bg-[#413D57]/20 p-1.5 rounded-lg overflow-x-auto w-full md:w-auto no-scrollbar"
           >
             {tabs.map((tab) => (
               <button
@@ -168,20 +168,20 @@ const TabsCard = () => {
             className=""
           >
             <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start px-6 md:px-10 py-6 md:py-14 rounded-3xl bg-gradient-to-b from-[#413D57]/15 to-transparent">
-              <div className="">
-                <h2 className="text-[1.5rem] md:text-[1.5rem] lg:text-[2rem] text-primaryText font-normal leading-tight">
+              <div className="order-1 lg:-order-1">
+                <h2 className="text-xl md:text-[1.5rem] lg:text-[2rem] text-primaryText font-normal leading-tight">
                   {tabContent[activeTab].title}
                 </h2>
-                <p className="text-primaryText/60 mt-2 md:mt-3 text-base leading-relaxed">
+                <p className="text-primaryText/60 mt-2 md:mt-3 text-sm md:text-base leading-relaxed">
                   {tabContent[activeTab].description}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-7 gap-x-7 mt-10">
                   {tabContent[activeTab].features.map((feature, index) => (
-                    <div key={index} className='max-w-60'>
+                    <div key={index} className='md:max-w-60'>
                       <h3 className="text-primaryText font-medium text-xl mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-primaryText/60 text-base leading-relaxed">
+                      <p className="text-primaryText/60 text-sm md:text-base leading-relaxed">
                         {feature.description}
                       </p>
                     </div>

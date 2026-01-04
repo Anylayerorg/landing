@@ -48,14 +48,14 @@ const CodeIntegration = () => {
                 <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                   <span className="text-sm text-white/50">Developers</span>
                 </div>
-                <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight tracking-tighter">
+                <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-3 md:mb-6 leading-tight tracking-tighter">
                   Easy Integration With{" "}
                   <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
                     Anylayer
                   </span>{" "}
                   SDK/API
                 </h2>
-                <p className="text-primaryText/60 text-base">
+                <p className="text-primaryText/60 text-sm md:text-base">
                   Anylayer’s SDK makes it seamless to integrate reputation data
                   into your dApp or protocol. In just a few lines of code, you
                   can access wallet trustscores, request zk-proofs, and tailor
@@ -66,7 +66,7 @@ const CodeIntegration = () => {
                   href="https://docs.onzks.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium px-8 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 mt-4 md:mt-14 inline-flex items-center justify-center gap-2 lg:gap-3"
+                  className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium px-8 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 mt-4 md:mt-14 hidden md:inline-flex items-center justify-center gap-2 lg:gap-3"
                 >
                   <span>Build with Anylayer</span> 
                   <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
@@ -83,7 +83,7 @@ const CodeIntegration = () => {
                   }`}
                 >
                   {/* Header with title and copy button */}
-                  <div className="flex items-center justify-between bg-gradient-to-b from-[#413D57]/15 to-transparent px-6 py-3">
+                  <div className="flex items-center justify-between bg-gradient-to-b from-[#413D57]/15 to-transparent px-4 md:px-6 py-3">
                     <h2 className="text-primaryText text-xl font-medium">
                       {block.title}
                     </h2>
@@ -125,12 +125,22 @@ const CodeIntegration = () => {
                   </div>
 
                   {/* Code content */}
-                  <pre className="text-primaryText/60 bg-gradient-to-b from-[#413D57]/15 to-transparent text-sm font-mono overflow-x-auto leading-relaxed px-6 py-3">
+                  <pre className="text-primaryText/60 bg-gradient-to-b from-[#413D57]/15 to-transparent text-sm font-mono overflow-x-auto leading-relaxed px-4 md:px-6 py-3">
                     {block.code}
                   </pre>
                 </div>
               ))}
             </div>
+
+            <a
+              href="https://docs.onzks.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium px-8 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 mt-4 md:mt-14 inline-flex md:hidden items-center justify-center gap-2 lg:gap-3"
+            >
+              <span>Build with Anylayer</span> 
+              <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
+            </a>
           </div>
         </div>
       </section>

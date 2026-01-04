@@ -36,24 +36,24 @@ const footerIcon = [
 export function Footer() {
   return (
     <footer className="py-10 md:py-20">
-        <div className="px-20 py-10 md:py-20 bg-[#121219] max-w-screen-xl mx-auto rounded-[24px] relative">
-          <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="100" height="100" className="absolute -top-12 -left-12" />
+        <div className="px-10 md:px-20 py-10 md:py-20 bg-[#121219] max-w-screen-xl mx-auto rounded-[24px] relative">
+          <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="100" height="100" className="absolute -top-12 md:-top-12 left-5 md:-left-12" />
           <div className="flex justify-between flex-wrap gap-10">
             <div className="max-w-[538px] w-full">
               <div className="">
-                <h3 className="text-[32px] text-primaryText font-medium mb-6 leading-[128%] tracking-tighter">
+                <h3 className="text-2xl md:text-[2rem] text-primaryText font-medium mb-6 leading-[128%] tracking-tighter">
                   Subscribe to the{" "}
                   <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
                     Anylayer
                   </span>{" "}
                   Newsletter for trust, identity, and reputation updates.
                 </h3>
-                <p className="text-base text-primaryText/60">
+                <p className="text-sm md:text-base text-primaryText/60">
                   Get updates on trust scoring, identity, and on-chain
                   reputation. For educational content only.
                 </p>
                 <div
-                  className="mt-28 mb-6 flex flex-wrap md:flex-nowrap justify-center items-center bg-[#101017] p-[6px] rounded-lg"
+                  className="mt-10 md:mt-28 mb-2 flex flex-wrap md:flex-nowrap justify-center items-center bg-[#101017] p-[6px] rounded-lg"
                   style={{
                     boxShadow: "inset 0 0 8px 0 rgba(255, 255, 255, 0.1)",
                   }}
@@ -93,7 +93,7 @@ export function Footer() {
                     </svg> */}
                   </button>
                 </div>
-                <span className="text-primaryText/40 ">
+                <span className="text-primaryText/40 text-sm md:text-base">
                   We’ll only use this for spam.
                 </span>
                 {/* social icons */}
@@ -101,10 +101,10 @@ export function Footer() {
             </div>
             <div className="w-[490px] flex flex-wrap gap-4 md:gap-20">
               <div className="w-[261px] md:w-[261px]">
-                <h3 className="font-medium text-2xl text-primaryText mb-6">
+                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
                   Solutions
                 </h3>
-                <ul className="space-y-2 list-none text-primaryText/60">
+                <ul className="space-y-2 list-none text-primaryText/60 text-sm md:text-base">
                   <li>Explore Solutions</li>
                   <li>Trust Analytics</li>
                   <li>Identity Signals</li>
@@ -114,10 +114,10 @@ export function Footer() {
 
               {/* ECOSYSTEM */}
               <div className="w-[170px] md:w-[149px]">
-                <h3 className="font-medium text-2xl text-primaryText mb-6">
+                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
                   Ecosystem
                 </h3>
-                <ul className="space-y-2 text-primaryText/60 list-none">
+                <ul className="space-y-2 text-primaryText/60 list-none text-sm md:text-base">
                   <li>Explore Ecosystem</li>
                   <li>ZKScore Token</li>
                   <li>ZK DAO</li>
@@ -127,10 +127,10 @@ export function Footer() {
 
               {/* Resources */}
               <div className="w-[80px] md:w-[107px]">
-                <h3 className="font-medium text-2xl text-primaryText mb-6">
+                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
                   Resources
                 </h3>
-                <ul className="space-y-2 list-none text-primaryText/60">
+                <ul className="space-y-2 list-none text-primaryText/60 text-sm md:text-base">
                   <li>Docs</li>
                   <li>Developers</li>
                   <li>Tutorials</li>
@@ -141,8 +141,8 @@ export function Footer() {
           </div>
           {/* BOTTOM FOOTER */}
           <div className="flex justify-center md:justify-between flex-wrap mt-10 md:mt-20 gap-4 items-center text-primaryText/40 opacity-70">
-            <p className="text-base font-normal">Copyright 2025. All Rights Reserved.</p>
-            <div className="flex items-center gap-3 ">
+            <p className="text-sm md:text-base font-normal">Copyright 2025. All Rights Reserved.</p>
+            <div className="flex items-center gap-3 -order-1 md:order-none">
               {footerIcon.map((item) => (
                 <a
                   href={item.link}
@@ -160,7 +160,7 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="flex gap-4 md:gap-8">
+            <div className="flex gap-4 md:gap-8 text-sm md:text-base">
               <p className='font-normal'>Privacy Policy</p>
               <p className='font-normal'>Terms Of Services</p>
             </div>

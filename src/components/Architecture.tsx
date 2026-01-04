@@ -30,9 +30,9 @@ const fadeUp = {
 const Architecture = () => {
   return (
     <section className="relative py-20 px-6 overflow-hidden bg-[url('/architecture-bg.png')] bg-no-repeat bg-center bg-cover">
-      <div className="max-w-screen-xl mx-auto px-5 relative z-10">
+      <div className="max-w-screen-xl mx-auto relative z-10">
         {/* Right side credibility layer */}
-          <div className="absolute right-[2rem] top-14 h-[400px] bottom-0 flex flex-col items-center justify-center opacity-40">
+          <div className="absolute right-[2rem] top-14 h-[400px] bottom-0 hidden md:flex flex-col items-center justify-center opacity-40">
             {/* Top circle */}
             <div className="relative mb-2">
               <div className="w-[112px] h-[112px] rounded-full bg-primaryText/5 border-4 border-primaryText/20 flex items-center justify-center">
@@ -56,7 +56,7 @@ const Architecture = () => {
           </div>
 
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-10 md:mb-20">
           {/* Chip */}
           <div
             className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3"
@@ -66,7 +66,7 @@ const Architecture = () => {
 
           {/* Heading */}
           <h2
-            className="text-[36px] font-normal text-primaryText tracking-tighter leading-[100%] max-w-3xl"
+            className="text-[1.5rem] md:text-[2.25rem] font-normal text-primaryText tracking-tighter leading-[128%] md:leading-[100%] max-w-3xl"
           >
             Anylayer unifies trust across{' '}
             <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
@@ -82,23 +82,27 @@ const Architecture = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 w-[80%] mb-40">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 md:w-[80%] mb-20 md:mb-40">
           {stats.map((stat, index) => (
             <div
               key={index}
             >
-              <div className="text-3xl md:text-4xl font-medium text-primaryText">
+              <div className="text-2xl md:text-4xl font-medium text-primaryText">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-primaryText/60 text-lg">
+              <div className="text-primaryText/60 text-sm md:text-lg">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
 
+        <div className='block md:hidden'>
+          <Image src="/mobile-counter-layer.svg" alt="Architecture Diagram" width={400} height={600} className="w-full h-auto"/>
+        </div>
+
         {/* Features Flow */}
-        <div className="flex items-center justify-center gap-24 flex-wrap lg:flex-nowrap opacity-40">
+        <div className="hidden md:flex items-center justify-center gap-24 flex-wrap lg:flex-nowrap opacity-40">
           {features.map((feature, index) => (
             <React.Fragment key={index}>
               <div className="relative group">
