@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -39,16 +38,11 @@ const CodeIntegration = () => {
         id="integration"
         className="py-10 md:py-20 relative"
       >
-        {/* <div className='bg-[radial-gradient(circle_at_50%_75%,#a683ff3d,transparent)] h-screen w-[500px] absolute top-0' /> */}
         <div className="px-5 max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Left Side */}
             <div>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+              <div
                 className="max-w-[32.25rem]"
               >
                 <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
@@ -77,17 +71,13 @@ const CodeIntegration = () => {
                   <span>Build with Anylayer</span> 
                   <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
                 </a>
-              </motion.div>
+              </div>
             </div>
             {/* Right Side Code Editor */}
             <div className="codeBlock">
               {codeBlocks.map((block, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
                   className={`relative border rounded-lg border-[#ffffff1a] ${
                     index < codeBlocks.length - 1 ? "mb-6" : ""
                   }`}
@@ -138,7 +128,7 @@ const CodeIntegration = () => {
                   <pre className="text-primaryText/60 bg-gradient-to-b from-[#413D57]/15 to-transparent text-sm font-mono overflow-x-auto leading-relaxed px-6 py-3">
                     {block.code}
                   </pre>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

@@ -58,34 +58,14 @@ const Architecture = () => {
         {/* Header */}
         <div className="mb-20">
           {/* Chip */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ amount: 0.6 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <div
             className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3"
           >
             <span className="text-sm text-white/50">Architecture</span>
-          </motion.div>
+          </div>
 
           {/* Heading */}
-          <SplitGradientText
-            className="text-[36px] font-normal tracking-tighter leading-[100%] max-w-3xl text-primaryText"
-            chunks={[
-              { type: "text", value: "Anylayer unifies trust across" },
-              { type: "gradient", value: "identities and assets" },
-              { type: "text", value: "creating the credibility layer needed for" },
-              { type: "gradient", value: "capital efficiency" },
-              { type: "text", value: "in the digital world." },
-            ]}
-          />
-          {/* <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ amount: 0.6 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          <h2
             className="text-[36px] font-normal text-primaryText tracking-tighter leading-[100%] max-w-3xl"
           >
             Anylayer unifies trust across{' '}
@@ -97,19 +77,15 @@ const Architecture = () => {
               capital efficiency
             </span>{' '}
             in the digital world.
-          </motion.h2> */}
+          </h2>
 
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 w-[80%] mb-40">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.5 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div className="text-3xl md:text-4xl font-medium text-primaryText">
                 <Counter value={stat.value} suffix={stat.suffix} />
@@ -117,7 +93,7 @@ const Architecture = () => {
               <div className="text-primaryText/60 text-lg">
                 {stat.label}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

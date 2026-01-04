@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -115,20 +114,12 @@ const TabsCard = () => {
         id="capital"
         className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto overflow-x-hidden"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.1 }} 
+        <div
           className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3"
         >
             <span className="text-sm text-white/50">Capital efficiency</span>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        </div>
+        <div
           className="flex justify-between flex-wrap items-start mb-10"
         >
             <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText leading-[110%] tracking-tighter max-w-[34rem] w-full">
@@ -151,14 +142,10 @@ const TabsCard = () => {
             designed for different groups in the ecosystem, each with unique
             ways to benefit from portable zk-verified reputation.
           </p>
-        </motion.div>
+        </div>
 
         <div className="">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
             className="inline-flex items-center mb-6 bg-[#413D57]/20 p-1.5 rounded-lg overflow-x-auto "
           >
             {tabs.map((tab) => (
@@ -175,13 +162,9 @@ const TabsCard = () => {
                 {tab.label}
               </button>
             ))}
-          </motion.div>
+          </div>
           {/* Protocols Sec Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
             className=""
           >
             <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start px-6 md:px-10 py-6 md:py-14 rounded-3xl bg-gradient-to-b from-[#413D57]/15 to-transparent">
@@ -206,13 +189,7 @@ const TabsCard = () => {
                 </div>
               </div>
               {/* Protocols Sec Right */}
-              {/* border border-[#ffffff1a] rounded-2xl bg-gradient-to-br from-[#0CFF850a] to-[#0000000a] p-6 flex justify-center items-center h-full */}
-              {/* <div className="flex justify-center lg:justify-end"> */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 0.2 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+              <div
                 className="flex justify-center lg:justify-end"
               >
                 <Image
@@ -222,10 +199,9 @@ const TabsCard = () => {
                   height="360"
                   className="w-full h-auto md:h-[340px] object-contain object-right"
                 />
-              </motion.div>
-              {/* </div> */}
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
   )

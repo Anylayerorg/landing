@@ -590,11 +590,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         {/* Section 2 charts */}
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-2">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className="max-w-[39rem] mx-auto flex flex-wrap justify-center items-center"
             >
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
@@ -607,16 +603,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <p className="text-primaryText/60 text-base text-center px-10 ">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
               </p>
-            </motion.div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-20">
             {/* Wallet ID */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className='md:col-span-2'
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
@@ -636,12 +628,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   }
                 </p>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            </div>
+            <div
               className="md:col-span-3"
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
@@ -661,15 +649,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   }
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-5">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className="md:col-span-3"
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
@@ -689,12 +673,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   }
                 </p>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            </div>
+            <div
               className="md:col-span-2"
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
@@ -714,18 +694,14 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   }
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Section Architecture */}
         <section id="architecture" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-2 ">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className="max-w-[47rem] mx-auto flex flex-wrap justify-center items-center"
             >
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
@@ -738,7 +714,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <p className="text-primaryText/60 text-base text-center px-10">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
               </p>
-            </motion.div>
+            </div>
           </div>
 
           {/* Layer Architecture Images */}
@@ -746,38 +722,22 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <div className="w-full max-w-6xl">
               <div className="relative flex flex-col items-center">
                 {/* Stacked Layers Icon at Top */}
-                <motion.div 
+                <div 
                   className="relative z-10 mt-24"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
                   {/* Layer Image here */}
                   <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="174" height="146" className="" />
-                </motion.div>
+                </div>
 
                 {/* Vertical Line */}
                 <div className="absolute top-60 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-485px)] bg-gradient-to-b from-[#DCCFFF] to-[#A683FF] z-20"></div>
 
                 {/* Layer Items */}
-                <motion.div 
+                <div 
                   className="w-full mt-12"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
                 >
                   {/* Identity Layer */}
-                  <motion.div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[218px]" variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          duration: 0.6,
-                          ease: 'easeOut'
-                        }
-                      }
-                    }}>
+                  <div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[218px]">
                     <div className="flex-1 flex items-start gap-4 max-w-72">
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -799,20 +759,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         Enables every participant to mint a digital identity as a human-readable ZKS name
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Reputation Layer */}
-                  <motion.div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[141px] -mt-6 z-20" variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: {
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            duration: 0.6,
-                            ease: 'easeOut'
-                          }
-                        }
-                      }}>
+                  <div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[141px] -mt-6 z-20">
                     <div className="flex-1 flex items-start gap-4 max-w-72">
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -834,20 +784,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         Transforms behavioral, financial, and operational data into a dynamic Trust Score
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Proof Layer */}
-                  <motion.div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[152px] -mt-10 z-10" variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          duration: 0.6,
-                          ease: 'easeOut'
-                        }
-                      }
-                    }}>
+                  <div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[152px] -mt-10 z-10">
                     <div className="flex-1 flex items-start gap-4 max-w-72">
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -869,20 +809,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         Generate proofs that confirm thresholds without disclosing your data.
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Utility Layer */}
-                  <motion.div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[312px] -mt-10" variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          duration: 0.6,
-                          ease: 'easeOut'
-                        }
-                      }
-                    }}>
+                  <div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[312px] -mt-10">
                     <div className="flex-1 flex items-start gap-4 max-w-72">
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -904,8 +834,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         Build trust-based features with SDKs/APIs and Smart contracts.
                       </p>
                     </div>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -918,38 +848,20 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <div              
               className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
             >
-              <motion.div initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.5 }}
-              transition={{ duration: 0.2 }} className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
                 <span className="text-sm text-white/50">Trust Engine</span>
-              </motion.div>
-              <SplitGradientText
-                className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]"
-                chunks={[
-                  { type: "text", value: "Trustscore that" },
-                  { type: "gradient", value: "unlocks" },
-                  { type: "text", value: "Anything" },
-                ]}
-              />
-              <p className="text-primaryText/60 text-base">
-                <SplitText text="Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified." />
-              </p>
-              {/* <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
+              </div>
+              <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
                 {" "}
                 Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
-              </h2> */}
-              {/* <p className="text-primaryText/60 text-base">
+              </h2>
+              <p className="text-primaryText/60 text-base">
                 Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
-              </p> */}
+              </p>
             </div>
 
             {/* Right Content - Trust Score Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.6 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <div
               className="relative pb-10"
             >
               <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[365px]">
@@ -992,29 +904,22 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-14 mb-5'/>
 
                   <div className="flex items-center justify-between">
-                    <motion.div
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
+                    <div
                       className="text-2xl font-bold text-[#CCD1E9] font-mono"
                     >
                       120
-                    </motion.div>
+                    </div>
                     <div className="text-[#A683FF] text-sm font-geist">+39 this month</div>
                   </div>
                 </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Features Grid */}
           <div className="grid sm:grid-cols-4 gap-6 mt-20">
             {trustScoreFeatures.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 0.6 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-center gap-4"
               >
                 <div className="w-5 h-5 text-primaryText">
@@ -1025,7 +930,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     {feature.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
