@@ -8,6 +8,7 @@ import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import Architecture from './Architecture';
+import { Header } from './layout/Header';
 
 
 const trustScoreFeatures = [
@@ -42,83 +43,10 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ enableRevolvingAnimation = false }: LandingPageProps = {}) {
-  const { scrollY } = useScroll();
-  const [headerStyle, setHeaderStyle] = useState('transparent');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
-  const [resourcesDropdownTimeout, setResourcesDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const words = ['Humans', 'Wallets', 'AI Agents'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };  
-
-  // For add background on header scroll
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setIsScrolled(latest > 20);
-  });
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsResourcesDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = scrollY.onChange(latest => {
-      if (latest > 900) {
-        setHeaderStyle('solid');
-      } else {
-        setHeaderStyle('transparent');
-      }
-    });
-    return unsubscribe;
-  }, [scrollY]);
-
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (resourcesDropdownTimeout) {
-        clearTimeout(resourcesDropdownTimeout);
-      }
-    };
-  }, [resourcesDropdownTimeout]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3
-      }
-    }
-  };
 
   useEffect(() => {
     const currentWord = words[currentWordIndex];
@@ -153,305 +81,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
     <>
     <div className="relative w-full min-w-full ">
         {/* Header & Banner */}
+        <Header />
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
-          <motion.header
-            animate={{
-              backgroundColor: isScrolled ? 'rgba(26, 26, 36, 0.4)' : 'rgba(26, 26, 36, 0)',
-              backdropFilter: isScrolled ? 'blur(24px)' : 'blur(0px)',
-              borderBottomColor: isScrolled
-                ? 'rgba(227, 227, 254, 0.1)'
-                : 'rgba(227, 227, 254, 0)',
-            }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent `} 
-          >
-            <div className="headerMain relative border-b border-[#E3E3FE]/10">
-              <div className="max-w-screen-xl mx-auto px-5 py-2">
-                <div className="flex items-center justify-between h-16">
-                  {/* Logo */}
-                  <Image src="/logo-anylayer.svg" alt="Anylayer logo" width="160" height="64" />
-
-                  {/* Desktop Navigation */}
-                  <motion.nav
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="hidden md:flex items-center gap-x-4 lg:gap-x-8 "
-                  >
-                    <button
-                      onClick={() => scrollToSection('reputation')}
-                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
-                    >
-                      Trust
-                    </button>
-                    <button
-                      onClick={() => scrollToSection('architecture')}
-                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
-                    >
-                      Architecture
-                    </button>
-                    <button
-                      onClick={() => scrollToSection('opportunity')}
-                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
-                    >
-                      Opportunity
-                    </button>
-                    <button
-                      onClick={() => scrollToSection('dimension')}
-                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
-                    >
-                      Dimension
-                    </button>
-                    <button
-                      onClick={() => scrollToSection('capital')}
-                      className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5"
-                    >
-                      Capital
-                    </button>
-
-                    {/* Resources Dropdown */}
-                    <div className="" ref={dropdownRef}>
-                      <button
-                        onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
-                        className="transition-colors text-[#636475] hover:text-white cursor-pointer text-sm whitespace-nowrap px-3 py-2 rounded-full hover:bg-white/5 flex items-center gap-1"
-                      >
-                        Resources
-                        <svg 
-                          className={`w-4 h-4 transition-transform ${isResourcesDropdownOpen ? 'rotate-180' : ''}`}
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-
-                      <AnimatePresence>
-                        {isResourcesDropdownOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-0 left-0 mt-0 w-full z-[-1]"
-                          >
-                            <div className="bg-[#1A1A24]/40 backdrop-blur-xl pt-[120px] pb-10 border border-gray-800/50 shadow-2xl overflow-hidden">
-                              <div className="p-6 max-w-screen-xl mx-auto flex items-center justify-between">
-                                {/* Left Column */}
-                                <div className="max-w-[508px]">
-                                  <p className='font-geist font-medium text-[32px] text-white leading-tight'>Everything you need to stay informed and build with Anylayer.</p>
-                                </div>
-                                {/* Right Column */}
-                                <div className='flex gap-20'>
-                                  <div className="space-y-2">
-                                    <button
-                                      onClick={() => {
-                                        scrollToSection('trustscore');
-                                        setIsResourcesDropdownOpen(false);
-                                      }}
-                                      className="flex items-center gap-6 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
-                                    >
-                                      <Image src="/internet.svg" alt="Trust Score Icon" width="32" height="32" className="w-8 h-8 text-primaryText" />
-                                      <div>
-                                        <div className="text-2xl font-medium font-geist">Explorer</div>
-                                      </div>
-                                    </button>
-                                    <a
-                                      href="https://docs.onzks.com"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-6 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
-                                    >
-                                      <Image src="/code-square.svg" alt="Builders Icon" width="32" height="32" className="w-8 h-8 text-primaryText" />
-                                      <div>
-                                        <div className="text-2xl font-medium font-geist">Builders</div>
-                                      </div>
-                                    </a>
-                                    
-                                  </div>
-                                  <div className="space-y-2">
-                                    <button
-                                      onClick={() => {
-                                        scrollToSection('faq');
-                                        setIsResourcesDropdownOpen(false);
-                                      }}
-                                      className="flex items-center gap-6 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
-                                    >
-                                      <Image src="/maps.svg" alt="FAQ Icon" width="32" height="32" className="w-8 h-8 text-primaryText" />
-                                      <div>
-                                        <div className="text-2xl font-medium font-geist">Roadmap</div>
-                                      </div>
-                                    </button>
-                                    <a
-                                      href="https://docs.onzks.com"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-6 w-full text-left text-white hover:text-primaryText px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5"
-                                    >
-                                      <Image src="/document-code.svg" alt="Builders Icon" width="32" height="32" className="w-8 h-8 text-primaryText" />
-                                      <div>
-                                        <div className="text-2xl font-medium font-geist">Whitepaper</div>
-                                      </div>
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </motion.nav>
-
-                  <a
-                    href="https://app.anylayer.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden md:flex text-[#CCD1E9] rounded-full font-medium items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0 hover:opacity-80"
-                  >
-                    <span className="text-sm lg:text-base">Launch App</span>
-                    <Image src="/filled-arrow.svg" alt="launch app" width="20" height="18" className="w-3 h-3 lg:w-[18px] lg:h-[18px]" />
-                  </a>
-
-                  {/* Mobile Menu Button */}
-                  <button
-                    onClick={toggleMenu}
-                    className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-                    aria-label="Toggle menu"
-                  >
-                    {isMobileMenuOpen ? (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    ) : (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                    )}
-                  </button>
-                </div>
-
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                  {isMobileMenuOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="md:hidden overflow-hidden"
-                    >
-                      <nav className="flex flex-col gap-4 py-6 border-t border-gray-800 mt-4">
-                        <button
-                          onClick={() => scrollToSection('trust')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Trust
-                        </button>
-                        <button
-                          onClick={() => scrollToSection('architecture')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Architecture
-                        </button>
-                        <button
-                          onClick={() => scrollToSection('opportunity')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Opportunity
-                        </button>
-                        <button
-                          onClick={() => scrollToSection('dimension')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Dimension
-                        </button>
-                        <button
-                          onClick={() => scrollToSection('capital')}
-                          className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left"
-                        >
-                          Capital
-                        </button>
-                        <div className="border-t border-gray-800 pt-4">
-                          <button
-                            onClick={() => setIsResourcesDropdownOpen(!isResourcesDropdownOpen)}
-                            className="text-gray-300 hover:text-white transition-colors py-2 px-4 hover:bg-white/5 rounded-lg text-left w-full flex items-center justify-between"
-                          >
-                            Resources
-                            <svg 
-                              className={`w-4 h-4 transition-transform ${isResourcesDropdownOpen ? 'rotate-180' : ''}`}
-                              fill="none" 
-                              stroke="currentColor" 
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </button>
-                          <AnimatePresence>
-                            {isResourcesDropdownOpen && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-2 pl-4 space-y-2 overflow-hidden"
-                              >
-                                <button
-                                  onClick={() => {
-                                    scrollToSection('trustscore');
-                                    setIsResourcesDropdownOpen(false);
-                                  }}
-                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                                >
-                                  Explorer
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    scrollToSection('faq');
-                                    setIsResourcesDropdownOpen(false);
-                                  }}
-                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                                >
-                                  Roadmap
-                                </button>
-                                <a
-                                  href="https://docs.onzks.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                                >
-                                  Builders
-                                </a>
-                                <a
-                                  href="https://docs.onzks.com"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block w-full text-left text-gray-300 hover:text-white transition-colors py-1 px-4 hover:bg-white/5 rounded-lg"
-                                >
-                                  Whitepaper
-                                </a>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                        <a
-                          href="https://app.anylayer.org"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white rounded-full font-medium flex items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0 py-2 hover:opacity-80"
-                        >
-                          <span className="text-sm lg:text-base">Launch App</span>
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </a>
-                      </nav>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </motion.header>
-
           {/* Banner Section */}
           <div className="relative overflow-hidden max-w-screen-xl mx-auto">
             <div className="relative max-w-[800px] mx-auto px-5 pt-16 md:pt-20 pb-10 md:pb-24 z-10">
@@ -502,28 +133,28 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               initial={{ opacity: 0, rotate: 100 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              className="absolute left-52 top-0"
+              className="absolute left-0 md:left-52 top-72 md:top-0"
             >
               <Image 
                 src={'/left-banner-angle.svg'} 
                 alt='Left Angle' 
                 width={544} 
                 height={544} 
-                className="w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"
+                className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, rotate: 100 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-              className="absolute right-64 top-0"
+              className="absolute right-0 md:right-64 top-0"
             >
               <Image 
                 src={'/right-banner-angle.svg'} 
                 alt='Right Angle' 
                 width={544} 
                 height={544} 
-                className="w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"
+                className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
             {/* <Image src={'/right-banner-angle.svg'} alt='Right Angle' width={544} height={544} className="absolute right-64 top-0 w-32 h-32 md:w-48 md:h-48 lg:w-[544px] lg:h-[544px]"/> */}
@@ -735,21 +366,21 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   className="w-full mt-12"
                 >
                   {/* Identity Layer */}
-                  <div className="relative flex items-center justify-center gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[140px] md:h-[218px]">
+                  <div className="relative flex items-center justify-center gap-2 md:gap-8 bg-[url('/identity-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[140px] md:h-[218px]">
                     <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/identity-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
                           <h3 className="text-white font-medium text-xs md:text-lg">Identity Layer</h3>
-                          <p className="text-white/70 text-[10px] md:text-sm">2k5 name service</p>
+                          <p className="text-white/70 text-[10px] md:text-sm">zks name service</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
+                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -760,10 +391,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </div>
 
                   {/* Reputation Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[130px] md:h-[141px] -mt-6 z-20">
+                  <div className="relative flex items-start justify-center gap-2 md:gap-8 pt-7 bg-[url('/reputation-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[130px] md:h-[141px] -mt-6 z-20">
                     <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/reputation-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
@@ -774,7 +405,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
+                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -785,10 +416,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </div>
 
                   {/* Proof Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[120px] md:h-[152px] -mt-10 z-10">
+                  <div className="relative flex items-start justify-center gap-2 md:gap-8 pt-11 bg-[url('/proof-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[120px] md:h-[152px] -mt-10 z-10">
                     <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/proof-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
@@ -799,7 +430,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
+                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -810,10 +441,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </div>
 
                   {/* Utility Layer */}
-                  <div className="relative flex items-start justify-center gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[200px] md:h-[312px] -mt-10">
+                  <div className="relative flex items-start justify-center gap-2 md:gap-8 pt-14 bg-[url('/utility-layer-bg.svg')] bg-contain bg-center bg-no-repeat h-[200px] md:h-[312px] -mt-10">
                     <div className="flex-1 flex items-start gap-4 max-w-32 md:max-w-72">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center flex-shrink-0">
                           <Image src={'/utility-bgicon.svg'} alt="Identity Icon" width="40" height="40" />
                         </div>
                         <div>
@@ -824,7 +455,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-16 h-auto md:w-auto" />
+                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">

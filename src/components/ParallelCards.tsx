@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { SplitText } from "./SplitText";
 
 const data = [
   {
@@ -61,6 +60,7 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
   const IMAGE_VIEWPORT_HEIGHT = 534;
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const total = data.length;
   const [active, setActive] = useState(0);
 
@@ -68,6 +68,12 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
     target: containerRef,
     offset: ["start start", "end end"],
   });
+  /** Sticky gradient reveal (vertical, not opacity) */
+  const gradientY = useTransform(
+    scrollYProgress,
+    [0.05, 0.3],
+    ["0%", "0%"]
+  );
 
   const translateY = useTransform(
     scrollYProgress,
@@ -82,14 +88,10 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
   }, [scrollYProgress, total]);
 
   return (
-    <section id={sectionId} className="relative py-10 md:py-32">
+    <section id={sectionId} className="relative py-10 md:py-20" ref={sectionRef}>
       {/* ================= HEADER ================= */}
       <div className="relative z-10 max-w-[47rem] mx-auto text-center px-5">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.6 }}
-          transition={{ duration: 0.6 }}
           className="mb-4 inline-flex items-center gap-3 rounded-full bg-white/5 px-6 py-3"
         >
           <span className="text-sm text-white/50">
@@ -98,108 +100,110 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
         </motion.div>
 
         <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-white mb-6 leading-tight">
-          <SplitText text="Three dimension of trust for the digital internet" />
+          Three dimension of trust for the digital internet
         </h2>
 
         <p className="text-white/60 max-w-md mx-auto">
-          <SplitText text="Trust becomes a reusable asset that follows users across applications and chains." />
+          Trust becomes a reusable asset that follows users across applications and chains.
         </p>
       </div>
 
       {/* ================= DESKTOP (STICKY PARALLAX) ================= */}
       <div className="hidden md:block">
-        <div
-          ref={containerRef}
-          style={{ height: `${total * 100}vh` }}
-          className="relative mt-16"
-        >
-          <div className="sticky top-20 h-screen flex items-center">
-            {/* Gradient */}
-            <div className="absolute inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]" />
-
-            <div
-              className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
-              style={{ height: CARD_HEIGHT }}
-            >
-              <div className="grid grid-cols-2 gap-16 h-full">
-                {/* IMAGE COLUMN */}
-                <div
-                  className="relative overflow-hidden flex justify-center"
-                  style={{ height: IMAGE_VIEWPORT_HEIGHT }}
-                >
-                  <motion.div style={{ y: translateY }}>
-                    {data.map((item, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center justify-center"
-                        style={{ height: IMAGE_VIEWPORT_HEIGHT }}
-                      >
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={320}
-                          height={320}
-                          className="object-contain"
-                        />
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-
-                {/* TEXT COLUMN */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <motion.h3
-                      key={active}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-3xl text-white mb-6"
-                    >
-                      {data[active].title}
-                    </motion.h3>
-
-                    <p className="text-white/60 mb-2">
-                      {data[active].description}
-                    </p>
-                    <p className="text-white/60">
-                      {data[active].line2}
-                    </p>
-
-                    <div className="flex gap-4 mt-8">
-                      {data[active].signals.map((s, i) => (
-                        <Image
-                          key={i}
-                          src={s.icon}
-                          alt={s.label}
-                          width={18}
-                          height={18}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* INDICATORS */}
-                  <div className="space-y-3 pt-10">
-                    {data.map((item, i) => (
-                      <div
-                        key={i}
-                        className={`flex gap-4 ${
-                          i === active ? "text-white" : "text-white/40"
-                        }`}
-                      >
-                        <span>{String(i + 1).padStart(2, "0")}</span>
-                        <span className="uppercase text-sm">
-                          {item.title}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       <div
+               ref={containerRef}
+               style={{ height: `${total * 100}vh` }}
+               className="relative mt-10"
+             >
+               <div className="sticky top-20 h-screen flex">
+                 {/* Gradient — bound to card sticky */}
+                 <motion.div
+                   style={{ y: gradientY }}
+                   className="absolute -top-40 h-full inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
+                 />
+                 <div
+                   className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
+                   style={{ height: CARD_HEIGHT }}
+                 >
+                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full">
+                     {/* IMAGE COLUMN */}
+                     <div
+                       className="relative overflow-hidden flex justify-center"
+                       style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+                     >
+                       <motion.div style={{ y: translateY }}>
+                         {data.map((item, i) => (
+                           <div
+                             key={i}
+                             className="flex items-center justify-center"
+                             style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+                           >
+                             <Image
+                               src={item.image}
+                               alt={item.title}
+                               width={320}
+                               height={320}
+                               className="w-full h-auto object-contain"
+                             />
+                           </div>
+                         ))}
+                       </motion.div>
+                     </div>
+       
+                     {/* TEXT COLUMN */}
+                     <div className="flex flex-col justify-between">
+                       <div
+                         key={active}
+                       >
+                         <motion.h3
+                         initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut" }} 
+                         className="text-3xl text-white mb-6">
+                           {data[active].title}
+                         </motion.h3>
+                         <motion.p initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-white/60">
+                           {data[active].description}
+                         </motion.p>
+                         <motion.p initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-white/60">
+                           {data[active].line2}
+                         </motion.p>
+       
+                         {/* Signal badges */}
+                         <motion.div initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-4 mt-10">
+                           {data[active].signals.map((signal, index) => (
+                             <Image key={index} src={signal.icon} alt={signal.label} width={18} height={18} />
+                           ))}
+                         </motion.div>
+                       </div>
+       
+                       {/* INDICATORS */}
+                       <div className="space-y-3 pt-10">
+                         {data.map((item, i) => (
+                           <div
+                             key={i}
+                             className={`flex gap-4 ${
+                               i === active ? "text-white" : "text-white/40"
+                             }`}
+                           >
+                             <span>{String(i + 1).padStart(2, "0")}</span>
+                             <span className="uppercase text-sm">
+                               {item.title}
+                             </span>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
       </div>
 
       {/* ================= MOBILE (NORMAL SCROLL) ================= */}
