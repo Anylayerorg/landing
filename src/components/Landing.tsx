@@ -9,6 +9,7 @@ import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import Architecture from './Architecture';
 import { Header } from './layout/Header';
+import AutoPopupModal from './Popup';
 
 
 const trustScoreFeatures = [
@@ -133,7 +134,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               initial={{ opacity: 0, rotate: 100 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              className="absolute left-0 md:left-52 top-72 md:top-0"
+              className="absolute left-52 top-0 hidden md:block"
             >
               <Image 
                 src={'/left-banner-angle.svg'} 
@@ -147,7 +148,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               initial={{ opacity: 0, rotate: 100 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-              className="absolute right-0 md:right-64 top-0"
+              className="absolute right-64 top-0 hidden md:block"
             >
               <Image 
                 src={'/right-banner-angle.svg'} 
@@ -575,6 +576,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <Faqs />
 
         <Footer />
+
+        <AutoPopupModal />
       </div>
     </>
   );

@@ -176,17 +176,9 @@ export function Header() {
                     <DropdownPortal>
                       
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
                         className="fixed inset-x-0 top-0 z-50 hidden md:block"
                       >
                         <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.25 }}
                           onClick={() => setIsResourcesDropdownOpen(false)}
                           className="absolute inset-0 z-[-1] bg-[#1A1A24]/40 backdrop-blur-[24px]"
                         />
@@ -352,17 +344,9 @@ export function Header() {
             {isMobileMenuOpen && (
               <DropdownPortal>
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
                 className="md:hidden overflow-hidden fixed inset-x-0 top-0 z-50"
               >
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
                   onClick={() => setIsResourcesDropdownOpen(false)}
                   className="absolute inset-0 z-[-1] bg-[#1A1A24]/40 backdrop-blur-[24px]"
                 />
