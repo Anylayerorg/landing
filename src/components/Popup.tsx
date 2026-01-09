@@ -80,7 +80,7 @@ const AutoPopupModal = () => {
                 {/* Heading */}
                 <h2 className="text-[2rem] lg:text-[2.5rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] max-w-96">
                     {" "}
-                    10,000 FREE .ZKS Names —  <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Live Now.</span> 
+                    10,000 FREE .ZKS Names —  <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> ZK Powered.</span> 
                 </h2>
 
                 {/* Description */}
@@ -90,12 +90,12 @@ const AutoPopupModal = () => {
 
                 {/* CTA Button */}
                 <a
-                    href="https://app.anylayer.org"
+                    href="https://anylayer.org"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-44 md:max-w-48 w-full px-4 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
                 >
-                        <span>Discover Now</span>
+                        <span>Coming Soon</span>
                         <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
                 </a>
               </div>

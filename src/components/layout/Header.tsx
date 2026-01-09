@@ -286,7 +286,7 @@ export function Header() {
             </motion.nav>
 
             <a
-              href="https://app.anylayer.org"
+              href="https://anylayer.org"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex text-[#CCD1E9] rounded-full font-medium items-center justify-center gap-2 lg:gap-3 transition-all duration-300 whitespace-nowrap flex-shrink-0 hover:opacity-80"
