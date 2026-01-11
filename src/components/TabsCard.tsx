@@ -55,7 +55,7 @@ const tabContent = {
         description: "Special perks for long-standing verified wallets.",
       },
     ],
-    diagram: "/loyality-tab-updated.svg",
+    diagram: "/tab-loyalty.svg",
   },
   rwa: {
     title: "RWA Platforms & Lenders",
@@ -79,7 +79,7 @@ const tabContent = {
         description: "Universal zk trust layer for institutions.",
       },
     ],
-    diagram: "/rwa-platforms-updated.svg",
+    diagram: "/tab-rwa-platforms.svg",
   },
   users: {
     title: "Everyday Users",
@@ -103,7 +103,7 @@ const tabContent = {
         description: "Access perks based on earned trustscore.",
       },
     ],
-    diagram: "/everyday-user-updated.svg",
+    diagram: "/tab-everyday-user.svg",
   },
 };
 

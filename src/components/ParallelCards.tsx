@@ -13,12 +13,10 @@ const data = [
       "It is built from identity proofs, behavioral signals, achievements, and verifiable reputation.",
     image: "/human-identity.svg",
     signals: [
-      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
-      { icon: "ic-anthropic.svg", label: "Anthropic" },
-      { icon: "ic-mistral.svg", label: "Mistral" },
-      { icon: "ic-meta.svg", label: "Meta" },
-      { icon: "ic-docker.svg", label: "Docker" },
-      { icon: "ic-gemini.svg", label: "Gemini" },
+      { icon: "ic-linkedin.svg", label: "Linkedin" },
+      { icon: "ic-bag.svg", label: "Bag" },
+      { icon: "ic-university.svg", label: "University" },
+      { icon: "ic-user.svg", label: "User" },
     ],
   },
   {
@@ -29,12 +27,10 @@ const data = [
       "It is risk intelligence + behavioral analytics + reputation scoring combined into a trust value.",
     image: "/wallet-activity.svg",
     signals: [
-      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
-      { icon: "ic-anthropic.svg", label: "Anthropic" },
-      { icon: "ic-mistral.svg", label: "Mistral" },
-      { icon: "ic-meta.svg", label: "Meta" },
-      { icon: "ic-docker.svg", label: "Docker" },
-      { icon: "ic-gemini.svg", label: "Gemini" },
+      { icon: "ic-exchange.svg", label: "Exchange" },
+      { icon: "ic-stack.svg", label: "Stack" },
+      { icon: "ic-bank.svg", label: "Bank" },
+      { icon: "ic-preview.svg", label: "Preview" },
     ],
   },
   {
@@ -45,12 +41,7 @@ const data = [
       "Anylayer gives every AI agent a .zks identity and evaluates its behavior over time.",
     image: "/ai-verified.svg",
     signals: [
-      { icon: "ic-chatgpt.svg", label: "ChatGpt" },
-      { icon: "ic-anthropic.svg", label: "Anthropic" },
-      { icon: "ic-mistral.svg", label: "Mistral" },
-      { icon: "ic-meta.svg", label: "Meta" },
-      { icon: "ic-docker.svg", label: "Docker" },
-      { icon: "ic-gemini.svg", label: "Gemini" },
+      { icon: "ic-processor.svg", label: "Processor" },
     ],
   },
 ];
@@ -99,11 +90,11 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
           </span>
         </motion.div>
 
-        <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-white mb-6 leading-tight">
+        <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight">
           Three dimension of trust for the digital internet
         </h2>
 
-        <p className="text-white/60 max-w-md mx-auto">
+        <p className="text-primaryText/60 max-w-md mx-auto">
           Trust becomes a reusable asset that follows users across applications and chains.
         </p>
       </div>
@@ -159,26 +150,26 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
                          initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
                          transition={{ duration: 0.4, ease: "easeOut" }} 
-                         className="text-3xl text-white mb-6">
+                         className="text-3xl text-primaryText mb-6">
                            {data[active].title}
                          </motion.h3>
                          <motion.p initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
-                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-white/60">
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-primaryText/60">
                            {data[active].description}
                          </motion.p>
                          <motion.p initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
-                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-white/60">
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-primaryText/60">
                            {data[active].line2}
                          </motion.p>
        
                          {/* Signal badges */}
                          <motion.div initial={{ opacity: 0 }}
                          animate={{ opacity: 1 }}
-                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-4 mt-10">
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-5 mt-10">
                            {data[active].signals.map((signal, index) => (
-                             <Image key={index} src={signal.icon} alt={signal.label} width={18} height={18} />
+                             <Image key={index} src={signal.icon} alt={signal.label} width={20} height={20} />
                            ))}
                          </motion.div>
                        </div>
@@ -189,7 +180,7 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
                            <div
                              key={i}
                              className={`flex gap-4 ${
-                               i === active ? "text-white" : "text-white/40"
+                               i === active ? "text-primaryText" : "text-primaryText/40"
                              }`}
                            >
                              <span>{String(i + 1).padStart(2, "0")}</span>

@@ -381,7 +381,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
+                      <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -406,7 +406,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
+                      <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -431,7 +431,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
+                      <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
@@ -456,7 +456,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                     
                     <div className="relative z-20">
-                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-14 h-auto md:w-auto" />
+                      <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
 
                     <div className="flex max-w-32 md:max-w-72">
