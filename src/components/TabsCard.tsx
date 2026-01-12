@@ -98,24 +98,42 @@ const TabsCard = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-x-8 gap-y-4 border-b border-white/5 mb-16 md:mb-24">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className="relative pb-6 text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300"
-            >
-              <span className={activeTab === tab.id ? "text-primaryText" : "text-primaryText/20 hover:text-primaryText/50"}>
-                {tab.label}
-              </span>
-              {activeTab === tab.id && (
-                <motion.div 
-                  layoutId="activeTabLine"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.5)]"
-                />
-              )}
-            </button>
-          ))}
+        <div className="relative md:mb-16 lg:mb-24">
+          {/* Visible scrollbar track on mobile */}
+          <div className="overflow-x-auto md:overflow-x-visible scrollbar-visible sticky top-0 md:relative bg-[#08080C] z-20 md:z-auto py-4 md:py-0 -mx-6 px-6 md:mx-0 md:px-0 mb-8 md:mb-0">
+            <div className="flex gap-x-6 md:gap-x-8 border-b border-white/5 pb-6 min-w-max md:min-w-0">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className="relative text-sm md:text-base font-medium tracking-wide uppercase transition-colors duration-300 whitespace-nowrap"
+                >
+                  <span className={activeTab === tab.id ? "text-primaryText" : "text-primaryText/20 hover:text-primaryText/50"}>
+                    {tab.label}
+                  </span>
+                  {activeTab === tab.id && (
+                    <motion.div 
+                      layoutId="activeTabLine"
+                      className="absolute -bottom-6 left-0 right-0 h-0.5 bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.5)]"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Scroll hint text - only visible on mobile */}
+          <div className="md:hidden text-center -mt-6 mb-8">
+            <p className="text-[10px] text-primaryText/30 uppercase tracking-widest flex items-center justify-center gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="animate-pulse">
+                <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(-90 12 12)"/>
+              </svg>
+              Swipe to see all options
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="animate-pulse">
+                <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(-90 12 12)"/>
+              </svg>
+            </p>
+          </div>
         </div>
 
         {/* Active Content */}

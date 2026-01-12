@@ -252,3 +252,44 @@ body {
     height: 1.3px;
     background: linear-gradient(90deg, transparent, rgba(80, 150, 100, 0.25), transparent);
 } */
+
+/* No scrollbar utility */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Visible scrollbar for mobile navigation */
+  .scrollbar-visible::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: rgba(166, 131, 255, 0.1);
+    border-radius: 2px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background: rgba(166, 131, 255, 0.4);
+    border-radius: 2px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+    background: rgba(166, 131, 255, 0.6);
+  }
+  .scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(166, 131, 255, 0.4) rgba(166, 131, 255, 0.1);
+  }
+  
+  /* Hide scrollbar on desktop */
+  @media (min-width: 768px) {
+    .scrollbar-visible::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-visible {
+      scrollbar-width: none;
+    }
+  }
+}

@@ -6,9 +6,10 @@ import { useInView, useMotionValue, useSpring } from 'framer-motion';
 type CounterProps = {
   value: number;
   suffix?: string;
+  prefix?: string;
 };
 
-const Counter = ({ value, suffix = '' }: CounterProps) => {
+const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
   const ref = useRef<HTMLSpanElement | null>(null);
 
   // IMPORTANT: no `once: true`
@@ -41,6 +42,7 @@ const Counter = ({ value, suffix = '' }: CounterProps) => {
 
   return (
     <span ref={ref}>
+      {prefix}
       {displayValue}
       {suffix}
     </span>
