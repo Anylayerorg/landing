@@ -13,27 +13,27 @@ import AutoPopupModal from './Popup';
 
 
 const trustScoreFeatures = [
-    {
-      icon: '/knight-shield.svg',
-      title: "Sybil resistance",
-      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
-    },
-    {
-      icon: '/robotic.svg',
-      title: "AI + Human scoring",
-      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
-    },
-    {
-      icon: '/circle-lock.svg',
-      title: "zero-knowledge prove",
-      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
-    },
-    {
-      icon: '/flow.svg',
-      title: "Cross-chain comparability",
-      description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
-    }
-  ];
+  {
+    icon: '/knight-shield.svg',
+    title: "Sybil resistance",
+    description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
+  },
+  {
+    icon: '/robotic.svg',
+    title: "AI + Human scoring",
+    description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
+  },
+  {
+    icon: '/circle-lock.svg',
+    title: "zero-knowledge prove",
+    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
+  },
+  {
+    icon: '/flow.svg',
+    title: "Cross-chain comparability",
+    description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
+  }
+];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -80,55 +80,55 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
   return (
     <>
-    <div className="relative w-full min-w-full ">
+      <div className="relative w-full min-w-full ">
         {/* Header & Banner */}
         <Header />
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
           {/* Banner Section */}
           <div className="relative overflow-hidden max-w-screen-xl mx-auto">
             <div className="relative max-w-[800px] mx-auto px-5 pt-16 md:pt-20 pb-10 md:pb-24 z-10">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-center"
-                >
-                  <div className="space-y-6 z-10 text-center">
-                    <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                      <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
-                    </div>
-                    <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
-                      Multi-layered Trust Engine for{' '}
-                      <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
-                        {currentText}
-                        <span className="animate-pulse">|</span>
-                      </span>
-                    </h1>
-                    <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
-                      A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
-                    </p>
-                    <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
-                      <a
-                        href="https://app.anylayer.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-44 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
-                      >
-                        <span>Create ID</span>
-                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
-                      </a>
-                      <a
-                        href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-44 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
-                      >
-                        Documentation
-                      </a>
-                    </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <div className="space-y-6 z-10 text-center">
+                  <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
+                    <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
                   </div>
-                </motion.div>
+                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
+                    Multi-layered Trust Engine for{' '}
+                    <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
+                      {currentText}
+                      <span className="animate-pulse">|</span>
+                    </span>
+                  </h1>
+                  <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
+                    A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
+                  </p>
+                  <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
+                    <a
+                      href="https://app.anylayer.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-44 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
+                    >
+                      <span>Create ID</span>
+                      <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-44 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
+                    >
+                      Documentation
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
             </div>
             <motion.div
               initial={{ opacity: 0, rotate: 100 }}
@@ -136,11 +136,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="absolute left-52 top-0 hidden md:block"
             >
-              <Image 
-                src={'/left-banner-angle.svg'} 
-                alt='Left Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/left-banner-angle.svg'}
+                alt='Left Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -150,11 +150,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
               className="absolute right-64 top-0 hidden md:block"
             >
-              <Image 
-                src={'/right-banner-angle.svg'} 
-                alt='Right Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/right-banner-angle.svg'}
+                alt='Right Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -173,13 +173,13 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 </div>
               </div>
 
-              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3'/>
+              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3' />
 
               <div className="flex items-center justify-between">
                 <div className="text-[#CCD1E9] text-xs font-geist">Progress to Silver</div>
                 <div className="text-[#CCD1E9] text-xs font-geist">6%</div>
               </div>
-              <div className='w-full h-1 bg-[#A683FF] mt-2'/>
+              <div className='w-full h-1 bg-[#A683FF] mt-2' />
             </div>
             {/* Left side trust score box */}
             <div className="hidden md:block bg-[#1C1C26]/90 rounded-xl p-4 border border-gray-700/20 max-w-[237px] w-full absolute left-0 bottom-0 opacity-15">
@@ -192,7 +192,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 </div>
               </div>
 
-              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3'/>
+              <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-8 mb-3' />
 
               <div className="flex items-center justify-between">
                 <motion.div
@@ -212,10 +212,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         {/* Partner Logos */}
         <ClientsLogo />
 
-        <Image src="/header-purple-shade.svg" alt="Header Background Gradient" width="906" height="306" className="absolute top-0 left-0"/>
-        <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute top-96 left-0"/>
-        <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute bottom-96 left-0"/>
-        <Image src="/right-shade.svg" alt="Background Gradient" width="722" height="1966" className="absolute bottom-32 right-0"/>
+        <Image src="/header-purple-shade.svg" alt="Header Background Gradient" width="906" height="306" className="absolute top-0 left-0" />
+        <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute top-96 left-0" />
+        <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute bottom-96 left-0" />
+        <Image src="/right-shade.svg" alt="Background Gradient" width="722" height="1966" className="absolute bottom-32 right-0" />
 
         {/* Section 2 charts */}
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
@@ -352,7 +352,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <div className="w-full max-w-6xl">
               <div className="relative flex flex-col items-center">
                 {/* Stacked Layers Icon at Top */}
-                <div 
+                <div
                   className="relative z-10 mt-24"
                 >
                   {/* Layer Image here */}
@@ -363,7 +363,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 <div className="absolute top-52 md:top-60 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-345px)] md:h-[calc(100%-485px)] bg-gradient-to-b from-[#DCCFFF] to-[#A683FF] z-20"></div>
 
                 {/* Layer Items */}
-                <div 
+                <div
                   className="w-full mt-12"
                 >
                   {/* Identity Layer */}
@@ -379,7 +379,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="relative z-20">
                       <Image src={'/identity-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
@@ -404,7 +404,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="relative z-20">
                       <Image src={'/reputation-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
@@ -429,7 +429,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="relative z-20">
                       <Image src={'/proof-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
@@ -454,7 +454,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="relative z-20">
                       <Image src={'/utility-layer.svg'} alt="" width="122" height="96" className="w-10 h-auto md:w-auto" />
                     </div>
@@ -475,7 +475,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <section id="trustScore" className="py-10 md:pt-10 md:pb-20 px-5 max-w-screen-xl mx-auto z-10 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left Content */}
-            <div              
+            <div
               className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
             >
               <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
@@ -497,51 +497,51 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[265px] md:max-w-[365px]">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6 md:mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm">0xA6...91F2</div>
+                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET</div>
+                  <div className="text-[#CCD1E9] text-[10px] md:text-sm">0xA6...91F2</div>
                 </div>
 
                 {/* Left Side Labels */}
                 <div className="space-y-2 mt-3">
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">HUMAN</div>
-                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">Verified</div>
+                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">HUMAN</div>
+                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">Verified</div>
                   </div>
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET AGE</div>
-                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">90+ Days</div>
+                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET AGE</div>
+                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">90+ Days</div>
                   </div>
                   <div className="flex justify-between items-center">
-                      <div className="text-[#636475] text-[10px] md:text-sm uppercase">ACTIVITY</div>
-                      <div className="text-[#CCD1E9] text-[10px] md:text-sm ">consistent</div>
+                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">ACTIVITY</div>
+                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">consistent</div>
                   </div>
                 </div>
                 <div className="flex justify-between items-center mt-6 md:mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">SCORE</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">72</div>
+                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">SCORE</div>
+                  <div className="text-[#CCD1E9] text-[10px] md:text-sm ">72</div>
                 </div>
               </div>
               <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[265px] md:max-w-[343px] w-full absolute right-0 bottom-0">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
-                        <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
-                      </div>
-                      <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
+                      <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
                     </div>
-                  </div>
-
-                  <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5'/>
-
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
-                    >
-                      120
-                    </div>
-                    <div className="text-[#A683FF] text-xs md:text-sm font-geist">+39 this month</div>
+                    <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
                   </div>
                 </div>
+
+                <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5' />
+
+                <div className="flex items-center justify-between">
+                  <div
+                    className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
+                  >
+                    120
+                  </div>
+                  <div className="text-[#A683FF] text-xs md:text-sm font-geist">+39 this month</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -553,7 +553,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 className="flex items-center gap-4"
               >
                 <div className="w-5 h-5 text-primaryText">
-                  <Image src={feature.icon} alt='Shield' width={20} height={20} className='w-full h-full'/>
+                  <Image src={feature.icon} alt='Shield' width={20} height={20} className='w-full h-full' />
                 </div>
                 <div className='flex-1'>
                   <p className="text-[#9095A4] text-sm leading-relaxed">
