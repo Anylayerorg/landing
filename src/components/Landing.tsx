@@ -113,7 +113,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                       href="https://app.anylayer.org"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-44 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
+                      className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-72 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
                     >
                       <span>Create ID</span>
                       <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
@@ -122,7 +122,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                       href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-44 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
+                      className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-72 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
                     >
                       Documentation
                     </a>
