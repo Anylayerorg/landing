@@ -131,8 +131,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               </motion.div>
             </div>
             <motion.div
-              initial={{ opacity: 0, rotate: 100 }}
-              animate={{ opacity: 1, rotate: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="absolute left-52 top-0 hidden md:block"
             >
@@ -145,8 +145,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, rotate: 100 }}
-              animate={{ opacity: 1, rotate: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
               className="absolute right-64 top-0 hidden md:block"
             >
