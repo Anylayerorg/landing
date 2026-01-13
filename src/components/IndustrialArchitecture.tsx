@@ -19,7 +19,8 @@ const layers = [
       <div className="flex items-center justify-center text-lightblueprimary/90">
         <Fingerprint size={120} strokeWidth={1.2} />
       </div>
-    )
+    ),
+    cta: 'See Identity Specs'
   },
   {
     id: '02',
@@ -30,7 +31,8 @@ const layers = [
       <div className="flex items-center justify-center text-lightblueprimary/90">
         <ShieldCheck size={120} strokeWidth={1.2} />
       </div>
-    )
+    ),
+    cta: 'View Trust Model'
   },
   {
     id: '03',
@@ -41,7 +43,8 @@ const layers = [
       <div className="flex items-center justify-center text-lightblueprimary/90">
         <Lock size={120} strokeWidth={1.2} />
       </div>
-    )
+    ),
+    cta: 'Explore Proof Tech'
   },
   {
     id: '04',
@@ -52,7 +55,8 @@ const layers = [
       <div className="flex items-center justify-center text-lightblueprimary/90">
         <Blocks size={120} strokeWidth={1.2} />
       </div>
-    )
+    ),
+    cta: 'Discover App Utility'
   }
 ];
 
@@ -219,18 +223,20 @@ const IndustrialArchitecture = () => {
                     </div>
                   </div>
 
-                  <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-xl pl-0 md:pl-28 border-l border-white/5 ml-0 md:ml-10">
+                  <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-2xl pl-0 md:pl-10 border-l border-white/5 ml-0 md:ml-0">
                     {layers[active].description}
                   </p>
 
-                  <div className="pt-8 pl-0 md:pl-28 ml-0 md:ml-10">
+                  <div className="pt-8 pl-0 md:pl-10 ml-0 md:ml-0">
                     <a
                       href="https://docs.onzks.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center gap-6 transition-all w-fit"
                     >
-                      <span className="text-sm uppercase tracking-[0.25em] font-bold text-white/30 group-hover:text-white transition-colors">Explore Layer</span>
+                      <span className="text-sm uppercase tracking-[0.25em] font-bold text-white/30 group-hover:text-white transition-colors">
+                        {layers[active].cta}
+                      </span>
                       <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-lightblueprimary group-hover:bg-lightblueprimary/10 transition-all duration-500 shadow-2xl bg-white/[0.02]">
                         <Image src="/button-arrow.svg" alt="arrow" width={16} height={16} className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-500" />
                       </div>

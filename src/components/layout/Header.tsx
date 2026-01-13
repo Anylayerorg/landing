@@ -196,100 +196,84 @@ export function Header() {
                           onClick={() => setIsResourcesDropdownOpen(false)}
                           className="absolute inset-0 z-[-1] bg-[#0D0D12]/40 backdrop-blur-[20px]"
                         />
-                        <div className="pt-[120px] pb-16 border-b border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.4)] bg-gradient-to-b from-[#0D0D12]/80 to-[#0D0D12]/40 backdrop-blur-3xl">
-                          <div className="px-8 max-w-screen-xl mx-auto grid grid-cols-12 gap-12 items-start">
-                            {/* Left Lead Info */}
-                            <div className="col-span-5 pt-4">
-                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20 mb-6">
+                        <div className="pt-[120px] pb-16 border-b border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.8)] bg-[#0D0D12]">
+                          <div className="px-8 max-w-screen-xl mx-auto grid grid-cols-12 gap-16 items-start">
+                            {/* Left: Section Brand Info */}
+                            <div className="col-span-4 border-r border-white/5 pr-16 h-full">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20 mb-8">
                                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
                                 <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">Knowledge Hub</span>
                               </div>
-                              <h2 className="font-geist font-medium text-5xl text-white leading-tight tracking-tight">
-                                Industrial grade <br />
-                                <span className="text-[#636475]">infrastructure.</span>
+                              <h2 className="font-geist font-medium text-4xl text-white leading-tight tracking-tight mb-6">
+                                The Trust <br />
+                                <span className="text-[#636475]">Infrastructure.</span>
                               </h2>
-                              <p className="mt-8 text-[#9494a3] text-lg font-normal leading-relaxed max-w-md">
-                                Everything you need to stay informed, build efficiently, and scale with Anylayer.
+                              <p className="text-[#9494a3] text-base font-normal leading-relaxed">
+                                Access technical specifications, network metrics, and developer resources to build on the next generation of trust.
                               </p>
-                              <div className="mt-10 flex items-center gap-6">
-                                <div className="flex flex-col">
-                                  <span className="text-white text-2xl font-mono font-bold tracking-tighter">99.9%</span>
-                                  <span className="text-[#636475] text-xs uppercase tracking-widest mt-1">Uptime</span>
-                                </div>
-                                <div className="w-[1px] h-10 bg-white/5" />
-                                <div className="flex flex-col">
-                                  <span className="text-white text-2xl font-mono font-bold tracking-tighter">1.2ms</span>
-                                  <span className="text-[#636475] text-xs uppercase tracking-widest mt-1">Latency</span>
-                                </div>
-                              </div>
                             </div>
 
-                            {/* Right Grid Menu */}
-                            <div className="col-span-7 grid grid-cols-2 gap-4">
-                              {[
-                                {
-                                  label: "Explorer",
-                                  desc: "Track on-chain trust signals and network health in real-time.",
-                                  icon: "/internet.svg",
-                                  id: "trustscore",
-                                  color: "from-blue-500/10 to-transparent"
-                                },
-                                {
-                                  label: "Roadmap",
-                                  desc: "Strategic milestones and the future of layered trust.",
-                                  icon: "/maps.svg",
-                                  id: "faq",
-                                  color: "from-purple-500/10 to-transparent"
-                                },
-                                {
-                                  label: "Builders",
-                                  desc: "Integrate ZK-trust into your apps with our core SDKs.",
-                                  icon: "/code-square.svg",
-                                  href: "https://docs.onzks.com",
-                                  color: "from-emerald-500/10 to-transparent"
-                                },
-                                {
-                                  label: "Whitepaper",
-                                  desc: "Deep dive into our mathematical proofs and architecture.",
-                                  icon: "/document-code.svg",
-                                  href: "https://docs.onzks.com",
-                                  color: "from-orange-500/10 to-transparent"
-                                }
-                              ].map((item, idx) => {
-                                const Content = (
-                                  <div className="group relative p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300">
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl`} />
-                                    <div className="relative z-10">
-                                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4 transition-transform group-hover:scale-110 duration-300">
-                                        <Image src={item.icon} alt={item.label} width="24" height="24" />
+                            {/* Right: Structured Navigation */}
+                            <div className="col-span-8 grid grid-cols-2 gap-x-16 gap-y-12">
+                              {/* Column 1: Ecosystem */}
+                              <div>
+                                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 mb-6">Ecosystem Status</h4>
+                                <div className="space-y-8">
+                                  <button onClick={() => { scrollToSection('trustscore'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Image src="/internet.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
                                       </div>
-                                      <h3 className="text-xl font-semibold text-white group-hover:text-lightblueprimary transition-colors mb-1">
-                                        {item.label}
-                                      </h3>
-                                      <p className="text-sm text-[#636475] leading-relaxed">
-                                        {item.desc}
-                                      </p>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
+                                      </div>
                                     </div>
-                                  </div>
-                                );
-
-                                if (item.href) {
-                                  return (
-                                    <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer">
-                                      {Content}
-                                    </a>
-                                  );
-                                }
-
-                                return (
-                                  <button key={idx} onClick={() => {
-                                    scrollToSection(item.id);
-                                    setIsResourcesDropdownOpen(false);
-                                  }}>
-                                    {Content}
                                   </button>
-                                );
-                              })}
+
+                                  <button onClick={() => { scrollToSection('faq'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Image src="/maps.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
+                                      </div>
+                                    </div>
+                                  </button>
+                                </div>
+                              </div>
+
+                              {/* Column 2: Documentation */}
+                              <div>
+                                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 mb-6">Technical Resources</h4>
+                                <div className="space-y-8">
+                                  <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Image src="/code-square.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate ZK-trust into your apps with our core SDKs.</p>
+                                      </div>
+                                    </div>
+                                  </a>
+
+                                  <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Image src="/document-code.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -423,8 +407,10 @@ export function Header() {
 
                                 return (
                                   <button key={idx} className="block w-full text-left" onClick={() => {
-                                    scrollToSection(item.id);
-                                    setIsMobileMenuOpen(false);
+                                    if (item.id) {
+                                      scrollToSection(item.id);
+                                      setIsMobileMenuOpen(false);
+                                    }
                                   }}>
                                     {MobileContent}
                                   </button>
