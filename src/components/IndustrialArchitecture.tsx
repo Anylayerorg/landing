@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import Image from 'next/image';
+import { Fingerprint, ShieldCheck, Lock, Blocks } from 'lucide-react';
 
 const layers = [
   {
@@ -19,46 +20,9 @@ const layers = [
       </svg>
     ),
     visual: (
-      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <motion.circle 
-          cx="80" cy="80" r="70" 
-          stroke="currentColor" strokeWidth="1" strokeOpacity="0.1" 
-          strokeDasharray="4 4"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.circle 
-          cx="80" cy="80" r="50" 
-          stroke="currentColor" strokeWidth="1" strokeOpacity="0.2"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        />
-        {/* Human Silhouette */}
-        <motion.path 
-          d="M80 75C88.2843 75 95 66.7157 95 56.5C95 46.2843 88.2843 38 80 38C71.7157 38 65 46.2843 65 56.5C65 66.7157 71.7157 75 80 75Z" 
-          stroke="currentColor" strokeWidth="3" strokeLinecap="round"
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.path 
-          d="M50 115C50 101.193 63.4315 90 80 90C96.5685 90 110 101.193 110 115V122H50V115Z" 
-          stroke="currentColor" strokeWidth="3" strokeLinecap="round"
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* Orbital Nodes */}
-        {[0, 120, 240].map((angle, i) => (
-          <motion.circle
-            key={i}
-            cx={80 + Math.cos(angle * Math.PI / 180) * 50}
-            cy={80 + Math.sin(angle * Math.PI / 180) * 50}
-            r="6"
-            fill="currentColor"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity, delay: i }}
-          />
-        ))}
-      </svg>
+      <div className="flex items-center justify-center">
+        <Fingerprint size={120} strokeWidth={1.2} />
+      </div>
     )
   },
   {
@@ -73,33 +37,9 @@ const layers = [
       </svg>
     ),
     visual: (
-      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Shield Frame */}
-        <motion.path 
-          d="M80 20L30 35V80C30 115 80 145 80 145C80 145 130 115 130 80V35L80 20Z" 
-          stroke="currentColor" strokeWidth="3" strokeLinejoin="round"
-          animate={{ strokeOpacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-        {/* Inner Score Meter */}
-        <motion.circle 
-          cx="80" cy="85" r="35" 
-          stroke="currentColor" strokeWidth="2" strokeOpacity="0.1"
-        />
-        <motion.path 
-          d="M55 105C60 90 70 80 80 80C90 80 100 90 105 105" 
-          stroke="currentColor" strokeWidth="4" strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 0.8 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        />
-        <motion.path 
-          d="M65 75L75 85L95 65" 
-          stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"
-          animate={{ scale: [0.9, 1.1, 0.9], filter: ["blur(0px)", "blur(2px)", "blur(0px)"] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-      </svg>
+      <div className="flex items-center justify-center">
+        <ShieldCheck size={120} strokeWidth={1.2} />
+      </div>
     )
   },
   {
@@ -114,36 +54,9 @@ const layers = [
       </svg>
     ),
     visual: (
-      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Lock Base */}
-        <rect x="40" y="70" width="80" height="60" rx="8" stroke="currentColor" strokeWidth="3" />
-        {/* Moving Lock Shackle */}
-        <motion.path 
-          d="M55 70V45C55 31.1929 66.1929 20 80 20C93.8071 20 105 31.1929 105 45V70" 
-          stroke="currentColor" strokeWidth="3" strokeLinecap="round"
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* Scanning Line */}
-        <motion.rect 
-          x="45" y="80" width="70" height="2" 
-          fill="currentColor"
-          animate={{ y: [0, 40, 0], opacity: [0, 1, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-        />
-        {/* ZK Privacy Dots */}
-        {[...Array(6)].map((_, i) => (
-          <motion.circle
-            key={i}
-            cx={55 + (i % 3) * 25}
-            cy={90 + Math.floor(i / 3) * 25}
-            r="3"
-            fill="currentColor"
-            animate={{ opacity: [0.1, 0.8, 0.1] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-          />
-        ))}
-      </svg>
+      <div className="flex items-center justify-center">
+        <Lock size={120} strokeWidth={1.2} />
+      </div>
     )
   },
   {
@@ -158,35 +71,9 @@ const layers = [
       </svg>
     ),
     visual: (
-      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Core Hub */}
-        <rect x="65" y="65" width="30" height="30" rx="4" stroke="currentColor" strokeWidth="3" />
-        {/* Connection Arms */}
-        {[0, 90, 180, 270].map((rot, i) => (
-          <g key={i} transform={`rotate(${rot} 80 80)`}>
-            <motion.path 
-              d="M80 65V35M80 35H100" 
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-              animate={{ pathLength: [0, 1, 0] }}
-              transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
-            />
-            <motion.rect 
-              x="100" y="30" width="15" height="15" rx="3" 
-              stroke="currentColor" strokeWidth="2" strokeOpacity="0.3"
-              animate={{ scale: [1, 1.2, 1], fillOpacity: [0, 0.2, 0] }}
-              fill="currentColor"
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
-            />
-          </g>
-        ))}
-        {/* Pulse Core */}
-        <motion.circle 
-          cx="80" cy="80" r="10" 
-          fill="currentColor"
-          animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-      </svg>
+      <div className="flex items-center justify-center">
+        <Blocks size={120} strokeWidth={1.2} />
+      </div>
     )
   }
 ];
