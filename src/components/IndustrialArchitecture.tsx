@@ -10,17 +10,13 @@ const layers = [
     id: '01',
     title: 'Identity Layer',
     subtitle: 'any name service',
-    description: 'Your core .any identity that links wallets and accounts into one privacy-first profile you control.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.2"/>
-        <path d="M12 7C12 8.65685 10.6569 10 9 10C7.34315 10 6 8.65685 6 7C6 5.34315 7.34315 4 9 4C10.6569 4 12 5.34315 12 7Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M4 18C4 15.7909 5.79086 14 8 14H10C12.2091 14 14 15.7909 14 18V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="18" cy="12" r="3" stroke="currentColor" strokeWidth="1.2" strokeDasharray="2 2"/>
-      </svg>
+    description: (
+      <>
+        Your core <span className="text-lightblueprimary font-bold">.any</span> identity that links wallets and accounts into one privacy-first profile you control.
+      </>
     ),
     visual: (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-lightblueprimary/90">
         <Fingerprint size={120} strokeWidth={1.2} />
       </div>
     )
@@ -30,14 +26,8 @@ const layers = [
     title: 'Reputation Layer',
     subtitle: 'on-chain trustworthiness',
     description: 'The score and status built from your onchain activity and achievements, forming a portable measure of trust.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L4 5V11C4 16.5228 12 22 12 22C12 22 20 16.5228 20 11V5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M8 10L11 13L16 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
     visual: (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-lightblueprimary/90">
         <ShieldCheck size={120} strokeWidth={1.2} />
       </div>
     )
@@ -47,14 +37,8 @@ const layers = [
     title: 'Proof Layer',
     subtitle: 'Proof of Trust with Privacy',
     description: 'Zero-knowledge proofs that let you verify reputation, eligibility, or attributes without exposing your data.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M8 11V7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
     visual: (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-lightblueprimary/90">
         <Lock size={120} strokeWidth={1.2} />
       </div>
     )
@@ -64,14 +48,8 @@ const layers = [
     title: 'Utility Layer',
     subtitle: 'Reputation based applications',
     description: 'Where apps use your identity, reputation, and proofs to unlock access, rewards, payments, and permissions.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4"/>
-        <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
-      </svg>
-    ),
     visual: (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-lightblueprimary/90">
         <Blocks size={120} strokeWidth={1.2} />
       </div>
     )
@@ -103,7 +81,7 @@ const GlassVisual = ({ visual, id }: { visual: React.ReactNode, id: string }) =>
           <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent rotate-45 pointer-events-none" />
 
           {/* The Content Visual */}
-          <div className="relative z-10 text-lightblueprimary/90">
+          <div className="relative z-10">
             {visual}
           </div>
 
@@ -231,32 +209,17 @@ const IndustrialArchitecture = () => {
                     <span className="text-8xl md:text-[14rem] font-medium text-white/[0.02] font-mono leading-none block -mb-12 md:-mb-24 pointer-events-none">
                       {layers[active].id}
                     </span>
-                    <div className="flex items-center gap-8 relative z-10">
-                      {/* Small inline icon - Match the redesigned theme */}
-                      <div className="relative w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center flex-shrink-0 backdrop-blur-xl shadow-2xl overflow-hidden group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50" />
-                        <div className="text-lightblueprimary relative z-10">
-                          {layers[active].icon}
-                        </div>
-                        <motion.div 
-                          className="absolute inset-0 border border-lightblueprimary/20 rounded-2xl pointer-events-none"
-                          animate={{ opacity: [0.2, 0.5, 0.2] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                      </div>
-                      
-                      <div>
-                        <h3 className="text-4xl md:text-7xl font-medium text-white tracking-tighter leading-tight">
-                          {layers[active].title}
-                        </h3>
-                        <p className="text-lightblueprimary/60 font-mono text-xs md:text-sm uppercase tracking-[0.4em] font-bold mt-2">
-                          {layers[active].subtitle}
-                        </p>
-                      </div>
+                    <div className="flex flex-col relative z-10">
+                      <h3 className="text-4xl md:text-7xl font-medium text-white tracking-tighter leading-tight">
+                        {layers[active].title}
+                      </h3>
+                      <p className="text-lightblueprimary/60 font-mono text-xs md:text-sm uppercase tracking-[0.4em] font-bold mt-2">
+                        {layers[active].subtitle}
+                      </p>
                     </div>
                   </div>
 
-                  <p className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-xl pl-0 md:pl-28 border-l border-white/5 ml-0 md:ml-10">
+                  <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-xl pl-0 md:pl-28 border-l border-white/5 ml-0 md:ml-10">
                     {layers[active].description}
                   </p>
 
