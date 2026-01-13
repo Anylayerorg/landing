@@ -111,7 +111,7 @@ export function Header() {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Image
-                src="/logo-anylayer.svg"
+                src="/anylayer-logo.svg"
                 alt="Anylayer logo"
                 width="140"
                 height="56"

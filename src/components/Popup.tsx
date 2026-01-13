@@ -62,7 +62,7 @@ const AutoPopupModal = () => {
                     {/* Logo */}
                     <div className="flex items-center gap-4 md:gap-9">
                         <Image src="/base-white.svg" alt="Base Logo" width={72} height={18} />
-                        <Image src="/ethereum-white.svg" alt="ethereum Logo" width={72} height={18} />
+                        <Image src="/anylayer-logo.svg" alt="Anylayer Logo" width={100} height={18} />
                     </div>
                     
                     {/* Close Button */}
