@@ -12,7 +12,6 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
-  const [headerStyle, setHeaderStyle] = useState("transparent");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
   const [resourcesDropdownTimeout, setResourcesDropdownTimeout] =
@@ -26,7 +25,8 @@ export function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // For add background on header scroll
+  // Keep track of scroll for minor adjustments if needed, 
+  // but the visual pill style will now be default.
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
   });
@@ -62,17 +62,6 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = scrollY.onChange((latest) => {
-      if (latest > 900) {
-        setHeaderStyle("solid");
-      } else {
-        setHeaderStyle("transparent");
-      }
-    });
-    return unsubscribe;
-  }, [scrollY]);
-
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
@@ -86,38 +75,33 @@ export function Header() {
     <motion.header
       initial={false}
       animate={{
-        y: isScrolled ? 12 : 0,
+        y: 12, // Always slightly offset from top
       }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-[999] flex justify-center px-4"
     >
       <motion.div
         initial={{
-          backgroundColor: "rgba(13, 13, 18, 0)",
-          backdropFilter: "blur(0px)",
-          borderColor: "rgba(255, 255, 255, 0)",
-          borderBottomWidth: "0px",
-          width: "100%",
-          paddingLeft: "0",
-          paddingRight: "0",
-          borderRadius: "0px",
+          backgroundColor: "rgba(13, 13, 18, 0.7)",
+          backdropFilter: "blur(12px) saturate(180%)",
+          borderColor: "rgba(255, 255, 255, 0.08)",
+          borderBottomWidth: "1px",
+          width: "auto",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          borderRadius: "16px",
+          boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
         }}
         animate={{
-          backgroundColor: isScrolled
-            ? "rgba(13, 13, 18, 0.7)"
-            : "rgba(13, 13, 18, 0)",
-          backdropFilter: isScrolled ? "blur(12px) saturate(180%)" : "blur(0px)",
-          borderColor: isScrolled
-            ? "rgba(255, 255, 255, 0.08)"
-            : "rgba(255, 255, 255, 0)",
-          borderBottomWidth: isScrolled ? "1px" : "0px",
-          width: isScrolled ? "auto" : "100%",
-          paddingLeft: isScrolled ? "1.5rem" : "0",
-          paddingRight: isScrolled ? "1.5rem" : "0",
-          borderRadius: isScrolled ? "16px" : "0px",
-          boxShadow: isScrolled
-            ? "0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)"
-            : "none",
+          backgroundColor: "rgba(13, 13, 18, 0.7)",
+          backdropFilter: "blur(12px) saturate(180%)",
+          borderColor: "rgba(255, 255, 255, 0.08)",
+          borderBottomWidth: "1px",
+          width: "auto",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          borderRadius: "16px",
+          boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
         }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="relative max-w-screen-xl mx-auto w-full border-solid"
