@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
+import { ArrowUpRight } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -292,18 +293,12 @@ export function Header() {
                 className="hidden md:flex bg-white text-[#0D0D12] px-5 py-2.5 rounded-lg font-bold text-sm items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.15)] group"
               >
                 Launch App
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
+                <motion.div
+                  animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                 >
-                  <Image
-                    src="/filled-arrow.svg"
-                    alt="arrow"
-                    width="14"
-                    height="14"
-                    className="brightness-0"
-                  />
-                </motion.span>
+                  <ArrowUpRight size={16} strokeWidth={3} />
+                </motion.div>
               </a>
 
               {/* Mobile Menu Button */}
@@ -429,9 +424,7 @@ export function Header() {
                       className="mt-8 w-full bg-white text-[#0D0D12] rounded-xl font-bold flex items-center justify-center gap-3 py-4 transition-all active:scale-[0.98] shadow-lg"
                     >
                       Launch App
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      <ArrowUpRight size={20} strokeWidth={2.5} />
                     </a>
                   </div>
                 </motion.div>
