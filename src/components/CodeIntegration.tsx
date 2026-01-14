@@ -144,7 +144,7 @@ console.log(score); // 8,402`;
           <BentoTile span="md:col-span-6 md:row-span-2" className="p-10 md:p-14 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white/[0.04] to-transparent relative" noHover>
              <h2 className="text-3xl md:text-[2.75rem] font-medium tracking-tighter leading-[1.1] mb-8 text-white">
                 Build with <br /> <span className="text-white/60 font-light">Anylayer SDK.</span>
-             </h2>
+                    </h2>
              
              {/* Tactile 3D Button - Infinex Style */}
              <button className="group relative mt-2 active:translate-y-1 transition-transform">
@@ -152,7 +152,7 @@ console.log(score); // 8,402`;
                 <div className="relative px-10 py-4 bg-lightblueprimary text-black font-semibold rounded-full shadow-[0_12px_40px_rgba(166,131,255,0.3)] hover:scale-105 transition-all text-[13px] tracking-tight uppercase">
                    Documentation
                 </div>
-             </button>
+                    </button>
              
              <p className="text-white/60 text-[14px] mt-12 font-light leading-relaxed max-w-xl mb-4">
                 Deploy Sybil-resistant dApps using the <span className="text-white font-medium">TypeScript SDK</span>.
@@ -214,14 +214,14 @@ console.log(score); // 8,402`;
                    {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
                 </button>
              </div>
-             <div className="p-6 font-mono text-[12px] leading-relaxed text-lightblueprimary/50 flex gap-6">
+             <div className="px-6 pt-2 pb-4 font-mono text-[12px] leading-relaxed text-lightblueprimary/50 flex gap-6">
                 <div className="text-white/5 select-none text-[10px]">01<br/>02<br/>03<br/>04</div>
                 <div className="flex-1 truncate">
                    <span className="text-white/40">import</span> {'{ Anylayer }'} <span className="text-white/40">from</span> <span className="text-orange-300">"@anylayer/sdk"</span>;<br/>
                    <span className="text-white/40">const</span> sdk = <span className="text-white/40">await</span> Anylayer.<span className="text-white">init</span>({'{ apiKey: "..." }'});<br/>
                    <span className="text-white/40">const</span> rep = <span className="text-white/40">await</span> sdk.<span className="text-blue-400">verify</span>(userAddress);<br/>
                    <span className="text-white/20">// {'{ score: 8402, verified: true }'}</span>
-          </div>
+                </div>
              </div>
           </BentoTile>
 
@@ -245,7 +245,7 @@ console.log(score); // 8,402`;
              <div className="flex flex-col">
                 <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">ZK Node</span>
                 <span className="text-sm font-bold text-white mt-1">Verified</span>
-             </div>
+          </div>
           </BentoTile>
 
         </motion.div>
