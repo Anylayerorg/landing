@@ -225,7 +225,7 @@ export function Header() {
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                    </div>
+                                </div>
                                   </button>
                                 </div>
                               </div>
@@ -238,7 +238,7 @@ export function Header() {
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Image src="/code-square.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
-                                      </div>
+                            </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate ZK-trust into your apps with our core SDKs.</p>
@@ -254,8 +254,8 @@ export function Header() {
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
-                                      </div>
                                     </div>
+                                  </div>
                                   </a>
                                 </div>
                               </div>
@@ -274,15 +274,18 @@ export function Header() {
                 href="https://anylayer.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex bg-white text-[#0D0D12] px-5 py-2.5 rounded-lg font-bold text-sm items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.15)] group"
+                className="group relative hidden md:flex active:translate-y-0.5 transition-all"
               >
+                <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
+                <div className="relative bg-white text-[#0D0D12] px-6 py-2.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)] hover:scale-[1.02] transition-all">
                 Launch App
-                <motion.div
-                  animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
+                  <motion.div
+                    animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                 >
-                  <ArrowUpRight size={16} strokeWidth={3} />
-                </motion.div>
+                    <ArrowUpRight size={16} strokeWidth={3} />
+                  </motion.div>
+                </div>
               </a>
 
               {/* Mobile Menu Button */}
@@ -387,8 +390,8 @@ export function Header() {
                                 return (
                                   <button key={idx} className="block w-full text-left" onClick={() => {
                                     if (item.id) {
-                                      scrollToSection(item.id);
-                                      setIsMobileMenuOpen(false);
+                                    scrollToSection(item.id);
+                                    setIsMobileMenuOpen(false);
                                     }
                                   }}>
                                     {MobileContent}
@@ -405,10 +408,13 @@ export function Header() {
                       href="https://app.anylayer.org"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-8 w-full bg-white text-[#0D0D12] rounded-xl font-bold flex items-center justify-center gap-3 py-4 transition-all active:scale-[0.98] shadow-lg"
+                      className="group relative mt-8 w-full active:translate-y-0.5 transition-all"
                     >
+                      <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
+                      <div className="relative w-full bg-white text-[#0D0D12] rounded-full font-bold flex items-center justify-center gap-3 py-4 shadow-[0_8px_30px_rgba(255,255,255,0.1)] transition-all">
                       Launch App
-                      <ArrowUpRight size={20} strokeWidth={2.5} />
+                        <ArrowUpRight size={20} strokeWidth={2.5} />
+                      </div>
                     </a>
                   </div>
                 </motion.div>

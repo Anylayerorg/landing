@@ -14,27 +14,27 @@ import AutoPopupModal from './Popup';
 
 
 const trustScoreFeatures = [
-  {
-    icon: '/knight-shield.svg',
-    title: "Sybil resistance",
-    description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
-  },
-  {
-    icon: '/robotic.svg',
-    title: "AI + Human scoring",
-    description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
-  },
-  {
-    icon: '/circle-lock.svg',
-    title: "zero-knowledge prove",
-    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
-  },
-  {
-    icon: '/flow.svg',
-    title: "Cross-chain comparability",
-    description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
-  }
-];
+    {
+      icon: '/knight-shield.svg',
+      title: "Sybil resistance",
+      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
+    },
+    {
+      icon: '/robotic.svg',
+      title: "AI + Human scoring",
+      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
+    },
+    {
+      icon: '/circle-lock.svg',
+      title: "zero-knowledge prove",
+      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
+    },
+    {
+      icon: '/flow.svg',
+      title: "Cross-chain comparability",
+      description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
+    }
+  ];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -109,23 +109,29 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
                       A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
+                    <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
                       <a
                         href="https://app.anylayer.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-72 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
+                        className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
                       >
+                        <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
+                        <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
                         <span>Create ID</span>
-                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
+                          <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
+                        </div>
                       </a>
                       <a
                         href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                      className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-72 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
+                        className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
                       >
+                        <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
+                        <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
                         Documentation
+                        </div>
                       </a>
                     </div>
                   </div>
@@ -382,18 +388,18 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 </div>
               </div>
               <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[265px] md:max-w-[343px] w-full absolute right-0 bottom-0">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-2">
                     <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
-                      <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
+                        <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
                     </div>
                     <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
+                    </div>
                   </div>
-                </div>
 
                 <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5' />
 
-                <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between">
                   <div
                     className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
                   >
