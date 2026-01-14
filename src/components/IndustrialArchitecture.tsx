@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValue, useTransform, animate } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
@@ -9,183 +9,452 @@ const layers = [
   {
     id: '01',
     title: 'Identity Layer',
-    subtitle: 'THE MONOLITH',
-    description: (
-      <>
-        Your core <span className="text-lightblueprimary font-bold">.any</span> identity that links wallets and accounts into one privacy-first profile you control.
-      </>
-    ),
-    cta: 'See Identity Specs'
+    subtitle: 'THE ANCHOR',
+    description: 'Your core .any identity that links wallets and accounts into one privacy-first profile you control.',
+    cta: 'See Identity Specs',
+    visualSrc: '/identity-layer.svg',
+    iconSrc: '/identity-bgicon.svg',
+    color: 'rgba(166, 131, 255, 1)',
   },
   {
     id: '02',
     title: 'Reputation Layer',
-    subtitle: 'THE ASTROLABE',
-    description: 'The score and status built from your onchain activity and achievements, forming a portable measure of trust.',
-    cta: 'View Trust Model'
+    subtitle: 'THE MULTIPLIER',
+    description: 'The portable measure of trust built from your onchain activity and achievements, forming a compounding status.',
+    cta: 'View Trust Model',
+    visualSrc: '/reputation-layer.svg',
+    iconSrc: '/reputation-bgicon.svg',
+    color: 'rgba(59, 130, 246, 1)',
   },
   {
     id: '03',
     title: 'Proof Layer',
-    subtitle: 'THE CRYSTALLINE VAULT',
-    description: 'Zero-knowledge proofs that let you verify reputation, eligibility, or attributes without exposing your data.',
-    cta: 'Explore Proof Tech'
+    subtitle: 'THE SHIELD',
+    description: 'Zero-knowledge proofs that let you verify facts about yourself without exposing sensitive data, locked with a cryptographic seal.',
+    cta: 'Explore Proof Tech',
+    visualSrc: '/proof-layer.svg',
+    iconSrc: '/proof-bgicon.svg',
+    color: 'rgba(16, 185, 129, 1)',
   },
   {
     id: '04',
     title: 'Utility Layer',
-    subtitle: 'THE POWER PLANT',
-    description: 'Where apps use your identity, reputation, and proofs to unlock access, rewards, payments, and permissions.',
-    cta: 'Discover App Utility'
+    subtitle: 'THE UNLOCK',
+    description: 'Where apps use your identity and proofs to unlock access, rewards, and permissions through a secure gateway.',
+    cta: 'Discover App Utility',
+    visualSrc: '/utility-layer.svg',
+    iconSrc: '/utility-bgicon.svg',
+    color: 'rgba(245, 158, 11, 1)',
   }
 ];
 
-// --- 3D Mechanical Core Component ---
-const MechanicalCore = ({ active }: { active: number }) => {
-  return (
-    <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] flex items-center justify-center" style={{ perspective: '2000px' }}>
-      
-      {/* Dynamic Ambient Environment */}
-      <motion.div 
-        animate={{ 
-          opacity: [0.1, 0.2, 0.1],
-          scale: [1, 1.1, 1],
-          backgroundColor: active === 0 ? 'rgba(166,131,255,0.05)' : active === 1 ? 'rgba(59,130,246,0.05)' : 'rgba(166,131,255,0.08)'
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-        className="absolute inset-0 blur-[120px] rounded-full" 
-      />
+// --- Internal Score Counter with Fluctuations ---
+const ScoreCounter = ({ value }: { value: number }) => {
+  const count = useMotionValue(value - 500);
+  const [display, setDisplay] = useState(value - 500);
 
-      <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
-        
-        {/* STAGE 1 & 2: THE MONOLITH / CENTRAL CORE */}
-        <motion.div
-          animate={{
-            rotateY: [0, 360],
-            scale: active === 0 ? 1 : active === 1 ? 0.4 : 0.6,
-            y: active === 3 ? -50 : 0
-          }}
-          transition={{ 
-            rotateY: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-            y: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-          }}
-          style={{ transformStyle: 'preserve-3d' }}
-          className="relative w-32 h-48 md:w-40 md:h-64 flex items-center justify-center"
-        >
-          {/* 3D Pillar Sides */}
-          {[0, 90, 180, 270].map((deg) => (
-            <div 
-              key={deg}
-              className="absolute inset-0 bg-white/[0.03] backdrop-blur-md border border-white/10"
-              style={{ 
-                transform: `rotateY(${deg}deg) translateZ(${typeof window !== 'undefined' && window.innerWidth < 768 ? '64px' : '80px'})`,
-                backfaceVisibility: 'hidden'
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-lightblueprimary/10 to-transparent opacity-50" />
+  useEffect(() => {
+    // Initial count up
+    const controls = animate(count, value, { 
+      duration: 3, 
+      ease: [0.16, 1, 0.3, 1] 
+    });
+    
+    const unsubscribe = count.on("change", (latest) => setDisplay(Math.round(latest)));
+
+    // Small fluctuations after initial count
+    const interval = setInterval(() => {
+      const fluctuation = value + (Math.random() * 40 - 20);
+      animate(count, fluctuation, { duration: 2, ease: "easeInOut" });
+    }, 3000);
+
+    return () => {
+      controls.stop();
+      unsubscribe();
+      clearInterval(interval);
+    };
+  }, [value, count]);
+
+  return <span>{display.toLocaleString()}</span>;
+};
+
+// --- Internal Score Gainer Effect ---
+const ScoreGainer = () => {
+  const gainTypes = [
+    { text: 'Wallet Age', color: 'text-green-400' },
+    { text: 'NFT Holder', color: 'text-blue-400' },
+    { text: 'Transaction', color: 'text-emerald-400' },
+    { text: 'Governance', color: 'text-purple-400' },
+    { text: 'Sybil Check', color: 'text-lightblueprimary' },
+    { text: 'Swap Volume', color: 'text-cyan-400' },
+    { text: 'Early Adopter', color: 'text-yellow-400' },
+  ];
+
+  const [gains, setGains] = useState<{ id: number; label: string; value: string; x: number; y: number; color: string }[]>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const id = Date.now();
+      const type = gainTypes[Math.floor(Math.random() * gainTypes.length)];
+      const val = `+${Math.floor(Math.random() * 100 + 10)}`;
+      
+      // Scatter points around the shield area
+      const x = (Math.random() - 0.5) * 350; 
+      const y = (Math.random() - 0.5) * 300;
+      
+      setGains(prev => [...prev.slice(-5), { id, label: type.text, value: val, x, y, color: type.color }]);
+      
+      setTimeout(() => {
+        setGains(prev => prev.filter(g => g.id !== id));
+      }, 2500);
+    }, 1200);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <AnimatePresence>
+        {gains.map((gain) => (
+          <motion.div
+            key={gain.id}
+            initial={{ opacity: 0, scale: 0.5, filter: "blur(4px)" }}
+            animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.9], filter: "blur(0px)" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute flex flex-col items-center"
+            style={{ x: gain.x, y: gain.y }}
+          >
+            <div className={`font-mono font-black text-[10px] md:text-sm ${gain.color} drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]`}>
+              {gain.value}
             </div>
-          ))}
+            <div className="text-[7px] md:text-[9px] uppercase tracking-[0.2em] text-white/40 font-bold bg-black/40 px-2 py-0.5 rounded-full border border-white/5 backdrop-blur-sm mt-1">
+              {gain.label}
+            </div>
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// --- Internal Reputation Rising Effect (Now just ScoreGainer) ---
+const ReputationRising = () => {
+  return (
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <ScoreGainer />
+    </div>
+  );
+};
+
+// --- Internal Rising Identity Text for Identity Layer ---
+const RisingIdentityText = () => {
+  const identities = [
+    'BTC.any', 'Eth.any', 'DeFi.any', 'AI.any', 'RWA.any', 
+    'Swap.any', 'Whale.any', 'Pump.any', 'Meme.any', 'Perps.any', 
+    'Base.any', 'business.any', 'payment.any', 'social.any', 'School.any'
+  ];
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
+      <div className="relative w-full h-full max-w-2xl mx-auto">
+        {identities.map((text, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: 400, opacity: 0, x: (i % 5 - 2) * 120 }}
+            animate={{ 
+              y: -500, 
+              opacity: [0, 0.6, 0.6, 0],
+              x: (i % 5 - 2) * 120 + Math.sin(i) * 30 
+            }}
+            transition={{
+              duration: 10 + Math.random() * 5,
+              repeat: Infinity,
+              delay: i * 0.6,
+              ease: "linear"
+            }}
+            className="absolute font-mono text-[9px] md:text-sm text-lightblueprimary/30 font-bold tracking-widest whitespace-nowrap"
+            style={{ 
+              left: '50%', 
+              marginLeft: '-40px',
+              top: '50%'
+            }}
+          >
+            {text}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// --- Internal Utility Hub Effect for Utility Layer ---
+const UtilityHub = () => {
+  const utilityTags = [
+    'Lending', 'AI', 'Gaming', 'Insurance', 'RWA', 
+    'Loyalty', 'Airdrop', 'DEX', 'Perps', 'Launchpad'
+  ];
+
+  const [visibleTags, setVisibleTags] = useState<{ id: number; text: string; side: 'left' | 'right'; y: number }[]>([]);
+
+  useEffect(() => {
+    let tagCounter = 0;
+    const interval = setInterval(() => {
+      const id = Date.now();
+      const text = utilityTags[tagCounter % utilityTags.length];
+      const side = Math.random() > 0.5 ? 'right' : 'left';
+      const yOffset = (Math.random() - 0.5) * 200; // Vary height slightly
+      
+      setVisibleTags(prev => {
+        // Keep up to 2 per side
+        const leftCount = prev.filter(t => t.side === 'left').length;
+        const rightCount = prev.filter(t => t.side === 'right').length;
+        
+        if (side === 'left' && leftCount >= 2) return prev;
+        if (side === 'right' && rightCount >= 2) return prev;
+        
+        return [...prev, { id, text, side, y: yOffset }];
+      });
+
+      setTimeout(() => {
+        setVisibleTags(prev => prev.filter(t => t.id !== id));
+      }, 4000);
+
+      tagCounter++;
+    }, 1500); // Staggered appearance every 1.5s
+
+    return () => clearInterval(interval);
+  }, [utilityTags.length]);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Staggered Side Text Tags */}
+        <div className="absolute inset-0 z-20">
+          <AnimatePresence>
+            {visibleTags.map((tag) => (
+              <motion.div
+                key={tag.id}
+                initial={{ x: tag.side === 'left' ? -40 : 40, opacity: 0 }}
+                animate={{ x: tag.side === 'left' ? 0 : 0, opacity: 1 }}
+                exit={{ x: tag.side === 'left' ? 40 : -40, opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute bg-white/5 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full"
+                style={{ 
+                  left: tag.side === 'left' ? '10%' : 'auto', 
+                  right: tag.side === 'right' ? '10%' : 'auto',
+                  top: `calc(50% + ${tag.y}px)`
+                }}
+              >
+                <span className={`text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase ${tag.side === 'left' ? 'text-lightblueprimary' : 'text-white/60'}`}>
+                  {tag.text}
+                </span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Pulsing connection circles */}
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={i}
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1.4, opacity: [0, 0.15, 0] }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              delay: i * 1.6,
+              ease: "easeOut"
+            }}
+            className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] border border-white/5 rounded-[40px] rotate-45"
+          />
+        ))}
+        
+        {/* Data Transmission Particles */}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
+              x: [0, (Math.random() - 0.5) * 400],
+              y: [0, (Math.random() - 0.5) * 400],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeOut"
+            }}
+            className="absolute w-1 h-1 bg-lightblueprimary/40 rounded-full"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// --- Internal Solid Rotating Ring for Proof Layer ---
+const SolidRotatingRing = () => {
+  return (
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center" style={{ perspective: '1000px' }}>
+      <div 
+        className="relative flex items-center justify-center"
+        style={{ 
+          transform: 'rotateX(75deg) rotateY(-10deg)',
+          transformStyle: 'preserve-3d' 
+        }}
+      >
+        {/* The Solid Physical Ring */}
+        <div 
+          className="absolute border-[16px] border-lightblueprimary/20 rounded-full"
+          style={{ 
+            width: '480px', 
+            height: '480px',
+            boxShadow: 'inset 0 0 40px rgba(166, 131, 255, 0.1), 0 0 40px rgba(166, 131, 255, 0.1)',
+            transform: 'translateZ(0px)'
+          }}
+        >
+          {/* Inner highlight for "solid" look */}
+          <div className="absolute inset-0 border border-white/10 rounded-full" />
+          <div className="absolute -inset-[1px] border border-black/20 rounded-full" />
           
-          {/* Glowing Internal Core */}
+          {/* Light Streaks passing through the ring */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0"
+          >
+            <div 
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-4 bg-gradient-to-r from-transparent via-lightblueprimary to-transparent blur-md opacity-80"
+              style={{ transform: 'translateY(-10px)' }}
+            />
+          </motion.div>
+
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0"
+          >
+            <div 
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-4 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-lg opacity-40"
+              style={{ transform: 'translateY(10px)' }}
+            />
+          </motion.div>
+        </div>
+
+        {/* Secondary Inner Ring */}
+        <div 
+          className="absolute border-[4px] border-lightblueprimary/10 rounded-full"
+          style={{ 
+            width: '400px', 
+            height: '400px',
+            transform: 'translateZ(10px)'
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const LuminousVisual = ({ active }: { active: number }) => {
+  const purpleGlow = "rgba(166, 131, 255, 0.4)"; // Uniform purple for all layers
+
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, scale: 0.8, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 1.1, y: -20 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px] flex items-center justify-center"
+        >
+          {/* Main Glow Backdrop - NOW UNIFORM PURPLE */}
           <motion.div 
             animate={{ 
-              opacity: [0.4, 0.8, 0.4],
-              scale: [0.8, 1, 0.8]
+              opacity: [0.15, 0.3, 0.15],
+              scale: [1, 1.2, 1]
             }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute w-12 h-24 bg-lightblueprimary blur-2xl rounded-full opacity-50" 
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 blur-[120px] rounded-full pointer-events-none"
+            style={{ backgroundColor: purpleGlow }}
           />
+
+          {/* Asset Container (Bouncing removed) */}
+          <motion.div className="relative z-10 w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+            {/* Rising Identity Text (Only for Identity Layer) */}
+            {active === 0 && <RisingIdentityText />}
+
+            {/* Reputation Rising Effect (Only for Reputation Layer) */}
+            {active === 1 && <ReputationRising />}
+            
+            {/* Solid Ring Effect (Only for Proof Layer) */}
+            {active === 2 && <SolidRotatingRing />}
+
+            {/* Utility Hub Effect (Only for Utility Layer) */}
+            {active === 3 && <UtilityHub />}
+
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image 
+                src={layers[active].visualSrc} 
+                alt="" 
+                width={600} 
+                height={600} 
+                className="w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
+                priority
+              />
+
+                      {/* Redesigned Total Trust Score Display - NOW RECTANGULAR & BELOW */}
+                      {active === 1 && (
+                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 w-[280px] md:w-[320px]">
+                          <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="relative"
+                          >
+                            {/* Industrial Score Plate - Horizontal Rectangular */}
+                            <div className="relative bg-[#0D0D12]/90 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center justify-between gap-6">
+                              
+                              <div className="flex flex-col gap-1">
+                                <div className="flex items-center gap-1.5">
+                                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                                  <span className="text-[8px] font-mono text-white/30 uppercase tracking-[0.2em] font-black">Trust Index</span>
+                                </div>
+                                <div className="text-2xl md:text-3xl font-mono text-white font-black tracking-tighter">
+                                  <ScoreCounter value={8402} />
+                                </div>
+                              </div>
+
+                              <div className="h-10 w-px bg-white/5" />
+
+                              <div className="flex flex-col gap-1 flex-1">
+                                <div className="flex justify-between items-center text-[7px] font-mono uppercase tracking-widest text-white/20">
+                                  <span>Verification</span>
+                                  <span className="text-lightblueprimary">HUMAN</span>
+                                </div>
+                                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-1">
+                                  <motion.div 
+                                    initial={{ width: 0 }}
+                                    animate={{ width: '84%' }}
+                                    transition={{ duration: 2, delay: 0.5 }}
+                                    className="h-full bg-gradient-to-r from-blueprimary to-lightblueprimary"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
+                      )}
+            </div>
+          </motion.div>
+
+          {/* Ground Reflection Shadow */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-72 h-8 bg-black/80 blur-3xl rounded-full opacity-50 pointer-events-none" />
         </motion.div>
-
-        {/* STAGE 2: THE ASTROLABE RINGS (REPUTATION) */}
-        <AnimatePresence>
-          {active >= 1 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, rotateX: 70 }}
-              animate={{ opacity: 1, scale: 1, rotateX: 75 }}
-              exit={{ opacity: 0, scale: 1.2 }}
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              {[180, 240, 300].map((size, i) => (
-                <motion.div
-                  key={size}
-                  animate={{ rotateZ: i % 2 === 0 ? 360 : -360 }}
-                  transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
-                  className="absolute border border-lightblueprimary/30 rounded-full"
-                  style={{ 
-                    width: size, 
-                    height: size,
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 0 20px rgba(166,131,255,0.1)'
-                  }}
-                >
-                  {/* Floating Data Nodes on Rings */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* STAGE 3: THE CRYSTALLINE VAULT (PROOF) */}
-        <AnimatePresence>
-          {active >= 2 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1.1 }}
-              exit={{ opacity: 0, scale: 1.5 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              {/* Refractive Sphere Shell */}
-              <div className="w-[320px] h-[320px] md:w-[400px] md:h-[400px] rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_50%)]" />
-                
-                {/* ZK Proof Geometric Etchings */}
-                <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100">
-                  <path d="M50 5 L95 25 L95 75 L50 95 L5 75 L5 25 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                  <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="0.2" />
-                </svg>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* STAGE 4: THE POWER PLANT DOCKING (UTILITY) */}
-        <AnimatePresence>
-          {active === 3 && (
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              {/* Industrial Frame */}
-              <div className="w-full h-full flex flex-col items-center justify-between py-10">
-                <div className="w-64 h-2 bg-white/10 rounded-full border border-white/5 shadow-2xl" />
-                
-                {/* Light Beams */}
-                <div className="absolute inset-0 flex justify-around pointer-events-none">
-                  {[...Array(4)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ height: 0 }}
-                      animate={{ height: '100vh' }}
-                      className="w-px bg-gradient-to-b from-lightblueprimary via-lightblueprimary/20 to-transparent opacity-20"
-                    />
-                  ))}
-                </div>
-
-                <div className="w-64 h-2 bg-white/10 rounded-full border border-white/5 shadow-2xl" />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-      </div>
+      </AnimatePresence>
     </div>
   );
 };
@@ -211,20 +480,18 @@ const IndustrialArchitecture = () => {
     <section 
       ref={containerRef} 
       id="architecture" 
-      className="relative bg-[#08080C] overflow-visible"
+      className="relative bg-[#08080C] overflow-visible select-none"
       style={{ height: `${total * 100}vh` }}
     >
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         
-        {/* Very Subtle Background Detail */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.01]">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/dotted-pattern.png')] bg-repeat" />
-        </div>
+        {/* Background Atmosphere */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.02),transparent_70%)]" />
 
         <div className="max-w-screen-xl mx-auto px-10 w-full relative z-10">
           <div className="grid md:grid-cols-2 gap-20 md:gap-40 items-center">
             
-            {/* Left Column: Clean, Well-Spaced Text */}
+            {/* Left Column: Clean Text */}
             <div className="relative min-h-[400px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -235,7 +502,7 @@ const IndustrialArchitecture = () => {
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-8"
                 >
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
                         {layers[active].id}
@@ -245,9 +512,20 @@ const IndustrialArchitecture = () => {
                         {layers[active].subtitle}
                       </span>
                     </div>
-                    <h3 className="text-4xl md:text-6xl font-medium text-white tracking-tight leading-none">
-                      {layers[active].title}
-                    </h3>
+                    
+                    <div className="flex items-center gap-6">
+                      <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 relative">
+                        <Image 
+                          src={layers[active].iconSrc} 
+                          alt="" 
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <h3 className="text-5xl md:text-7xl font-medium text-white tracking-tighter leading-none">
+                        {layers[active].title}
+                      </h3>
+                    </div>
                   </div>
 
                   <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
@@ -259,13 +537,12 @@ const IndustrialArchitecture = () => {
                       href="https://docs.onzks.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 transition-all w-fit"
+                      className="group relative active:translate-y-0.5 transition-all w-fit block"
                     >
-                      <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30 group-hover:text-white transition-colors">
+                      <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="relative px-10 py-4 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
                         {layers[active].cta}
-                      </span>
-                      <div className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center group-hover:border-lightblueprimary/30 group-hover:bg-lightblueprimary/5 transition-all duration-500">
-                        <ArrowRight size={14} className="text-white/20 group-hover:text-white transition-all group-hover:translate-x-0.5" />
+                        <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all group-hover:translate-x-1" />
                       </div>
                     </a>
                   </div>
@@ -273,15 +550,15 @@ const IndustrialArchitecture = () => {
               </AnimatePresence>
             </div>
 
-            {/* Right Column: Mechanical Core Assembly */}
-            <div className="relative flex justify-center items-center h-[40vh] md:h-[60vh]">
-               <MechanicalCore active={active} />
+            {/* Right Column: Luminous Visual */}
+            <div className="relative flex justify-center items-center h-[50vh] md:h-[70vh]">
+               <LuminousVisual active={active} />
             </div>
 
           </div>
         </div>
 
-        {/* Minimal Progress Indicator (Side) */}
+        {/* Minimal Progress Indicator */}
         <div className="absolute right-12 top-1/2 -translate-y-1/2 flex flex-col gap-4 hidden lg:flex">
           {layers.map((_, i) => (
             <motion.div 
