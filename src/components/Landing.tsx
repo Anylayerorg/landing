@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
-import TabsCard from './TabsCard';
+import IndustrialCapital from './IndustrialCapital';
 import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
@@ -435,7 +435,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <ParallelCards sectionId="dimension" />
 
-        <TabsCard />
+        <IndustrialCapital />
 
         <CodeIntegration />
 
