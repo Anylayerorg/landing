@@ -40,7 +40,7 @@ console.log(score); // 8,402`;
   };
 
   return (
-    <section id="opportunity" className="py-12 bg-[#08080C] overflow-hidden">
+    <section id="opportunity" className="hidden md:block py-12 bg-[#08080C] overflow-hidden">
       <div className="px-6 max-w-screen-xl mx-auto">
         
         <motion.div 
@@ -48,7 +48,7 @@ console.log(score); // 8,402`;
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[120px]"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[140px]"
         >
           
           {/* ROW 1: IDENTITY & TRUST TOOLS */}
@@ -119,7 +119,7 @@ console.log(score); // 8,402`;
           <BentoTile span="md:col-span-3 md:row-span-2" className="p-6 flex flex-col justify-between group/score">
              <div className="space-y-1">
                 <div className="text-lightblueprimary font-black text-[9px] flex items-center gap-2 uppercase tracking-[0.3em]">
-                   <div className="w-2 h-2 rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.4)]" /> Reputation API
+                   <div className="w-2.5 h-2.5 rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.4)]" /> Reputation API
                 </div>
                 <div className="text-[11px] font-medium text-white/40 mt-4 leading-relaxed">
                    Query high-fidelity identity data with sub-second latency.
@@ -141,27 +141,27 @@ console.log(score); // 8,402`;
           </BentoTile>
 
           {/* 5. THE HERO CENTER (Build with SDK) */}
-          <BentoTile span="md:col-span-6 md:row-span-2" className="p-8 md:p-10 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white/[0.04] to-transparent relative" noHover>
-             <h2 className="text-2xl md:text-[2.25rem] font-medium tracking-tighter leading-tight mb-6 text-white">
-                Build with <br /> <span className="text-white/60 font-light">Anylayer SDK.</span>
+          <BentoTile span="md:col-span-6 md:row-span-2" className="p-8 md:p-10 flex flex-col items-center justify-center text-center bg-lightblueprimary relative overflow-hidden" noHover>
+             <h2 className="text-2xl md:text-[2.25rem] font-medium tracking-tighter leading-tight mb-6 text-black">
+                Build with <br /> <span className="text-black/60 font-light">Anylayer SDK.</span>
                     </h2>
              
-             {/* Tactile 3D Button - Infinex Style */}
+             {/* Tactile 3D Button - High Contrast */}
              <button className="group relative mt-1 active:translate-y-1 transition-transform">
-                <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
-                <div className="relative px-8 py-3 bg-lightblueprimary text-black font-semibold rounded-full shadow-[0_8px_30px_rgba(166,131,255,0.3)] hover:scale-105 transition-all text-[12px] tracking-tight uppercase">
+                <div className="absolute inset-0 bg-black blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
+                <div className="relative px-8 py-3 bg-black text-white font-semibold rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:scale-105 transition-all text-[12px] tracking-tight uppercase">
                    Documentation
                 </div>
                     </button>
              
-             <p className="text-white/60 text-[12px] mt-10 font-light leading-relaxed max-w-md">
-                Deploy Sybil-resistant dApps using the <span className="text-white font-medium">TypeScript SDK</span>.
+             <p className="text-black/70 text-[12px] mt-10 font-light leading-relaxed max-w-md">
+                Deploy Sybil-resistant dApps using the <span className="text-black font-medium">TypeScript SDK</span>.
                 Verify identity, reputation, and ZK-proofs via a single REST API.
              </p>
 
-             {/* Background Subtle Logo - Contained */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] pointer-events-none select-none flex items-center justify-center">
-                <Fingerprint size={320} strokeWidth={0.5} className="text-white" />
+             {/* Dark Background Subtle Logo */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.05] pointer-events-none select-none flex items-center justify-center">
+                <Fingerprint size={320} strokeWidth={0.5} className="text-black" />
              </div>
           </BentoTile>
 
@@ -214,14 +214,14 @@ console.log(score); // 8,402`;
                    {copied ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
                 </button>
              </div>
-             <div className="px-5 pt-1.5 pb-3 font-mono text-[11px] leading-relaxed text-lightblueprimary/50 flex gap-4">
+             <div className="px-5 pt-3 pb-5 font-mono text-[11px] leading-relaxed text-lightblueprimary/50 flex gap-4">
                 <div className="text-white/5 select-none text-[9px]">01<br/>02<br/>03<br/>04</div>
                 <div className="flex-1 truncate">
                    <span className="text-white/40">import</span> {'{ Anylayer }'} <span className="text-white/40">from</span> <span className="text-orange-300">"@anylayer/sdk"</span>;<br/>
                    <span className="text-white/40">const</span> sdk = <span className="text-white/40">await</span> Anylayer.<span className="text-white">init</span>({'{ apiKey: "..." }'});<br/>
                    <span className="text-white/40">const</span> rep = <span className="text-white/40">await</span> sdk.<span className="text-blue-400">verify</span>(userAddress);<br/>
                    <span className="text-white/20">// {'{ score: 8402, verified: true }'}</span>
-                </div>
+          </div>
              </div>
           </BentoTile>
 
@@ -245,7 +245,7 @@ console.log(score); // 8,402`;
              <div className="flex flex-col">
                 <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em]">ZK Node</span>
                 <span className="text-xs font-bold text-white mt-0.5">Verified</span>
-          </div>
+             </div>
           </BentoTile>
 
         </motion.div>
