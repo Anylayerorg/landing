@@ -122,7 +122,7 @@ const ScoreGainer = () => {
             animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.9], filter: "blur(0px)" }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute flex flex-col items-center"
+            className="absolute flex flex-col items-center z-50"
             style={{ x: gain.x, y: gain.y }}
           >
             <div className={`font-mono font-black text-[10px] md:text-sm ${gain.color} drop-shadow-[0_0_12px_rgba(0,0,0,0.8)]`}>
@@ -363,12 +363,12 @@ const LuminousVisual = ({ active }: { active: number }) => {
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="popLayout">
         <motion.div
           key={active}
-          initial={{ opacity: 0, scale: 0.8, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 1.1, y: -20 }}
+          initial={{ opacity: 0, scale: 0.8, y: 30, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, scale: 1.1, y: -20, filter: 'blur(10px)' }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
@@ -385,18 +385,6 @@ const LuminousVisual = ({ active }: { active: number }) => {
 
           {/* Asset Container (Bouncing removed) */}
           <motion.div className="relative z-10 w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
-            {/* Rising Identity Text (Only for Identity Layer) */}
-            {active === 0 && <RisingIdentityText />}
-
-            {/* Reputation Rising Effect (Only for Reputation Layer) */}
-            {active === 1 && <ReputationRising />}
-            
-            {/* Solid Ring Effect (Only for Proof Layer) */}
-            {active === 2 && <SolidRotatingRing />}
-
-            {/* Utility Hub Effect (Only for Utility Layer) */}
-            {active === 3 && <UtilityHub />}
-
             <div className="relative w-full h-full flex items-center justify-center">
               <Image 
                 src={layers[active].visualSrc} 
@@ -449,6 +437,21 @@ const LuminousVisual = ({ active }: { active: number }) => {
                         </div>
                       )}
             </div>
+
+            {/* Effects Rendered ON TOP of the Asset */}
+            <div className="absolute inset-0 z-50 pointer-events-none">
+              {/* Rising Identity Text (Only for Identity Layer) */}
+              {active === 0 && <RisingIdentityText />}
+
+              {/* Reputation Rising Effect (Only for Reputation Layer) */}
+              {active === 1 && <ReputationRising />}
+              
+              {/* Solid Ring Effect (Only for Proof Layer) */}
+              {active === 2 && <SolidRotatingRing />}
+
+              {/* Utility Hub Effect (Only for Utility Layer) */}
+              {active === 3 && <UtilityHub />}
+            </div>
           </motion.div>
 
           {/* Ground Reflection Shadow */}
@@ -464,17 +467,21 @@ const IndustrialArchitecture = () => {
   const [active, setActive] = useState(0);
   const total = layers.length;
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+          const { scrollYProgress } = useScroll({
+            target: containerRef,
+            offset: ["start start", "end end"],
+          });
 
-  useEffect(() => {
-    return scrollYProgress.on("change", (v) => {
-      const index = Math.min(total - 1, Math.floor(v * total));
-      setActive(index);
-    });
-  }, [scrollYProgress, total]);
+          useEffect(() => {
+            const unsubscribe = scrollYProgress.on("change", (v) => {
+              const rawIndex = v * total;
+              const index = Math.min(total - 1, Math.floor(rawIndex));
+              if (index !== active) {
+                setActive(index);
+              }
+            });
+            return () => unsubscribe();
+          }, [scrollYProgress, total, active]);
 
   return (
     <section 
@@ -488,22 +495,22 @@ const IndustrialArchitecture = () => {
         {/* Background Atmosphere */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.02),transparent_70%)]" />
 
-        <div className="max-w-screen-xl mx-auto px-10 w-full relative z-10">
-          <div className="grid md:grid-cols-2 gap-20 md:gap-40 items-center">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-10 w-full relative z-10">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-40 items-center">
             
-            {/* Left Column: Clean Text */}
-            <div className="relative min-h-[400px] flex flex-col justify-center">
-              <AnimatePresence mode="wait">
+            {/* Left Column: Clean Text (Order 2 on mobile) */}
+            <div className="order-2 md:order-1 relative min-h-[auto] md:min-h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
+              <AnimatePresence mode="popLayout">
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-8"
+                  initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, x: 10, filter: 'blur(10px)' }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-6 md:space-y-8"
                 >
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center md:justify-start gap-3">
                       <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
                         {layers[active].id}
                       </span>
@@ -513,26 +520,18 @@ const IndustrialArchitecture = () => {
                       </span>
                     </div>
                     
-                    <div className="flex items-center gap-6">
-                      <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 relative">
-                        <Image 
-                          src={layers[active].iconSrc} 
-                          alt="" 
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <h3 className="text-5xl md:text-7xl font-medium text-white tracking-tighter leading-none">
+                    <div className="flex items-center justify-center md:justify-start">
+                      <h3 className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-none">
                         {layers[active].title}
                       </h3>
                     </div>
                   </div>
 
-                  <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                  <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-lg">
                     {layers[active].description}
                   </p>
 
-                  <div className="pt-4">
+                  <div className="pt-2 md:pt-4 flex justify-center md:justify-start">
                     <a
                       href="https://docs.onzks.com"
                       target="_blank"
@@ -540,7 +539,7 @@ const IndustrialArchitecture = () => {
                       className="group relative active:translate-y-0.5 transition-all w-fit block"
                     >
                       <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="relative px-10 py-4 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
+                      <div className="relative px-8 md:px-10 py-3 md:py-4 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
                         {layers[active].cta}
                         <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all group-hover:translate-x-1" />
                       </div>
@@ -550,8 +549,8 @@ const IndustrialArchitecture = () => {
               </AnimatePresence>
             </div>
 
-            {/* Right Column: Luminous Visual */}
-            <div className="relative flex justify-center items-center h-[50vh] md:h-[70vh]">
+            {/* Right Column: Luminous Visual (Order 1 on mobile) */}
+            <div className="order-1 md:order-2 relative flex justify-center items-center h-[35vh] md:h-[70vh] w-full">
                <LuminousVisual active={active} />
             </div>
 
