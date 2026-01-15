@@ -88,13 +88,13 @@ const IndustrialCapital = () => {
               <div className="h-px w-8 bg-white/10" />
               <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
             </div>
-            <h2 className="text-[3.5rem] md:text-[6.5rem] font-medium text-primaryText leading-[0.9] tracking-tighter">
+            <h2 className="text-[3.5rem] md:text-[5rem] font-medium text-primaryText leading-[0.9] tracking-tighter">
               Unlock <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">Capital</span>, <br />
               not your data
             </h2>
           </motion.div>
           <div className="flex flex-col justify-end">
-            <p className="text-white/40 text-xl font-light leading-relaxed max-w-sm border-l border-white/10 pl-10">
+            <p className="text-white/40 text-xl font-light leading-relaxed max-w-xl border-l border-white/10 pl-10">
               Anylayer is more than a credit score. It's a trust layer designed for 
               different groups to benefit from portable zk-verified reputation.
             </p>

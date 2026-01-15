@@ -11,28 +11,50 @@ import IndustrialArchitecture from './IndustrialArchitecture';
 import Architecture from './Architecture';
 import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
+import { 
+  Shield, 
+  Lock, 
+  Cpu, 
+  Globe, 
+  Fingerprint, 
+  Zap, 
+  Activity, 
+  ShieldCheck, 
+  Search,
+  Database,
+  Terminal,
+  Server,
+  Network,
+  Maximize2,
+  ChevronRight,
+  MoreHorizontal,
+  Settings,
+  Box,
+  Sparkles
+} from 'lucide-react';
 
 
 const trustScoreFeatures = [
     {
-      icon: '/knight-shield.svg',
       title: "Sybil resistance",
-      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
+      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore",
+      icon: '/knight-shield.svg'
     },
     {
-      icon: '/robotic.svg',
       title: "AI + Human scoring",
-      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
+      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents.",
+      icon: '/robotic.svg'
     },
     {
-      icon: '/circle-lock.svg',
       title: "zero-knowledge prove",
-      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
+      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
+      icon: '/circle-lock.svg',
+      isPurple: true
     },
     {
-      icon: '/flow.svg',
       title: "Cross-chain comparability",
-      description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
+      description: "Cross-chain support works across multiple blockchains, allowing identity and trust move freely",
+      icon: '/flow.svg'
     }
   ];
 
@@ -78,6 +100,63 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentWordIndex, words]);
+
+  const Badge = ({ label, subtitle }: { label: string, subtitle: string }) => (
+    <div className="flex items-center justify-start gap-3 mb-12">
+      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">{label}</span>
+      <div className="h-px w-8 bg-white/10" />
+      <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
+    </div>
+  );
+
+  // --- TRUST SCORE SECTION (Infinex-Inspired Design) ---
+  const TrustScoreSection = () => (
+    <div className="flex flex-col items-center text-center">
+      {/* Header Area */}
+      <div className="mb-20 space-y-4">
+        <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-60">
+          Trust Protocol
+        </span>
+        <h2 className="text-[2.5rem] md:text-[4.5rem] font-medium text-primaryText leading-[0.95] tracking-[-0.04em] max-w-4xl mx-auto">
+          Trustscore that <br className="hidden md:block" />
+          unlocks <span className="text-lightblueprimary">Anything</span>
+        </h2>
+      </div>
+
+      {/* 4-Column Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
+        {trustScoreFeatures.map((f: any, i) => (
+          <div key={i} className="space-y-5 group">
+            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
+              <Image 
+                src={f.icon} 
+                alt={f.title} 
+                width={28} 
+                height={28} 
+                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`} 
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-lightblueprimary transition-colors">
+                {f.title}
+              </h4>
+              <p className="text-xs md:text-sm text-white/30 leading-relaxed font-light max-w-[240px]">
+                {f.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Button - Moved below grid */}
+      <div className="mt-24">
+        <button className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-[filter,transform,box-shadow,background-color] duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
+          Explore Protocol
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -344,100 +423,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <IndustrialArchitecture />
 
         {/* Section Trust Score */}
-        <section id="trustScore" className="py-10 md:pt-10 md:pb-20 px-5 max-w-screen-xl mx-auto z-10 relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left Content */}
-            <div
-              className="max-w-[47rem] mx-auto flex flex-col items-start"
-            >
-              <div className="flex items-center justify-start gap-3 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Index</span>
-                <div className="h-px w-8 bg-white/10" />
-                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Score Engine</span>
-              </div>
-              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
-                {" "}
-                Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
-              </h2>
-              <p className="text-primaryText/60 text-sm md:text-base">
-                Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
-              </p>
-            </div>
-
-            {/* Right Content - Trust Score Card */}
-            <div
-              className="relative pb-10"
-            >
-              <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[265px] md:max-w-[365px]">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6 md:mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET</div>
-                  <div className="text-[#CCD1E9] text-[10px] md:text-sm">0xA6...91F2</div>
-                </div>
-
-                {/* Left Side Labels */}
-                <div className="space-y-2 mt-3">
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">HUMAN</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">Verified</div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET AGE</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">90+ Days</div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">ACTIVITY</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">consistent</div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center mt-6 md:mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">SCORE</div>
-                  <div className="text-[#CCD1E9] text-[10px] md:text-sm ">72</div>
-                </div>
-              </div>
-              <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[265px] md:max-w-[343px] w-full absolute right-0 bottom-0">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
-                        <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
-                    </div>
-                    <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
-                    </div>
-                  </div>
-
-                <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5' />
-
-                  <div className="flex items-center justify-between">
-                  <div
-                    className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
-                  >
-                    120
-                  </div>
-                  <div className="text-[#A683FF] text-xs md:text-sm font-geist">+39 this month</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid sm:grid-cols-4 gap-6 mt-20">
-            {trustScoreFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4"
-              >
-                <div className="w-5 h-5 text-primaryText">
-                  <Image src={feature.icon} alt='Shield' width={20} height={20} className='w-full h-full' />
-                </div>
-                <div className='flex-1'>
-                  <p className="text-[#9095A4] text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <section id="trustScore" className="py-24 md:py-32 px-5 max-w-screen-xl mx-auto z-10 relative border-t border-white/5">
+          <TrustScoreSection />
         </section>
 
         <Architecture />
