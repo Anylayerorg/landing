@@ -40,8 +40,11 @@ const IndustrialTrustScore = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-8 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 border border-white/10 px-6 py-3">
-              <span className="text-xs text-white/40 uppercase tracking-[0.3em] font-black">Trust Engine</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Velocity</span>
+              <div className="h-px w-8 bg-white/10" />
+              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5.5rem] font-medium text-primaryText mb-10 leading-[0.9] tracking-tighter">
               Trustscore that <br />
@@ -75,7 +78,7 @@ const IndustrialTrustScore = () => {
               <div className="flex justify-between items-center mb-12 pb-8 border-b border-white/5 relative z-10">
                 <div className="space-y-1">
                   <div className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-black">Identity Module</div>
-                  <div className="text-lightblueprimary/80 font-mono text-sm tracking-tighter uppercase">ID_0xA6...91F2</div>
+                  <div className="text-lightblueprimary/80 font-mono text-sm tracking-tighter uppercase">ID 0xA6...91F2</div>
                 </div>
                 <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center">
                   <div className="w-2.5 h-2.5 rounded-full bg-lightblueprimary animate-pulse shadow-[0_0_20px_rgba(166,131,255,1)]" />
@@ -87,7 +90,7 @@ const IndustrialTrustScore = () => {
                   { label: "HUMAN", value: "VERIFIED" },
                   { label: "WALLET AGE", value: "90+ DAYS" },
                   { label: "ACTIVITY", value: "CONSISTENT" },
-                  { label: "SECURITY", value: "ZKS_ENCLAVE" }
+                  { label: "SECURITY", value: "ZKS ENCLAVE" }
                 ].map((item, i) => (
                   <div key={i} className="space-y-2">
                     <div className="text-white/10 text-[10px] uppercase tracking-[0.2em] font-black">{item.label}</div>
@@ -98,7 +101,7 @@ const IndustrialTrustScore = () => {
 
               {/* Console Accents */}
               <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between relative z-10">
-                <div className="text-white/[0.05] font-mono text-[10px] uppercase tracking-[0.4em]">AUTH_STATUS: VALID</div>
+                <div className="text-white/[0.05] font-mono text-[10px] uppercase tracking-[0.4em]">AUTH STATUS: VALID</div>
                 <div className="flex gap-1.5">
                   {[...Array(3)].map((_, i) => (
                     <div key={i} className="w-1.5 h-1.5 rounded-full bg-lightblueprimary/20" />
@@ -133,7 +136,7 @@ const IndustrialTrustScore = () => {
 
               <div className="relative z-10 flex items-end justify-between border-t border-white/5 pt-8">
                 <div className="space-y-1">
-                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-black mb-2">INDEX_VAL</div>
+                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-black mb-2">INDEX VAL</div>
                   <div className="text-8xl font-medium text-primaryText tracking-tighter flex items-baseline leading-none">
                     <Counter value={120} />
                   </div>

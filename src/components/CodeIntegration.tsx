@@ -56,7 +56,10 @@ console.log(score); // 8,402`;
           {/* 1. BUILDER STACK (Wide) */}
           <BentoTile span="md:col-span-5 md:row-span-1" className="p-5 flex flex-col justify-center gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Builder Stack</span>
+              <div className="flex items-center gap-2">
+                <div className="w-1 h-1 rounded-full bg-lightblueprimary animate-pulse" />
+                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Builder Stack</span>
+              </div>
               <div className="flex gap-1.5">
                 <div className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-[8px] font-mono text-white/40">TypeScript</div>
                 <div className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-[8px] font-mono text-white/40">Rust</div>
@@ -103,7 +106,7 @@ console.log(score); // 8,402`;
                 </div>
                 <div className="flex flex-col">
                     <span className="text-[11px] font-bold text-white tracking-tight uppercase">Sybil Resistance</span>
-                    <span className="text-[9px] text-white/20 font-mono tracking-widest">HUMAN_PROOF</span>
+                    <span className="text-[9px] text-white/20 font-mono tracking-widest">HUMAN PROOF</span>
                 </div>
              </div>
              <div className="h-7 w-16 flex items-end gap-0.5">
@@ -118,8 +121,9 @@ console.log(score); // 8,402`;
           {/* 4. REPUTATION API (Left Column) */}
           <BentoTile span="md:col-span-3 md:row-span-2" className="p-6 flex flex-col justify-between group/score">
              <div className="space-y-1">
-                <div className="text-lightblueprimary font-black text-[9px] flex items-center gap-2 uppercase tracking-[0.3em]">
-                   <div className="w-2.5 h-2.5 rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.4)]" /> Reputation API
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-1 rounded-full bg-lightblueprimary animate-pulse" />
+                  <span className="text-[9px] font-black text-lightblueprimary uppercase tracking-[0.3em]">Reputation API</span>
                 </div>
                 <div className="text-[11px] font-medium text-white/40 mt-4 leading-relaxed">
                    Query high-fidelity identity data with sub-second latency.
@@ -205,7 +209,7 @@ console.log(score); // 8,402`;
                       <div className="w-2 h-2 rounded-full bg-yellow-500" />
                       <div className="w-2 h-2 rounded-full bg-green-500" />
                    </div>
-                   <span className="text-[8px] font-mono font-bold text-white/10 ml-3 tracking-[0.4em] uppercase">INIT_TRUST_RESOLVER</span>
+                   <span className="text-[8px] font-mono font-bold text-white/10 ml-3 tracking-[0.4em] uppercase">INIT TRUST RESOLVER</span>
                 </div>
                 <button 
                   onClick={handleCopy}

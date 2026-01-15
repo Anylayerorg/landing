@@ -36,9 +36,11 @@ const IdentityHero = () => (
     <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
       <div className="space-y-16">
         <div className="space-y-4">
-          <div className="flex items-center gap-4 text-white/20 text-xs uppercase tracking-widest">
-            <span className="text-lightblueprimary">01</span>
-            <span>Namespace_Declaration</span>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+            <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Identity</span>
+            <div className="h-px w-8 bg-white/10" />
+            <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Namespace Declaration</span>
           </div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -68,10 +70,10 @@ const IdentityHero = () => (
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-lightblueprimary text-black font-black uppercase text-[10px] tracking-widest rounded-lg hover:scale-105 transition-all"
               >
-                Deploy_Identity
+                Deploy Identity
               </a>
               <button className="px-8 py-4 bg-white/5 text-white/40 font-black uppercase text-[10px] tracking-widest rounded-lg border border-white/10 hover:bg-white/10 transition-all">
-                Read_Source
+                Read Source
               </button>
             </div>
           </div>
@@ -101,6 +103,12 @@ export default function IdentityPage() {
       <Section className="bg-[#0D0D12]" id="philosophy">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Philosophy</span>
+              <div className="h-px w-8 bg-white/10" />
+              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Core Values</span>
+            </div>
             <h2 className="text-4xl md:text-6xl font-medium tracking-tight">Privacy is the default — <span className="text-lightblueprimary">not a feature.</span></h2>
             <p className="text-xl text-white/40 font-light leading-relaxed">
               In a world of fragmented data and invasive surveillance, .any brings power back to the individual. Build onchain reputation without compromising your real-world identity.
@@ -156,9 +164,15 @@ export default function IdentityPage() {
 
       {/* Section 3: The Stack */}
       <Section id="how-it-works">
-        <div className="text-center mb-24 space-y-6">
+        <div className="flex flex-col items-center mb-24 space-y-6">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+            <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Stack</span>
+            <div className="h-px w-8 bg-white/10" />
+            <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Protocol Architecture</span>
+          </div>
           <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">The Identity Stack</h2>
-          <p className="text-xl text-white/40 font-light max-w-2xl mx-auto">From registration to utility, .any is engineered for the next generation of web experience.</p>
+          <p className="text-xl text-white/40 font-light max-w-2xl mx-auto text-center">From registration to utility, .any is engineered for the next generation of web experience.</p>
         </div>
         
         <div className="relative flex flex-col md:flex-row justify-between items-start gap-12">
@@ -193,8 +207,11 @@ export default function IdentityPage() {
       <Section className="bg-black py-40 rounded-[60px] mx-6 md:mx-12 my-20 border border-white/5 shadow-3xl">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">SDK_V1.0.4</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">SDK</span>
+              <div className="h-px w-8 bg-white/10" />
+              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Developer Kit V1.0.4</span>
             </div>
             <h2 className="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter">Integrate Trust <br /><span className="text-white/20">Without the Risk.</span></h2>
             <p className="text-xl text-white/40 font-light leading-relaxed">
@@ -216,7 +233,7 @@ const identity = await Anylayer.connect('.any');
 
 // Request Verification without data leak
 const proof = await identity.prove({
-  trait: 'REPUTATION_SCORE',
+  trait: 'REPUTATION SCORE',
   threshold: 700,
   private: true
 });
@@ -237,6 +254,12 @@ return {
             <Image src="/identity-layer-bg.svg" alt="" fill className="object-cover" />
           </div>
           <div className="max-w-2xl space-y-8 relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Verification</span>
+              <div className="h-px w-8 bg-white/10" />
+              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Brand Protection</span>
+            </div>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">Verified Premium & Brand Protection</h2>
             <p className="text-xl text-white/50 font-light leading-relaxed">
               When identity matters, verification protects it. Prominent individuals and brands can upgrade to Verified Premium by proving legitimacy, preventing impersonation across all apps.

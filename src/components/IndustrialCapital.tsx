@@ -82,9 +82,11 @@ const IndustrialCapital = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40">Market_Efficiency</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Efficiency</span>
+              <div className="h-px w-8 bg-white/10" />
+              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[6.5rem] font-medium text-primaryText leading-[0.9] tracking-tighter">
               Unlock <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">Capital</span>, <br />
@@ -115,7 +117,7 @@ const IndustrialCapital = () => {
               >
                 {/* Background Label */}
                 <div className={`absolute top-1/2 -translate-y-1/2 right-12 text-7xl font-mono font-black text-white/[0.02] pointer-events-none select-none tracking-tighter transition-all duration-700 ${isActive ? "opacity-100 scale-125" : "opacity-0"}`}>
-                   MODULE_0{idx + 1}
+                   MODULE 0{idx + 1}
                 </div>
 
                 <div className="relative flex flex-col md:flex-row items-center justify-between gap-12">
@@ -128,7 +130,7 @@ const IndustrialCapital = () => {
                     </div>
                     <div className="space-y-2">
                       <div className={`text-[10px] font-mono uppercase tracking-[0.4em] font-black transition-colors ${isActive ? "text-lightblueprimary" : "text-white/20"}`}>
-                         {tab.id.toUpperCase()}_UNIT
+                         {tab.id.toUpperCase()} UNIT
                       </div>
                       <h4 className={`text-2xl md:text-4xl font-semibold tracking-tight transition-colors ${isActive ? "text-white" : "text-white/40"}`}>{tab.label}</h4>
                     </div>
@@ -166,7 +168,7 @@ const IndustrialCapital = () => {
                     >
                       {content.features.map((f, i) => (
                         <div key={i} className="space-y-3 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
-                          <div className="text-[10px] font-mono text-lightblueprimary/60 font-black">CAPABILITY_0{i + 1}</div>
+                          <div className="text-[10px] font-mono text-lightblueprimary/60 font-black">CAPABILITY 0{i + 1}</div>
                           <div className="text-sm font-bold text-white tracking-tight">{f.title}</div>
                           <div className="text-[11px] text-white/20 leading-relaxed">{f.description}</div>
                         </div>

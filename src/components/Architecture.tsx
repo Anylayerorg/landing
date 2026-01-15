@@ -58,8 +58,11 @@ const Architecture = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-white/30">Infrastructure</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Architecture</span>
+                <div className="h-px w-8 bg-white/10" />
+                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Infrastructure Layer</span>
               </div>
               <h2 className="text-[2.5rem] md:text-[4.5rem] font-medium text-primaryText leading-[1.1] tracking-tighter mb-0">
                 The Credibility <br />
@@ -125,17 +128,17 @@ const Architecture = () => {
                     activeLayer === layer.id ? "bg-lightblueprimary text-black" : "bg-white/5 text-white"
                   }`}>
                     <layer.icon size={24} strokeWidth={1.5} />
-                  </div>
+              </div>
                   <div>
                     <h3 className="text-xl font-medium text-primaryText mb-1">{layer.title}</h3>
                     <p className="text-sm text-primaryText/40 font-light leading-relaxed max-w-xs">
                       {layer.desc}
                     </p>
-                  </div>
-                </div>
+              </div>
+            </div>
               </button>
-            ))}
-          </div>
+          ))}
+        </div>
 
           {/* Right: Visual Stack Representation */}
           <div className="relative h-[400px] hidden md:flex items-center justify-center md:-translate-y-20" style={{ perspective: '1000px' }}>
@@ -177,7 +180,7 @@ const Architecture = () => {
                         </div>
                         <div className="h-1.5 w-16 bg-lightblueprimary/40 mx-auto rounded-full shadow-[0_0_15px_rgba(166,131,255,0.3)]" />
                       </motion.div>
-                    </div>
+        </div>
                     <div className={`absolute inset-0 rounded-[40px] transition-opacity duration-1000 ${
                       isSelected ? "opacity-100" : "opacity-0"
                     } bg-gradient-to-tr from-lightblueprimary/10 via-transparent to-white/5 pointer-events-none`} />
@@ -185,8 +188,8 @@ const Architecture = () => {
                 );
               })}
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-lightblueprimary/20 to-transparent -translate-x-1/2 pointer-events-none" />
-            </div>
-          </div>
+                </div>
+              </div>
         </div>
       </div>
     </section>

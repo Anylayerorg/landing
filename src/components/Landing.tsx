@@ -96,8 +96,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   className="text-center"
                 >
                   <div className="space-y-6 z-10 text-center">
-                    <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                      <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
+                      <div className="h-px w-8 bg-white/10" />
+                      <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                     </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
                       Multi-layered Trust Engine for{' '}
@@ -228,10 +231,13 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-2">
             <div
-              className="max-w-[39rem] mx-auto flex flex-wrap justify-center items-center"
+              className="max-w-[39rem] mx-auto flex flex-col items-center"
             >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                <span className="text-sm text-white/50">Trust Engine</span>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Signal</span>
+                <div className="h-px w-8 bg-white/10" />
+                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
                 {" "}
@@ -342,10 +348,13 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left Content */}
             <div
-              className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
+              className="max-w-[47rem] mx-auto flex flex-col items-start"
             >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                <span className="text-sm text-white/50">Trust Engine</span>
+              <div className="flex items-center justify-start gap-3 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Index</span>
+                <div className="h-px w-8 bg-white/10" />
+                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Score Engine</span>
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
                 {" "}

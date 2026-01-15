@@ -81,14 +81,13 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
   return (
     <section id={sectionId} className="relative py-10 md:py-20" ref={sectionRef}>
       {/* ================= HEADER ================= */}
-      <div className="relative z-10 max-w-[47rem] mx-auto text-center px-5">
-        <motion.div
-          className="mb-4 inline-flex items-center gap-3 rounded-full bg-white/5 px-6 py-3"
-        >
-          <span className="text-sm text-white/50">
-            Human, Wallet & AI Agent
-          </span>
-        </motion.div>
+      <div className="relative z-10 max-w-[47rem] mx-auto text-center px-5 flex flex-col items-center">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Dimensions</span>
+          <div className="h-px w-8 bg-white/10" />
+          <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Multichain Trust Layer</span>
+        </div>
 
         <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight">
           Three dimension of trust for the digital internet
