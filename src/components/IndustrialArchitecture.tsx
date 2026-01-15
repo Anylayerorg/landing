@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValue, useTransform, animate } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const layers = [
@@ -15,6 +16,7 @@ const layers = [
     visualSrc: '/identity-layer.svg',
     iconSrc: '/identity-bgicon.svg',
     color: 'rgba(166, 131, 255, 1)',
+    link: '/identity',
   },
   {
     id: '02',
@@ -25,6 +27,7 @@ const layers = [
     visualSrc: '/reputation-layer.svg',
     iconSrc: '/reputation-bgicon.svg',
     color: 'rgba(59, 130, 246, 1)',
+    link: 'https://docs.onzks.com',
   },
   {
     id: '03',
@@ -35,6 +38,7 @@ const layers = [
     visualSrc: '/proof-layer.svg',
     iconSrc: '/proof-bgicon.svg',
     color: 'rgba(16, 185, 129, 1)',
+    link: 'https://docs.onzks.com',
   },
   {
     id: '04',
@@ -45,6 +49,7 @@ const layers = [
     visualSrc: '/utility-layer.svg',
     iconSrc: '/utility-bgicon.svg',
     color: 'rgba(245, 158, 11, 1)',
+    link: 'https://docs.onzks.com',
   }
 ];
 
@@ -141,7 +146,7 @@ const ScoreGainer = () => {
 // --- Internal Reputation Rising Effect (Now just ScoreGainer) ---
 const ReputationRising = () => {
   return (
-    <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center scale-[0.8] md:scale-100">
       <ScoreGainer />
     </div>
   );
@@ -156,7 +161,7 @@ const RisingIdentityText = () => {
   ];
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center scale-[0.8] md:scale-100">
       <div className="relative w-full h-full max-w-2xl mx-auto">
         {identities.map((text, i) => (
           <motion.div
@@ -228,7 +233,7 @@ const UtilityHub = () => {
 
   return (
     <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center scale-[0.8] md:scale-100">
         {/* Staggered Side Text Tags */}
         <div className="absolute inset-0 z-20">
           <AnimatePresence>
@@ -300,7 +305,7 @@ const SolidRotatingRing = () => {
   return (
     <div className="absolute inset-0 pointer-events-none flex items-center justify-center" style={{ perspective: '1000px' }}>
       <div 
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center scale-[0.6] md:scale-100"
         style={{ 
           transform: 'rotateX(75deg) rotateY(-10deg)',
           transformStyle: 'preserve-3d' 
@@ -370,7 +375,7 @@ const LuminousVisual = ({ active }: { active: number }) => {
           animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, scale: 1.1, y: -20, filter: 'blur(10px)' }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px] flex items-center justify-center"
+          className="relative w-[240px] h-[240px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
           {/* Main Glow Backdrop - NOW UNIFORM PURPLE */}
           <motion.div 
@@ -397,29 +402,29 @@ const LuminousVisual = ({ active }: { active: number }) => {
 
                       {/* Redesigned Total Trust Score Display - NOW RECTANGULAR & BELOW */}
                       {active === 1 && (
-                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 w-[280px] md:w-[320px]">
+                        <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 z-20 w-[240px] md:w-[320px] scale-[0.8] md:scale-100">
                           <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="relative"
                           >
                             {/* Industrial Score Plate - Horizontal Rectangular */}
-                            <div className="relative bg-[#0D0D12]/90 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center justify-between gap-6">
+                            <div className="relative bg-[#0D0D12]/90 backdrop-blur-xl border border-white/10 px-4 md:px-6 py-3 md:py-4 rounded-[16px] md:rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center justify-between gap-4 md:gap-6">
                               
-                              <div className="flex flex-col gap-1">
+                              <div className="flex flex-col gap-0.5 md:gap-1">
                                 <div className="flex items-center gap-1.5">
                                   <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                                  <span className="text-[8px] font-mono text-white/30 uppercase tracking-[0.2em] font-black">Trust Index</span>
+                                  <span className="text-[7px] md:text-[8px] font-mono text-white/30 uppercase tracking-[0.2em] font-black">Trust Index</span>
                                 </div>
-                                <div className="text-2xl md:text-3xl font-mono text-white font-black tracking-tighter">
+                                <div className="text-xl md:text-3xl font-mono text-white font-black tracking-tighter">
                                   <ScoreCounter value={8402} />
                                 </div>
                               </div>
 
-                              <div className="h-10 w-px bg-white/5" />
+                              <div className="h-8 md:h-10 w-px bg-white/5" />
 
-                              <div className="flex flex-col gap-1 flex-1">
-                                <div className="flex justify-between items-center text-[7px] font-mono uppercase tracking-widest text-white/20">
+                              <div className="flex flex-col gap-0.5 md:gap-1 flex-1">
+                                <div className="flex justify-between items-center text-[6px] md:text-[7px] font-mono uppercase tracking-widest text-white/20">
                                   <span>Verification</span>
                                   <span className="text-lightblueprimary">HUMAN</span>
                                 </div>
@@ -532,10 +537,10 @@ const IndustrialArchitecture = () => {
                   </p>
 
                   <div className="pt-2 md:pt-4 flex justify-center md:justify-start">
-                    <a
-                      href="https://docs.onzks.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href={layers[active].link}
+                      target={layers[active].link.startsWith('http') ? "_blank" : "_self"}
+                      rel={layers[active].link.startsWith('http') ? "noopener noreferrer" : ""}
                       className="group relative active:translate-y-0.5 transition-all w-fit block"
                     >
                       <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -543,7 +548,7 @@ const IndustrialArchitecture = () => {
                         {layers[active].cta}
                         <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all group-hover:translate-x-1" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </motion.div>
               </AnimatePresence>

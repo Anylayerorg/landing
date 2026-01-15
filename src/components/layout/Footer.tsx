@@ -1,171 +1,94 @@
+'use client';
+
 import React from 'react';
-import Link from 'next/link';
 import Image from "next/image";
+import { Send } from 'lucide-react';
 
 const footerIcon = [
-  {
-    title: "Telegram",
-    link: "https://t.me/zksnews#",
-    icon: "/telegram.svg",
-    iconWidth: 17,
-    iconHeight: 14,
-  },
-  {
-    title: "Discord",
-    link: "https://discord.gg/ZmnsPMKgjw",
-    icon: "/discord.svg",
-    iconWidth: 16,
-    iconHeight: 14,
-  },
-  {
-    title: "Linkdin",
-    link: "https://www.linkedin.com/company/anylayer",
-    icon: "/linkedin.svg",
-    iconWidth: 16,
-    iconHeight: 16,
-  },
-  {
-    title: "Twitter",
-    link: "https://x.com/buildonzks",
-    icon: "/twitter.svg",
-    iconWidth: 13,
-    iconHeight: 13,
-  },
+  { title: "Telegram", link: "https://t.me/zksnews#", icon: "/telegram.svg", width: 17, height: 14 },
+  { title: "Discord", link: "https://discord.gg/ZmnsPMKgjw", icon: "/discord.svg", width: 16, height: 14 },
+  { title: "Linkedin", link: "https://www.linkedin.com/company/anylayer", icon: "/linkedin.svg", width: 16, height: 16 },
+  { title: "Twitter", link: "https://x.com/buildonzks", icon: "/twitter.svg", width: 13, height: 13 },
 ];
+
+const Newsletter = () => (
+  <div className="space-y-6 max-w-md">
+    <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tighter leading-tight">
+      Stay updated on <span className="text-lightblueprimary italic">Trust.</span>
+    </h3>
+    <div className="relative flex items-center p-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-lightblueprimary/30 transition-all">
+      <input 
+        type="email" 
+        placeholder="Enter email..." 
+        className="bg-transparent flex-1 px-6 py-3 text-sm text-white outline-none placeholder:text-white/20"
+      />
+      <button className="bg-lightblueprimary text-black p-3 rounded-full hover:scale-105 active:scale-95 transition-all">
+        <Send size={18} />
+      </button>
+    </div>
+    <p className="text-[10px] text-white/20 uppercase tracking-widest font-black">Join 12,000+ builders in the trust network.</p>
+  </div>
+);
+
+const Links = () => (
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
+    <div className="space-y-6">
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Protocol</h4>
+      <ul className="space-y-3 text-sm text-white/40 font-light">
+        {["Architecture", "Trust Engine", "Identity", "Reputation"].map(l => (
+          <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>
+        ))}
+      </ul>
+    </div>
+    <div className="space-y-6">
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Builders</h4>
+      <ul className="space-y-3 text-sm text-white/40 font-light">
+        {["Documentation", "SDK Reference", "Tutorials", "API Keys"].map(l => (
+          <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>
+        ))}
+      </ul>
+    </div>
+    <div className="space-y-6">
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Community</h4>
+      <ul className="space-y-3 text-sm text-white/40 font-light">
+        {["Governance", "ZK DAO", "News", "Support"].map(l => (
+          <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
 
 export function Footer() {
   return (
-    <footer className="py-10 md:py-20">
-        <div className="px-10 md:px-20 py-10 md:py-20 bg-[#121219] max-w-screen-xl mx-auto rounded-[24px] relative">
-          <Image src={'/emblum-logo.svg'} alt="Layered Icon" width="100" height="100" className="absolute -top-12 md:-top-12 left-5 md:-left-12" />
-          <div className="flex justify-between flex-wrap gap-10">
-            <div className="max-w-[538px] w-full">
-              <div className="">
-                <h3 className="text-2xl md:text-[2rem] text-primaryText font-medium mb-6 leading-[128%] tracking-tighter">
-                  Subscribe to the{" "}
-                  <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">
-                    Anylayer
-                  </span>{" "}
-                  Newsletter for trust, identity, and reputation updates.
-                </h3>
-                <p className="text-sm md:text-base text-primaryText/60">
-                  Get updates on trust scoring, identity, and on-chain
-                  reputation. For educational content only.
-                </p>
-                <div
-                  className="mt-10 md:mt-28 mb-2 flex flex-wrap md:flex-nowrap justify-center items-center bg-[#101017] p-[6px] rounded-lg"
-                  style={{
-                    boxShadow: "inset 0 0 8px 0 rgba(255, 255, 255, 0.1)",
-                  }}
-                >
-                  <input
-                    type="email"
-                    placeholder="Enter Your Email"
-                    className="
-                    bg-transparent 
-                    w-[536px]
-                    px-[20px]
-                    py-4
-                    md:py-0
-                    text-primaryText 
-                    placeholder:text-[#7a7a7a] 
-                    outline-none 
-                    border-none
-                  "
-                  />
-
-                  <button className="bg-[#A683FF] w-full md:max-w-[181px] px-10 text-black flex items-center justify-center py-3 text-base rounded-md font-medium">
-                    <span className="mr-2"> Subscribe</span>
-                    {/* <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="transition-transform duration-300 group-hover:translate-x-1 w-4 h-4 md:w-8 md:h-8"
-                    >
-                      <path
-                        d="M5 12H19M19 12L12 5M19 12L12 19"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg> */}
-                  </button>
-                </div>
-                <span className="text-primaryText/40 text-sm md:text-base">
-                  We’ll only use this for spam.
-                </span>
-                {/* social icons */}
-              </div>
-            </div>
-            <div className="w-[490px] flex flex-wrap gap-4 md:gap-20">
-              <div className="w-[261px] md:w-[261px]">
-                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
-                  Solutions
-                </h3>
-                <ul className="space-y-2 list-none text-primaryText/60 text-sm md:text-base">
-                  <li>Explore Solutions</li>
-                  <li>Trust Analytics</li>
-                  <li>Identity Signals</li>
-                  <li>Wallet Reputation</li>
-                </ul>
-              </div>
-
-              {/* ECOSYSTEM */}
-              <div className="w-[170px] md:w-[149px]">
-                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
-                  Ecosystem
-                </h3>
-                <ul className="space-y-2 text-primaryText/60 list-none text-sm md:text-base">
-                  <li>Explore Ecosystem</li>
-                  <li>ZKScore Token</li>
-                  <li>ZK DAO</li>
-                  <li>Community</li>
-                </ul>
-              </div>
-
-              {/* Resources */}
-              <div className="w-[80px] md:w-[107px]">
-                <h3 className="font-medium text-xl md:text-2xl text-primaryText mb-6">
-                  Resources
-                </h3>
-                <ul className="space-y-2 list-none text-primaryText/60 text-sm md:text-base">
-                  <li>Docs</li>
-                  <li>Developers</li>
-                  <li>Tutorials</li>
-                  <li>Blogs</li>
-                </ul>
-              </div>
-            </div>
+    <footer className="relative bg-[#08080C] overflow-hidden pt-20">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      
+      <div className="relative w-full max-w-screen-xl mx-auto px-6 py-20">
+        <div className="bg-[#0D0D12] border-t border-x border-white/5 rounded-t-[80px] p-12 md:p-24 relative overflow-hidden">
+          {/* Faceted Top Border Accent */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent" />
+          
+          <div className="grid lg:grid-cols-2 gap-24 items-start relative z-10">
+            <Newsletter />
+            <Links />
           </div>
-          {/* BOTTOM FOOTER */}
-          <div className="flex justify-center md:justify-between flex-wrap mt-10 md:mt-20 gap-4 items-center text-primaryText/40 opacity-70">
-            <p className="text-sm md:text-base font-normal">Copyright 2025. All Rights Reserved.</p>
-            <div className="flex items-center gap-3 -order-1 md:order-none">
-              {footerIcon.map((item) => (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  className="flex items-center justify-center w-8 h-8 bg-[#E3E8FF0F] rounded-lg"
-                >
-                  <Image
-                    src={item.icon}
-                    alt="telegram"
-                    width={item.iconWidth}
-                    height={item.iconHeight}
-                    className="invert"
-                  />
-                </a>
-              ))}
-            </div>
 
-            <div className="flex gap-4 md:gap-8 text-sm md:text-base">
-              <p className='font-normal'>Privacy Policy</p>
-              <p className='font-normal'>Terms Of Services</p>
+          <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-10">
+               <Image src="/logo-anylayer.svg" alt="Anylayer" width={120} height={30} className="opacity-40" />
+               <p className="text-[10px] font-mono text-white/10 uppercase tracking-widest font-black">© 2026 Anylayer Logic</p>
+            </div>
+            <div className="flex gap-4">
+               {footerIcon.map(i => (
+                 <a key={i.title} href={i.link} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-lightblueprimary hover:border-lightblueprimary transition-all group">
+                    <Image src={i.icon} alt="" width={16} height={16} className="invert group-hover:invert-0 transition-all" />
+                 </a>
+               ))}
             </div>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
   );
 }
