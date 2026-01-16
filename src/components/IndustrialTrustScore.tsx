@@ -7,13 +7,15 @@ import Image from 'next/image';
 const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
   const [count, setCount] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted || !isInView) return;
     
     let startTime: number | null = null;
     let animationFrameId: number;
@@ -29,11 +31,11 @@ const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) 
 
     animationFrameId = window.requestAnimationFrame(step);
     return () => window.cancelAnimationFrame(animationFrameId);
-  }, [value, duration, isMounted]);
+  }, [value, duration, isMounted, isInView]);
 
-  if (!isMounted) return <span>0</span>;
+  if (!isMounted) return <span>{value}</span>;
 
-  return <span>{count}</span>;
+  return <span ref={ref}>{isInView ? count : value}</span>;
 };
 
 const IndustrialTrustScore = () => {

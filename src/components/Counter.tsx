@@ -12,13 +12,12 @@ type CounterProps = {
 const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
   const ref = useRef<HTMLSpanElement | null>(null);
 
-  // Use once: true to ensure it doesn't reset to 0 when scrolling away
-  const isInView = useInView(ref, { amount: 0.3, once: true });
+  const isInView = useInView(ref, { amount: 0.1, once: true });
 
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
-    stiffness: 60,
-    damping: 30,
+    stiffness: 40,
+    damping: 20,
   });
 
   const [displayValue, setDisplayValue] = useState(0);
@@ -42,12 +41,22 @@ const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
     return unsubscribe;
   }, [springValue, isMounted]);
 
-  if (!isMounted) return <span>{prefix}0{suffix}</span>;
+  // Fallback to ensure value shows even if animation doesn't trigger
+  useEffect(() => {
+    if (isMounted && !isInView) {
+      const timer = setTimeout(() => {
+        if (displayValue === 0) setDisplayValue(value);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isMounted, isInView, displayValue, value]);
+
+  if (!isMounted) return <span>{prefix}{value}{suffix}</span>;
 
   return (
     <span ref={ref}>
       {prefix}
-      {displayValue}
+      {displayValue || value}
       {suffix}
     </span>
   );
