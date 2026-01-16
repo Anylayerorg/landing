@@ -47,14 +47,14 @@ const PROCESS_DATA = [
   {
     id: "02",
     title: "Aggregate",
-    desc: "Reputation composes from on/off‑chain signals (repayments, activity, contributions). commitments are anchored on‑chain.",
+    desc: "Reputation composes from on/off‑chain signals (repayments, activity, contributions, audits). Only commitments are anchored on‑chain.",
     icon: <Activity className="w-6 h-6" />,
     color: "#8B5CF6"
   },
   {
     id: "03",
     title: "Prove",
-    desc: "Share selective, zero‑knowledge proofs like “credit ≥ 720,” or “agent within policy.”",
+    desc: "Share selective, zero‑knowledge proofs like “credit ≥ 720,” “can lock 5,000 USDT,” or “agent within policy.”",
     icon: <ShieldCheck className="w-6 h-6" />,
     color: "#7C3AED"
   },
@@ -96,153 +96,159 @@ const ProcessFlow = () => {
         <div className="mb-24 text-center space-y-4">
           <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black">Architecture Flow</span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic text-white leading-none">
-            How .any <span className="text-white/20">Works.</span>
+            How it <span className="text-white/20">Works.</span>
           </h2>
         </div>
 
-        {/* Option 1: The Signal Line */}
+        {/* Option 1: The Circuit Path (Minimal Vertical) */}
         {design === 1 && (
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2">
-              <motion.div 
-                style={{ height: "100%", scaleY: scrollYProgress, transformOrigin: "top" }}
-                className="w-full bg-lightblueprimary shadow-[0_0_20px_rgba(166,131,255,0.8)]"
-              />
-            </div>
-            <div className="space-y-32">
+          <div className="relative max-w-2xl mx-auto py-20">
+            {/* Central Vertical Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
+            
+            <div className="space-y-40">
               {PROCESS_DATA.map((p, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  className={`flex items-center gap-12 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} text-left`}
+                  className="relative flex flex-col items-center text-center"
                 >
-                  <div className="flex-1 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-4xl font-black text-white/10 font-mono tracking-tighter italic">{p.id}</span>
-                      <h3 className="text-2xl font-black uppercase tracking-tight text-lightblueprimary italic">{p.title}</h3>
-                    </div>
-                    <p className="text-white/40 text-lg leading-relaxed font-medium italic">{p.desc}</p>
+                  {/* Step Marker */}
+                  <div className="mb-12 relative">
+                    <div className="w-2 h-2 rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.8)]" />
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      className="absolute -inset-4 border border-lightblueprimary/20 rounded-full"
+                    />
                   </div>
-                  <div className="relative flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-black border border-lightblueprimary flex items-center justify-center z-10 shadow-[0_0_30px_rgba(166,131,255,0.3)]">
-                      {p.icon}
-                    </div>
-                  </div>
-                  <div className="flex-1" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Option 2: The Depth Stack */}
-        {design === 2 && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.8 }}
-                className="relative group perspective-[1000px]"
-              >
-                <div className="absolute inset-0 bg-lightblueprimary/5 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative space-y-8 p-8 border-l border-white/5 hover:border-lightblueprimary/40 transition-colors">
-                  <span className="text-8xl font-black text-white/[0.03] absolute -top-4 -left-4 font-mono select-none">{p.id}</span>
-                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] flex items-center justify-center text-lightblueprimary group-hover:scale-110 transition-transform duration-500">
-                    {p.icon}
-                  </div>
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-black uppercase tracking-tighter italic text-white group-hover:text-lightblueprimary transition-colors">{p.title}</h3>
-                    <p className="text-white/30 text-base leading-relaxed font-medium">{p.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Option 3: Kinetic Beam */}
-        {design === 3 && (
-          <div className="space-y-4">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0.2 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ margin: "-200px" }}
-                className="group relative py-12 flex flex-col md:flex-row items-center gap-12 border-b border-white/5 last:border-0"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-lightblueprimary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-center gap-8 min-w-[240px]">
-                  <span className="text-2xl font-mono font-black text-lightblueprimary opacity-40">{p.id}</span>
-                  <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter italic text-white">{p.title}</h3>
-                </div>
-                <p className="flex-1 text-white/40 text-xl leading-relaxed font-medium italic group-hover:text-white transition-colors duration-500">
-                  {p.desc}
-                </p>
-                <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:text-lightblueprimary group-hover:border-lightblueprimary transition-all duration-500 rotate-45 group-hover:rotate-0">
-                  <Plus size={24} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Option 4: Orbital Node */}
-        {design === 4 && (
-          <div className="relative h-[600px] flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full animate-[spin_60s_linear_infinite]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/10 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
-            </div>
-            
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-32 gap-y-16">
-              {PROCESS_DATA.map((p, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ y: [0, i % 2 === 0 ? 15 : -15, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                  className="max-w-xs space-y-4 group cursor-default"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/30 flex items-center justify-center text-lightblueprimary shadow-[0_0_20px_rgba(166,131,255,0.2)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(166,131,255,0.4)] transition-all">
-                      {p.icon}
-                    </div>
-                    <h3 className="text-xl font-black uppercase tracking-widest text-white italic group-hover:text-lightblueprimary transition-colors">{p.title}</h3>
-                  </div>
-                  <p className="text-white/30 text-sm leading-relaxed font-medium pl-16 group-hover:text-white/60 transition-colors">{p.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Option 5: Brutalist Typographic */}
-        {design === 5 && (
-          <div className="space-y-16 py-12">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ x: 20 }}
-                className="group cursor-default border-l-4 border-white/5 hover:border-lightblueprimary pl-12 transition-all duration-500"
-              >
-                <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
-                  <h3 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic text-white/5 group-hover:text-white transition-all duration-700 leading-none">
-                    {p.title}
-                  </h3>
-                  <div className="pb-4 space-y-4 max-w-xl opacity-40 group-hover:opacity-100 transition-all duration-700">
-                    <div className="flex items-center gap-4">
-                      <span className="text-lightblueprimary font-mono text-sm font-black uppercase tracking-[0.3em]">Step 0{i+1}</span>
-                      <div className="h-px w-12 bg-lightblueprimary/40" />
-                    </div>
-                    <p className="text-white text-xl md:text-2xl font-medium tracking-tight italic leading-snug">
+                    <span className="text-lightblueprimary font-mono text-[10px] font-black tracking-[0.4em] uppercase opacity-40">
+                      Phase {p.id}
+                    </span>
+                    <h3 className="text-4xl font-black uppercase tracking-tighter italic text-white">
+                      {p.title}
+                    </h3>
+                    <p className="text-white/40 text-lg leading-relaxed font-medium italic max-w-lg mx-auto">
                       {p.desc}
                     </p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Option 2: Kinetic Side-Stack (Typographic) */}
+        {design === 2 && (
+          <div className="space-y-24 max-w-5xl mx-auto">
+            {PROCESS_DATA.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="group flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-24"
+              >
+                <div className="flex items-end gap-4 min-w-[200px]">
+                  <span className="text-2xl font-black text-lightblueprimary font-mono opacity-20 group-hover:opacity-100 transition-opacity">0{i+1}</span>
+                  <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-white/10 group-hover:text-white transition-all duration-500">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="flex-1 border-l-2 border-white/5 pl-8 md:pl-16 py-4 group-hover:border-lightblueprimary transition-colors duration-500">
+                  <p className="text-white/40 text-xl md:text-2xl font-medium tracking-tight italic leading-relaxed group-hover:text-white/80 transition-colors">
+                    {p.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {/* Option 3: Ghost Typography (Atmospheric) */}
+        {design === 3 && (
+          <div className="relative space-y-48 py-20 overflow-hidden">
+            {PROCESS_DATA.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ margin: "-100px" }}
+                className="relative z-10 max-w-3xl mx-auto text-center space-y-6"
+              >
+                <motion.div
+                  initial={{ scale: 1.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 0.03 }}
+                  className="absolute inset-0 flex items-center justify-center -z-10 select-none"
+                >
+                  <span className="text-[15rem] md:text-[25rem] font-black uppercase italic tracking-tighter leading-none whitespace-nowrap">
+                    {p.title}
+                  </span>
+                </motion.div>
+                <span className="text-lightblueprimary font-mono text-sm font-black tracking-widest uppercase">Process 0{i+1}</span>
+                <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-white">{p.title}</h3>
+                <p className="text-white/40 text-2xl font-medium tracking-tight italic leading-snug">
+                  {p.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {/* Option 4: The Focused Lens */}
+        {design === 4 && (
+          <div className="space-y-12">
+            {PROCESS_DATA.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0.1, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ margin: "-300px" }}
+                className="group relative flex flex-col md:flex-row items-center gap-12 p-12 transition-all duration-700"
+              >
+                <div className="relative min-w-[300px] text-center md:text-right">
+                   <h3 className="text-6xl md:text-8xl font-black uppercase tracking-tighter italic text-white/5 group-hover:text-lightblueprimary transition-colors duration-500">
+                    {p.title}
+                   </h3>
+                </div>
+                <div className="h-px flex-1 bg-white/5" />
+                <div className="max-w-lg">
+                  <p className="text-white/20 group-hover:text-white/90 text-xl md:text-2xl font-medium tracking-tight italic transition-all duration-500">
+                    {p.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {/* Option 5: Narrative Floating (Minimalist) */}
+        {design === 5 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-32 py-20">
+            {PROCESS_DATA.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="space-y-6 group"
+              >
+                <div className="flex items-center gap-6">
+                  <div className="w-10 h-[1px] bg-lightblueprimary/40 group-hover:w-16 transition-all duration-500" />
+                  <span className="text-lightblueprimary font-mono text-xs font-black uppercase tracking-[0.4em]">{p.id}</span>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-4xl font-black uppercase tracking-tighter italic text-white group-hover:text-lightblueprimary transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-white/30 group-hover:text-white/60 text-lg leading-relaxed font-medium italic transition-colors">
+                    {p.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -341,7 +347,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-lightblueprimary">Anything</span>
         </h2>
-      </div>
+                                </div>
 
       {/* 4-Column Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
@@ -355,26 +361,26 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               height={28} 
               className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60'}`} 
             />
-          </div>
-            <div className="space-y-2">
+                                  </div>
+                                  <div className="space-y-2">
               <h4 className="text-lg font-medium text-white tracking-tight">
                 {f.title}
               </h4>
               <p className="text-xs md:text-sm text-white/30 leading-relaxed font-light max-w-[240px]">
                 {f.description}
               </p>
-            </div>
-          </div>
+                                      </div>
+                                      </div>
         ))}
-      </div>
+                                  </div>
 
       {/* Button - Moved below grid */}
       <div className="mt-24">
         <button className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-[filter,transform,box-shadow,background-color] duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
           Explore Protocol
-        </button>
-      </div>
-    </div>
+                  </button>
+                </div>
+                        </div>
   );
 
   return (
