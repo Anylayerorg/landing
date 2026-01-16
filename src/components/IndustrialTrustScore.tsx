@@ -14,20 +14,21 @@ const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) 
 
   useEffect(() => {
     if (!isMounted) return;
-    let start = 0;
-    const end = value;
-    if (start === end) return;
+    
+    let startTime: number | null = null;
+    let animationFrameId: number;
 
-    let totalMiliseconds = duration * 1000;
-    let incrementTime = (totalMiliseconds / end);
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      setCount(Math.floor(progress * value));
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      }
+    };
 
-    let timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, incrementTime);
-
-    return () => clearInterval(timer);
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
   }, [value, duration, isMounted]);
 
   if (!isMounted) return <span>0</span>;

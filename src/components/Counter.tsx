@@ -12,12 +12,12 @@ type CounterProps = {
 const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
   const ref = useRef<HTMLSpanElement | null>(null);
 
-  // IMPORTANT: no `once: true`
-  const isInView = useInView(ref, { amount: 0.6 });
+  // Use once: true to ensure it doesn't reset to 0 when scrolling away
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, {
-    stiffness: 100,
+    stiffness: 60,
     damping: 30,
   });
 
@@ -31,10 +31,6 @@ const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
   useEffect(() => {
     if (isInView && isMounted) {
       motionValue.set(value);
-    } else if (isMounted) {
-      // reset when leaving viewport
-      motionValue.set(0);
-      setDisplayValue(0);
     }
   }, [isInView, value, motionValue, isMounted]);
 
