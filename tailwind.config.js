@@ -73,7 +73,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
         geist: ['Geist', 'sans-serif'],
         mono: ['Geist Mono', 'monospace'],
       },

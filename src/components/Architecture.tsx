@@ -64,7 +64,7 @@ const Architecture = () => {
                 <div className="h-px w-8 bg-white/10" />
                 <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Infrastructure Layer</span>
               </div>
-              <h2 className="text-[2.5rem] md:text-[4.5rem] font-medium text-primaryText leading-[1.1] tracking-tighter mb-0">
+              <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-0">
                 The Credibility <br />
                 <span className="text-lightblueprimary">Infrastructure</span>
               </h2>

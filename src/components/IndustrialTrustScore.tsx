@@ -6,8 +6,14 @@ import Image from 'next/image';
 
 const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
   const [count, setCount] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
     let start = 0;
     const end = value;
     if (start === end) return;
@@ -22,7 +28,9 @@ const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) 
     }, incrementTime);
 
     return () => clearInterval(timer);
-  }, [value, duration]);
+  }, [value, duration, isMounted]);
+
+  if (!isMounted) return <span>0</span>;
 
   return <span>{count}</span>;
 };
@@ -46,7 +54,7 @@ const IndustrialTrustScore = () => {
               <div className="h-px w-8 bg-white/10" />
               <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
-            <h2 className="text-[3.5rem] md:text-[5.5rem] font-medium text-primaryText mb-10 leading-[0.9] tracking-tighter">
+            <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
               <span className="text-lightblueprimary">unlocks</span> Anything
             </h2>

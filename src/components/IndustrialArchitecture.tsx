@@ -33,7 +33,7 @@ const layers = [
     id: '03',
     title: 'Proof Layer',
     subtitle: 'THE SHIELD',
-    description: 'Zero-knowledge proofs that let you verify facts about yourself without exposing sensitive data, locked with a cryptographic seal.',
+    description: 'Zero-knowledge proofs that let you verify facts privately without exposing sensitive data.',
     cta: 'Explore Proof Tech',
     visualSrc: '/proof-layer.svg',
     iconSrc: '/proof-bgicon.svg',
@@ -48,7 +48,7 @@ const layers = [
     cta: 'Discover App Utility',
     visualSrc: '/utility-layer.svg',
     iconSrc: '/utility-bgicon.svg',
-    color: 'rgba(245, 158, 11, 1)',
+    color: 'rgba(166, 131, 255, 1)',
     link: 'https://docs.onzks.com',
   }
 ];
@@ -57,8 +57,15 @@ const layers = [
 const ScoreCounter = ({ value }: { value: number }) => {
   const count = useMotionValue(value - 500);
   const [display, setDisplay] = useState(value - 500);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     // Initial count up
     const controls = animate(count, value, { 
       duration: 3, 
@@ -78,7 +85,9 @@ const ScoreCounter = ({ value }: { value: number }) => {
       unsubscribe();
       clearInterval(interval);
     };
-  }, [value, count]);
+  }, [value, count, isMounted]);
+
+  if (!isMounted) return <span>{(value - 500).toLocaleString()}</span>;
 
   return <span>{display.toLocaleString()}</span>;
 };
@@ -371,10 +380,10 @@ const LuminousVisual = ({ active }: { active: number }) => {
       <AnimatePresence mode="popLayout">
         <motion.div
           key={active}
-          initial={{ opacity: 0, scale: 0.8, y: 30, filter: 'blur(10px)' }}
+          initial={{ opacity: 0, scale: 0.9, y: 10, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, scale: 1.1, y: -20, filter: 'blur(10px)' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, scale: 1.05, y: -10, filter: 'blur(10px)' }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="relative w-[240px] h-[240px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
           {/* Main Glow Backdrop - NOW UNIFORM PURPLE */}
@@ -468,116 +477,106 @@ const LuminousVisual = ({ active }: { active: number }) => {
 };
 
 const IndustrialArchitecture = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const total = layers.length;
 
-          const { scrollYProgress } = useScroll({
-            target: containerRef,
-            offset: ["start start", "end end"],
-          });
-
-          useEffect(() => {
-            const unsubscribe = scrollYProgress.on("change", (v) => {
-              const rawIndex = v * total;
-              const index = Math.min(total - 1, Math.floor(rawIndex));
-              if (index !== active) {
-                setActive(index);
-              }
-            });
-            return () => unsubscribe();
-          }, [scrollYProgress, total, active]);
-
   return (
     <section 
-      ref={containerRef} 
       id="architecture" 
-      className="relative bg-[#08080C] overflow-visible select-none"
-      style={{ height: `${total * 100}vh` }}
+      className="relative bg-[#08080C] overflow-hidden select-none py-20 md:py-32"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        
-        {/* Background Atmosphere */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.02),transparent_70%)]" />
+      {/* Background Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.03),transparent_70%)]" />
 
-        <div className="max-w-screen-xl mx-auto px-6 md:px-10 w-full relative z-10">
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-40 items-center">
-            
-            {/* Left Column: Clean Text (Order 2 on mobile) */}
-            <div className="order-2 md:order-1 relative min-h-[auto] md:min-h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, x: 10, filter: 'blur(10px)' }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-6 md:space-y-8"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-center md:justify-start gap-3">
-                      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
-                        {layers[active].id}
-                      </span>
-                      <div className="h-px w-8 bg-lightblueprimary/20" />
-                      <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">
-                        {layers[active].subtitle}
-                      </span>
-                    </div>
-                    
-                    <div className="flex items-center justify-center md:justify-start">
-                      <h3 className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-none">
-                        {layers[active].title}
-                      </h3>
-                    </div>
+      <div className="max-w-screen-xl mx-auto px-6 md:px-10 w-full relative z-10">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-40 items-center mb-24">
+          
+          {/* Left Column: Clean Text */}
+          <div className="order-2 md:order-1 relative min-h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, x: -10, filter: 'blur(5px)' }}
+                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, x: 5, filter: 'blur(5px)' }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="space-y-6 md:space-y-8"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-center md:justify-start gap-3">
+                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
+                      {layers[active].id}
+                    </span>
+                    <div className="h-px w-8 bg-lightblueprimary/20" />
+                    <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">
+                      {layers[active].subtitle}
+                    </span>
                   </div>
-
-                  <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-lg">
-                    {layers[active].description}
-                  </p>
-
-                  <div className="pt-2 md:pt-4 flex justify-center md:justify-start">
-                    <Link
-                      href={layers[active].link}
-                      target={layers[active].link.startsWith('http') ? "_blank" : "_self"}
-                      rel={layers[active].link.startsWith('http') ? "noopener noreferrer" : ""}
-                      className="group relative active:translate-y-0.5 transition-all w-fit block"
-                    >
-                      <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="relative px-8 md:px-10 py-3 md:py-4 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
-                        {layers[active].cta}
-                        <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all group-hover:translate-x-1" />
-                      </div>
-                    </Link>
+                  
+                  <div className="flex items-center justify-center md:justify-start">
+                    <h3 className="text-4xl md:text-6xl font-geist font-black uppercase text-white tracking-tighter lg:tracking-[-0.05em] leading-none">
+                      {layers[active].title}
+                    </h3>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                </div>
 
-            {/* Right Column: Luminous Visual (Order 1 on mobile) */}
-            <div className="order-1 md:order-2 relative flex justify-center items-center h-[35vh] md:h-[70vh] w-full">
-               <LuminousVisual active={active} />
-            </div>
+                <p className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-lg">
+                  {layers[active].description}
+                </p>
 
+                <div className="pt-2 md:pt-4 flex justify-center md:justify-start">
+                  <Link
+                    href={layers[active].link}
+                    target={layers[active].link.startsWith('http') ? "_blank" : "_self"}
+                    rel={layers[active].link.startsWith('http') ? "noopener noreferrer" : ""}
+                    className="relative active:translate-y-0.5 transition-all w-fit block"
+                  >
+                    <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 transition-opacity" />
+                    <div className="relative px-8 md:px-10 py-3 md:py-4 bg-white/[0.03] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
+                      {layers[active].cta}
+                      <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all" />
+                    </div>
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right Column: Luminous Visual */}
+          <div className="order-1 md:order-2 relative flex justify-center items-center h-[35vh] md:h-[60vh] w-full">
+             <LuminousVisual active={active} />
           </div>
         </div>
 
-        {/* Minimal Progress Indicator */}
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 flex flex-col gap-4 hidden lg:flex">
-          {layers.map((_, i) => (
-            <motion.div 
-              key={i}
-              animate={{ 
-                height: active === i ? 24 : 8,
-                backgroundColor: active === i ? 'rgba(166, 131, 255, 1)' : 'rgba(255, 255, 255, 0.1)'
-              }}
-              className="w-1 rounded-full transition-all duration-500"
-            />
-          ))}
-        </div>
+        {/* --- SUBTLE MINIMAL SELECTOR --- */}
+        <div className="flex justify-center mt-12">
+          <div className="inline-flex items-center bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-2 py-1.5 shadow-2xl">
+            {layers.map((layer, i) => (
+              <button
+                key={layer.id}
+                onClick={() => setActive(i)}
+                className="relative px-6 py-2.5 outline-none"
+              >
+                <div className="relative z-10 flex items-center gap-2">
+                  <span className={`font-mono text-[9px] font-black tracking-widest transition-colors ${active === i ? 'text-lightblueprimary' : 'text-white/20'}`}>
+                    {layer.id}
+                  </span>
+                  <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/10'}`}>
+                    {layer.title.replace(' Layer', '')}
+                  </span>
+                </div>
 
-        {/* Subtle Bottom Border */}
-        <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                {active === i && (
+                  <motion.div
+                    layoutId="activeArchitectureTab"
+                    className="absolute inset-0 bg-white/5 border border-white/10 rounded-full z-0"
+                    transition={{ type: "spring", stiffness: 600, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

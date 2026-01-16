@@ -116,6 +116,7 @@ export function Header() {
                 width="140"
                 height="56"
                 className="w-auto h-8 md:h-10"
+                priority
               />
             </div>
 

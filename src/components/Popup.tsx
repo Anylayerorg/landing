@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Cross, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const AutoPopupModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,9 +68,9 @@ const AutoPopupModal = () => {
                     {/* Close Button */}
                     <button
                         onClick={closeModal}
-                        className="p-1 w-8 h-8 border-2 border-primaryText rounded-full bg-none flex items-center justify-center transition-all duration-200 group"
+                        className="p-1 w-8 h-8 border-2 border-primaryText rounded-full bg-none flex items-center justify-center transition-all duration-200 group hover:border-white"
                     >
-                        <X className="w-10 h-10 text-primaryText group-hover:text-white transition-colors" />
+                        <X className="w-5 h-5 text-primaryText group-hover:text-white transition-colors" />
                     </button>
                 </div>
 

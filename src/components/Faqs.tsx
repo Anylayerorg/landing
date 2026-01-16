@@ -120,7 +120,7 @@ const Faqs = () => {
                 <div className="h-px w-8 bg-white/10" />
                 <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Help Center</span>
               </div>
-              <h2 className="text-[2.25rem] md:text-[3.25rem] font-medium text-primaryText leading-[1.1] tracking-tighter mb-4">
+              <h2 className="text-[2.25rem] md:text-[3.25rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-4">
                 Common Questions
               </h2>
               <p className="text-primaryText/40 text-base md:text-lg font-light">

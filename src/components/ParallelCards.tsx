@@ -8,7 +8,7 @@ const data = [
   {
     title: "Human identity signals",
     description:
-      "Human Trust measures the credibility, reliability, and behavioral consistency of a real person without exposing their private data.",
+      "Human Trust measures the reliability and behavioral consistency of a real person privately.",
     line2:
       "It is built from identity proofs, behavioral signals, achievements, and verifiable reputation.",
     image: "/human-identity.svg",
@@ -22,7 +22,7 @@ const data = [
   {
     title: "Wallet activity rotation",
     description:
-      "Wallet Trust evaluates how trustworthy a blockchain wallet is based entirely on on-chain patterns, behavior, risk signals, and historical performance.",
+      "Wallet Trust evaluates wallet reliability based on on-chain patterns and historical performance.",
     line2:
       "It is risk intelligence + behavioral analytics + reputation scoring combined into a trust value.",
     image: "/wallet-activity.svg",
@@ -81,7 +81,7 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
   return (
     <section id={sectionId} className="relative py-10 md:py-20" ref={sectionRef}>
       {/* ================= HEADER ================= */}
-      <div className="relative z-10 max-w-[47rem] mx-auto text-center px-5 flex flex-col items-center">
+      <div className="relative z-10 max-w-[60rem] mx-auto text-center px-5 flex flex-col items-center">
         <div className="flex items-center justify-center gap-3 mb-6">
           <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
           <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Dimensions</span>
@@ -89,8 +89,8 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
           <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Multichain Trust Layer</span>
         </div>
 
-        <h2 className="text-[1.5rem] md:text-[1.875rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-tight">
-          Three dimension of trust for the digital internet
+        <h2 className="text-[1.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-geist font-black uppercase text-primaryText mb-6 leading-[1.1] tracking-tighter lg:tracking-[-0.05em]">
+          Dimensions of trust <br className="hidden md:block" /> for the digital internet
         </h2>
 
         <p className="text-primaryText/60 max-w-md mx-auto">

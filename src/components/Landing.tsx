@@ -118,7 +118,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-60">
           Trust Protocol
         </span>
-        <h2 className="text-[2.5rem] md:text-[4.5rem] font-medium text-primaryText leading-[0.95] tracking-[-0.04em] max-w-4xl mx-auto">
+        <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-primaryText leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-lightblueprimary">Anything</span>
         </h2>
@@ -128,17 +128,17 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
         {trustScoreFeatures.map((f: any, i) => (
           <div key={i} className="space-y-5 group">
-            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
-              <Image 
-                src={f.icon} 
-                alt={f.title} 
-                width={28} 
-                height={28} 
-                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`} 
-              />
-            </div>
+          <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
+            <Image 
+              src={f.icon} 
+              alt={f.title} 
+              width={28} 
+              height={28} 
+              className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60'}`} 
+            />
+          </div>
             <div className="space-y-2">
-              <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-lightblueprimary transition-colors">
+              <h4 className="text-lg font-medium text-white tracking-tight">
                 {f.title}
               </h4>
               <p className="text-xs md:text-sm text-white/30 leading-relaxed font-light max-w-[240px]">
@@ -160,7 +160,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
   return (
     <>
-    <div className="relative w-full min-w-full ">
+    <div className="relative w-full min-w-full font-geist">
         {/* Header & Banner */}
         <Header />
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
@@ -181,7 +181,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                       <div className="h-px w-8 bg-white/10" />
                       <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                     </div>
-                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
+                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                       Multi-layered Trust Engine for{' '}
                     <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                         {currentText}
@@ -318,7 +318,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 <div className="h-px w-8 bg-white/10" />
                 <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
               </div>
-              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
+              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}
                 Understand and verify <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> trust </span> across every <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Signal</span>
               </h2>

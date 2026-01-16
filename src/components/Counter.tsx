@@ -22,23 +22,31 @@ const Counter = ({ value, suffix = '', prefix = '' }: CounterProps) => {
   });
 
   const [displayValue, setDisplayValue] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isInView && isMounted) {
       motionValue.set(value);
-    } else {
+    } else if (isMounted) {
       // reset when leaving viewport
       motionValue.set(0);
       setDisplayValue(0);
     }
-  }, [isInView, value, motionValue]);
+  }, [isInView, value, motionValue, isMounted]);
 
   useEffect(() => {
+    if (!isMounted) return;
     const unsubscribe = springValue.on('change', (latest) => {
       setDisplayValue(Math.floor(latest));
     });
     return unsubscribe;
-  }, [springValue]);
+  }, [springValue, isMounted]);
+
+  if (!isMounted) return <span>{prefix}0{suffix}</span>;
 
   return (
     <span ref={ref}>
