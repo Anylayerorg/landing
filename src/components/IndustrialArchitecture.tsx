@@ -529,12 +529,16 @@ const IndustrialArchitecture = () => {
                     href={layers[active].link}
                     target={layers[active].link.startsWith('http') ? "_blank" : "_self"}
                     rel={layers[active].link.startsWith('http') ? "noopener noreferrer" : ""}
-                    className="relative active:translate-y-0.5 transition-all w-fit block"
+                    className="relative active:translate-y-0.5 transition-all w-fit block group"
                   >
-                    <div className="absolute inset-0 bg-lightblueprimary/20 blur-2xl opacity-0 transition-opacity" />
-                    <div className="relative px-8 md:px-10 py-3 md:py-4 bg-white/[0.03] backdrop-blur-xl border border-white/10 text-white font-bold rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4">
+                    <div className={`absolute inset-0 blur-2xl opacity-0 group-hover:opacity-20 transition-opacity ${active === 0 ? 'bg-lightblueprimary' : 'bg-white'}`} />
+                    <div className={`relative px-8 md:px-10 py-3 md:py-4 backdrop-blur-xl font-black rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4 border shadow-2xl ${
+                      active === 0 
+                        ? 'bg-lightblueprimary text-black border-lightblueprimary' 
+                        : 'bg-white/[0.03] text-white border-white/10'
+                    }`}>
                       {layers[active].cta}
-                      <ArrowRight size={16} className="text-white/40 group-hover:text-white transition-all" />
+                      <ArrowRight size={16} className={`${active === 0 ? 'text-black' : 'text-white/40 group-hover:text-white'} transition-all`} />
                     </div>
                   </Link>
                 </div>
