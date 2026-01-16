@@ -46,24 +46,36 @@ const IdentityHero = () => (
     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.1),transparent_70%)]" />
     
     <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full text-center space-y-12">
-      <motion.h1 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-6xl md:text-[160px] font-black text-white leading-none tracking-tighter italic opacity-90"
       >
-        BE <span className="text-lightblueprimary">ANYTHING.</span>
-      </motion.h1>
+        <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter italic select-none">
+          BE <span className="relative inline-block group">
+            <span className="text-lightblueprimary">ANY</span>
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/40 rounded-full" 
+            />
+          </span>THING.
+        </h1>
+      </motion.div>
+
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 1 }}
+        transition={{ delay: 0.6, duration: 1 }}
         className="flex flex-col md:flex-row items-center justify-center gap-12 pt-12"
       >
-        <p className="text-white/40 text-lg font-light tracking-wide uppercase">Your Identity, Your Control.</p>
-        <button className="px-12 py-4 bg-white text-black font-black rounded-full hover:scale-105 transition-all shadow-2xl active:scale-95">
-          Join .any
-        </button>
+        <p className="text-white/40 text-sm md:text-lg font-light tracking-[0.3em] uppercase">Your Identity, Your Control.</p>
+        <div className="relative">
+          <button className="relative px-12 py-4 bg-white text-black font-black rounded-full hover:scale-105 transition-all shadow-xl active:scale-95 text-xs md:text-sm uppercase tracking-widest">
+            Create a .any <span className="opacity-40 text-[10px] ml-1">(coming soon)</span>
+          </button>
+        </div>
       </motion.div>
     </div>
   </section>
@@ -634,6 +646,42 @@ const EverythingIdentity = () => {
   );
 };
 
+const FinalClosing = () => (
+  <Section className="bg-black text-white py-32 md:py-48 border-t border-white/5" id="closing">
+    <div className="max-w-4xl mx-auto text-center space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] italic">
+          A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
+        </h2>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 1 }}
+        className="space-y-12"
+      >
+        <p className="text-white/40 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
+          .any is building a future where identity is human‑readable, reputation is earned, and privacy is respected by default.
+        </p>
+
+        <div className="flex flex-col items-center gap-6">
+          <div className="h-12 w-px bg-gradient-to-b from-lightblueprimary to-transparent" />
+          <p className="text-lightblueprimary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] font-black">
+            One identity. No exposure. No compromise.
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  </Section>
+);
+
 export default function IdentityPage() {
   return (
     <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
@@ -659,6 +707,8 @@ export default function IdentityPage() {
       <EverydayUses />
 
       <DeveloperIntegration />
+
+      <FinalClosing />
 
       <Footer />
     </div>
