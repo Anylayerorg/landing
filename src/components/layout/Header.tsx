@@ -8,17 +8,20 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
+  const [isFeaturesDropdownOpen, setIsFeaturesDropdownOpen] = useState(false);
   const [resourcesDropdownTimeout, setResourcesDropdownTimeout] =
     useState<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
+  const [isMobileFeaturesOpen, setIsMobileFeaturesOpen] = useState(false);
 
 
   const toggleMenu = () => {
@@ -55,6 +58,12 @@ export function Header() {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsResourcesDropdownOpen(false);
+      }
+      if (
+        featuresRef.current &&
+        !featuresRef.current.contains(event.target as Node)
+      ) {
+        setIsFeaturesDropdownOpen(false);
       }
     };
 
@@ -127,29 +136,153 @@ export function Header() {
               transition={{ duration: 0.3 }}
               className="hidden md:flex items-center gap-x-1 lg:gap-x-2"
             >
-              {[
-                { label: "Trust", id: "reputation" },
-                { label: "Architecture", id: "architecture" },
-                { label: "Opportunity", id: "opportunity" },
-                { label: "Dimension", id: "dimension" },
-                { label: "Capital", id: "capital" },
-              ].map((item) => (
+              <Link
+                href="/"
+                className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
+              >
+                Home
+              </Link>
+
+              {/* Features Dropdown */}
+              <div className="relative" ref={featuresRef}>
                 <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-medium tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
+                  onClick={() => {
+                    setIsFeaturesDropdownOpen(!isFeaturesDropdownOpen);
+                    setIsResourcesDropdownOpen(false);
+                  }}
+                  className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] flex items-center gap-1.5 active:scale-95"
                 >
-                  {item.label}
+                  Features
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform duration-300 ${isFeaturesDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
                 </button>
-              ))}
+
+                <AnimatePresence>
+                  {isFeaturesDropdownOpen && (
+                    <DropdownPortal>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.98, y: -10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.98, y: -10 }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="fixed inset-x-0 top-0 z-50 hidden md:block"
+                      >
+                        <motion.div
+                          onClick={() => setIsFeaturesDropdownOpen(false)}
+                          className="absolute inset-0 z-[-1] bg-[#0D0D12]/40 backdrop-blur-[20px]"
+                        />
+                        <div className="pt-[120px] pb-16 border-b border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.8)] bg-[#0D0D12]">
+                          <div className="px-8 max-w-screen-xl mx-auto grid grid-cols-12 gap-16 items-start">
+                            {/* Left: Section Brand Info */}
+                            <div className="col-span-4 border-r border-white/5 pr-16 h-full">
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20 mb-8">
+                                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
+                                <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">Technology</span>
+                              </div>
+                              <h2 className="font-geist font-medium text-4xl text-white leading-tight tracking-tight mb-6">
+                                Core <br />
+                                <span className="text-[#636475]">Features.</span>
+                              </h2>
+                              <p className="text-[#9494a3] text-base font-normal leading-relaxed">
+                                Explore the four dimensions of trust and identity that power the Anylayer ecosystem.
+                              </p>
+                            </div>
+
+                            {/* Right: Structured Navigation */}
+                            <div className="col-span-8 grid grid-cols-2 gap-x-16 gap-y-12">
+                              {/* Column 1 */}
+                              <div>
+                                <div className="space-y-8">
+                                  <Link href="/identity" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Fingerprint size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Identity</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Private, human-readable on-chain identity for the digital self.</p>
+                                      </div>
+                                    </div>
+                                  </Link>
+
+                                  <button onClick={() => { scrollToSection('reputation'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Award size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Reputation</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Portable on-chain credibility and trust metrics that grow with you.</p>
+                                      </div>
+                                    </div>
+                                  </button>
+                                </div>
+                              </div>
+
+                              {/* Column 2 */}
+                              <div>
+                                <div className="space-y-8">
+                                  <button onClick={() => { scrollToSection('architecture'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <ShieldCheck size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Proof</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Zero-knowledge attestations to verify status without revealing data.</p>
+                                      </div>
+                                    </div>
+                                  </button>
+
+                                  <button onClick={() => { scrollToSection('dimension'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Cpu size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Utility</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Practical applications and tools for cross-chain interoperability.</p>
+                                      </div>
+                                    </div>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </DropdownPortal>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link
+                href="/news"
+                className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
+              >
+                Blog
+              </Link>
 
               {/* Resources Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
-                  onClick={() =>
-                    setIsResourcesDropdownOpen(!isResourcesDropdownOpen)
-                  }
-                  className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-medium tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] flex items-center gap-1.5 active:scale-95"
+                  onClick={() => {
+                    setIsResourcesDropdownOpen(!isResourcesDropdownOpen);
+                    setIsFeaturesDropdownOpen(false);
+                  }}
+                  className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] flex items-center gap-1.5 active:scale-95"
                 >
                   Resources
                   <svg
@@ -208,7 +341,7 @@ export function Header() {
                                   <button onClick={() => { scrollToSection('trustscore'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Image src="/internet.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                        <Globe size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
@@ -220,13 +353,13 @@ export function Header() {
                                   <button onClick={() => { scrollToSection('faq'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Image src="/maps.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                        <Map size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                </div>
+                                    </div>
                                   </button>
                                 </div>
                               </div>
@@ -238,8 +371,8 @@ export function Header() {
                                   <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Image src="/code-square.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
-                            </div>
+                                        <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate ZK-trust into your apps with our core SDKs.</p>
@@ -250,14 +383,28 @@ export function Header() {
                                   <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Image src="/document-code.svg" alt="" width={20} height={20} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                                        <FileText size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
+                                      </div>
                                     </div>
-                                  </div>
                                   </a>
+
+                                  <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center group-hover:border-lightblueprimary/60 transition-colors">
+                                          <div className="w-1 h-1 bg-white/40 group-hover:bg-lightblueprimary transition-colors rounded-full" />
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Media Kit</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Brand assets, guidelines, and press materials.</p>
+                                      </div>
+                                    </div>
+                                  </button>
                                 </div>
                               </div>
                             </div>
@@ -323,26 +470,92 @@ export function Header() {
                     className="absolute inset-0 z-[-1] bg-[#0D0D12]/90 backdrop-blur-xl"
                   />
                   <div className="px-6 space-y-2">
-                    {[
-                      { label: "Trust", id: "trust" },
-                      { label: "Architecture", id: "architecture" },
-                      { label: "Opportunity", id: "opportunity" },
-                      { label: "Dimension", id: "dimension" },
-                      { label: "Capital", id: "capital" },
-                    ].map((item) => (
+                    <Link
+                      href="/"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
+                    >
+                      Home
+                    </Link>
+
+                    <div>
                       <button
-                        key={item.id}
-                        onClick={() => scrollToSection(item.id)}
-                        className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-medium border border-transparent hover:border-white/5"
+                        onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
+                        className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
                       >
-                        {item.label}
+                        Features
+                        <svg
+                          className={`w-5 h-5 transition-transform duration-300 ${isMobileFeaturesOpen ? "rotate-180" : ""}`}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
                       </button>
-                    ))}
+
+                      <AnimatePresence>
+                        {isMobileFeaturesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden bg-white/[0.03] rounded-2xl mt-2 mx-2 border border-white/5"
+                          >
+                            <div className="p-4 space-y-4">
+                              {[
+                                { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
+                                { label: "Reputation", desc: "Trust metrics", icon: <Award size={20} />, id: "reputation" },
+                                { label: "Proof", desc: "ZK-attestations", icon: <ShieldCheck size={20} />, id: "architecture" },
+                                { label: "Utility", desc: "Interoperability tools", icon: <Cpu size={20} />, id: "dimension" }
+                              ].map((item, idx) => {
+                                const MobileContent = (
+                                  <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-lightblueprimary">
+                                      {item.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                      <span className="text-white font-medium">{item.label}</span>
+                                      <span className="text-[#636475] text-xs">{item.desc}</span>
+                                    </div>
+                                  </div>
+                                );
+
+                                if (item.href) {
+                                  return (
+                                    <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block w-full">
+                                      {MobileContent}
+                                    </Link>
+                                  );
+                                }
+
+                                return (
+                                  <button key={idx} className="block w-full text-left" onClick={() => {
+                                    if (item.id) {
+                                      scrollToSection(item.id);
+                                      setIsMobileMenuOpen(false);
+                                    }
+                                  }}>
+                                    {MobileContent}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    <Link
+                      href="/news"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
+                    >
+                      Blog
+                    </Link>
 
                     <div className="pt-4 mt-4 border-t border-white/5">
                       <button
                         onClick={() => setIsMobileResourcesOpen(prev => !prev)}
-                        className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-medium flex items-center justify-between"
+                        className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
                       >
                         Resources
                         <svg
@@ -363,15 +576,22 @@ export function Header() {
                           >
                             <div className="p-4 space-y-4">
                               {[
-                                { label: "Explorer", desc: "Track trust signals", icon: "/internet.svg", id: "trustscore" },
-                                { label: "Roadmap", desc: "Future milestones", icon: "/maps.svg", id: "faq" },
-                                { label: "Builders", desc: "Core SDKs", icon: "/code-square.svg", href: "https://docs.onzks.com" },
-                                { label: "Whitepaper", desc: "Technical deep dive", icon: "/document-code.svg", href: "https://docs.onzks.com" }
+                                { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore" },
+                                { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, id: "faq" },
+                                { label: "Builders", desc: "Core SDKs", icon: <Code2 size={20} />, href: "https://docs.onzks.com" },
+                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.onzks.com" },
+                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" }
                               ].map((item, idx) => {
                                 const MobileContent = (
                                   <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-                                      <Image src={item.icon} alt={item.label} width="20" height="20" />
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-white/40 group-hover:text-lightblueprimary">
+                                      {item.label === "Media Kit" ? (
+                                        <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center">
+                                          <div className="w-1 h-1 bg-white/40 rounded-full" />
+                                        </div>
+                                      ) : (
+                                        item.icon
+                                      )}
                                     </div>
                                     <div className="flex flex-col">
                                       <span className="text-white font-medium">{item.label}</span>
@@ -390,6 +610,10 @@ export function Header() {
 
                                 return (
                                   <button key={idx} className="block w-full text-left" onClick={() => {
+                                    if (item.id === "media-kit") {
+                                      setIsMobileMenuOpen(false);
+                                      return;
+                                    }
                                     if (item.id) {
                                     scrollToSection(item.id);
                                     setIsMobileMenuOpen(false);
