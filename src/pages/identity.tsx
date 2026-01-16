@@ -696,7 +696,6 @@ export default function IdentityPage() {
 
       <IdentityProblem />
 
-      <ProcessFlow />
 
       <IdentityDefinition />
 
