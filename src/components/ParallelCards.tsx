@@ -8,9 +8,8 @@ const data = [
   {
     title: "Human identity signals",
     description:
-      "Human Trust measures the reliability and behavioral consistency of a real person privately.",
-    line2:
-      "It is built from identity proofs, behavioral signals, achievements, and verifiable reputation.",
+      "Human Trust measures the reliability and behavioral consistency of a real person. It is built from identity proofs, on/off‑chain behavior, achievements, and verifiable reputation.",
+    line2: "",
     image: "/human-identity.svg",
     signals: [
       { icon: "ic-linkedin.svg", label: "Linkedin" },
@@ -22,9 +21,8 @@ const data = [
   {
     title: "Wallet activity rotation",
     description:
-      "Wallet Trust evaluates wallet reliability based on on-chain patterns and historical performance.",
-    line2:
-      "It is risk intelligence + behavioral analytics + reputation scoring combined into a trust value.",
+      "Wallet Trust reflects address‑level behavior and operational hygiene. It is built from wallet age, repayments and collateral health, trading integrity, liquidity activity, and address age—summarized without exposing balances.",
+    line2: "",
     image: "/wallet-activity.svg",
     signals: [
       { icon: "ic-exchange.svg", label: "Exchange" },
@@ -36,9 +34,8 @@ const data = [
   {
     title: "AI verified behavior",
     description:
-      "AI Agent Trust measures how reliable, predictable, and safe an autonomous agent is.",
-    line2:
-      "Anylayer gives every AI agent a .zks identity and evaluates its behavior over time.",
+      "Agent Trust captures outcome reliability for autonomous agents. It is built from task‑completion success, incident rates, execution quality (e.g., slippage/latency), and user feedback—provable without sharing logs or strategies.",
+    line2: "",
     image: "/ai-verified.svg",
     signals: [
       { icon: "ic-processor.svg", label: "Processor" },

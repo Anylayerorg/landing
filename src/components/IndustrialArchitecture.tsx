@@ -172,31 +172,33 @@ const RisingIdentityText = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center scale-[0.8] md:scale-100">
       <div className="relative w-full h-full max-w-2xl mx-auto">
-        {identities.map((text, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: 400, opacity: 0, x: (i % 5 - 2) * 120 }}
-            animate={{ 
-              y: -500, 
-              opacity: [0, 0.6, 0.6, 0],
-              x: (i % 5 - 2) * 120 + Math.sin(i) * 30 
-            }}
-            transition={{
-              duration: 10 + Math.random() * 5,
-              repeat: Infinity,
-              delay: i * 0.6,
-              ease: "linear"
-            }}
-            className="absolute font-mono text-[9px] md:text-sm text-lightblueprimary/30 font-bold tracking-widest whitespace-nowrap"
-            style={{ 
-              left: '50%', 
-              marginLeft: '-40px',
-              top: '50%'
-            }}
-          >
-            {text}
-          </motion.div>
-        ))}
+        {identities.map((text, i) => {
+          const parts = text.split('.');
+          const name = parts[0];
+          const suffix = parts[1] ? '.' + parts[1] : '';
+          
+          return (
+            <motion.div
+              key={i}
+              initial={{ y: 400, opacity: 0, x: (i % 5 - 2) * 120 }}
+              animate={{ 
+                y: -500, 
+                opacity: [0, 0.6, 0.6, 0],
+                x: (i % 5 - 2) * 120 + Math.sin(i) * 30 
+              }}
+              transition={{
+                duration: 10 + Math.random() * 5,
+                repeat: Infinity,
+                delay: i * 0.6,
+                ease: "linear"
+              }}
+              className="absolute font-mono text-[10px] md:text-sm font-black tracking-tighter whitespace-nowrap flex items-center gap-0.5 left-1/2 top-1/2 -ml-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+            >
+              <span className="text-white">{name}</span>
+              <span className="text-white/20">{suffix}</span>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
@@ -258,7 +260,7 @@ const UtilityHub = () => {
                   left: tag.side === 'left' ? '10%' : 'auto', 
                   right: tag.side === 'right' ? '10%' : 'auto',
                   top: `calc(50% + ${tag.y}px)`
-                }}
+                } as any}
               >
                 <span className={`text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase ${tag.side === 'left' ? 'text-lightblueprimary' : 'text-white/60'}`}>
                   {tag.text}
@@ -394,11 +396,11 @@ const LuminousVisual = ({ active }: { active: number }) => {
             }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute inset-0 blur-[120px] rounded-full pointer-events-none"
-            style={{ backgroundColor: purpleGlow }}
+            style={{ backgroundColor: purpleGlow } as any}
           />
 
           {/* Asset Container (Bouncing removed) */}
-          <motion.div className="relative z-10 w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+          <motion.div className="relative z-10 w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' } as any}>
             <div className="relative w-full h-full flex items-center justify-center">
               <Image 
                 src={layers[active].visualSrc} 

@@ -350,7 +350,7 @@ export function Header() {
                                     </div>
                                   </button>
 
-                                  <button onClick={() => { scrollToSection('faq'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
+                                  <Link href="/roadmap" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Map size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
@@ -359,8 +359,8 @@ export function Header() {
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                </div>
-                                  </button>
+                                    </div>
+                                  </Link>
                                 </div>
                               </div>
 
@@ -589,7 +589,7 @@ export function Header() {
                             <div className="p-4 space-y-4">
                               {[
                                 { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore" },
-                                { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, id: "faq" },
+                                { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, href: "/roadmap" },
                                 { label: "Builders", desc: "Core SDKs", icon: <Code2 size={20} />, href: "https://docs.onzks.com" },
                                 { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.onzks.com" },
                                 { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },

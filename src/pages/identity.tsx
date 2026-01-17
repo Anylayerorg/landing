@@ -53,12 +53,12 @@ const IdentityHero = () => (
       >
         <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter italic select-none">
           BE <span className="relative inline-block group">
-            <span className="text-white/20">ANY</span>
+            <span className="text-lightblueprimary">ANY</span>
             <motion.div 
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-white/10 rounded-full" 
+              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/20 rounded-full" 
             />
           </span>THING.
         </h1>

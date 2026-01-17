@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from "next/image";
+import Link from "next/link";
 import { Send } from 'lucide-react';
 
 const footerIcon = [
@@ -14,7 +15,7 @@ const footerIcon = [
 const Newsletter = () => (
   <div className="space-y-6 max-w-md">
     <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tighter leading-tight">
-      Stay updated on <span className="text-lightblueprimary italic">Trust.</span>
+      Stay updated on <span className="text-lightblueprimary italic">Anylayer.</span>
     </h3>
     <div className="relative flex items-center p-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-lightblueprimary/30 transition-all">
       <input 
@@ -26,7 +27,6 @@ const Newsletter = () => (
         <Send size={18} />
       </button>
     </div>
-    <p className="text-[10px] text-white/20 uppercase tracking-widest font-black">Join 12,000+ builders in the trust network.</p>
   </div>
 );
 
@@ -35,8 +35,17 @@ const Links = () => (
     <div className="space-y-6">
       <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Protocol</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
-        {["Architecture", "Trust Engine", "Identity", "Reputation"].map(l => (
-          <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>
+        {[
+          { label: "Architecture", href: "/#architecture" },
+          { label: "Identity", href: "/identity" },
+          { label: "Reputation", href: "/#reputation" },
+          { label: "Strategic Roadmap", href: "/roadmap" }
+        ].map(l => (
+          <li key={l.label}>
+            <Link href={l.href} className="hover:text-white transition-colors cursor-pointer">
+              {l.label}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

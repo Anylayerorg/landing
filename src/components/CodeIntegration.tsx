@@ -8,12 +8,10 @@ import {
   Lock, Zap, LayoutGrid, Fingerprint, Copy, Check,
   Activity, Globe, Server, Shield, UserCheck, ShieldAlert
 } from 'lucide-react';
-import { fadeUp, staggerContainer } from '../lib/animations';
 
 // --- Premium Bento Tile Component ---
 const BentoTile = ({ children, className = "", span = "", noHover = false }: { children: React.ReactNode, className?: string, span?: string, noHover?: boolean }) => (
-  <motion.div
-    variants={fadeUp}
+  <div
     className={`relative group rounded-[28px] md:rounded-[32px] overflow-hidden bg-[#0D0D12] border border-white/[0.04] ${!noHover ? 'hover:border-white/[0.1] hover:bg-[#12121A]' : ''} transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.4)] ${span} ${className}`}
   >
     {/* Inner Tactile Glows */}
@@ -21,7 +19,7 @@ const BentoTile = ({ children, className = "", span = "", noHover = false }: { c
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
     <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-white/[0.05] to-transparent" />
     {children}
-  </motion.div>
+  </div>
 );
 
 const CodeIntegration = () => {
@@ -43,13 +41,7 @@ console.log(score); // 8,402`;
     <section id="opportunity" className="hidden md:block py-12 bg-[#08080C] overflow-hidden">
       <div className="px-6 max-w-screen-xl mx-auto">
         
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[140px]"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[140px]">
           
           {/* ROW 1: IDENTITY & TRUST TOOLS */}
           
@@ -133,11 +125,9 @@ console.log(score); // 8,402`;
              
              <div className="h-20 w-full flex items-end gap-[2px] px-1 overflow-hidden">
                 {Array.from({ length: 12 }).map((_, i) => (
-                  <motion.div 
+                  <div 
                     key={i}
-                    initial={{ height: 0 }}
-                    whileInView={{ height: `${20 + Math.random() * 80}%` }}
-                    transition={{ duration: 1, delay: i * 0.05 }}
+                    style={{ height: `${20 + Math.random() * 80}%` }}
                     className="flex-1 bg-white/[0.03] rounded-t-lg border-t border-white/10 group-hover/score:bg-lightblueprimary/10 group-hover/score:border-lightblueprimary/20 transition-all duration-700"
                   />
                 ))}
@@ -151,9 +141,9 @@ console.log(score); // 8,402`;
                     </h2>
              
              {/* Tactile 3D Button - High Contrast */}
-             <button className="group relative mt-1 active:translate-y-1 transition-transform">
-                <div className="absolute inset-0 bg-black blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
-                <div className="relative px-8 py-3 bg-black text-white font-semibold rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:scale-105 transition-all text-[12px] tracking-tight uppercase">
+             <button className="group relative mt-1">
+                <div className="absolute inset-0 bg-black blur-2xl opacity-10" />
+                <div className="relative px-8 py-3 bg-black text-white font-semibold rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] text-[12px] tracking-tight uppercase">
                    Documentation
                 </div>
                     </button>
@@ -252,7 +242,7 @@ console.log(score); // 8,402`;
              </div>
           </BentoTile>
 
-        </motion.div>
+          </div>
         </div>
       </section>
   );
