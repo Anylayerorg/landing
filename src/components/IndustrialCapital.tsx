@@ -8,8 +8,9 @@ import {
 
 const tabs = [
   { id: "defi", label: "DeFi Protocols" },
+  { id: "payments", label: "Payments & .ANY" },
+  { id: "marketplaces", label: "Marketplaces & Commerce" },
   { id: "loyalty", label: "Loyalty Brands" },
-  { id: "rwa", label: "RWA & Insurance" },
   { id: "users", label: "Everyday Users" },
 ] as const;
 
@@ -18,14 +19,36 @@ type TabId = typeof tabs[number]['id'];
 const tabContent = {
   defi: {
     title: "DeFi Protocols",
-    description: "Anylayer helps lending, trading, and yield platforms build safer, more efficient markets.",
+    description: "Price risk accurately and unlock real‑world assets using privacy‑preserving reputation and proofs.",
     features: [
-      { title: "Credible Liquidity Providers", description: "Participate in protocol governance and voting." },
+      { title: "Under‑Collateralized & RWA Credit", description: "Blend on/off‑chain signals and asset attestations to reduce collateral safely." },
       { title: "Reputation-Weighted Rewards", description: "Incentivize long-term trust over short-term capital." },
       { title: "Trust-Based LTVs", description: "Dynamic loan-to-value ratios based on wallet health." },
-      { title: "Wallet-Gated Access", description: "Exclusive access for wallets with high trustscores." },
+      { title: "Settlement & Asset Proofs", description: "Prove lockable funds or RWA ownership/eligibility without exposing portfolios." },
     ],
     stats: { primary: "84%", secondary: "Capital Eff." }
+  },
+  payments: {
+    title: "Payments & .ANY Addressing",
+    description: "Turn long account strings into simple .any paynames—and move money across crypto and fiat without exposing sensitive details.",
+    features: [
+      { title: "P2P & Merchant Checkout (.ANY Paynames)", description: "Replace IBANs/hex with .any handles; accept crypto or fiat at one address, settle where you want." },
+      { title: "Cross‑Border Remittance & FX Routing", description: "Send/receive across rails with smart currency routing and privacy‑preserving compliance proofs." },
+      { title: "Payroll & Mass Payouts", description: "Batch payouts to contractors/creators via .any handles; settle on‑chain or to bank with proof‑linked receipts." },
+      { title: "Subscriptions & Recurring Billing", description: "Trust‑banded retries and limits; request‑to‑pay links and consented cancellations—no card vaults." },
+    ],
+    stats: { primary: "$12B+", secondary: "Volume Routed" }
+  },
+  marketplaces: {
+    title: "Marketplaces & Commerce",
+    description: "Increase trust and conversion on both sides—credible sellers, committed buyers, smoother post‑purchase flows.",
+    features: [
+      { title: "Seller Credibility", description: "Reputation from delivery history, dispute outcomes, and service quality—without exposing customer data." },
+      { title: "Buyer Deposit Proofs", description: "\"Can lock amount ≥ X\" proofs to reduce flakes and enable instant reservations." },
+      { title: "Returns & Warranty Automation", description: "Streamlined approvals for high‑trust buyers; fewer holds and faster refunds." },
+      { title: "Escrow & Dispute Integrity", description: "Outcome‑based proofs and multi‑attester checks to resolve disputes fairly without data dumps." },
+    ],
+    stats: { primary: "98%", secondary: "Trust Rate" }
   },
   loyalty: {
     title: "Loyalty & Brands",
@@ -37,17 +60,6 @@ const tabContent = {
       { title: "Perks for Loyal Wallets", description: "Special perks for long-standing verified wallets." },
     ],
     stats: { primary: "12M+", secondary: "Active Proofs" }
-  },
-  rwa: {
-    title: "RWA & Insurance",
-    description: "Bring transparency, fairness, and efficiency to real-world lending using zk-powered reputation.",
-    features: [
-      { title: "Reduced KYC", description: "Simplified onboarding without exposing personal info." },
-      { title: "Trust-Based Underwriting", description: "Automated lending powered by wallet trust." },
-      { title: "Credit Lines", description: "Instant credit access for credible users." },
-      { title: "Institutional Trust", description: "Universal zk trust layer for institutions." },
-    ],
-    stats: { primary: "$4.2B", secondary: "Verified Capital" }
   },
   users: {
     title: "Everyday Users",

@@ -269,7 +269,7 @@ export function Header() {
               </div>
 
               <Link
-                href="/news"
+                href="/blog"
                 className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
               >
                 Blog
@@ -557,7 +557,7 @@ export function Header() {
                     </div>
 
                     <Link
-                      href="/news"
+                      href="/blog"
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
                     >

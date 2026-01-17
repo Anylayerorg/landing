@@ -216,24 +216,6 @@ const POLICIES = [
           </div>
         </section>
 
-        <section className="space-y-6">
-          <h3 className="text-xl font-black text-white uppercase tracking-tight">18. Contacts</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Disputes</span>
-              <p className="text-lightblueprimary font-bold">disputes@anylayer.org</p>
-            </div>
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Support</span>
-              <p className="text-lightblueprimary font-bold">support@anylayer.org</p>
-            </div>
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Abuse Reports</span>
-              <p className="text-lightblueprimary font-bold">abuse@anylayer.org</p>
-            </div>
-          </div>
-        </section>
-
         <section className="pt-12 border-t border-white/5 space-y-8">
           <h3 className="text-sm font-black text-white uppercase tracking-widest">Appendices (Non‑Binding Aids)</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-[11px] text-white/40 leading-relaxed uppercase tracking-wider font-mono">
@@ -673,39 +655,150 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">18. Governing Law & Forum</h3>
           <p className="text-white/60 font-light">18.1 Governing law and forum for disputes shall be published by AnyLayer governance <strong>[placeholder to be finalized]</strong>.</p>
         </section>
-
-        <section className="space-y-6">
-          <h3 className="text-xl font-black text-white uppercase tracking-tight">19. Contacts</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Policy Inquiries</span>
-              <p className="text-lightblueprimary font-bold">policy@anylayer.org</p>
-            </div>
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Security Reports</span>
-              <p className="text-lightblueprimary font-bold">security@anylayer.org</p>
-            </div>
-            <div className="space-y-1">
-              <span className="text-white/20 uppercase font-mono text-[9px] block">Integrator Support</span>
-              <p className="text-lightblueprimary font-bold">support@anylayer.org</p>
-            </div>
-          </div>
-        </section>
       </div>
     )
   },
   {
     id: 'privacy-policy',
-    title: 'Privacy Policy',
+    title: 'Privacy & Consent Policy',
     category: 'Legal',
-    lastUpdated: 'Oct 2025',
+    lastUpdated: 'Jan 17, 2026',
     content: (
-      <div className="space-y-8">
-        <h2 className="text-2xl font-black text-white uppercase tracking-tight">Privacy Policy</h2>
-        <p className="text-white/60">Anylayer is privacy-first by default. This policy outlines how zero-knowledge proofs protect your data.</p>
-        <div className="p-12 bg-white/[0.02] border border-dashed border-white/10 rounded-2xl text-center">
-          <p className="text-white/20 font-mono text-sm">Full Privacy Policy document coming soon.</p>
+      <div className="space-y-16">
+        {/* Status Header */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
+          <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
+          <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
         </div>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>1.1 This Privacy & Consent Policy (the "Policy") describes how AnyLayer handles information about <strong>Humans</strong>, <strong>Wallets</strong>, and <strong>AI Agents</strong> (collectively, "Participants") in connection with identity, reputation, and proof functions.</p>
+            <p>1.2 The Policy focuses on <strong>data minimization</strong>, <strong>selective disclosure</strong>, <strong>user/agent consent</strong>, and <strong>portability/erasure</strong> in a zero‑knowledge trust environment.</p>
+            <p>1.3 This Policy operates alongside the <strong>Reputation Policy</strong>, <strong>Proof Validity Policy</strong>, <strong>Participant Use Policy</strong>, and <strong>.any Naming Policy</strong>. Where conflicts arise, the more privacy‑protective control prevails unless required by law.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">2. Principles</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>2.1 <strong>Data Minimization.</strong> Collect, process, and share the least amount of information necessary to achieve a stated purpose.</p>
+            <p>2.2 <strong>Selective Disclosure.</strong> Prefer cryptographic <strong>Proofs</strong> over raw data wherever feasible.</p>
+            <p>2.3 <strong>User/Agent Control.</strong> Participants choose what to disclose, where, and when.</p>
+            <p>2.4 <strong>Portability.</strong> Participants can move their commitments and permitted summaries between integrators.</p>
+            <p>2.5 <strong>Erasure & Revocation.</strong> Where feasible, Participants can request withdrawal of consent and revocation of attestations; immutable records are handled via <strong>commitment updates</strong> and <strong>prospective controls</strong>.</p>
+            <p>2.6 <strong>Security by Design.</strong> Administrative, technical, and organizational safeguards protect processing pipelines and registries.</p>
+            <p>2.7 <strong>Lawful Processing.</strong> Processing relies on Participant consent or another lawful basis applicable to the context.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Categories of Information</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
+            <p>3.1 <strong>On‑Chain Signals.</strong> Public transaction metadata (e.g., swaps, lending, collateralization, holdings/transfers) referenced via commitments in Reputation computation.</p>
+            <p>3.2 <strong>Off‑Chain Signals.</strong> Verifiable contribution records, audits, dispute outcomes, and other Attester‑issued statements.</p>
+            <p>3.3 <strong>Derived Reputation.</strong> Sub‑scores and flags computed from permitted signals; published as commitments, not raw datasets.</p>
+            <p>3.4 <strong>Operational Metadata.</strong> Non‑content event logs (e.g., registration, renewal, proof timestamps, revocation events).</p>
+            <p>3.5 <strong>Sensitive Data.</strong> Biometric identifiers, precise geolocation, medical data—<strong>prohibited</strong> unless explicitly consented, necessary, and legally permissible.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">4. Data Minimization Controls</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>4.1 <strong>Default to Proofs.</strong> Integrators must accept Proofs in lieu of raw inputs when a policy can be satisfied by a Claim.</p>
+            <p>4.2 <strong>Purpose Binding.</strong> Each request must specify a legitimate purpose and scope (e.g., <em>credit ≥ threshold</em>).</p>
+            <p>4.3 <strong>No Excess Fields.</strong> Integrators shall not collect additional identifiers or raw histories when unnecessary to satisfy the Claim.</p>
+            <p>4.4 <strong>Retention Limits.</strong> Operational metadata is retained only as long as necessary for integrity, audit, and legal requirements, then aggregated or deleted.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">5. Selective Disclosure</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>5.1 <strong>Granular Claims.</strong> Participants disclose <strong>only</strong> the minimum needed (e.g., range proofs, set‑membership).</p>
+            <p>5.2 <strong>Freshness Windows.</strong> Claims carry epochs/TTLs; Integrators must check freshness per the <strong>Proof Validity Policy</strong>.</p>
+            <p>5.3 <strong>Context Binding.</strong> Proofs are bound to a specific verifier, domain, contract, or session to prevent replay.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">6. Consent Management</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>6.1 <strong>Explicit Consent.</strong> Where required by law or policy, Participants provide explicit consent for the use of particular signals or Claims.</p>
+            <p>6.2 <strong>Consent Records.</strong> Consent scopes (purpose, fields, duration) are recorded as signed statements or commitments; raw personal data is not placed on‑chain.</p>
+            <p>6.3 <strong>Withdrawal.</strong> Participants may withdraw consent prospectively. Post‑withdrawal, new Proofs for the withdrawn scopes shall not be accepted; previously valid interactions remain unaffected unless separately revoked for cause.</p>
+            <p>6.4 <strong>Delegation.</strong> Controllers may consent on behalf of AI Agents they manage, within published scopes and with auditability.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">7. Portability</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>7.1 <strong>Export.</strong> Participants may export references to commitments, high‑level score summaries, and relevant proofs in a standard, documented format.</p>
+            <p>7.2 <strong>Interoperability.</strong> AnyLayer will document APIs/SDKs to allow Participants to port their permitted summaries between integrators and chains where supported.</p>
+            <p>7.3 <strong>Limitations.</strong> Portability covers <strong>derived</strong> elements (commitments/proofs) rather than immutable public chain history.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">8. Erasure & Revocation</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>8.1 <strong>Best‑Effort Erasure.</strong> For mutable off‑chain data and attestations, AnyLayer will, upon valid request, instruct Attesters to revoke or update records and will update commitments accordingly.</p>
+            <p>8.2 <strong>Immutable Records.</strong> Public on‑chain history cannot be erased; instead, new commitments supersede prior states and future disclosures are curtailed.</p>
+            <p>8.3 <strong>Downstream Notice.</strong> Where feasible, Integrators who consumed revoked attestations will be notified via webhook/registry events.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">9. Participant Rights</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>9.1 <strong>Access.</strong> Participants may request a high‑level summary of inputs and computation applicable to them, subject to anti‑gaming and privacy safeguards.</p>
+            <p>9.2 <strong>Correction.</strong> Participants may submit evidence to correct factual errors or misattributions.</p>
+            <p>9.3 <strong>Restriction.</strong> Participants may restrict processing for specified purposes where legally permitted.</p>
+            <p>9.4 <strong>Appeal.</strong> Denials of requests may be appealed under the processes in the <strong>Reputation Policy</strong>.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">10. Integrator & Attester Obligations</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>10.1 <strong>Least Disclosure.</strong> Request only the Claims necessary for a given action; accept Proofs over raw data.</p>
+            <p>10.2 <strong>Security.</strong> Protect keys, SDKs, and interfaces; prevent unauthorized relay or storage of raw datasets.</p>
+            <p>10.3 <strong>Revocation Handling.</strong> Subscribe to registry/webhook events and cease reliance on revoked or stale Proofs.</p>
+            <p>10.4 <strong>Audit Cooperation.</strong> Cooperate with independent audits and incident response.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">11. Security Measures</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>11.1 <strong>Technical Controls.</strong> Encryption at rest/in transit for off‑chain elements; integrity checks for SDKs/APIs; rate‑limit and anomaly detection for Proof submission.</p>
+            <p>11.2 <strong>Administrative Controls.</strong> Access controls, least‑privilege assignments, and change management for configuration and models.</p>
+            <p>11.3 <strong>Independent Audits.</strong> Periodic audits of privacy‑impacting systems; public summaries may be provided.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">12. Compliance</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>12.1 <strong>Legal Requests.</strong> AnyLayer responds to lawful requests in a manner consistent with data minimization, notifying Participants where permitted.</p>
+            <p>12.2 <strong>Sanctions/Geo.</strong> Privacy‑preserving allow/deny checks may be applied where legally required.</p>
+            <p>12.3 <strong>Children's Data.</strong> The platform is not directed at children; minors may participate only where lawful and with appropriate consents.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">13. Change Management & Versioning</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>13.1 <strong>Amendments.</strong> Material changes follow an RFC process with community comment and, where required, governance vote.</p>
+            <p>13.2 <strong>Notice.</strong> Except for urgent legal/security changes, AnyLayer provides at least fourteen (14) days' notice before changes take effect.</p>
+            <p>13.3 <strong>Changelog.</strong> A public changelog will be maintained and linked.</p>
+          </div>
+        </section>
       </div>
     )
   },
@@ -729,6 +822,35 @@ const POLICIES = [
 const PolicyPage = () => {
   const [activePolicy, setActivePolicy] = useState(POLICIES[0]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Handle hash-based routing on mount and hash change
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // Remove the '#'
+      if (hash) {
+        const policy = POLICIES.find(p => p.id === hash);
+        if (policy) {
+          setActivePolicy(policy);
+        }
+      } else {
+        // Set default hash to first policy
+        window.location.hash = POLICIES[0].id;
+      }
+    };
+
+    // Check hash on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Update hash when policy changes
+  const handlePolicyChange = (policy: typeof POLICIES[0]) => {
+    setActivePolicy(policy);
+    window.location.hash = policy.id;
+  };
 
   const filteredPolicies = POLICIES.filter(p => 
     p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -781,7 +903,7 @@ const PolicyPage = () => {
                       {policies.map((policy) => (
                         <button
                           key={policy.id}
-                          onClick={() => setActivePolicy(policy)}
+                          onClick={() => handlePolicyChange(policy)}
                           className={`text-left transition-all ${
                             activePolicy.id === policy.id 
                               ? 'text-white font-black' 
