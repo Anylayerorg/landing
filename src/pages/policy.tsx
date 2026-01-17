@@ -488,6 +488,213 @@ const POLICIES = [
     )
   },
   {
+    id: 'proof-validity',
+    title: 'Proof Validity Policy',
+    category: 'Trust',
+    lastUpdated: 'Jan 17, 2026',
+    content: (
+      <div className="space-y-16">
+        {/* Status Header */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
+          <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
+          <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
+        </div>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>1.1 This Proof Validity Policy (the "Policy") defines the rules under which cryptographic proofs ("Proofs") are generated, submitted, verified, accepted, rejected, and revoked within the AnyLayer ecosystem.</p>
+            <p>1.2 The Policy applies to Subjects (humans, wallets, AI agents), Integrators (dApps, protocols, wallets), and Attesters (approved data providers) that request, produce, or rely on Proofs.</p>
+            <p>1.3 This Policy governs Proofs used to establish facts about identity, reputation sub‑scores, asset readiness, uniqueness, and other permitted claims without disclosing raw data.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">2. Definitions</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
+            {[
+              { term: "Proof", def: "A zero‑knowledge or privacy‑preserving cryptographic statement attesting to a Claim without revealing underlying data." },
+              { term: "Claim", def: "The verifiable predicate requested by an Integrator (e.g., \"credit ≥ 720,\" \"can lock ≥ 5,000 USDT\")." },
+              { term: "Context Binding", def: "Associating a Proof with a specific verifier, domain, contract, or session to prevent replay elsewhere." },
+              { term: "Epoch", def: "A defined time window during which state commitments, parameters, and freshness rules apply." },
+              { term: "Revocation", def: "The process by which a previously valid Proof is rendered invalid due to withdrawal, stale state, error correction, or abuse." },
+              { term: "Nullifier", def: "A cryptographic artifact that prevents double‑use of a Proof or entitlement across contexts." },
+              { term: "Commitment Registry", def: "The on‑chain or published record that anchors state commitments for identities, reputation vectors, and attestation sets." },
+              { term: "Subject Identifier", def: "A privacy‑preserving reference to a Subject as defined in the Identity Policy." }
+            ].map((d, i) => (
+              <div key={i} className="space-y-1">
+                <span className="text-white font-bold block uppercase text-[10px] tracking-wider">{d.term}</span>
+                <p className="text-white/40 leading-relaxed font-light">{d.def}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Ownership & Title</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>3.1 AnyLayer owns and controls the circuits, parameters, registries, and verification interfaces used for Proof handling, except for open‑source components which remain under their respective licenses.</p>
+            <p>3.2 Integrators and Subjects receive a limited, revocable license to use Proof tooling in accordance with this Policy and applicable law. No proprietary right in circuits, parameters, or registries is transferred by use.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">4. Terms of Use</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
+            <p>4.1 Proofs may be used to price, gate, or automate actions but shall not be used to unlawfully discriminate or contravene applicable law.</p>
+            <p>4.2 Integrators must implement reasonable safeguards to validate freshness, bind context, and handle revocations.</p>
+            <p>4.3 AnyLayer provides Proof tooling "as is" and disclaims warranties to the maximum extent permitted by law; liability is limited to fees paid in the twelve (12) months preceding a claim.</p>
+            <p>4.4 Subjects and Integrators shall indemnify AnyLayer for misuse of Proofs or violations of this Policy.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">5. Proof Types</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
+            <p>5.1 <strong>Range Proofs.</strong> Demonstrate that a secret value lies within a range (e.g., score ≥ threshold, balance ≥ amount).</p>
+            <p>5.2 <strong>Set‑Membership Proofs.</strong> Demonstrate that a value belongs to or is excluded from a set (e.g., allow/deny lists, attester quorum).</p>
+            <p>5.3 <strong>Boolean/Composite Proofs.</strong> Combine multiple conditions with AND/OR logic (e.g., credit ≥ X AND repayment streak ≥ N).</p>
+            <p>5.4 <strong>Uniqueness/Rate‑Limit Proofs.</strong> Demonstrate one‑per‑Subject access or bounded frequency without revealing identity.</p>
+            <p>5.5 <strong>Time‑Bound Proofs.</strong> Assert claims limited to an Epoch or timestamp window (freshness).</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">6. Freshness & Validity</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>6.1 <strong>Epoch Freshness.</strong> Proofs must reference a current or Integrator‑accepted Epoch; out‑of‑window Proofs are invalid.</p>
+            <p>6.2 <strong>TTL.</strong> Integrators may specify a maximum time‑to‑live (TTL) for acceptance.</p>
+            <p>6.3 <strong>State Commitments.</strong> Proofs must be generated against the latest applicable commitment roots published in the Commitment Registry.</p>
+            <p>6.4 <strong>Clock Skew.</strong> A small skew tolerance may be applied; parameters are published by AnyLayer.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">7. Revocation & Updates</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>7.1 <strong>Attestation Revocation.</strong> If an Attester revokes or amends an attestation, Proofs dependent on the revoked state are invalid from the revocation effective time.</p>
+            <p>7.2 <strong>Error Correction.</strong> Material computation errors will result in updated commitments; Proofs against superseded commitments may be rejected.</p>
+            <p>7.3 <strong>Subject Withdrawal.</strong> Subjects may withdraw consent for certain Claims prospectively; Integrators must respect updated consent scopes.</p>
+            <p>7.4 <strong>Notice.</strong> Revocation events are published via the Commitment Registry and webhook feeds where available.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">8. Replay Protection & Context Binding</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>8.1 <strong>Context Binding Required.</strong> Proofs must bind to an Integrator‑specified domain, contract address, session nonce, or similar scope.</p>
+            <p>8.2 <strong>Single‑Use Nullifiers.</strong> Where entitlements are one‑time or limited, Proofs shall emit nullifiers to prevent reuse.</p>
+            <p>8.3 <strong>Cross‑Context Rejection.</strong> Integrators must reject Proofs whose context does not match the request (e.g., different contract or domain).</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">9. Selective Disclosure & Minimization</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>9.1 Proofs must disclose only the minimal information needed to satisfy the Claim; raw inputs and personal datasets are not exposed.</p>
+            <p>9.2 Integrators shall not condition access on disclosure of unnecessary fields or raw data when a Proof can satisfy the Claim.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">10. Generation & Verification Requirements</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
+            <p>10.1 <strong>Trusted Parameters.</strong> Circuits and parameters must be published with version identifiers; where a setup is required, ceremony artifacts and transcripts will be referenced.</p>
+            <p>10.2 <strong>Library Integrity.</strong> SDKs and APIs used for Proof generation/verification must be integrity‑checked (e.g., hashes, signatures).</p>
+            <p>10.3 <strong>Determinism & Errors.</strong> Integrators should handle verification timeouts, malformed Proofs, and mismatched roots with clear error codes and safe defaults (reject on failure).</p>
+            <p>10.4 <strong>Rate Limits.</strong> Proof submission may be rate‑limited to protect system integrity.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">11. Cryptographic Assumptions & Upgrades</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>11.1 <strong>Assumptions.</strong> Proof systems rely on stated cryptographic assumptions (e.g., soundness, knowledge‑of‑exponent). AnyLayer will publish a summary of assumptions and circuit constraints.</p>
+            <p>11.2 <strong>Upgrades.</strong> Critical parameter or circuit upgrades will follow the Change Management process with clear deprecation windows.</p>
+            <p>11.3 <strong>Backward Compatibility.</strong> Where feasible, prior Proofs remain valid within their TTL and Epoch; otherwise Integrators must require regeneration.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">12. Misuse & Abuse</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>12.1 <strong>Forgery & Tampering.</strong> Attempted forging or tampering with Proof tooling is prohibited and may lead to account blocks, slashing (where applicable), and legal action.</p>
+            <p>12.2 <strong>Coercion & Sale of Proofs.</strong> The sale or coercive transfer of context‑bound Proofs is prohibited; Integrators should bind Proofs to Sessions or recipients to reduce value for resale.</p>
+            <p>12.3 <strong>Gaming.</strong> Coordinated behaviors intended to misrepresent eligibility or reputation may trigger rejection and flags per the Reputation Policy.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">13. Subject Rights & Consent</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>13.1 <strong>Consent Scope.</strong> Subjects define which Claims may be proven in which contexts; Integrators must request only the necessary Claims.</p>
+            <p>13.2 <strong>Withdrawal.</strong> Subjects may withdraw consent prospectively; previously accepted Proofs are unaffected retroactively unless revoked for cause.</p>
+            <p>13.3 <strong>Access & Explanation.</strong> Subjects may request high‑level explanations of Proof scopes and applicable Epochs, subject to anti‑gaming safeguards.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">14. Integrator Obligations</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>14.1 <strong>Policy Conformance.</strong> Integrators must implement freshness checks, revocation handling, context binding, and selective disclosure.</p>
+            <p>14.2 <strong>Error Handling.</strong> Integrators must surface user‑readable reasons for rejection (e.g., stale Proof, mismatched context).</p>
+            <p>14.3 <strong>Security.</strong> Integrators must secure API keys, SDKs, and contract interfaces to prevent unauthorized Proof relay.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">15. Security & Audit</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>15.1 <strong>Audits.</strong> Circuits, registries, and critical interfaces are subject to periodic independent audit; public summaries may be provided.</p>
+            <p>15.2 <strong>Incident Response.</strong> Material incidents are disclosed per Incident Response procedures; emergency parameter changes may be enacted with accelerated notice.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">16. Compliance</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>16.1 <strong>Legal Holds.</strong> Proof acceptance may be withheld to comply with lawful orders.</p>
+            <p>16.2 <strong>Sanctions & Geo.</strong> Where required, privacy‑preserving allow/deny checks may be applied by Integrators.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">17. Change Management & Versioning</h3>
+          <div className="space-y-4 text-white/60 leading-relaxed font-light">
+            <p>17.1 <strong>Amendments.</strong> Material changes follow an RFC process with reasonable comment period and, where required, governance vote.</p>
+            <p>17.2 <strong>Notice.</strong> Except for urgent security/legal updates, AnyLayer will provide at least fourteen (14) days' notice before changes take effect.</p>
+            <p>17.3 <strong>Version Tags.</strong> All circuits, parameters, and SDKs will carry version tags; deprecation windows will be announced.</p>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">18. Governing Law & Forum</h3>
+          <p className="text-white/60 font-light">18.1 Governing law and forum for disputes shall be published by AnyLayer governance <strong>[placeholder to be finalized]</strong>.</p>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-black text-white uppercase tracking-tight">19. Contacts</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <div className="space-y-1">
+              <span className="text-white/20 uppercase font-mono text-[9px] block">Policy Inquiries</span>
+              <p className="text-lightblueprimary font-bold">policy@anylayer.org</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-white/20 uppercase font-mono text-[9px] block">Security Reports</span>
+              <p className="text-lightblueprimary font-bold">security@anylayer.org</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-white/20 uppercase font-mono text-[9px] block">Integrator Support</span>
+              <p className="text-lightblueprimary font-bold">support@anylayer.org</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  {
     id: 'privacy-policy',
     title: 'Privacy Policy',
     category: 'Legal',
