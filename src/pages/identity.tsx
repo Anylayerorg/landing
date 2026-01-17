@@ -53,12 +53,12 @@ const IdentityHero = () => (
       >
         <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter italic select-none">
           BE <span className="relative inline-block group">
-            <span className="text-lightblueprimary">ANY</span>
+            <span className="text-white/20">ANY</span>
             <motion.div 
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/40 rounded-full" 
+              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-white/10 rounded-full" 
             />
           </span>THING.
         </h1>
@@ -232,7 +232,7 @@ const EverydayUses = () => {
         <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
           <div className="space-y-4">
             <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Utility Set</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-white/20">Uses.</span></h2>
           </div>
           <p className="text-white/30 text-sm max-w-[320px] font-medium leading-relaxed pb-1 border-l border-white/10 pl-6">
             A .any identity is more than a name. It's your verified toolkit for an authentic digital life.
@@ -280,7 +280,7 @@ const DeveloperIntegration = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-tight">
-            Integrate <span className="text-lightblueprimary">.any</span> <br /> Into Your Apps.
+            Integrate <span className="text-white/20">.any</span> <br /> Into Your Apps.
           </h2>
           <p className="text-white/40 text-base font-medium leading-relaxed">
             .any is built to plug directly into wallets, dApps, and applications. 
@@ -656,7 +656,7 @@ const FinalClosing = () => (
         transition={{ duration: 0.8 }}
       >
         <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] italic">
-          A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
+          A Better Internet <br /> <span className="text-white/20">Starts With Identity.</span>
         </h2>
       </motion.div>
 
@@ -695,7 +695,6 @@ export default function IdentityPage() {
       <IdentityHero />
 
       <IdentityProblem />
-
 
       <IdentityDefinition />
 

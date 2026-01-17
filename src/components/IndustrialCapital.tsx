@@ -89,7 +89,7 @@ const IndustrialCapital = () => {
               <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5rem] font-geist font-black uppercase text-primaryText leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
-              Unlock <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent">Capital</span>, <br />
+              Unlock <span className="text-white/20">Capital</span>, <br />
               not your data
             </h2>
           </motion.div>

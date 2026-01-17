@@ -35,7 +35,7 @@ export function SplitGradientText({
               key={j}
               className={`inline-block mr-[0.25em] ${
                 chunk.type === "gradient"
-                  ? "bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent"
+                  ? "text-white/20"
                   : ""
               }`}
               variants={{

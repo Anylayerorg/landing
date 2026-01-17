@@ -66,7 +66,7 @@ const Architecture = () => {
               </div>
               <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-0">
                 The Credibility <br />
-                <span className="text-lightblueprimary">Infrastructure</span>
+                <span className="text-white/20">Infrastructure</span>
               </h2>
             </motion.div>
 

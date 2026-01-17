@@ -59,7 +59,7 @@ const IndustrialTrustScore = () => {
             </div>
             <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
-              <span className="text-lightblueprimary">unlocks</span> Anything
+              <span className="text-white/20">unlocks</span> Anything
             </h2>
             <p className="text-primaryText/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
               Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.

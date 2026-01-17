@@ -62,7 +62,7 @@ const AutoPopupModal = () => {
                     {/* Logo */}
                     <div className="flex items-center gap-4 md:gap-9">
                         <Image src="/base-white.svg" alt="Base Logo" width={72} height={18} />
-                        <Image src="/ethereum-white.svg" alt="ethereum Logo" width={72} height={18} />
+                        <Image src="/logo-anylayer.svg" alt="anylayer Logo" width={72} height={30} />
                     </div>
                     
                     {/* Close Button */}
@@ -80,7 +80,7 @@ const AutoPopupModal = () => {
                 {/* Heading */}
                 <h2 className="text-[2rem] lg:text-[2.5rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] max-w-96">
                     {" "}
-                    10,000 FREE .ZKS Names —  <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> ZK Powered.</span> 
+                    10,000 FREE .ANY Names —  <span className='text-white/20'> ZK Powered.</span> 
                 </h2>
 
                 {/* Description */}

@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
-import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText } from "lucide-react";
+import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -359,7 +359,7 @@ export function Header() {
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                    </div>
+                                </div>
                                   </button>
                                 </div>
                               </div>
@@ -372,10 +372,10 @@ export function Header() {
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
+                            </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate ZK-trust into your apps with our core SDKs.</p>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate trust into your apps with our core APIs.</p>
                                       </div>
                                     </div>
                                   </a>
@@ -388,13 +388,13 @@ export function Header() {
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
-                                      </div>
                                     </div>
+                                  </div>
                                   </a>
 
                                   <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors shrink-0">
                                         <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center group-hover:border-lightblueprimary/60 transition-colors">
                                           <div className="w-1 h-1 bg-white/40 group-hover:bg-lightblueprimary transition-colors rounded-full" />
                                         </div>
@@ -405,6 +405,18 @@ export function Header() {
                                       </div>
                                     </div>
                                   </button>
+
+                                  <Link href="/policy" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Scale size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Governance & Rules</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Official rules for .any identity, privacy, and terms.</p>
+                                      </div>
+                                    </div>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
@@ -580,7 +592,8 @@ export function Header() {
                                 { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, id: "faq" },
                                 { label: "Builders", desc: "Core SDKs", icon: <Code2 size={20} />, href: "https://docs.onzks.com" },
                                 { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.onzks.com" },
-                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" }
+                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
+                                { label: "Naming Policy", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
                               ].map((item, idx) => {
                                 const MobileContent = (
                                   <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
@@ -601,10 +614,18 @@ export function Header() {
                                 );
 
                                 if (item.href) {
+                                  const isExternal = item.href.startsWith('http');
+                                  if (isExternal) {
                                   return (
                                     <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
                                       {MobileContent}
                                     </a>
+                                    );
+                                  }
+                                  return (
+                                    <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block w-full">
+                                      {MobileContent}
+                                    </Link>
                                   );
                                 }
 

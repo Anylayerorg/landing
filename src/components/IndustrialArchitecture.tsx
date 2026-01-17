@@ -9,9 +9,9 @@ import { ArrowRight } from 'lucide-react';
 const layers = [
   {
     id: '01',
-    title: 'Identity Layer',
+    title: 'Identity — Private & Portable',
     subtitle: 'THE ANCHOR',
-    description: 'Your core .any identity that links wallets and accounts into one privacy-first profile you control.',
+    description: 'Bind human, wallet, or agent identities without doxxing. Link multiple wallets, rotate keys, and keep relationships unlinkable by default. Your identity moves with you; your data does not.',
     cta: 'See Identity Specs',
     visualSrc: '/identity-layer.svg',
     iconSrc: '/identity-bgicon.svg',
@@ -20,36 +20,36 @@ const layers = [
   },
   {
     id: '02',
-    title: 'Reputation Layer',
+    title: 'Reputation — Dynamic & Composable',
     subtitle: 'THE MULTIPLIER',
-    description: 'The portable measure of trust built from your onchain activity and achievements, forming a compounding status.',
+    description: 'Anylayer turns on/off‑chain behavior—swaps, lending repayments, asset holdings/transfers, LP activity, and social signals into concise sub‑scores. Apps can price, tier, and gate without raw data.',
     cta: 'View Trust Model',
     visualSrc: '/reputation-layer.svg',
     iconSrc: '/reputation-bgicon.svg',
     color: 'rgba(59, 130, 246, 1)',
-    link: 'https://docs.onzks.com',
+    link: 'https://docs.anylayer.org/any-library/reputation-and-scoring',
   },
   {
     id: '03',
-    title: 'Proof Layer',
+    title: 'Proof — Share Claims, Not Data',
     subtitle: 'THE SHIELD',
-    description: 'Zero-knowledge proofs that let you verify facts privately without exposing sensitive data.',
+    description: 'Selective, zero‑knowledge proofs let users confirm exactly what a policy needs—ranges, set‑membership, or boolean checks—fresh and revocable. It’s verification without exposure.',
     cta: 'Explore Proof Tech',
     visualSrc: '/proof-layer.svg',
     iconSrc: '/proof-bgicon.svg',
     color: 'rgba(16, 185, 129, 1)',
-    link: 'https://docs.onzks.com',
+    link: 'https://docs.anylayer.org/any-library/privacy-and-zero-knowledge',
   },
   {
     id: '04',
-    title: 'Utility Layer',
+    title: 'Utility — Build With Trust',
     subtitle: 'THE UNLOCK',
-    description: 'Where apps use your identity and proofs to unlock access, rewards, and permissions through a secure gateway.',
+    description: 'Build trust‑based applications using Identity, Reputation, and Proof via SDK, API, or contracts. Power payments, lending, loyalty rewards, marketplaces, and agent hubs—pull the signals you need, apply your rules, and go live without exposing raw data.',
     cta: 'Discover App Utility',
     visualSrc: '/utility-layer.svg',
     iconSrc: '/utility-bgicon.svg',
     color: 'rgba(166, 131, 255, 1)',
-    link: 'https://docs.onzks.com',
+    link: 'https://docs.anylayer.org/introduction/ecosystem-layer',
   }
 ];
 
@@ -515,7 +515,12 @@ const IndustrialArchitecture = () => {
                   
                   <div className="flex items-center justify-center md:justify-start">
                     <h3 className="text-4xl md:text-6xl font-geist font-black uppercase text-white tracking-tighter lg:tracking-[-0.05em] leading-none">
-                      {layers[active].title}
+                      {layers[active].title.split(' — ')[0]}
+                      {layers[active].title.includes(' — ') && (
+                        <span className="text-white/20 block md:inline md:ml-4">
+                          — {layers[active].title.split(' — ')[1]}
+                        </span>
+                      )}
                     </h3>
                   </div>
                 </div>
@@ -566,7 +571,13 @@ const IndustrialArchitecture = () => {
                     {layer.id}
                   </span>
                   <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/10'}`}>
-                    {layer.title.replace(' Layer', '')}
+                    <span className="hidden md:inline">
+                      {layer.title.split(' — ')[0]}
+                      {layer.title.includes(' — ') && (
+                        <span className="opacity-40 font-normal"> — {layer.title.split(' — ')[1]}</span>
+                      )}
+                    </span>
+                    <span className="md:hidden">{layer.title.split(' — ')[0]}</span>
                   </span>
                 </div>
 

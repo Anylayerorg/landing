@@ -11,6 +11,7 @@ import IndustrialArchitecture from './IndustrialArchitecture';
 import Architecture from './Architecture';
 import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
+import AIAgents from './AIAgents';
 import { 
   Shield, 
   Lock, 
@@ -68,192 +69,35 @@ const PROCESS_DATA = [
 ];
 
 const ProcessFlow = () => {
-  const [design, setDesign] = useState(1);
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
   return (
-    <div ref={containerRef} className="bg-black py-32 md:py-48 relative border-t border-white/5">
-      {/* Design Switcher */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 flex gap-2 bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-xl">
-        {[1, 2, 3, 4, 5].map((d) => (
-          <button
-            key={d}
-            onClick={() => setDesign(d)}
-            className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-              design === d ? 'bg-lightblueprimary text-black' : 'text-white/40 hover:text-white'
-            }`}
-          >
-            Design {d}
-          </button>
-        ))}
-      </div>
-
+    <div className="bg-black py-24 md:py-32 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-24 text-center space-y-4">
-          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black">Architecture Flow</span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic text-white leading-none">
+        <div className="mb-20 text-center space-y-4">
+          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black opacity-60">Architecture Flow</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none">
             How it <span className="text-white/20">Works.</span>
           </h2>
         </div>
 
-        {/* Option 1: The Circuit Path (Minimal Vertical) */}
-        {design === 1 && (
-          <div className="relative max-w-2xl mx-auto py-20">
-            {/* Central Vertical Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
-            
-            <div className="space-y-40">
-              {PROCESS_DATA.map((p, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className="relative flex flex-col items-center text-center"
-                >
-                  {/* Step Marker */}
-                  <div className="mb-12 relative">
-                    <div className="w-2 h-2 rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.8)]" />
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      className="absolute -inset-4 border border-lightblueprimary/20 rounded-full"
-                    />
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-lightblueprimary font-mono text-[10px] font-black tracking-[0.4em] uppercase opacity-40">
-                      Phase {p.id}
-                    </span>
-                    <h3 className="text-4xl font-black uppercase tracking-tighter italic text-white">
-                      {p.title}
-                    </h3>
-                    <p className="text-white/40 text-lg leading-relaxed font-medium italic max-w-lg mx-auto">
-                      {p.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Option 2: Kinetic Side-Stack (Typographic) */}
-        {design === 2 && (
-          <div className="space-y-24 max-w-5xl mx-auto">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="group flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-24"
-              >
-                <div className="flex items-end gap-4 min-w-[200px]">
-                  <span className="text-2xl font-black text-lightblueprimary font-mono opacity-20 group-hover:opacity-100 transition-opacity">0{i+1}</span>
-                  <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-white/10 group-hover:text-white transition-all duration-500">
-                    {p.title}
-                  </h3>
-                </div>
-                <div className="flex-1 border-l-2 border-white/5 pl-8 md:pl-16 py-4 group-hover:border-lightblueprimary transition-colors duration-500">
-                  <p className="text-white/40 text-xl md:text-2xl font-medium tracking-tight italic leading-relaxed group-hover:text-white/80 transition-colors">
-                    {p.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Option 3: Ghost Typography (Atmospheric) */}
-        {design === 3 && (
-          <div className="relative space-y-48 py-20 overflow-hidden">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ margin: "-100px" }}
-                className="relative z-10 max-w-3xl mx-auto text-center space-y-6"
-              >
-                <motion.div
-                  initial={{ scale: 1.5, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 0.03 }}
-                  className="absolute inset-0 flex items-center justify-center -z-10 select-none"
-                >
-                  <span className="text-[15rem] md:text-[25rem] font-black uppercase italic tracking-tighter leading-none whitespace-nowrap">
-                    {p.title}
-                  </span>
-                </motion.div>
-                <span className="text-lightblueprimary font-mono text-sm font-black tracking-widest uppercase">Process 0{i+1}</span>
-                <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-white">{p.title}</h3>
-                <p className="text-white/40 text-2xl font-medium tracking-tight italic leading-snug">
-                  {p.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Option 4: The Focused Lens */}
-        {design === 4 && (
-          <div className="space-y-12">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0.1, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ margin: "-300px" }}
-                className="group relative flex flex-col md:flex-row items-center gap-12 p-12 transition-all duration-700"
-              >
-                <div className="relative min-w-[300px] text-center md:text-right">
-                   <h3 className="text-6xl md:text-8xl font-black uppercase tracking-tighter italic text-white/5 group-hover:text-lightblueprimary transition-colors duration-500">
-                    {p.title}
-                   </h3>
-                </div>
-                <div className="h-px flex-1 bg-white/5" />
-                <div className="max-w-lg">
-                  <p className="text-white/20 group-hover:text-white/90 text-xl md:text-2xl font-medium tracking-tight italic transition-all duration-500">
-                    {p.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Option 5: Narrative Floating (Minimalist) */}
-        {design === 5 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-32 py-20">
-            {PROCESS_DATA.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="space-y-6 group"
-              >
-                <div className="flex items-center gap-6">
-                  <div className="w-10 h-[1px] bg-lightblueprimary/40 group-hover:w-16 transition-all duration-500" />
-                  <span className="text-lightblueprimary font-mono text-xs font-black uppercase tracking-[0.4em]">{p.id}</span>
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-4xl font-black uppercase tracking-tighter italic text-white group-hover:text-lightblueprimary transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-white/30 group-hover:text-white/60 text-lg leading-relaxed font-medium italic transition-colors">
-                    {p.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 py-4">
+          {PROCESS_DATA.map((p, i) => (
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="space-y-4 group"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lightblueprimary font-mono text-[10px] font-black">{p.id}</span>
+                <div className="h-px flex-1 bg-white/10 group-hover:bg-lightblueprimary/40 transition-colors" />
+              </div>
+              <h3 className="text-2xl font-black uppercase tracking-tighter text-white">{p.title}</h3>
+              <p className="text-white/40 text-sm leading-relaxed font-medium">{p.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -345,7 +189,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         </span>
         <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-primaryText leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
-          unlocks <span className="text-lightblueprimary">Anything</span>
+          unlocks <span className="text-white/20">Anything</span>
         </h2>
                                 </div>
 
@@ -408,7 +252,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                       Multi-layered Trust Engine for{' '}
-                    <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
+                    <span className="text-white/20 inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                         {currentText}
                         <span className="animate-pulse">|</span>
                       </span>
@@ -545,7 +389,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}
-                Understand and verify <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> trust </span> across every <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Signal</span>
+                Understand and verify <span className='text-white/20'> trust </span> across every <span className='text-white/20'> Signal</span>
               </h2>
               <p className="text-primaryText/60 text-base text-center px-10 ">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
@@ -653,6 +497,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <section id="trustScore" className="py-24 md:py-32 px-5 max-w-screen-xl mx-auto z-10 relative border-t border-white/5">
           <TrustScoreSection />
         </section>
+
+        <AIAgents />
 
         <Architecture />
 
