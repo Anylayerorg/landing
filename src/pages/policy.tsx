@@ -767,22 +767,32 @@ const PolicyPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
-                {filteredPolicies.map((policy) => (
-                  <button
-                    key={policy.id}
-                    onClick={() => setActivePolicy(policy)}
-                    className={`text-left transition-all flex flex-col gap-1 group ${
-                      activePolicy.id === policy.id 
-                        ? 'text-white' 
-                        : 'text-white/20 hover:text-white/40'
-                    }`}
-                  >
-                    <span className="text-[9px] uppercase tracking-[0.2em] font-black opacity-40">{policy.category}</span>
-                    <span className={`text-sm tracking-tight ${activePolicy.id === policy.id ? 'font-black' : 'font-medium'}`}>
-                      {policy.title}
-                    </span>
-                  </button>
+              <div className="flex flex-col gap-8">
+                {Object.entries(
+                  filteredPolicies.reduce((acc, policy) => {
+                    if (!acc[policy.category]) acc[policy.category] = [];
+                    acc[policy.category].push(policy);
+                    return acc;
+                  }, {} as Record<string, typeof filteredPolicies>)
+                ).map(([category, policies]) => (
+                  <div key={category} className="space-y-4">
+                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-black text-white/20">{category}</h4>
+                    <div className="flex flex-col gap-3">
+                      {policies.map((policy) => (
+                        <button
+                          key={policy.id}
+                          onClick={() => setActivePolicy(policy)}
+                          className={`text-left transition-all ${
+                            activePolicy.id === policy.id 
+                              ? 'text-white font-black' 
+                              : 'text-white/40 hover:text-white/60 font-medium'
+                          } text-sm tracking-tight`}
+                        >
+                          {policy.title}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
 
