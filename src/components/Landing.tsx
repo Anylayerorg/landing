@@ -3,24 +3,23 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
-import IndustrialCapital from './IndustrialCapital';
 import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import IndustrialArchitecture from './IndustrialArchitecture';
-import Architecture from './Architecture';
 import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
 import AIAgents from './AIAgents';
-import { 
-  Shield, 
-  Lock, 
-  Cpu, 
-  Globe, 
-  Fingerprint, 
-  Zap, 
-  Activity, 
-  ShieldCheck, 
+import Attesters from './Attesters';
+import {
+  Shield,
+  Lock,
+  Cpu,
+  Globe,
+  Fingerprint,
+  Zap,
+  Activity,
+  ShieldCheck,
   Search,
   Database,
   Terminal,
@@ -81,8 +80,8 @@ const ProcessFlow = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 py-4">
           {PROCESS_DATA.map((p, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -104,28 +103,28 @@ const ProcessFlow = () => {
 };
 
 const trustScoreFeatures = [
-    {
-      title: "Sybil resistance",
-      description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore",
-      icon: '/knight-shield.svg'
-    },
-    {
-      title: "AI + Human scoring",
-      description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents.",
-      icon: '/robotic.svg'
-    },
-    {
-      title: "zero-knowledge prove",
-      description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
-      icon: '/circle-lock.svg',
-      isPurple: true
-    },
-    {
-      title: "Cross-chain comparability",
-      description: "Cross-chain support works across multiple blockchains, allowing identity and trust move freely",
-      icon: '/flow.svg'
-    }
-  ];
+  {
+    title: "Sybil resistance",
+    description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore",
+    icon: '/knight-shield.svg'
+  },
+  {
+    title: "AI + Human scoring",
+    description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents.",
+    icon: '/robotic.svg'
+  },
+  {
+    title: "zero-knowledge prove",
+    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
+    icon: '/circle-lock.svg',
+    isPurple: true
+  },
+  {
+    title: "Cross-chain comparability",
+    description: "Cross-chain support works across multiple blockchains, allowing identity and trust move freely",
+    icon: '/flow.svg'
+  }
+];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -191,102 +190,102 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-white/20">Anything</span>
         </h2>
-                                </div>
+      </div>
 
       {/* 4-Column Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
         {trustScoreFeatures.map((f: any, i) => (
           <div key={i} className="space-y-5 group">
-          <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
-            <Image 
-              src={f.icon} 
-              alt={f.title} 
-              width={28} 
-              height={28} 
-              className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60'}`} 
-            />
-                                  </div>
-                                  <div className="space-y-2">
+            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
+              <Image
+                src={f.icon}
+                alt={f.title}
+                width={28}
+                height={28}
+                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60'}`}
+              />
+            </div>
+            <div className="space-y-2">
               <h4 className="text-lg font-medium text-white tracking-tight">
                 {f.title}
               </h4>
               <p className="text-xs md:text-sm text-white/30 leading-relaxed font-light max-w-[240px]">
                 {f.description}
               </p>
-                                      </div>
-                                      </div>
+            </div>
+          </div>
         ))}
-                                  </div>
+      </div>
 
       {/* Button - Moved below grid */}
       <div className="mt-24">
         <button className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-[filter,transform,box-shadow,background-color] duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
           Explore Protocol
-                  </button>
-                </div>
-                        </div>
+        </button>
+      </div>
+    </div>
   );
 
   return (
     <>
-    <div className="relative w-full min-w-full font-geist">
+      <div className="relative w-full min-w-full font-geist">
         {/* Header & Banner */}
         <Header />
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
           {/* Banner Section */}
           <div className="relative overflow-hidden max-w-screen-xl mx-auto">
             <div className="relative max-w-[800px] mx-auto px-5 pt-16 md:pt-20 pb-10 md:pb-24 z-10">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-center"
-                >
-                  <div className="space-y-6 z-10 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-6">
-                      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
-                      <div className="h-px w-8 bg-white/10" />
-                      <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
-                    </div>
-                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
-                      Multi-layered Trust Engine for{' '}
-                    <span className="text-white/20 inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
-                        {currentText}
-                        <span className="animate-pulse">|</span>
-                      </span>
-                    </h1>
-                  <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
-                      A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
-                    </p>
-                    <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
-                      <a
-                        href="https://app.anylayer.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
-                      >
-                        <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
-                        <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
-                        <span>Create ID</span>
-                          <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
-                        </div>
-                      </a>
-                      <a
-                        href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
-                      >
-                        <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
-                        <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
-                        Documentation
-                        </div>
-                      </a>
-                    </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <div className="space-y-6 z-10 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
+                    <div className="h-px w-8 bg-white/10" />
+                    <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                   </div>
-                </motion.div>
+                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
+                    Multi-layered Trust Engine for{' '}
+                    <span className="text-white/20 inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
+                      {currentText}
+                      <span className="animate-pulse">|</span>
+                    </span>
+                  </h1>
+                  <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
+                    A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
+                  </p>
+                  <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
+                    <a
+                      href="https://app.anylayer.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
+                    >
+                      <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
+                      <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
+                        <span>Create ID</span>
+                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
+                      </div>
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
+                    >
+                      <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
+                      <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
+                        Documentation
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
             </div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -294,11 +293,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="absolute left-52 top-0 hidden md:block"
             >
-              <Image 
-                src={'/left-banner-angle.svg'} 
-                alt='Left Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/left-banner-angle.svg'}
+                alt='Left Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -308,11 +307,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
               className="absolute right-64 top-0 hidden md:block"
             >
-              <Image 
-                src={'/right-banner-angle.svg'} 
-                alt='Right Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/right-banner-angle.svg'}
+                alt='Right Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -500,11 +499,9 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <AIAgents />
 
-        <Architecture />
-
         <ParallelCards sectionId="dimension" />
 
-        <IndustrialCapital />
+        <Attesters />
 
         <CodeIntegration />
 

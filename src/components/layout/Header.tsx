@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
-import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale } from "lucide-react";
+import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio } from "lucide-react";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -246,6 +246,18 @@ export function Header() {
                                     </div>
                                   </button>
 
+                                  <Link href="/attesters" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                        <Radio size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Attesters</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Verify outcomes and issue trust signals for the network.</p>
+                                      </div>
+                                    </div>
+                                  </Link>
+
                                   <button onClick={() => { scrollToSection('dimension'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
@@ -267,6 +279,13 @@ export function Header() {
                   )}
                 </AnimatePresence>
               </div>
+
+              <Link
+                href="/use-case"
+                className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
+              >
+                Use Cases
+              </Link>
 
               <Link
                 href="/blog"
@@ -372,7 +391,7 @@ export function Header() {
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                            </div>
+                                      </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate trust into your apps with our core APIs.</p>
@@ -388,8 +407,8 @@ export function Header() {
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
+                                      </div>
                                     </div>
-                                  </div>
                                   </a>
 
                                   <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
@@ -438,11 +457,11 @@ export function Header() {
               >
                 <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                 <div className="relative bg-white text-[#0D0D12] px-6 py-2.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)] hover:scale-[1.02] transition-all">
-                Launch App
+                  Launch App
                   <motion.div
                     animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                >
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  >
                     <ArrowUpRight size={16} strokeWidth={3} />
                   </motion.div>
                 </div>
@@ -490,71 +509,78 @@ export function Header() {
                       Home
                     </Link>
 
-                    <div>
-                      <button
-                        onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
-                        className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
+                    <button
+                      onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
+                    >
+                      Features
+                      <svg
+                        className={`w-5 h-5 transition-transform duration-300 ${isMobileFeaturesOpen ? "rotate-180" : ""}`}
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
                       >
-                        Features
-                        <svg
-                          className={`w-5 h-5 transition-transform duration-300 ${isMobileFeaturesOpen ? "rotate-180" : ""}`}
-                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    <AnimatePresence>
+                      {isMobileFeaturesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden bg-white/[0.03] rounded-2xl mt-2 mx-2 border border-white/5"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-
-                      <AnimatePresence>
-                        {isMobileFeaturesOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="overflow-hidden bg-white/[0.03] rounded-2xl mt-2 mx-2 border border-white/5"
-                          >
-                            <div className="p-4 space-y-4">
-                              {[
-                                { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                                { label: "Reputation", desc: "Trust metrics", icon: <Award size={20} />, id: "reputation" },
-                                { label: "Proof", desc: "ZK-attestations", icon: <ShieldCheck size={20} />, id: "architecture" },
-                                { label: "Utility", desc: "Interoperability tools", icon: <Cpu size={20} />, id: "dimension" }
-                              ].map((item, idx) => {
-                                const MobileContent = (
-                                  <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
-                                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-lightblueprimary">
-                                      {item.icon}
-                                    </div>
-                                    <div className="flex flex-col">
-                                      <span className="text-white font-medium">{item.label}</span>
-                                      <span className="text-[#636475] text-xs">{item.desc}</span>
-                                    </div>
+                          <div className="p-4 space-y-4">
+                            {[
+                              { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
+                              { label: "Attesters", desc: "Issue trust signals", icon: <Radio size={20} />, href: "/attesters" },
+                              { label: "Reputation", desc: "Trust metrics", icon: <Award size={20} />, id: "reputation" },
+                              { label: "Proof", desc: "ZK-attestations", icon: <ShieldCheck size={20} />, id: "architecture" },
+                              { label: "Utility", desc: "Interoperability tools", icon: <Cpu size={20} />, id: "dimension" }
+                            ].map((item, idx) => {
+                              const MobileContent = (
+                                <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-lightblueprimary">
+                                    {item.icon}
                                   </div>
-                                );
+                                  <div className="flex flex-col">
+                                    <span className="text-white font-medium">{item.label}</span>
+                                    <span className="text-[#636475] text-xs">{item.desc}</span>
+                                  </div>
+                                </div>
+                              );
 
-                                if (item.href) {
-                                  return (
-                                    <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block w-full">
-                                      {MobileContent}
-                                    </Link>
-                                  );
-                                }
-
+                              if (item.href) {
                                 return (
-                                  <button key={idx} className="block w-full text-left" onClick={() => {
-                                    if (item.id) {
-                                      scrollToSection(item.id);
-                                      setIsMobileMenuOpen(false);
-                                    }
-                                  }}>
+                                  <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block w-full">
                                     {MobileContent}
-                                  </button>
+                                  </Link>
                                 );
-                              })}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                              }
+
+                              return (
+                                <button key={idx} className="block w-full text-left" onClick={() => {
+                                  if (item.id) {
+                                    scrollToSection(item.id);
+                                    setIsMobileMenuOpen(false);
+                                  }
+                                }}>
+                                  {MobileContent}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <Link
+                      href="/use-case"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
+                    >
+                      Use Cases
+                    </Link>
 
                     <Link
                       href="/blog"
@@ -616,10 +642,10 @@ export function Header() {
                                 if (item.href) {
                                   const isExternal = item.href.startsWith('http');
                                   if (isExternal) {
-                                  return (
-                                    <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                      {MobileContent}
-                                    </a>
+                                    return (
+                                      <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                        {MobileContent}
+                                      </a>
                                     );
                                   }
                                   return (
@@ -636,8 +662,8 @@ export function Header() {
                                       return;
                                     }
                                     if (item.id) {
-                                    scrollToSection(item.id);
-                                    setIsMobileMenuOpen(false);
+                                      scrollToSection(item.id);
+                                      setIsMobileMenuOpen(false);
                                     }
                                   }}>
                                     {MobileContent}
@@ -658,7 +684,7 @@ export function Header() {
                     >
                       <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                       <div className="relative w-full bg-white text-[#0D0D12] rounded-full font-bold flex items-center justify-center gap-3 py-4 shadow-[0_8px_30px_rgba(255,255,255,0.1)] transition-all">
-                      Launch App
+                        Launch App
                         <ArrowUpRight size={20} strokeWidth={2.5} />
                       </div>
                     </a>
@@ -668,7 +694,7 @@ export function Header() {
             )}
           </AnimatePresence>
         </div>
-      </motion.div>
-    </motion.header>
+      </motion.div >
+    </motion.header >
   );
 }
