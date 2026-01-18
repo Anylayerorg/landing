@@ -74,7 +74,7 @@ const ProcessFlow = () => {
         <div className="mb-20 text-center space-y-4">
           <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black opacity-60">Architecture Flow</span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none">
-            How it <span className="text-white/20">Works.</span>
+            How it <span className="text-lightblueprimary">Works.</span>
           </h2>
         </div>
 
@@ -174,7 +174,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
       <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">{label}</span>
       <div className="h-px w-8 bg-white/10" />
-      <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
+      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
     </div>
   );
 
@@ -183,12 +183,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
     <div className="flex flex-col items-center text-center">
       {/* Header Area */}
       <div className="mb-20 space-y-4">
-        <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-60">
+        <span className="text-[#08080C] font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-40">
           Trust Protocol
         </span>
-        <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-primaryText leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
+        <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-[#08080C] leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
-          unlocks <span className="text-white/20">Anything</span>
+          unlocks <span className="text-lightblueprimary">Anything</span>
         </h2>
       </div>
 
@@ -196,20 +196,20 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
         {trustScoreFeatures.map((f: any, i) => (
           <div key={i} className="space-y-5 group">
-            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-purple-400' : 'text-white'}`}>
+            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-lightblueprimary' : 'text-[#08080C]'}`}>
               <Image
                 src={f.icon}
                 alt={f.title}
                 width={28}
                 height={28}
-                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-60'}`}
+                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-80'}`}
               />
             </div>
             <div className="space-y-2">
-              <h4 className="text-lg font-medium text-white tracking-tight">
+              <h4 className="text-lg font-medium text-[#08080C] tracking-tight">
                 {f.title}
               </h4>
-              <p className="text-xs md:text-sm text-white/30 leading-relaxed font-light max-w-[240px]">
+              <p className="text-xs md:text-sm text-black/50 leading-relaxed font-medium max-w-[240px]">
                 {f.description}
               </p>
             </div>
@@ -247,11 +247,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                     <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
                     <div className="h-px w-8 bg-white/10" />
-                    <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
+                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                   </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                     Multi-layered Trust Engine for{' '}
-                    <span className="text-white/20 inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
+                    <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                       {currentText}
                       <span className="animate-pulse">|</span>
                     </span>
@@ -384,11 +384,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                 <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Signal</span>
                 <div className="h-px w-8 bg-white/10" />
-                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}
-                Understand and verify <span className='text-white/20'> trust </span> across every <span className='text-white/20'> Signal</span>
+                Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
               </h2>
               <p className="text-primaryText/60 text-base text-center px-10 ">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
@@ -493,8 +493,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <IndustrialArchitecture />
 
         {/* Section Trust Score */}
-        <section id="trustScore" className="py-24 md:py-32 px-5 max-w-screen-xl mx-auto z-10 relative border-t border-white/5">
-          <TrustScoreSection />
+        <section id="trustScore" className="py-24 md:py-32 px-5 w-full z-10 relative bg-white border-y border-black/5">
+          <div className="max-w-screen-xl mx-auto">
+            <TrustScoreSection />
+          </div>
         </section>
 
         <AIAgents />

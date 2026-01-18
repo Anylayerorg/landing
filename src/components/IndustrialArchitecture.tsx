@@ -65,13 +65,13 @@ const ScoreCounter = ({ value }: { value: number }) => {
 
   useEffect(() => {
     if (!isMounted) return;
-    
+
     // Initial count up
-    const controls = animate(count, value, { 
-      duration: 3, 
-      ease: [0.16, 1, 0.3, 1] 
+    const controls = animate(count, value, {
+      duration: 3,
+      ease: [0.16, 1, 0.3, 1]
     });
-    
+
     const unsubscribe = count.on("change", (latest) => setDisplay(Math.round(latest)));
 
     // Small fluctuations after initial count
@@ -111,13 +111,13 @@ const ScoreGainer = () => {
       const id = Date.now();
       const type = gainTypes[Math.floor(Math.random() * gainTypes.length)];
       const val = `+${Math.floor(Math.random() * 100 + 10)}`;
-      
+
       // Scatter points around the shield area
-      const x = (Math.random() - 0.5) * 350; 
+      const x = (Math.random() - 0.5) * 350;
       const y = (Math.random() - 0.5) * 300;
-      
+
       setGains(prev => [...prev.slice(-5), { id, label: type.text, value: val, x, y, color: type.color }]);
-      
+
       setTimeout(() => {
         setGains(prev => prev.filter(g => g.id !== id));
       }, 2500);
@@ -164,9 +164,7 @@ const ReputationRising = () => {
 // --- Internal Rising Identity Text for Identity Layer ---
 const RisingIdentityText = () => {
   const identities = [
-    'BTC.any', 'Eth.any', 'DeFi.any', 'AI.any', 'RWA.any', 
-    'Swap.any', 'Whale.any', 'Pump.any', 'Meme.any', 'Perps.any', 
-    'Base.any', 'business.any', 'payment.any', 'social.any', 'School.any'
+    'whale.any', 'alex.any', 'base.any', 'payment.any', 'social.any'
   ];
 
   return (
@@ -176,15 +174,15 @@ const RisingIdentityText = () => {
           const parts = text.split('.');
           const name = parts[0];
           const suffix = parts[1] ? '.' + parts[1] : '';
-          
+
           return (
             <motion.div
               key={i}
               initial={{ y: 400, opacity: 0, x: (i % 5 - 2) * 120 }}
-              animate={{ 
-                y: -500, 
+              animate={{
+                y: -500,
                 opacity: [0, 0.6, 0.6, 0],
-                x: (i % 5 - 2) * 120 + Math.sin(i) * 30 
+                x: (i % 5 - 2) * 120 + Math.sin(i) * 30
               }}
               transition={{
                 duration: 10 + Math.random() * 5,
@@ -207,7 +205,7 @@ const RisingIdentityText = () => {
 // --- Internal Utility Hub Effect for Utility Layer ---
 const UtilityHub = () => {
   const utilityTags = [
-    'Lending', 'AI', 'Gaming', 'Insurance', 'RWA', 
+    'Lending', 'AI', 'Gaming', 'Insurance', 'RWA',
     'Loyalty', 'Airdrop', 'DEX', 'Perps', 'Launchpad'
   ];
 
@@ -220,15 +218,15 @@ const UtilityHub = () => {
       const text = utilityTags[tagCounter % utilityTags.length];
       const side = Math.random() > 0.5 ? 'right' : 'left';
       const yOffset = (Math.random() - 0.5) * 200; // Vary height slightly
-      
+
       setVisibleTags(prev => {
         // Keep up to 2 per side
         const leftCount = prev.filter(t => t.side === 'left').length;
         const rightCount = prev.filter(t => t.side === 'right').length;
-        
+
         if (side === 'left' && leftCount >= 2) return prev;
         if (side === 'right' && rightCount >= 2) return prev;
-        
+
         return [...prev, { id, text, side, y: yOffset }];
       });
 
@@ -256,8 +254,8 @@ const UtilityHub = () => {
                 exit={{ x: tag.side === 'left' ? 40 : -40, opacity: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute bg-white/5 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full"
-                style={{ 
-                  left: tag.side === 'left' ? '10%' : 'auto', 
+                style={{
+                  left: tag.side === 'left' ? '10%' : 'auto',
                   right: tag.side === 'right' ? '10%' : 'auto',
                   top: `calc(50% + ${tag.y}px)`
                 } as any}
@@ -285,13 +283,13 @@ const UtilityHub = () => {
             className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] border border-white/5 rounded-[40px] rotate-45"
           />
         ))}
-        
+
         {/* Data Transmission Particles */}
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
+            animate={{
               opacity: [0, 1, 0],
               scale: [0, 1.5, 0],
               x: [0, (Math.random() - 0.5) * 400],
@@ -315,18 +313,18 @@ const UtilityHub = () => {
 const SolidRotatingRing = () => {
   return (
     <div className="absolute inset-0 pointer-events-none flex items-center justify-center" style={{ perspective: '1000px' }}>
-      <div 
+      <div
         className="relative flex items-center justify-center scale-[0.6] md:scale-100"
-        style={{ 
+        style={{
           transform: 'rotateX(75deg) rotateY(-10deg)',
-          transformStyle: 'preserve-3d' 
+          transformStyle: 'preserve-3d'
         }}
       >
         {/* The Solid Physical Ring */}
-        <div 
+        <div
           className="absolute border-[16px] border-lightblueprimary/20 rounded-full"
-          style={{ 
-            width: '480px', 
+          style={{
+            width: '480px',
             height: '480px',
             boxShadow: 'inset 0 0 40px rgba(166, 131, 255, 0.1), 0 0 40px rgba(166, 131, 255, 0.1)',
             transform: 'translateZ(0px)'
@@ -335,14 +333,14 @@ const SolidRotatingRing = () => {
           {/* Inner highlight for "solid" look */}
           <div className="absolute inset-0 border border-white/10 rounded-full" />
           <div className="absolute -inset-[1px] border border-black/20 rounded-full" />
-          
+
           {/* Light Streaks passing through the ring */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0"
           >
-            <div 
+            <div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-4 bg-gradient-to-r from-transparent via-lightblueprimary to-transparent blur-md opacity-80"
               style={{ transform: 'translateY(-10px)' }}
             />
@@ -353,7 +351,7 @@ const SolidRotatingRing = () => {
             transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0"
           >
-            <div 
+            <div
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-4 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-lg opacity-40"
               style={{ transform: 'translateY(10px)' }}
             />
@@ -361,10 +359,10 @@ const SolidRotatingRing = () => {
         </div>
 
         {/* Secondary Inner Ring */}
-        <div 
+        <div
           className="absolute border-[4px] border-lightblueprimary/10 rounded-full"
-          style={{ 
-            width: '400px', 
+          style={{
+            width: '400px',
             height: '400px',
             transform: 'translateZ(10px)'
           }}
@@ -389,8 +387,8 @@ const LuminousVisual = ({ active }: { active: number }) => {
           className="relative w-[240px] h-[240px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
           {/* Main Glow Backdrop - NOW UNIFORM PURPLE */}
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               opacity: [0.15, 0.3, 0.15],
               scale: [1, 1.2, 1]
             }}
@@ -402,56 +400,56 @@ const LuminousVisual = ({ active }: { active: number }) => {
           {/* Asset Container (Bouncing removed) */}
           <motion.div className="relative z-10 w-full h-full flex items-center justify-center" style={{ transformStyle: 'preserve-3d' } as any}>
             <div className="relative w-full h-full flex items-center justify-center">
-              <Image 
-                src={layers[active].visualSrc} 
-                alt="" 
-                width={600} 
-                height={600} 
+              <Image
+                src={layers[active].visualSrc}
+                alt=""
+                width={600}
+                height={600}
                 className="w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
                 priority
               />
 
-                      {/* Redesigned Total Trust Score Display - NOW RECTANGULAR & BELOW */}
-                      {active === 1 && (
-                        <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 z-20 w-[240px] md:w-[320px] scale-[0.8] md:scale-100">
-                          <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="relative"
-                          >
-                            {/* Industrial Score Plate - Horizontal Rectangular */}
-                            <div className="relative bg-[#0D0D12]/90 backdrop-blur-xl border border-white/10 px-4 md:px-6 py-3 md:py-4 rounded-[16px] md:rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center justify-between gap-4 md:gap-6">
-                              
-                              <div className="flex flex-col gap-0.5 md:gap-1">
-                                <div className="flex items-center gap-1.5">
-                                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                                  <span className="text-[7px] md:text-[8px] font-mono text-white/30 uppercase tracking-[0.2em] font-black">Trust Index</span>
-                                </div>
-                                <div className="text-xl md:text-3xl font-mono text-white font-black tracking-tighter">
-                                  <ScoreCounter value={8402} />
-                                </div>
-                              </div>
+              {/* Redesigned Total Trust Score Display - NOW RECTANGULAR & BELOW */}
+              {active === 1 && (
+                <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 z-20 w-[240px] md:w-[320px] scale-[0.8] md:scale-100">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="relative"
+                  >
+                    {/* Industrial Score Plate - Horizontal Rectangular */}
+                    <div className="relative bg-[#0D0D12]/90 backdrop-blur-xl border border-white/10 px-4 md:px-6 py-3 md:py-4 rounded-[16px] md:rounded-[20px] shadow-[0_20px_40px_rgba(0,0,0,0.6)] flex items-center justify-between gap-4 md:gap-6">
 
-                              <div className="h-8 md:h-10 w-px bg-white/5" />
-
-                              <div className="flex flex-col gap-0.5 md:gap-1 flex-1">
-                                <div className="flex justify-between items-center text-[6px] md:text-[7px] font-mono uppercase tracking-widest text-white/20">
-                                  <span>Verification</span>
-                                  <span className="text-lightblueprimary">HUMAN</span>
-                                </div>
-                                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-1">
-                                  <motion.div 
-                                    initial={{ width: 0 }}
-                                    animate={{ width: '84%' }}
-                                    transition={{ duration: 2, delay: 0.5 }}
-                                    className="h-full bg-gradient-to-r from-blueprimary to-lightblueprimary"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
+                      <div className="flex flex-col gap-0.5 md:gap-1">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                          <span className="text-[7px] md:text-[8px] font-mono text-white/30 uppercase tracking-[0.2em] font-black">Trust Index</span>
                         </div>
-                      )}
+                        <div className="text-xl md:text-3xl font-mono text-white font-black tracking-tighter">
+                          <ScoreCounter value={8402} />
+                        </div>
+                      </div>
+
+                      <div className="h-8 md:h-10 w-px bg-white/5" />
+
+                      <div className="flex flex-col gap-0.5 md:gap-1 flex-1">
+                        <div className="flex justify-between items-center text-[6px] md:text-[7px] font-mono uppercase tracking-widest text-white/20">
+                          <span>Verification</span>
+                          <span className="text-lightblueprimary">HUMAN</span>
+                        </div>
+                        <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-1">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: '84%' }}
+                            transition={{ duration: 2, delay: 0.5 }}
+                            className="h-full bg-gradient-to-r from-blueprimary to-lightblueprimary"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              )}
             </div>
 
             {/* Effects Rendered ON TOP of the Asset */}
@@ -461,7 +459,7 @@ const LuminousVisual = ({ active }: { active: number }) => {
 
               {/* Reputation Rising Effect (Only for Reputation Layer) */}
               {active === 1 && <ReputationRising />}
-              
+
               {/* Solid Ring Effect (Only for Proof Layer) */}
               {active === 2 && <SolidRotatingRing />}
 
@@ -483,8 +481,8 @@ const IndustrialArchitecture = () => {
   const total = layers.length;
 
   return (
-    <section 
-      id="architecture" 
+    <section
+      id="architecture"
       className="relative bg-[#08080C] overflow-hidden select-none py-20 md:py-32"
     >
       {/* Background Atmosphere */}
@@ -492,7 +490,7 @@ const IndustrialArchitecture = () => {
 
       <div className="max-w-screen-xl mx-auto px-6 md:px-10 w-full relative z-10">
         <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-40 items-center mb-24">
-          
+
           {/* Left Column: Clean Text */}
           <div className="order-2 md:order-1 relative min-h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <AnimatePresence mode="wait">
@@ -506,20 +504,21 @@ const IndustrialArchitecture = () => {
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-center md:justify-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                     <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
-                      {layers[active].id}
+                      Layer {layers[active].id}
                     </span>
-                    <div className="h-px w-8 bg-lightblueprimary/20" />
-                    <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">
+                    <div className="h-px w-8 bg-white/10" />
+                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">
                       {layers[active].subtitle}
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center justify-center md:justify-start">
                     <h3 className="text-4xl md:text-6xl font-geist font-black uppercase text-white tracking-tighter lg:tracking-[-0.05em] leading-none">
                       {layers[active].title.split(' — ')[0]}
                       {layers[active].title.includes(' — ') && (
-                        <span className="text-white/20 block md:inline md:ml-4">
+                        <span className="text-lightblueprimary block md:inline md:ml-4">
                           — {layers[active].title.split(' — ')[1]}
                         </span>
                       )}
@@ -539,11 +538,10 @@ const IndustrialArchitecture = () => {
                     className="relative active:translate-y-0.5 transition-all w-fit block group"
                   >
                     <div className={`absolute inset-0 blur-2xl opacity-0 group-hover:opacity-20 transition-opacity ${active === 0 ? 'bg-lightblueprimary' : 'bg-white'}`} />
-                    <div className={`relative px-8 md:px-10 py-3 md:py-4 backdrop-blur-xl font-black rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4 border shadow-2xl ${
-                      active === 0 
-                        ? 'bg-lightblueprimary text-black border-lightblueprimary' 
-                        : 'bg-white/[0.03] text-white border-white/10'
-                    }`}>
+                    <div className={`relative px-8 md:px-10 py-3 md:py-4 backdrop-blur-xl font-black rounded-full transition-all text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex items-center gap-4 border shadow-2xl ${active === 0
+                      ? 'bg-lightblueprimary text-black border-lightblueprimary'
+                      : 'bg-white/[0.03] text-white border-white/10'
+                      }`}>
                       {layers[active].cta}
                       <ArrowRight size={16} className={`${active === 0 ? 'text-black' : 'text-white/40 group-hover:text-white'} transition-all`} />
                     </div>
@@ -555,7 +553,7 @@ const IndustrialArchitecture = () => {
 
           {/* Right Column: Luminous Visual */}
           <div className="order-1 md:order-2 relative flex justify-center items-center h-[35vh] md:h-[60vh] w-full">
-             <LuminousVisual active={active} />
+            <LuminousVisual active={active} />
           </div>
         </div>
 
@@ -569,14 +567,14 @@ const IndustrialArchitecture = () => {
                 className="relative px-6 py-2.5 outline-none"
               >
                 <div className="relative z-10 flex items-center gap-2">
-                  <span className={`font-mono text-[9px] font-black tracking-widest transition-colors ${active === i ? 'text-lightblueprimary' : 'text-white/20'}`}>
+                  <span className={`font-mono text-[9px] font-black tracking-widest transition-colors ${active === i ? 'text-lightblueprimary' : 'text-lightblueprimary/40'}`}>
                     {layer.id}
                   </span>
                   <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/10'}`}>
                     <span className="hidden md:inline">
                       {layer.title.split(' — ')[0]}
                       {layer.title.includes(' — ') && (
-                        <span className="opacity-40 font-normal"> — {layer.title.split(' — ')[1]}</span>
+                        <span className="text-lightblueprimary/40 font-normal"> — {layer.title.split(' — ')[1]}</span>
                       )}
                     </span>
                     <span className="md:hidden">{layer.title.split(' — ')[0]}</span>

@@ -2,8 +2,8 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { 
-  ShieldCheck, 
+import {
+  ShieldCheck,
 } from 'lucide-react';
 
 const AGENT_CONTENT = {
@@ -27,36 +27,36 @@ const AIAgents = () => {
   });
 
   return (
-    <section ref={containerRef} className="bg-black py-24 md:py-40 relative border-t border-white/5 overflow-hidden font-geist">
+    <section ref={containerRef} className="bg-white py-24 md:py-40 relative border-t border-black/5 overflow-hidden font-geist">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-32 py-12">
           <div className="max-w-4xl space-y-8">
-            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none">
+            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#08080C] leading-none">
               AI Agents — <br />
-              <span className="text-white/20 text-3xl md:text-5xl">A Reputation System for Autonomy.</span>
+              <span className="text-lightblueprimary text-3xl md:text-5xl">A Reputation System for Autonomy.</span>
             </h2>
-            <p className="text-white/40 text-xl md:text-2xl font-medium leading-relaxed border-l-2 border-white/20 pl-8">
-              {AGENT_CONTENT.hook} <span className="text-white/80">{AGENT_CONTENT.solution}</span>
+            <p className="text-black/40 text-xl md:text-2xl font-medium leading-relaxed border-l-2 border-black/10 pl-8">
+              {AGENT_CONTENT.hook} <span className="text-black/80">{AGENT_CONTENT.solution}</span>
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-12 border-y border-white/5 py-20">
+          <div className="flex flex-col md:flex-row items-center gap-12 border-y border-black/5 py-20">
             {AGENT_CONTENT.metrics.map((m, i) => (
               <div key={i} className="flex-1 space-y-2 text-center md:text-left">
-                <span className="text-[10px] font-mono text-white font-black uppercase tracking-widest opacity-40">Metric 0{i+1}</span>
-                <h3 className="text-5xl font-black text-white uppercase tracking-tighter">{m.value}</h3>
-                <p className="text-white/20 text-sm font-bold uppercase tracking-widest">{m.label}</p>
+                <span className="text-[10px] font-mono text-[#08080C] font-black uppercase tracking-widest opacity-40">Metric 0{i + 1}</span>
+                <h3 className="text-5xl font-black text-[#08080C] uppercase tracking-tighter">{m.value}</h3>
+                <p className="text-lightblueprimary/40 text-sm font-bold uppercase tracking-widest">{m.label}</p>
               </div>
             ))}
           </div>
 
           <div className="max-w-3xl ml-auto text-right space-y-6">
-            <p className="text-white/40 text-lg md:text-xl font-medium leading-relaxed">
+            <p className="text-black/40 text-lg md:text-xl font-medium leading-relaxed">
               {AGENT_CONTENT.visibility}
             </p>
-            <div className="flex items-center justify-end gap-4 text-white">
+            <div className="flex items-center justify-end gap-4 text-[#08080C]">
               <span className="text-[10px] font-mono font-black uppercase tracking-[0.4em]">{AGENT_CONTENT.ecosystem}</span>
-              <div className="w-12 h-px bg-white" />
+              <div className="w-12 h-px bg-[#08080C]" />
             </div>
           </div>
         </div>

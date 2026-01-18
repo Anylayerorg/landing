@@ -16,7 +16,7 @@ const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) 
 
   useEffect(() => {
     if (!isMounted || !isInView) return;
-    
+
     let startTime: number | null = null;
     let animationFrameId: number;
 
@@ -43,7 +43,7 @@ const IndustrialTrustScore = () => {
     <section id="trustScore" className="py-24 md:py-48 px-6 bg-[#08080C] overflow-hidden">
       <div className="max-w-screen-xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-          
+
           {/* Left Content - Precise Layout kept */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -55,11 +55,11 @@ const IndustrialTrustScore = () => {
               <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Velocity</span>
               <div className="h-px w-8 bg-white/10" />
-              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
-              <span className="text-white/20">unlocks</span> Anything
+              <span className="text-lightblueprimary">unlocks</span> Anything
             </h2>
             <p className="text-primaryText/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
               Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
@@ -68,7 +68,7 @@ const IndustrialTrustScore = () => {
 
           {/* Right Content - Technical Industrial HUD (Solid, Dark, No Glass) */}
           <div className="relative h-[600px] flex items-center justify-center">
-            
+
             {/* Base Module Panel */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, rotateY: -10 }}
@@ -79,11 +79,11 @@ const IndustrialTrustScore = () => {
               style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Technical Grid Overlay */}
-              <div className="absolute inset-0 opacity-10 pointer-events-none" 
-                style={{ 
+              <div className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
                   backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
                   backgroundSize: '30px 30px'
-                }} 
+                }}
               />
 
               <div className="flex justify-between items-center mb-12 pb-8 border-b border-white/5 relative z-10">
@@ -131,7 +131,7 @@ const IndustrialTrustScore = () => {
             >
               {/* Internal Bezel Effect */}
               <div className="absolute inset-0 border-[20px] border-white/[0.01] pointer-events-none rounded-[48px]" />
-              
+
               <div className="relative z-10 flex items-center gap-6">
                 <div className="w-18 h-18 rounded-3xl bg-white/[0.02] border border-white/10 flex items-center justify-center transition-all duration-700 group-hover:border-lightblueprimary/40 shadow-inner">
                   <Image src="/knight-shield.svg" alt="Shield" width={40} height={40} className="opacity-40" />
@@ -157,11 +157,11 @@ const IndustrialTrustScore = () => {
                     +39.20
                   </div>
                   <div className="w-32 h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: "70%" }}
                       transition={{ duration: 2, delay: 1 }}
-                      className="h-full bg-lightblueprimary shadow-[0_0_25px_rgba(166,131,255,1)]" 
+                      className="h-full bg-lightblueprimary shadow-[0_0_25px_rgba(166,131,255,1)]"
                     />
                   </div>
                 </div>

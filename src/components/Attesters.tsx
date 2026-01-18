@@ -46,7 +46,7 @@ const Attesters = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
                         >
-                            <p className="text-[10px] text-white/20 uppercase tracking-[0.5em] font-black">
+                            <p className="text-[10px] text-lightblueprimary/40 uppercase tracking-[0.5em] font-black">
                                 Earn trust by accuracy, not permission
                             </p>
                             <button className="group flex items-center gap-4 text-white hover:text-lightblueprimary transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em]">

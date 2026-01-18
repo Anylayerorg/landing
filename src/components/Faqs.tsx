@@ -61,13 +61,12 @@ const FAQItem = ({ faq, isOpen, toggle, index }: { faq: any, isOpen: boolean, to
           <span className={`text-xs md:text-sm font-mono transition-colors duration-300 ${isOpen ? "text-lightblueprimary" : "text-primaryText/20"}`}>
             {(index + 1).toString().padStart(2, '0')}
           </span>
-          <span className={`text-lg md:text-xl font-medium tracking-tight transition-all duration-300 ${
-            isOpen ? "text-primaryText" : "text-primaryText/60 group-hover:text-primaryText/80"
-          }`}>
+          <span className={`text-lg md:text-xl font-medium tracking-tight transition-all duration-300 ${isOpen ? "text-primaryText" : "text-primaryText/60 group-hover:text-primaryText/80"
+            }`}>
             {faq.question}
           </span>
         </div>
-        
+
         <div className={`relative flex items-center justify-center w-8 h-8 transition-all duration-300 ${isOpen ? "rotate-90" : ""}`}>
           <Plus className={`absolute w-5 h-5 transition-all duration-300 ${isOpen ? "opacity-0 scale-0" : "opacity-100 scale-100 text-white/20 group-hover:text-white/40"}`} />
           <Minus className={`absolute w-5 h-5 transition-all duration-300 ${isOpen ? "opacity-100 scale-100 text-lightblueprimary" : "opacity-0 scale-0"}`} />
@@ -96,7 +95,7 @@ const FAQItem = ({ faq, isOpen, toggle, index }: { faq: any, isOpen: boolean, to
 
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  
+
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -118,7 +117,7 @@ const Faqs = () => {
                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                 <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Support</span>
                 <div className="h-px w-8 bg-white/10" />
-                <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Help Center</span>
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Help Center</span>
               </div>
               <h2 className="text-[2.25rem] md:text-[3.25rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-4">
                 Common Questions
@@ -128,8 +127,8 @@ const Faqs = () => {
               </p>
             </div>
             <div className="hidden md:block pb-1">
-              <a 
-                href="mailto:hello@anylayer.org" 
+              <a
+                href="mailto:hello@anylayer.org"
                 className="group flex items-center gap-3 text-primaryText/40 hover:text-primaryText transition-all text-sm"
               >
                 <span className="uppercase tracking-widest font-semibold">Contact Us</span>
@@ -142,7 +141,7 @@ const Faqs = () => {
         </div>
 
         {/* FAQ List */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

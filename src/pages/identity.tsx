@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { 
+import {
   ShieldCheck,
   Users,
   Fingerprint,
@@ -44,7 +44,7 @@ const IdentityHero = () => (
   <section className="relative min-h-screen flex flex-col justify-end bg-black overflow-hidden pb-32">
     {/* Atmospheric Background */}
     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.1),transparent_70%)]" />
-    
+
     <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full text-center space-y-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -54,17 +54,17 @@ const IdentityHero = () => (
         <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter italic select-none">
           BE <span className="relative inline-block group">
             <span className="text-lightblueprimary">ANY</span>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/20 rounded-full" 
+              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/20 rounded-full"
             />
           </span>THING.
         </h1>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 1 }}
@@ -91,19 +91,19 @@ const IdentityProblem = () => {
             The Current State
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
-            Today, Identity Onchain is <span className="text-white/20">Broken.</span>
+            Today, Identity Onchain is <span className="text-lightblueprimary">Broken.</span>
           </h2>
         </div>
 
         {/* Minimalist Horizontal Problem Strip */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-white/5 border border-white/5">
           {PROBLEM_DATA.problems.map((p, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="bg-black p-8 space-y-6 hover:bg-white/[0.02] transition-colors group cursor-default"
             >
               <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
+                <span className="text-[10px] font-mono text-lightblueprimary/40 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
                   Case 0{i + 1} // {p.title}
                 </span>
                 <h3 className="text-xl font-black uppercase tracking-tight text-white/90">
@@ -119,13 +119,13 @@ const IdentityProblem = () => {
 
         {/* The Fix - Minimalist and Integrated */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-white/5">
-           <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 italic leading-snug">
+          <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 italic leading-snug">
             {PROBLEM_DATA.solution}
           </p>
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lightblueprimary animate-pulse" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-lightblueprimary/40">Solving Exposure</span>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@ const IdentityDefinition = () => {
   return (
     <Section className="bg-black text-white py-24 md:py-40" id="definition">
       <div className="max-w-5xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -188,39 +188,39 @@ const IdentityDefinition = () => {
 
 const EverydayUses = () => {
   const uses = [
-    { 
-      title: "Payment ID", 
-      desc: "Identifier instead of addresses", 
+    {
+      title: "Payment ID",
+      desc: "Identifier instead of addresses",
       icon: <CreditCard className="w-4 h-4" />,
       detail: "Send and receive funds using your readable name across any chain."
     },
-    { 
-      title: "Public Identity", 
-      desc: "Verified brand identity", 
+    {
+      title: "Public Identity",
+      desc: "Verified brand identity",
       icon: <Verified className="w-4 h-4" />,
       detail: "Establish a single source of truth for your digital presence."
     },
-    { 
-      title: "Trust Badge", 
-      desc: "Shareable trust metrics", 
+    {
+      title: "Trust Badge",
+      desc: "Shareable trust metrics",
       icon: <Award className="w-4 h-4" />,
       detail: "Embed your verified reputation score into your social bios."
     },
-    { 
-      title: "Portable Rep", 
-      desc: "Cross-app reputation profile", 
+    {
+      title: "Portable Rep",
+      desc: "Cross-app reputation profile",
       icon: <History className="w-4 h-4" />,
       detail: "Your history follows you into every new application you join."
     },
-    { 
-      title: "Secure Signing", 
-      desc: "Sign statements privately", 
+    {
+      title: "Secure Signing",
+      desc: "Sign statements privately",
       icon: <PenTool className="w-4 h-4" />,
       detail: "Prove messages came from you without needing a third party."
     },
-    { 
-      title: "Authenticity", 
-      desc: "Signal in a noisy internet", 
+    {
+      title: "Authenticity",
+      desc: "Signal in a noisy internet",
       icon: <CheckCircle2 className="w-4 h-4" />,
       detail: "Instantly distinguish yourself from bot-generated accounts."
     }
@@ -232,7 +232,7 @@ const EverydayUses = () => {
         <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
           <div className="space-y-4">
             <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Utility Set</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-white/20">Uses.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
           </div>
           <p className="text-white/30 text-sm max-w-[320px] font-medium leading-relaxed pb-1 border-l border-white/10 pl-6">
             A .any identity is more than a name. It's your verified toolkit for an authentic digital life.
@@ -241,19 +241,18 @@ const EverydayUses = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {uses.map((use, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className={`${
-                i === 0 ? 'bg-lightblueprimary text-black' : 'bg-white/[0.02] text-white border border-white/5'
-              } rounded-2xl p-8 flex flex-col justify-between hover:bg-opacity-90 transition-all duration-500 group cursor-default`}
+              className={`${i === 0 ? 'bg-lightblueprimary text-black' : 'bg-white/[0.02] text-white border border-white/5'
+                } rounded-2xl p-8 flex flex-col justify-between hover:bg-opacity-90 transition-all duration-500 group cursor-default`}
             >
               <div className="flex justify-end items-start mb-12">
-                <span className={`text-[10px] font-mono uppercase tracking-widest ${i === 0 ? 'text-black/40' : 'text-white/10 group-hover:text-lightblueprimary/40'} transition-colors`}>
-                  Case 0{i+1}
+                <span className={`text-[10px] font-mono uppercase tracking-widest ${i === 0 ? 'text-black/40' : 'text-lightblueprimary/20 group-hover:text-lightblueprimary/40'} transition-colors`}>
+                  Case 0{i + 1}
                 </span>
               </div>
               <div className="space-y-3">
@@ -280,10 +279,10 @@ const DeveloperIntegration = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-tight">
-            Integrate <span className="text-white/20">.any</span> <br /> Into Your Apps.
+            Integrate <span className="text-lightblueprimary">.any</span> <br /> Into Your Apps.
           </h2>
           <p className="text-white/40 text-base font-medium leading-relaxed">
-            .any is built to plug directly into wallets, dApps, and applications. 
+            .any is built to plug directly into wallets, dApps, and applications.
           </p>
         </div>
 
@@ -314,7 +313,7 @@ const DeveloperIntegration = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* 2. Auths (Sign In Interface) */}
             <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 h-[155px] flex flex-col justify-center group hover:bg-white/[0.05] transition-all relative overflow-hidden">
               <div className="space-y-4">
@@ -429,7 +428,7 @@ const DeveloperIntegration = () => {
 const IdentityHomeSection = () => (
   <Section className="bg-[#EBEBEB] text-black border-t border-black/5 pt-4 pb-20 md:pt-6 md:pb-32" id="identity-holds">
     <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-      
+
       {/* Hero Content */}
       <div className="space-y-4 max-w-4xl mx-auto">
         <span className="text-lightblueprimary font-bold text-sm tracking-tight uppercase">
@@ -482,7 +481,7 @@ const IdentityHomeSection = () => (
               {item.icon}
               <div className="flex flex-col">
                 <h3 className="text-lg font-black tracking-tight uppercase leading-tight">{item.title}</h3>
-                <span className="text-black/30 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
+                <span className="text-lightblueprimary/60 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
               </div>
             </div>
             <p className="text-black/50 text-xs leading-relaxed">
@@ -509,8 +508,8 @@ const UseCaseReel = () => {
   });
 
   const useCases = [
-    "Payments", "Identity", "Brands", "Business", "Creators", 
-    "Socials", "Reputation", "Governance", "Privacy", "DeFi", 
+    "Payments", "Identity", "Brands", "Business", "Creators",
+    "Socials", "Reputation", "Governance", "Privacy", "DeFi",
     "Gaming", "Culture", "Loyalty", "Ticketing", "DAOs",
     "Metadata", "Vouching", "Attestation", "Discovery"
   ];
@@ -518,13 +517,13 @@ const UseCaseReel = () => {
   return (
     <section ref={containerRef} className="relative h-[300vh] bg-[#EBEBEB] select-none">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        
+
         {/* Sample UI Indicators */}
         <div className="absolute inset-x-0 w-full max-w-7xl mx-auto flex items-center justify-end px-8 md:px-24 z-30 pointer-events-none">
           <div className="flex items-center gap-6 md:gap-12">
             {/* .any Logo Box */}
             <div className="w-20 h-20 md:w-32 md:h-32 bg-black rounded-[32px] md:rounded-[48px] flex items-center justify-center relative shadow-2xl">
-               <span className="text-white font-black italic text-2xl md:text-4xl tracking-tighter">.any</span>
+              <span className="text-white font-black italic text-2xl md:text-4xl tracking-tighter">.any</span>
             </div>
           </div>
         </div>
@@ -533,13 +532,13 @@ const UseCaseReel = () => {
         <div className="relative w-full h-full flex items-center justify-center perspective-[1200px] transform-style-3d">
           {useCases.map((word, i) => {
             const step = 1 / (useCases.length - 1);
-            
+
             // This word's position on the scroll track
             const wordProgress = i * step;
-            
+
             // Calculate relative distance from current scroll position
             // We map the distance to an angle from -90 to 90 degrees
-            const angle = useTransform(smoothProgress, 
+            const angle = useTransform(smoothProgress,
               [wordProgress - 0.2, wordProgress, wordProgress + 0.2],
               [90, 0, -90]
             );
@@ -550,19 +549,19 @@ const UseCaseReel = () => {
             // Calculate Y (Vertical) and Z (Depth) based on angle
             const y = useTransform(angle, (a) => Math.sin(a * (Math.PI / 180)) * radius);
             const z = useTransform(angle, (a) => Math.cos(a * (Math.PI / 180)) * radius - radius);
-            
+
             // Rotation around X axis to match the cylinder curve
             const rotateX = useTransform(angle, (a) => a);
 
             // Opacity: fades as it curves away
-            const opacity = useTransform(angle, 
-              [-85, -45, 0, 45, 85], 
+            const opacity = useTransform(angle,
+              [-85, -45, 0, 45, 85],
               [0, 0.4, 1, 0.4, 0]
             );
 
             // Scale: subtle shrink as it recedes
-            const scale = useTransform(angle, 
-              [-85, 0, 85], 
+            const scale = useTransform(angle,
+              [-85, 0, 85],
               [0.7, 1.25, 0.7]
             );
 
@@ -575,11 +574,11 @@ const UseCaseReel = () => {
             return (
               <motion.h2
                 key={i}
-                style={{ 
-                  y, 
-                  z, 
-                  rotateX, 
-                  opacity, 
+                style={{
+                  y,
+                  z,
+                  rotateX,
+                  opacity,
                   scale,
                   color,
                   position: "absolute",
@@ -619,12 +618,12 @@ const EverythingIdentity = () => {
           {/* Feature Strip */}
           <div className="flex-1 grid grid-cols-1 md:grid-cols-4 divide-x divide-black/5 bg-[#EBEBEB]">
             {features.map((f, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="p-12 space-y-6 hover:bg-white transition-all duration-500 cursor-default group"
               >
                 <div className="flex flex-col gap-2">
-                  <span className="font-mono text-[8px] text-black/20 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
+                  <span className="font-mono text-[8px] text-lightblueprimary/40 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
                     Module 0{i + 1}
                   </span>
                   <h3 className="text-xl font-black uppercase tracking-tight text-black/80">
@@ -635,7 +634,7 @@ const EverythingIdentity = () => {
                   {f.desc}
                 </p>
                 <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div className="w-8 h-[1px] bg-black/10" />
+                  <div className="w-8 h-[1px] bg-black/10" />
                 </div>
               </div>
             ))}
@@ -656,7 +655,7 @@ const FinalClosing = () => (
         transition={{ duration: 0.8 }}
       >
         <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] italic">
-          A Better Internet <br /> <span className="text-white/20">Starts With Identity.</span>
+          A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
         </h2>
       </motion.div>
 
@@ -691,7 +690,7 @@ export default function IdentityPage() {
       </Head>
 
       <Header />
-      
+
       <IdentityHero />
 
       <IdentityProblem />

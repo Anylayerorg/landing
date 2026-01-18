@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
-import { 
+import {
   Shield, Database, Globe, ArrowRight, Layers, Box
 } from 'lucide-react';
 
@@ -98,16 +98,16 @@ const IndustrialCapital = () => {
               <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Efficiency</span>
               <div className="h-px w-8 bg-white/10" />
-              <span className="text-white/20 font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5rem] font-geist font-black uppercase text-primaryText leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
-              Unlock <span className="text-white/20">Capital</span>, <br />
+              Unlock <span className="text-lightblueprimary">Capital</span>, <br />
               not your data
             </h2>
           </motion.div>
           <div className="flex flex-col justify-end">
             <p className="text-white/40 text-xl font-light leading-relaxed max-w-xl border-l border-white/10 pl-10">
-              Anylayer is more than a credit score. It's a trust layer designed for 
+              Anylayer is more than a credit score. It's a trust layer designed for
               different groups to benefit from portable zk-verified reputation.
             </p>
           </div>
@@ -117,103 +117,102 @@ const IndustrialCapital = () => {
         <div className="relative w-full flex flex-col gap-6">
           <LayoutGroup>
             {tabs.map((tab, idx) => {
-            const isActive = activeTab === tab.id;
-            const content = tabContent[tab.id];
-            return (
-              <motion.div
-                key={tab.id}
-                layout
-                onClick={() => setActiveTab(tab.id)}
-                initial={false}
-                animate={{
-                  backgroundColor: isActive ? "#12121A" : "#08080C",
-                  borderColor: isActive ? "rgba(166, 131, 255, 0.3)" : "rgba(255, 255, 255, 0.05)",
-                }}
-                transition={{ 
-                  layout: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-                  backgroundColor: { duration: 0.4 },
-                  borderColor: { duration: 0.4 }
-                }}
-                className={`relative cursor-pointer border rounded-[32px] overflow-hidden group hover:border-white/10 transition-colors duration-500 ${
-                  isActive ? "py-12 px-8 md:px-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" : "py-8 px-8 md:px-12"
-                }`}
-              >
-                {/* Background Label */}
-                <motion.div 
+              const isActive = activeTab === tab.id;
+              const content = tabContent[tab.id];
+              return (
+                <motion.div
+                  key={tab.id}
+                  layout
+                  onClick={() => setActiveTab(tab.id)}
                   initial={false}
-                  animate={{ 
-                    opacity: isActive ? 1 : 0, 
-                    scale: isActive ? 1.25 : 1,
-                    y: "-50%"
+                  animate={{
+                    backgroundColor: isActive ? "#12121A" : "#08080C",
+                    borderColor: isActive ? "rgba(166, 131, 255, 0.3)" : "rgba(255, 255, 255, 0.05)",
                   }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute top-1/2 right-12 text-7xl font-mono font-black text-white/[0.02] pointer-events-none select-none tracking-tighter"
+                  transition={{
+                    layout: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                    backgroundColor: { duration: 0.4 },
+                    borderColor: { duration: 0.4 }
+                  }}
+                  className={`relative cursor-pointer border rounded-[32px] overflow-hidden group hover:border-white/10 transition-colors duration-500 ${isActive ? "py-12 px-8 md:px-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" : "py-8 px-8 md:px-12"
+                    }`}
                 >
-                   MODULE 0{idx + 1}
-                </motion.div>
+                  {/* Background Label */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      opacity: isActive ? 1 : 0,
+                      scale: isActive ? 1.25 : 1,
+                      y: "-50%"
+                    }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute top-1/2 right-12 text-7xl font-mono font-black text-white/[0.02] pointer-events-none select-none tracking-tighter"
+                  >
+                    MODULE 0{idx + 1}
+                  </motion.div>
 
-                <div className="relative flex flex-col md:flex-row items-center justify-between gap-12">
-                  {/* Left: Indicator & Title */}
-                  <div className="flex items-center gap-10 w-full md:w-auto">
-                    <div className="flex flex-col items-center gap-2">
-                       <div className={`w-3 h-3 rounded-full transition-all duration-500 ${isActive ? "bg-lightblueprimary shadow-[0_0_15px_#A683FF]" : "bg-white/10"}`} />
-                       <div className="w-[1px] h-12 bg-white/5" />
-                       <span className="text-[10px] font-mono text-white/20 font-bold">0{idx + 1}</span>
-                    </div>
-                    <div className="space-y-2">
-                      <motion.div layout className={`text-[10px] font-mono uppercase tracking-[0.4em] font-black transition-colors ${isActive ? "text-lightblueprimary" : "text-white/20"}`}>
-                         {tab.id.toUpperCase()} UNIT
-                      </motion.div>
-                      <motion.h4 layout className={`text-2xl md:text-4xl font-semibold tracking-tight transition-colors ${isActive ? "text-white" : "text-white/40"}`}>{tab.label}</motion.h4>
-                    </div>
-                  </div>
-
-                  {/* Middle: Description (Hidden when collapsed) */}
-                  <div className="flex-1 md:max-w-xl">
-                    {!isActive && <div className="h-0 overflow-hidden" />}
-                    {isActive && (
-                      <p className="text-white/40 text-lg font-light leading-relaxed">{content.description}</p>
-                    )}
-                  </div>
-
-                  {/* Right: Icon / CTA */}
-                  <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center transition-all duration-500 ${isActive ? "bg-lightblueprimary border-lightblueprimary text-black rotate-90" : "bg-white/5 border-white/10 text-white/20"}`}>
-                     {isActive ? <Box size={24} /> : <ArrowRight size={24} />}
-                  </div>
-                </div>
-
-                {/* Expanded Content Section */}
-                <AnimatePresence initial={false}>
-                  {isActive && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      {/* Features Grid */}
-                      <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {content.features.map((f, i) => (
-                          <motion.div 
-                            key={i} 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 + i * 0.05 }}
-                            className="space-y-3 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
-                          >
-                            <div className="text-[10px] font-mono text-lightblueprimary/60 font-black">CAPABILITY 0{i + 1}</div>
-                            <div className="text-sm font-bold text-white tracking-tight">{f.title}</div>
-                            <div className="text-[11px] text-white/20 leading-relaxed">{f.description}</div>
-                          </motion.div>
-                        ))}
+                  <div className="relative flex flex-col md:flex-row items-center justify-between gap-12">
+                    {/* Left: Indicator & Title */}
+                    <div className="flex items-center gap-10 w-full md:w-auto">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className={`w-3 h-3 rounded-full transition-all duration-500 ${isActive ? "bg-lightblueprimary shadow-[0_0_15px_#A683FF]" : "bg-white/10"}`} />
+                        <div className="w-[1px] h-12 bg-white/5" />
+                        <span className="text-[10px] font-mono text-white/20 font-bold">0{idx + 1}</span>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+                      <div className="space-y-2">
+                        <motion.div layout className={`text-[10px] font-mono uppercase tracking-[0.4em] font-black transition-colors ${isActive ? "text-lightblueprimary" : "text-white/20"}`}>
+                          {tab.id.toUpperCase()} UNIT
+                        </motion.div>
+                        <motion.h4 layout className={`text-2xl md:text-4xl font-semibold tracking-tight transition-colors ${isActive ? "text-white" : "text-white/40"}`}>{tab.label}</motion.h4>
+                      </div>
+                    </div>
+
+                    {/* Middle: Description (Hidden when collapsed) */}
+                    <div className="flex-1 md:max-w-xl">
+                      {!isActive && <div className="h-0 overflow-hidden" />}
+                      {isActive && (
+                        <p className="text-white/40 text-lg font-light leading-relaxed">{content.description}</p>
+                      )}
+                    </div>
+
+                    {/* Right: Icon / CTA */}
+                    <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center transition-all duration-500 ${isActive ? "bg-lightblueprimary border-lightblueprimary text-black rotate-90" : "bg-white/5 border-white/10 text-white/20"}`}>
+                      {isActive ? <Box size={24} /> : <ArrowRight size={24} />}
+                    </div>
+                  </div>
+
+                  {/* Expanded Content Section */}
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        {/* Features Grid */}
+                        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                          {content.features.map((f, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.1 + i * 0.05 }}
+                              className="space-y-3 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
+                            >
+                              <div className="text-[10px] font-mono text-lightblueprimary/60 font-black">CAPABILITY 0{i + 1}</div>
+                              <div className="text-sm font-bold text-white tracking-tight">{f.title}</div>
+                              <div className="text-[11px] text-white/20 leading-relaxed">{f.description}</div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </LayoutGroup>
         </div>
       </div>
