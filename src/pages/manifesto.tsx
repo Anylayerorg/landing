@@ -154,13 +154,13 @@ const ManifestoPage = () => {
         switch (type) {
             case "mono": return "font-mono text-xs md:text-lg text-lightblueprimary/50 tracking-[0.5em] uppercase";
             case "mono-small": return "font-mono text-[10px] md:text-xs text-white/30 tracking-[1em] uppercase mb-4";
-            case "impact": return "text-4xl md:text-7xl font-black tracking-tighter uppercase italic leading-none text-white";
+            case "impact": return "text-4xl md:text-7xl font-black tracking-tighter uppercase leading-none text-white";
             case "impact-small": return "text-2xl md:text-5xl font-black tracking-tighter uppercase leading-none text-white/90";
-            case "serif-italic": return "font-serif italic text-6xl md:text-[10rem] text-lightblueprimary leading-[0.8]";
-            case "serif-italic-small": return "font-serif italic text-xl md:text-3xl text-lightblueprimary/60 block mt-1";
+            case "serif-italic": return "font-serif text-6xl md:text-[10rem] text-lightblueprimary leading-[0.8]";
+            case "serif-italic-small": return "font-serif text-xl md:text-3xl text-lightblueprimary/60 block mt-1";
             case "glitch": return "font-mono text-xl md:text-4xl font-bold text-white/40 tracking-[0.3em] uppercase block";
-            case "hero": return "text-[12vw] md:text-[12rem] font-black italic tracking-tighter leading-[0.75] text-white";
-            case "final": return "text-[18vw] md:text-[20rem] font-black italic tracking-tighter leading-none text-lightblueprimary";
+            case "hero": return "text-[12vw] md:text-[12rem] font-black tracking-tighter leading-[0.75] text-white";
+            case "final": return "text-[18vw] md:text-[20rem] font-black tracking-tighter leading-none text-lightblueprimary";
             default: return "text-white";
         }
     };
@@ -188,7 +188,7 @@ const ManifestoPage = () => {
                                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
                                 <span className="text-[10px] font-black uppercase tracking-widest text-white/60">Cinematic Mode // v3.0</span>
                             </div>
-                            <h1 className="text-4xl md:text-6xl font-light tracking-tighter text-white">The <span className="italic font-serif text-lightblueprimary">Manifesto.</span></h1>
+                            <h1 className="text-4xl md:text-6xl font-light tracking-tighter text-white">The <span className="font-serif text-lightblueprimary">Manifesto.</span></h1>
                             <p className="text-white/30 text-[10px] uppercase tracking-[0.5em] font-bold">Optimized for high-fidelity screen recording</p>
                         </motion.div>
 

@@ -88,7 +88,7 @@ export default function RoadmapPage() {
 
       <main className="pt-40 pb-64 px-6 overflow-hidden">
         <div className="max-w-screen-xl mx-auto">
-          
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,33 +101,33 @@ export default function RoadmapPage() {
             </div>
             <h1 className="text-[4rem] md:text-[7rem] font-geist font-black uppercase text-white leading-[0.85] tracking-tighter lg:tracking-[-0.06em]">
               THE FUTURE <br />
-              <span className="text-white/10 italic">OF TRUST.</span>
+              <span className="text-white/10">OF TRUST.</span>
             </h1>
           </motion.div>
 
           {/* Curved Flow Roadmap */}
           <div ref={containerRef} className="relative max-w-5xl mx-auto py-20">
-            
+
             {/* SVG Curved Path for Desktop */}
             <div className="absolute inset-0 hidden md:block pointer-events-none z-0">
-              <svg 
-                viewBox="0 0 1000 1600" 
-                fill="none" 
+              <svg
+                viewBox="0 0 1000 1600"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full preserve-3d"
               >
                 {/* Background Shadow Path */}
-                <path 
-                  d="M500 0 C500 200 800 200 800 400 C800 600 200 600 200 800 C200 1000 800 1000 800 1200 C800 1400 500 1400 500 1600" 
-                  stroke="rgba(255,255,255,0.03)" 
-                  strokeWidth="4" 
+                <path
+                  d="M500 0 C500 200 800 200 800 400 C800 600 200 600 200 800 C200 1000 800 1000 800 1200 C800 1400 500 1400 500 1600"
+                  stroke="rgba(255,255,255,0.03)"
+                  strokeWidth="4"
                   strokeLinecap="round"
                 />
                 {/* Animated Gradient Path */}
-                <motion.path 
-                  d="M500 0 C500 200 800 200 800 400 C800 600 200 600 200 800 C200 1000 800 1000 800 1200 C800 1400 500 1400 500 1600" 
-                  stroke="url(#roadmap-gradient)" 
-                  strokeWidth="4" 
+                <motion.path
+                  d="M500 0 C500 200 800 200 800 400 C800 600 200 600 200 800 C200 1000 800 1000 800 1200 C800 1400 500 1400 500 1600"
+                  stroke="url(#roadmap-gradient)"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   style={{ pathLength }}
                 />
@@ -150,7 +150,7 @@ export default function RoadmapPage() {
                 const Icon = phase.icon;
                 const isCompleted = phase.status === 'Completed';
                 const isInProgress = phase.status === 'In Progress';
-                
+
                 // desktop coordinate mapping (rough)
                 const positions = [
                   { x: '50%', y: '0px' },    // Phase 1: Center Top
@@ -160,14 +160,14 @@ export default function RoadmapPage() {
                 ];
 
                 return (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
                     className="relative md:absolute w-full md:w-[400px] z-10"
-                    style={{ 
+                    style={{
                       left: typeof window !== 'undefined' && window.innerWidth >= 768 ? positions[idx].x : 'auto',
                       top: typeof window !== 'undefined' && window.innerWidth >= 768 ? positions[idx].y : 'auto',
                       transform: typeof window !== 'undefined' && window.innerWidth >= 768 ? 'translateX(-50%)' : 'none'
@@ -179,21 +179,19 @@ export default function RoadmapPage() {
                         {/* The Icon Container */}
                         <div className="relative group shrink-0">
                           <div className={`absolute -inset-4 rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-all duration-700`} style={{ backgroundColor: phase.color }} />
-                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border-2 transition-all duration-700 bg-[#08080C] relative z-10 ${
-                            isCompleted ? 'border-green-500/40 text-green-400' :
-                            isInProgress ? 'border-lightblueprimary text-lightblueprimary shadow-[0_0_30px_rgba(166,131,255,0.2)]' :
-                            'border-white/5 text-white/20'
-                          }`}>
+                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border-2 transition-all duration-700 bg-[#08080C] relative z-10 ${isCompleted ? 'border-green-500/40 text-green-400' :
+                              isInProgress ? 'border-lightblueprimary text-lightblueprimary shadow-[0_0_30px_rgba(166,131,255,0.2)]' :
+                                'border-white/5 text-white/20'
+                            }`}>
                             <Icon size={32} strokeWidth={1.2} />
                           </div>
-                          
+
                           {/* Phase Badge */}
                           <div className="absolute -top-3 -right-3 z-20">
-                            <div className={`text-[9px] font-mono font-black uppercase px-2 py-0.5 rounded-md border backdrop-blur-xl ${
-                              isCompleted ? 'bg-green-500 text-black border-green-500' :
-                              isInProgress ? 'bg-lightblueprimary text-black border-lightblueprimary' :
-                              'bg-white/5 text-white/20 border-white/10'
-                            }`}>
+                            <div className={`text-[9px] font-mono font-black uppercase px-2 py-0.5 rounded-md border backdrop-blur-xl ${isCompleted ? 'bg-green-500 text-black border-green-500' :
+                                isInProgress ? 'bg-lightblueprimary text-black border-lightblueprimary' :
+                                  'bg-white/5 text-white/20 border-white/10'
+                              }`}>
                               {phase.number}
                             </div>
                           </div>
@@ -212,14 +210,12 @@ export default function RoadmapPage() {
                           <div className="grid gap-3 md:justify-items-center">
                             {phase.milestones.map((m, mIdx) => (
                               <div key={mIdx} className="flex items-center gap-3">
-                                <div className={`shrink-0 w-1.5 h-1.5 rounded-full ${
-                                  m.completed ? 'bg-green-500' : 
-                                  isInProgress && mIdx === phase.milestones.findIndex(item => !item.completed) ? 'bg-lightblueprimary shadow-[0_0_8px_#A683FF] animate-pulse' :
-                                  'bg-white/10'
-                                }`} />
-                                <span className={`text-[11px] font-medium tracking-tight ${
-                                  m.completed ? 'text-white/80' : 'text-white/30'
-                                }`}>
+                                <div className={`shrink-0 w-1.5 h-1.5 rounded-full ${m.completed ? 'bg-green-500' :
+                                    isInProgress && mIdx === phase.milestones.findIndex(item => !item.completed) ? 'bg-lightblueprimary shadow-[0_0_8px_#A683FF] animate-pulse' :
+                                      'bg-white/10'
+                                  }`} />
+                                <span className={`text-[11px] font-medium tracking-tight ${m.completed ? 'text-white/80' : 'text-white/30'
+                                  }`}>
                                   {m.text}
                                 </span>
                               </div>
@@ -232,7 +228,7 @@ export default function RoadmapPage() {
                 );
               })}
             </div>
-            
+
             {/* Added buffer height for absolute items */}
             <div className="hidden md:block h-[1600px]" />
           </div>

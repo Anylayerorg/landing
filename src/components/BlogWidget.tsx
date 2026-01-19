@@ -72,7 +72,7 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
                 Journal
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
               {title}
             </h2>
             {subtitle && (

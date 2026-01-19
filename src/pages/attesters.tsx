@@ -39,7 +39,7 @@ const ZenithMinimalistV2 = () => {
         initial: { opacity: 0, y: 30, filter: "blur(10px)" },
         whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
         viewport: { once: true },
-        transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+        transition: { duration: 1.2, ease: "easeOut" }
     };
 
     const HUDLabel = ({ text, side = "left" }: { text: string, side?: "left" | "right" }) => (
@@ -86,7 +86,7 @@ const ZenithMinimalistV2 = () => {
                                 initial={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
                                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[12vw] md:text-[min(14vw,14rem)] font-light tracking-[-0.04em] leading-[0.85] uppercase italic"
+                                className="text-[12vw] md:text-[min(14vw,14rem)] font-light tracking-[-0.04em] leading-[0.85] uppercase"
                             >
                                 Become <br />
                                 <span className="font-serif text-white relative">
@@ -104,7 +104,7 @@ const ZenithMinimalistV2 = () => {
                             <motion.p
                                 {...fadeIn}
                                 transition={{ delay: 0.5, duration: 1 }}
-                                className="mt-20 text-xl md:text-3xl text-white/30 font-serif italic max-w-3xl leading-relaxed"
+                                className="mt-20 text-xl md:text-3xl text-white/30 font-serif max-w-3xl leading-relaxed"
                             >
                                 Turn real-world outcomes into verifiable trust signals.
                                 Secure the layer, define the future.
@@ -135,11 +135,11 @@ const ZenithMinimalistV2 = () => {
                         <div className="grid md:grid-cols-[1.2fr,1px,1fr] gap-24 items-center">
                             <motion.div {...fadeIn} className="space-y-10">
                                 <h2 className="text-5xl md:text-7xl font-light tracking-tighter leading-tight">
-                                    The <span className="font-serif italic text-lightblueprimary/60">Verification</span> <br /> Node.
+                                    The <span className="font-serif text-lightblueprimary/60">Verification</span> <br /> Node.
                                 </h2>
                                 <p className="text-xl md:text-2xl text-white/50 leading-relaxed font-light font-serif">
                                     An attester is any protocol, application, or verified organization that stand behind the signals it issues.
-                                    You are the <span className="text-white font-medium italic underline decoration-lightblueprimary/30 underline-offset-8">source of truth</span> in a fragmented world.
+                                    You are the <span className="text-white font-medium underline decoration-lightblueprimary/30 underline-offset-8">source of truth</span> in a fragmented world.
                                 </p>
                             </motion.div>
 
@@ -171,9 +171,9 @@ const ZenithMinimalistV2 = () => {
                         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
                             <div className="space-y-6">
                                 <HUDLabel text="SIGNAL_CLASSIFICATION" />
-                                <h2 className="text-6xl md:text-9xl font-black tracking-tighter uppercase italic opacity-10">Matrix.</h2>
+                                <h2 className="text-6xl md:text-9xl font-black tracking-tighter uppercase opacity-10">Matrix.</h2>
                             </div>
-                            <p className="text-white/20 text-sm max-w-xs font-serif italic text-right">
+                            <p className="text-white/20 text-sm max-w-xs font-serif text-right">
                                 Categorizing the fundamental building blocks of universal trust.
                             </p>
                         </div>
@@ -199,7 +199,7 @@ const ZenithMinimalistV2 = () => {
                                         {group.items.map((item, j) => (
                                             <li key={j} className="text-white/40 hover:text-white transition-colors cursor-default flex items-center gap-3">
                                                 <div className="w-1 h-1 rounded-full bg-white/10 group-hover:bg-lightblueprimary transition-colors" />
-                                                <span className="font-serif italic">{item}</span>
+                                                <span className="font-serif">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -229,7 +229,7 @@ const ZenithMinimalistV2 = () => {
                                         ].map((text, i) => (
                                             <div key={i} className="flex gap-6 items-start group/item">
                                                 <span className="text-lightblueprimary/30 font-mono text-[10px] pt-1 group-hover/item:text-lightblueprimary transition-colors">0{i + 1}</span>
-                                                <p className="text-2xl text-white/50 font-serif italic group-hover/item:text-white transition-colors">{text}</p>
+                                                <p className="text-2xl text-white/50 font-serif group-hover/item:text-white transition-colors">{text}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -249,7 +249,7 @@ const ZenithMinimalistV2 = () => {
                                                     <div className="text-xl font-black uppercase tracking-tighter">{level.name}</div>
                                                 </div>
                                                 <div className="text-right">
-                                                    <div className="text-2xl font-serif italic text-lightblueprimary">{level.weight}</div>
+                                                    <div className="text-2xl font-serif text-lightblueprimary">{level.weight}</div>
                                                     <div className="text-[8px] font-mono text-white/10 uppercase tracking-widest">{level.desc}</div>
                                                 </div>
                                             </div>
@@ -269,10 +269,10 @@ const ZenithMinimalistV2 = () => {
                         <div className="text-center space-y-24">
                             <motion.div {...fadeIn} className="space-y-8">
                                 <HUDLabel text="APPLICATION_GATEWAY" />
-                                <h2 className="text-7xl md:text-9xl font-light tracking-tighter uppercase italic leading-none">
+                                <h2 className="text-7xl md:text-9xl font-light tracking-tighter uppercase leading-none">
                                     Join the <br /> <span className="text-lightblueprimary">Waitlist.</span>
                                 </h2>
-                                <p className="text-xl text-white/30 font-serif italic max-w-xl mx-auto">
+                                <p className="text-xl text-white/30 font-serif max-w-xl mx-auto">
                                     Be among the first to define the global trust layer.
                                     Strategic deployments beginning Q2 2026.
                                 </p>
@@ -289,7 +289,7 @@ const ZenithMinimalistV2 = () => {
                                         disabled={status === 'loading' || status === 'success'}
                                     />
                                     <div className="absolute bottom-0 left-0 w-0 h-px bg-lightblueprimary group-focus-within:w-full transition-all duration-1000" />
-                                    
+
                                     {status === 'success' && (
                                         <p className="text-[10px] text-green-400 font-mono uppercase tracking-[0.4em] animate-pulse">Waitlist Entry Confirmed</p>
                                     )}
@@ -297,7 +297,7 @@ const ZenithMinimalistV2 = () => {
                                         <p className="text-[10px] text-red-400 font-mono uppercase tracking-[0.4em]">Error joining waitlist</p>
                                     )}
 
-                                    <button 
+                                    <button
                                         type="submit"
                                         disabled={status === 'loading' || status === 'success'}
                                         className="w-full mt-12 py-6 rounded-full bg-white text-black font-black uppercase tracking-[0.5em] text-[12px] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-4 disabled:opacity-50"
@@ -323,12 +323,12 @@ const ZenithMinimalistV2 = () => {
                     </section>
                 </main>
 
-                <BlogWidget 
-                  category="Attestation" 
-                  limit={3} 
-                  title="Attestation Network Updates"
-                  subtitle="Latest signals, protocol changes, and attester network news."
-                  dark={true}
+                <BlogWidget
+                    category="Attestation"
+                    limit={3}
+                    title="Attestation Network Updates"
+                    subtitle="Latest signals, protocol changes, and attester network news."
+                    dark={true}
                 />
 
                 <Footer />

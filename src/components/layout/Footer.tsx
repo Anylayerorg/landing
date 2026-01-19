@@ -42,18 +42,18 @@ const Newsletter = () => {
   return (
     <div className="space-y-6 max-w-md">
       <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tighter leading-tight">
-        Stay updated on <span className="text-lightblueprimary italic">Anylayer.</span>
+        Stay updated on <span className="text-lightblueprimary">Anylayer.</span>
       </h3>
       <form onSubmit={handleSubscribe} className="relative flex items-center p-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-lightblueprimary/30 transition-all">
-        <input 
-          type="email" 
+        <input
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter email..." 
+          placeholder="Enter email..."
           className="bg-transparent flex-1 px-6 py-3 text-sm text-white outline-none placeholder:text-white/20"
           disabled={status === 'loading' || status === 'success'}
         />
-        <button 
+        <button
           type="submit"
           disabled={status === 'loading' || status === 'success'}
           className="bg-lightblueprimary text-black p-3 rounded-full hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
@@ -119,12 +119,12 @@ export function Footer() {
   return (
     <footer className="relative bg-[#08080C] overflow-hidden pt-20 w-full">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      
+
       <div className="relative w-full max-w-screen-xl mx-auto px-4 md:px-6 py-20">
         <div className="bg-[#0D0D12] border-t border-x border-white/5 rounded-t-[40px] md:rounded-t-[80px] p-8 md:p-24 relative overflow-hidden">
           {/* Faceted Top Border Accent */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent" />
-          
+
           <div className="grid lg:grid-cols-2 gap-24 items-start relative z-10">
             <Newsletter />
             <Links />
@@ -132,15 +132,15 @@ export function Footer() {
 
           <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-10">
-               <Image src="/logo-anylayer.svg" alt="Anylayer" width={120} height={30} className="opacity-40" />
-               <p className="text-[10px] font-mono text-white/10 uppercase tracking-widest font-black">© 2026 Anylayer Logic</p>
+              <Image src="/logo-anylayer.svg" alt="Anylayer" width={120} height={30} className="opacity-40" />
+              <p className="text-[10px] font-mono text-white/10 uppercase tracking-widest font-black">© 2026 Anylayer Logic</p>
             </div>
             <div className="flex gap-4">
-               {footerIcon.map(i => (
-                 <a key={i.title} href={i.link} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-lightblueprimary hover:border-lightblueprimary transition-all group">
-                    <Image src={i.icon} alt="" width={16} height={16} className="invert group-hover:invert-0 transition-all" />
-                 </a>
-               ))}
+              {footerIcon.map(i => (
+                <a key={i.title} href={i.link} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-lightblueprimary hover:border-lightblueprimary transition-all group">
+                  <Image src={i.icon} alt="" width={16} height={16} className="invert group-hover:invert-0 transition-all" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

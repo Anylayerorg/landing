@@ -23,7 +23,7 @@ const Attesters = () => {
                             transition={{ duration: 0.8 }}
                             className="space-y-6"
                         >
-                            <h2 className="text-5xl md:text-6xl font-light tracking-tighter text-white uppercase italic">
+                            <h2 className="text-5xl md:text-6xl font-light tracking-tighter text-white uppercase">
                                 Become an Attester
                             </h2>
                             <div className="w-20 h-px bg-white/20 mx-auto" />
@@ -34,7 +34,7 @@ const Attesters = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-2xl md:text-3xl text-white/60 font-serif lowercase italic max-w-2xl leading-relaxed"
+                            className="text-2xl md:text-3xl text-white/60 font-serif lowercase max-w-2xl leading-relaxed"
                         >
                             {copy.p1}
                         </motion.p>

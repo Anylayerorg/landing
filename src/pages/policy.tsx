@@ -3,8 +3,8 @@ import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { 
-  FileText, 
+import {
+  FileText,
   Search,
   ExternalLink,
   Clock
@@ -234,23 +234,23 @@ const POLICIES = [
             </span>
             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none">
               One Identity. <br />
-              <span className="text-white/20 italic">Any App. Any Chain.</span>
+              <span className="text-white/20">Any App. Any Chain.</span>
             </h2>
           </div>
           <div className="space-y-6 text-white/60 text-base md:text-lg font-light leading-relaxed">
             <p>
-              .any is the universal identity namespace of Anylayer. It is designed for a world where 
+              .any is the universal identity namespace of Anylayer. It is designed for a world where
               identity, trust, and access move freely across ecosystems—without sacrificing privacy.
             </p>
             <p>
-              A .any name is more than a username. It is a programmable onchain identity that carries 
-              reputation, credentials, and proofs across apps, wallets, games, and protocols. Whether 
-              you are an individual, a creator, or a global brand, .any gives you a single, verifiable 
+              A .any name is more than a username. It is a programmable onchain identity that carries
+              reputation, credentials, and proofs across apps, wallets, games, and protocols. Whether
+              you are an individual, a creator, or a global brand, .any gives you a single, verifiable
               identity that works everywhere.
             </p>
             <p>
-              Unlike traditional naming systems, .any is privacy-first by default and powered by 
-              zero-knowledge proofs. You can prove what matters—trust, status, eligibility—without 
+              Unlike traditional naming systems, .any is privacy-first by default and powered by
+              zero-knowledge proofs. You can prove what matters—trust, status, eligibility—without
               revealing who you are or exposing sensitive data.
             </p>
             <p className="text-white font-medium">
@@ -852,7 +852,7 @@ const PolicyPage = () => {
     window.location.hash = policy.id;
   };
 
-  const filteredPolicies = POLICIES.filter(p => 
+  const filteredPolicies = POLICIES.filter(p =>
     p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -868,7 +868,7 @@ const PolicyPage = () => {
 
         <main className="pt-32 pb-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
-            
+
             {/* Sidebar Navigation */}
             <aside className="lg:w-64 space-y-12 shrink-0 lg:sticky lg:top-32 self-start">
               <div className="space-y-8">
@@ -879,8 +879,8 @@ const PolicyPage = () => {
 
                 <div className="relative border-b border-white/5 pb-2">
                   <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-white/20 w-3.5 h-3.5" />
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     placeholder="Search..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -904,11 +904,10 @@ const PolicyPage = () => {
                         <button
                           key={policy.id}
                           onClick={() => handlePolicyChange(policy)}
-                          className={`text-left transition-all ${
-                            activePolicy.id === policy.id 
-                              ? 'text-white font-black' 
+                          className={`text-left transition-all ${activePolicy.id === policy.id
+                              ? 'text-white font-black'
                               : 'text-white/40 hover:text-white/60 font-medium'
-                          } text-sm tracking-tight`}
+                            } text-sm tracking-tight`}
                         >
                           {policy.title}
                         </button>

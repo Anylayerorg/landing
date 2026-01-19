@@ -258,7 +258,7 @@ const BuilderPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.8] italic"
+                className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.8]"
               >
                 Integrate <br />
                 <span className="text-lightblueprimary">Verified</span> <br />
@@ -270,7 +270,7 @@ const BuilderPage = () => {
                 transition={{ delay: 0.2 }}
                 className="max-w-xl space-y-8"
               >
-                <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed italic border-l border-white/10 pl-8">
+                <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed border-l border-white/10 pl-8">
                   AnyLayer is the trust primitive for developers.
                   Build applications where decisions are based on verified behavior rather than assumptions.
                 </p>
@@ -358,7 +358,7 @@ const BuilderPage = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-24">
               <HUDLabel text="INTEGRATION_PIPELINE" />
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mt-4">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4">
                 Bring Trust into <br /> Your <span className="text-lightblueprimary">Execution Stack.</span>
               </h2>
             </div>
@@ -412,7 +412,7 @@ const BuilderPage = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h4 className="text-xl font-black uppercase italic tracking-tight">{item.title}</h4>
+                      <h4 className="text-xl font-black uppercase tracking-tight">{item.title}</h4>
                       <p className="text-white/40 text-sm leading-relaxed font-light">{item.desc}</p>
                     </div>
 
@@ -430,7 +430,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-20">
             <HUDLabel text="CAPABILITY_REGISTRY" />
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mt-4 leading-none">
+            <h2 className="text-6xl md:text-[80px] font-black uppercase tracking-tighter mt-4 leading-none">
               Building With <span className="text-lightblueprimary">Verified Trust.</span>
             </h2>
           </div>
@@ -565,7 +565,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-24">
             <HUDLabel text="DEVELOPER_PROGRAM" />
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-none italic">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-none">
               Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
             </h2>
             <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mt-8">
@@ -634,11 +634,11 @@ const BuilderPage = () => {
               <div className="p-12 md:p-24 space-y-12">
                 <div className="space-y-4">
                   <HUDLabel text="JOIN_THE_OPEN_BUILD" />
-                  <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic leading-none">
+                  <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
                     Start <br /> <span className="text-lightblueprimary">Building.</span>
                   </h2>
                 </div>
-                <p className="text-white/30 text-lg font-light italic leading-relaxed">
+                <p className="text-white/30 text-lg font-light leading-relaxed">
                   Join the developer group to get early access to SDKs, APIs, and trust primitives. We build in the open with verified partners.
                 </p>
 
@@ -720,10 +720,10 @@ const BuilderPage = () => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-lightblueprimary to-transparent" />
 
           <motion.div {...fadeIn} className="space-y-12">
-            <h2 className="text-6xl md:text-[100px] font-black tracking-tighter uppercase italic leading-none">
+            <h2 className="text-6xl md:text-[100px] font-black tracking-tighter uppercase leading-none">
               Start Building. <br /> <span className="text-lightblueprimary">Start Verifying.</span>
             </h2>
-            <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed italic max-w-2xl mx-auto">
+            <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">
               AnyLayer provides the trust layer for the next generation of safer, smarter products.
             </p>
             <div className="flex justify-center gap-12">

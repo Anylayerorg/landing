@@ -52,7 +52,7 @@ const IdentityHero = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter italic select-none">
+        <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter select-none">
           BE <span className="relative inline-block group">
             <span className="text-lightblueprimary">ANY</span>
             <motion.div
@@ -91,7 +91,7 @@ const IdentityProblem = () => {
           <span className="hidden md:block text-white/40 font-mono text-[10px] uppercase tracking-[0.5em]">
             The Current State
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
             Today, Identity Onchain is <span className="text-lightblueprimary">Broken.</span>
           </h2>
         </div>
@@ -120,7 +120,7 @@ const IdentityProblem = () => {
 
         {/* The Fix - Minimalist and Integrated */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-white/5">
-          <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 italic leading-snug">
+          <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 leading-snug">
             {PROBLEM_DATA.solution}
           </p>
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
@@ -152,7 +152,7 @@ const IdentityDefinition = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-2">
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Identity Abstract</span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none uppercase italic opacity-90">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none uppercase opacity-90">
                 One You. <br /> Every App.
               </h2>
             </div>
@@ -260,7 +260,7 @@ const EverydayUses = () => {
                 <h3 className={`text-xl font-black tracking-tighter uppercase leading-none ${i === 0 ? 'text-black' : 'text-white/90 group-hover:text-white'} transition-colors`}>
                   {use.title}
                 </h3>
-                <p className={`text-xs font-medium leading-relaxed italic ${i === 0 ? 'text-black/60' : 'text-white/30 group-hover:text-white/50'} transition-colors`}>
+                <p className={`text-xs font-medium leading-relaxed ${i === 0 ? 'text-black/60' : 'text-white/30 group-hover:text-white/50'} transition-colors`}>
                   {use.detail}
                 </p>
               </div>
@@ -303,7 +303,7 @@ const DeveloperIntegration = () => {
                     <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
                     <div className="flex items-center gap-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-black text-white italic">whale.any</span>
+                      <span className="text-[10px] font-black text-white">whale.any</span>
                     </div>
                   </div>
                   <div className="h-px w-full bg-white/5" />
@@ -328,7 +328,7 @@ const DeveloperIntegration = () => {
                 <div className="space-y-3">
                   <div className="w-full h-10 bg-white rounded-xl flex items-center px-4 gap-3 border border-white/10 shadow-2xl group-hover:scale-[1.02] transition-transform">
                     <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-[9px] text-white font-black italic">.a</span>
+                      <span className="text-[9px] text-white font-black">.any</span>
                     </div>
                     <div className="h-3 w-[1px] bg-black/10" />
                     <span className="text-[10px] font-black text-black uppercase tracking-tighter">Connect Identity</span>
@@ -347,10 +347,10 @@ const DeveloperIntegration = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
             <div className="relative z-10 space-y-4 pt-2">
               <span className="text-[10px] font-mono font-black uppercase tracking-widest opacity-40">Identity SDK</span>
-              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none italic">Build with <br /> .any Identity.</h3>
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> .any Identity.</h3>
             </div>
             <div className="relative z-10 space-y-6">
-              <p className="text-black/60 text-xs font-medium leading-relaxed italic max-w-xs mx-auto">
+              <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
               <button className="px-12 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl">
@@ -373,7 +373,7 @@ const DeveloperIntegration = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
-                    <h4 className="text-[10px] font-black uppercase text-white italic">alex.any</h4>
+                    <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
                     <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
                   </div>
                   <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
@@ -407,7 +407,7 @@ const DeveloperIntegration = () => {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-[9px]">
                   <span className="text-white/40">Initiator</span>
-                  <span className="text-lightblueprimary font-black italic">alpha.any</span>
+                  <span className="text-lightblueprimary font-black">alpha.any</span>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="flex justify-between items-center text-[9px]">
@@ -524,7 +524,7 @@ const UseCaseReel = () => {
           <div className="flex items-center gap-6 md:gap-12">
             {/* .any Logo Box */}
             <div className="w-20 h-20 md:w-32 md:h-32 bg-black rounded-[32px] md:rounded-[48px] flex items-center justify-center relative shadow-2xl">
-              <span className="text-white font-black italic text-2xl md:text-4xl tracking-tighter">.any</span>
+              <span className="text-white font-black text-2xl md:text-4xl tracking-tighter">.any</span>
             </div>
           </div>
         </div>
@@ -655,7 +655,7 @@ const FinalClosing = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] italic">
+        <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
           A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
         </h2>
       </motion.div>
@@ -708,9 +708,9 @@ export default function IdentityPage() {
 
       <DeveloperIntegration />
 
-      <BlogWidget 
-        category="Identity" 
-        limit={3} 
+      <BlogWidget
+        category="Identity"
+        limit={3}
         title="Identity Insights"
         subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
         dark={true}
