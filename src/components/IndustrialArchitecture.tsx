@@ -183,7 +183,7 @@ const IdentitySideTags = () => {
       const id = Date.now();
       const text = identities[idCounter % identities.length];
       const side = Math.random() > 0.5 ? 'right' : 'left';
-      const yOffset = (Math.random() - 0.5) * 250; 
+      const yOffset = (Math.random() - 0.5) * 250;
 
       setVisibleIdentities(prev => {
         const leftCount = prev.filter(t => t.side === 'left').length;
@@ -230,19 +230,19 @@ const IdentitySideTags = () => {
                 } as any}
               >
                 {/* Outer Glow */}
-                <div 
+                <div
                   className="absolute inset-0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ backgroundColor: `${themeColor}20` }}
                 />
-                
+
                 <div className="relative flex items-center gap-3 bg-white/[0.03] backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
                   {/* Status Dot */}
                   <div className="relative flex items-center justify-center">
-                    <div 
-                      className="w-1.5 h-1.5 rounded-full" 
+                    <div
+                      className="w-1.5 h-1.5 rounded-full"
                       style={{ backgroundColor: themeColor, boxShadow: `0 0 8px ${themeColor}` }}
                     />
-                    <motion.div 
+                    <motion.div
                       animate={{ scale: [1, 2, 1], opacity: [0.3, 0, 0.3] }}
                       transition={{ duration: 2, repeat: Infinity }}
                       className="absolute w-1.5 h-1.5 rounded-full"
@@ -570,15 +570,13 @@ const IndustrialArchitecture = () => {
                 className="space-y-6 md:space-y-8"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center justify-center md:justify-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
-                      Layer {layers[active].id}
-                    </span>
-                    <div className="hidden md:block h-px w-8 bg-white/10" />
-                    <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">
-                      {layers[active].subtitle}
-                    </span>
+                  <div className="mb-6">
+                    <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                      <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                      <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-white/40">
+                        Layer {layers[active].id} // {layers[active].subtitle}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex items-center justify-center md:justify-start">

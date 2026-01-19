@@ -218,14 +218,10 @@ const BuilderPage = () => {
     );
   };
 
-  const HUDLabel = ({ text, side = "left" }: { text: string, side?: "left" | "right" }) => (
-    <div className={`flex flex-col gap-1 text-[8px] font-mono text-white/20 uppercase tracking-[0.4em] ${side === "right" ? "items-end" : "items-start"}`}>
-      <div className="flex items-center gap-2">
-        {side === "left" && <div className="w-1 h-1 rounded-full bg-lightblueprimary/40" />}
-        {text}
-        {side === "right" && <div className="w-1 h-1 rounded-full bg-lightblueprimary/40" />}
-      </div>
-      <div className={`w-12 h-px bg-white/5 ${side === "right" ? "origin-right" : "origin-left"}`} />
+  const HUDLabel = ({ text }: { text: string }) => (
+    <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+      <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+      <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">{text}</span>
     </div>
   );
 
@@ -511,9 +507,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20">
-                <span className="text-[10px] font-mono font-bold text-lightblueprimary uppercase tracking-widest">Protocol Support</span>
-              </div>
+              <HUDLabel text="Protocol Support" />
               <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
                 The Layer for <br /> <span className="text-lightblueprimary">Wallets.</span>
               </h2>
