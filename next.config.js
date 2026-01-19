@@ -8,6 +8,14 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true, // Temporary for demo
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
   transpilePackages: ['@anylayer/sdk', '@anylayer/shared'],
   webpack: (config) => {
     config.resolve.fallback = {
