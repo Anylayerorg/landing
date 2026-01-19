@@ -113,11 +113,11 @@ const Faqs = () => {
             className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6"
           >
             <div className="max-w-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Support</span>
-                <div className="hidden md:block h-px w-8 bg-white/10" />
-                <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Help Center</span>
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-white/40">Support // Help Center</span>
+                </div>
               </div>
               <h2 className="text-[2.25rem] md:text-[3.25rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-4">
                 Common Questions

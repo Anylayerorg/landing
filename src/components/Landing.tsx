@@ -37,6 +37,18 @@ import {
   Lock as LockIcon
 } from 'lucide-react';
 
+const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtitle?: string, theme?: 'dark' | 'light' }) => (
+  <div className={`inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border ${theme === 'dark'
+      ? 'bg-white/[0.02] border-white/5 text-white/40'
+      : 'bg-black/[0.03] border-black/5 text-black/40'
+    }`}>
+    <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+    <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+      {label} {subtitle && `// ${subtitle}`}
+    </span>
+  </div>
+);
+
 const PROCESS_DATA = [
   {
     id: "01",
@@ -73,7 +85,7 @@ const ProcessFlow = () => {
     <div className="bg-black py-24 md:py-32 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center space-y-4">
-          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black opacity-60">Architecture Flow</span>
+          <SectionTag label="Architecture Flow" />
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none">
             How it <span className="text-lightblueprimary">Works.</span>
           </h2>
@@ -104,28 +116,28 @@ const ProcessFlow = () => {
 };
 
 const trustScoreFeatures = [
-    {
-      title: "Sybil resistance",
+  {
+    title: "Sybil resistance",
     description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore",
     icon: '/knight-shield.svg'
-    },
-    {
-      title: "AI + Human scoring",
+  },
+  {
+    title: "AI + Human scoring",
     description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents.",
     icon: '/robotic.svg'
-    },
-    {
+  },
+  {
     title: "zero-knowledge prove",
     description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
-      icon: '/circle-lock.svg',
+    icon: '/circle-lock.svg',
     isPurple: true
-    },
-    {
-      title: "Cross-chain comparability",
+  },
+  {
+    title: "Cross-chain comparability",
     description: "Cross-chain support works across multiple blockchains, allowing identity and trust move freely",
     icon: '/flow.svg'
-    }
-  ];
+  }
+];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -171,11 +183,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
   }, [currentText, isDeleting, currentWordIndex, words]);
 
   const Badge = ({ label, subtitle }: { label: string, subtitle: string }) => (
-    <div className="flex items-center justify-start gap-3 mb-12">
-      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">{label}</span>
-      <div className="hidden md:block h-px w-8 bg-white/10" />
-      <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
+    <div className="mb-12">
+      <SectionTag label={label} subtitle={subtitle} />
     </div>
   );
 
@@ -184,9 +193,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
     <div className="flex flex-col items-center text-center">
       {/* Header Area */}
       <div className="mb-20 space-y-4">
-        <span className="text-[#08080C] font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-40">
-          Trust Protocol
-        </span>
+        <SectionTag label="Trust Protocol" theme="light" />
         <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-[#08080C] leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-lightblueprimary">Anything</span>
@@ -236,57 +243,54 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           {/* Banner Section */}
           <div className="relative overflow-hidden max-w-screen-xl mx-auto">
             <div className="relative max-w-[800px] mx-auto px-5 pt-16 md:pt-20 pb-10 md:pb-24 z-10">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-center"
-                >
-                  <div className="space-y-6 z-10 text-center">
-                  <div className="flex items-center justify-center gap-3 mb-6">
-                    <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
-                    <div className="hidden md:block h-px w-8 bg-white/10" />
-                    <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
-                    </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+                className="text-center"
+              >
+                <div className="space-y-6 z-10 text-center">
+                  <div className="mb-6">
+                    <SectionTag label="Core" subtitle="Identity & Reputation Layer" />
+                  </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
-                      Multi-layered Trust Engine for{' '}
+                    Multi-layered Trust Engine for{' '}
                     <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
-                        {currentText}
-                        <span className="animate-pulse">|</span>
-                      </span>
-                    </h1>
+                      {currentText}
+                      <span className="animate-pulse">|</span>
+                    </span>
+                  </h1>
                   <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
-                      A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
-                    </p>
+                    A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
+                  </p>
                   <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
-                      <a
-                        href="https://app.anylayer.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a
+                      href="https://app.anylayer.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
-                      >
+                    >
                       <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
                       <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
                         <span>Create ID</span>
                         <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
                       </div>
-                      </a>
-                      <a
-                        href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
-                      >
+                    >
                       <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
                       <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
                         Documentation
                       </div>
-                      </a>
-                    </div>
+                    </a>
                   </div>
-                </motion.div>
+                </div>
+              </motion.div>
             </div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -294,11 +298,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="absolute left-52 top-0 hidden md:block"
             >
-              <Image 
-                src={'/left-banner-angle.svg'} 
-                alt='Left Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/left-banner-angle.svg'}
+                alt='Left Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -308,11 +312,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
               className="absolute right-64 top-0 hidden md:block"
             >
-              <Image 
-                src={'/right-banner-angle.svg'} 
-                alt='Right Angle' 
-                width={544} 
-                height={544} 
+              <Image
+                src={'/right-banner-angle.svg'}
+                alt='Right Angle'
+                width={544}
+                height={544}
                 className="w-60 h-60 lg:w-[544px] lg:h-[544px]"
               />
             </motion.div>
@@ -381,11 +385,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             <div
               className="max-w-[39rem] mx-auto flex flex-col items-center"
             >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Signal</span>
-                <div className="hidden md:block h-px w-8 bg-white/10" />
-                <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
+              <div className="mb-6">
+                <SectionTag label="Signal" subtitle="Trust Analytics" />
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}
@@ -502,9 +503,9 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <AIAgents />
 
-        <BlogWidget 
-          category="Events" 
-          limit={3} 
+        <BlogWidget
+          category="Events"
+          limit={3}
           title="Protocol Events"
           subtitle="Join us at upcoming hackathons, conferences, and community gatherings."
           dark={false}
@@ -516,8 +517,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <CodeIntegration />
 
-        <BlogWidget 
-          limit={3} 
+        <BlogWidget
+          limit={3}
           title="Latest from Anylayer"
           subtitle="Stay informed with the latest news, research, and product updates."
           dark={true}

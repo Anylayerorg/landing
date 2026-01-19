@@ -46,9 +46,10 @@ const Attesters = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
                         >
-                            <p className="text-[10px] text-white/30 uppercase tracking-[0.5em] font-black">
-                                Earn trust by accuracy, not permission
-                            </p>
+                            <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                                <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Earn trust by accuracy, not permission</span>
+                            </div>
                             <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
                                 Become an Attester
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

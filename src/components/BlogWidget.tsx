@@ -46,7 +46,7 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
           "categories": categories[]->{title},
           "readTime": round(length(pt::text(body)) / 5 / 180) + 1
         }`;
-        
+
         const data = await client.fetch(query);
         setPosts(data);
       } catch (error) {
@@ -66,9 +66,12 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
           <div className="space-y-4">
-            <span className={`text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]`}>
-              Journal
-            </span>
+            <div className={`inline-flex items-center gap-3 px-3 py-1 rounded-full ${dark ? 'bg-white/[0.02] border-white/5' : 'bg-black/[0.02] border-black/5'} border backdrop-blur-sm`}>
+              <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+              <span className={`font-mono text-[9px] uppercase tracking-[0.5em] ${dark ? 'text-white/40' : 'text-black/40'}`}>
+                Journal
+              </span>
+            </div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
               {title}
             </h2>
@@ -97,15 +100,15 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
                 <div className={`group h-full border ${dark ? 'bg-black border-white/10 hover:border-white/20' : 'bg-[#EBEBEB] border-black/5 hover:border-black/10'} rounded-2xl overflow-hidden transition-all cursor-pointer`}>
                   {post.mainImage && (
                     <div className="aspect-video relative overflow-hidden border-b border-white/5">
-                      <img 
-                        src={urlFor(post.mainImage).width(600).url()} 
+                      <img
+                        src={urlFor(post.mainImage).width(600).url()}
                         alt={post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   )}
-                  
+
                   <div className="p-6 space-y-4">
                     <div className="flex items-center gap-2">
                       {post.categories?.map((cat, idx) => (
@@ -114,15 +117,15 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
                         </span>
                       ))}
                     </div>
-                    
+
                     <h3 className="text-xl font-black tracking-tight leading-tight group-hover:text-lightblueprimary transition-colors line-clamp-2">
                       {post.title}
                     </h3>
-                    
+
                     <p className={`text-xs leading-relaxed line-clamp-2 font-medium ${dark ? 'text-white/40' : 'text-black/40'}`}>
                       {post.excerpt}
                     </p>
-                    
+
                     <div className={`flex items-center justify-between pt-4 border-t ${dark ? 'border-white/5' : 'border-black/5'}`}>
                       <div className={`flex items-center gap-3 text-[10px] font-mono ${dark ? 'text-white/20' : 'text-black/20'}`}>
                         <span className="flex items-center gap-1"><Calendar size={12} /> {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
