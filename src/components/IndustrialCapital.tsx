@@ -8,7 +8,7 @@ import {
 
 const tabs = [
   { id: "defi", label: "DeFi Protocols" },
-  { id: "payments", label: "Payments & .ANY" },
+  { id: "payments", label: "Payments & .any" },
   { id: "marketplaces", label: "Marketplaces & Commerce" },
   { id: "loyalty", label: "Loyalty Brands" },
   { id: "users", label: "Everyday Users" },
@@ -29,10 +29,10 @@ const tabContent = {
     stats: { primary: "84%", secondary: "Capital Eff." }
   },
   payments: {
-    title: "Payments & .ANY Addressing",
+    title: "Payments & .any Addressing",
     description: "Turn long account strings into simple .any paynames—and move money across crypto and fiat without exposing sensitive details.",
     features: [
-      { title: "P2P & Merchant Checkout (.ANY Paynames)", description: "Replace IBANs/hex with .any handles; accept crypto or fiat at one address, settle where you want." },
+      { title: "P2P & Merchant Checkout (.any Paynames)", description: "Replace IBANs/hex with .any handles; accept crypto or fiat at one address, settle where you want." },
       { title: "Cross‑Border Remittance & FX Routing", description: "Send/receive across rails with smart currency routing and privacy‑preserving compliance proofs." },
       { title: "Payroll & Mass Payouts", description: "Batch payouts to contractors/creators via .any handles; settle on‑chain or to bank with proof‑linked receipts." },
       { title: "Subscriptions & Recurring Billing", description: "Trust‑banded retries and limits; request‑to‑pay links and consented cancellations—no card vaults." },
@@ -98,7 +98,7 @@ const IndustrialCapital = () => {
               <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Efficiency</span>
               <div className="h-px w-8 bg-white/10" />
-              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
+              <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Market Optimization</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5rem] font-geist font-black uppercase text-primaryText leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Unlock <span className="text-lightblueprimary">Capital</span>, <br />

@@ -87,7 +87,7 @@ const IdentityProblem = () => {
       <div className="max-w-7xl mx-auto space-y-24">
         {/* Compact Title - Matching user's preferred style but smaller */}
         <div className="space-y-2">
-          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] block opacity-60">
+          <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.5em] block">
             The Current State
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
@@ -125,7 +125,7 @@ const IdentityProblem = () => {
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lightblueprimary animate-pulse" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-lightblueprimary/40">Solving Exposure</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
           </div>
         </div>
       </div>
@@ -481,7 +481,7 @@ const IdentityHomeSection = () => (
               {item.icon}
               <div className="flex flex-col">
                 <h3 className="text-lg font-black tracking-tight uppercase leading-tight">{item.title}</h3>
-                <span className="text-lightblueprimary/60 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
+                <span className="text-black/40 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
               </div>
             </div>
             <p className="text-black/50 text-xs leading-relaxed">

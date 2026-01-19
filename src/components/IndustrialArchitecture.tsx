@@ -161,42 +161,109 @@ const ReputationRising = () => {
   );
 };
 
-// --- Internal Rising Identity Text for Identity Layer ---
-const RisingIdentityText = () => {
+// --- Internal Identity Side Tags for Identity Layer ---
+const IdentitySideTags = () => {
   const identities = [
-    'whale.any', 'alex.any', 'base.any', 'payment.any', 'social.any'
+    'x.any', 'me.any', 'vip.any', 'alex.any', 'whale.any', 'payment.any'
   ];
 
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center scale-[0.8] md:scale-100">
-      <div className="relative w-full h-full max-w-2xl mx-auto">
-        {identities.map((text, i) => {
-          const parts = text.split('.');
-          const name = parts[0];
-          const suffix = parts[1] ? '.' + parts[1] : '';
+  const getColorByLength = (name: string) => {
+    const len = name.length;
+    if (len === 1) return '#FFD700'; // Gold
+    if (len === 2) return '#A683FF'; // Purple (brand)
+    if (len >= 3 && len <= 4) return '#3B82F6'; // Blue
+    return '#10B981'; // Green (5+)
+  };
 
-          return (
-            <motion.div
-              key={i}
-              initial={{ y: 400, opacity: 0, x: (i % 5 - 2) * 120 }}
-              animate={{
-                y: -500,
-                opacity: [0, 0.6, 0.6, 0],
-                x: (i % 5 - 2) * 120 + Math.sin(i) * 30
-              }}
-              transition={{
-                duration: 10 + Math.random() * 5,
-                repeat: Infinity,
-                delay: i * 0.6,
-                ease: "linear"
-              }}
-              className="absolute font-mono text-[10px] md:text-sm font-black tracking-tighter whitespace-nowrap flex items-center gap-0.5 left-1/2 top-1/2 -ml-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]"
-            >
-              <span className="text-white">{name}</span>
-              <span className="text-white/20">{suffix}</span>
-            </motion.div>
-          );
-        })}
+  const [visibleIdentities, setVisibleIdentities] = useState<{ id: number; text: string; side: 'left' | 'right'; y: number }[]>([]);
+
+  useEffect(() => {
+    let idCounter = 0;
+    const interval = setInterval(() => {
+      const id = Date.now();
+      const text = identities[idCounter % identities.length];
+      const side = Math.random() > 0.5 ? 'right' : 'left';
+      const yOffset = (Math.random() - 0.5) * 250; 
+
+      setVisibleIdentities(prev => {
+        const leftCount = prev.filter(t => t.side === 'left').length;
+        const rightCount = prev.filter(t => t.side === 'right').length;
+
+        if (side === 'left' && leftCount >= 2) return prev;
+        if (side === 'right' && rightCount >= 2) return prev;
+
+        return [...prev, { id, text, side, y: yOffset }];
+      });
+
+      setTimeout(() => {
+        setVisibleIdentities(prev => prev.filter(t => t.id !== id));
+      }, 4000);
+
+      idCounter++;
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [identities.length]);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center scale-[0.8] md:scale-100">
+        <AnimatePresence>
+          {visibleIdentities.map((item) => {
+            const parts = item.text.split('.');
+            const name = parts[0];
+            const suffix = parts[1] ? '.' + parts[1] : '';
+            const themeColor = getColorByLength(name);
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ x: item.side === 'left' ? -60 : 60, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: item.side === 'left' ? 60 : -60, opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute group flex items-center"
+                style={{
+                  left: item.side === 'left' ? '5%' : 'auto',
+                  right: item.side === 'right' ? '5%' : 'auto',
+                  top: `calc(50% + ${item.y}px)`
+                } as any}
+              >
+                {/* Outer Glow */}
+                <div 
+                  className="absolute inset-0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ backgroundColor: `${themeColor}20` }}
+                />
+                
+                <div className="relative flex items-center gap-3 bg-white/[0.03] backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                  {/* Status Dot */}
+                  <div className="relative flex items-center justify-center">
+                    <div 
+                      className="w-1.5 h-1.5 rounded-full" 
+                      style={{ backgroundColor: themeColor, boxShadow: `0 0 8px ${themeColor}` }}
+                    />
+                    <motion.div 
+                      animate={{ scale: [1, 2, 1], opacity: [0.3, 0, 0.3] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: themeColor }}
+                    />
+                  </div>
+
+                  {/* Identity Name */}
+                  <div className="flex items-center font-mono text-[10px] md:text-xs font-black tracking-tighter whitespace-nowrap">
+                    <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] uppercase">
+                      {name}
+                    </span>
+                    <span className="text-white/20 ml-0.5 lowercase">
+                      {suffix}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -454,8 +521,8 @@ const LuminousVisual = ({ active }: { active: number }) => {
 
             {/* Effects Rendered ON TOP of the Asset */}
             <div className="absolute inset-0 z-50 pointer-events-none">
-              {/* Rising Identity Text (Only for Identity Layer) */}
-              {active === 0 && <RisingIdentityText />}
+              {/* Identity Side Tags (Only for Identity Layer) */}
+              {active === 0 && <IdentitySideTags />}
 
               {/* Reputation Rising Effect (Only for Reputation Layer) */}
               {active === 1 && <ReputationRising />}
@@ -509,7 +576,7 @@ const IndustrialArchitecture = () => {
                       Layer {layers[active].id}
                     </span>
                     <div className="h-px w-8 bg-white/10" />
-                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em]">
+                    <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">
                       {layers[active].subtitle}
                     </span>
                   </div>

@@ -24,7 +24,7 @@ const Attesters = () => {
                             className="space-y-6"
                         >
                             <h2 className="text-5xl md:text-6xl font-light tracking-tighter text-white uppercase italic">
-                                Become an <span className="text-lightblueprimary">Attester</span>
+                                Become an Attester
                             </h2>
                             <div className="w-20 h-px bg-white/20 mx-auto" />
                         </motion.div>
@@ -46,14 +46,12 @@ const Attesters = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
                         >
-                            <p className="text-[10px] text-lightblueprimary/40 uppercase tracking-[0.5em] font-black">
+                            <p className="text-[10px] text-white/30 uppercase tracking-[0.5em] font-black">
                                 Earn trust by accuracy, not permission
                             </p>
-                            <button className="group flex items-center gap-4 text-white hover:text-lightblueprimary transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em]">
+                            <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
                                 Become an Attester
-                                <div className="p-3 rounded-full border border-white/10 group-hover:border-lightblueprimary group-hover:bg-lightblueprimary/5 transition-all">
-                                    <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                                </div>
+                                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </motion.div>
                     </div>

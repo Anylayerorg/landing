@@ -33,7 +33,7 @@ const AIAgents = () => {
           <div className="max-w-4xl space-y-8">
             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#08080C] leading-none">
               AI Agents — <br />
-              <span className="text-lightblueprimary text-3xl md:text-5xl">A Reputation System for Autonomy.</span>
+              <span className="text-lightblueprimary text-3xl md:text-5xl">Trust Built on Proven Outcomes</span>
             </h2>
             <p className="text-black/40 text-xl md:text-2xl font-medium leading-relaxed border-l-2 border-black/10 pl-8">
               {AGENT_CONTENT.hook} <span className="text-black/80">{AGENT_CONTENT.solution}</span>
@@ -45,7 +45,7 @@ const AIAgents = () => {
               <div key={i} className="flex-1 space-y-2 text-center md:text-left">
                 <span className="text-[10px] font-mono text-[#08080C] font-black uppercase tracking-widest opacity-40">Metric 0{i + 1}</span>
                 <h3 className="text-5xl font-black text-[#08080C] uppercase tracking-tighter">{m.value}</h3>
-                <p className="text-lightblueprimary/40 text-sm font-bold uppercase tracking-widest">{m.label}</p>
+                <p className="text-black/30 text-sm font-bold uppercase tracking-widest">{m.label}</p>
               </div>
             ))}
           </div>
