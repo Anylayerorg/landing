@@ -239,8 +239,6 @@ const BuilderPage = () => {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
           <div className="absolute top-0 right-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
-          <div className="absolute top-[20%] left-0 w-full h-[1px] bg-white/[0.02]" />
-          <div className="absolute top-[60%] left-0 w-full h-[1px] bg-white/[0.02]" />
         </div>
 
         {/* --- HERO: ARCHITECTURAL DECONSTRUCTION --- */}
@@ -560,6 +558,72 @@ const BuilderPage = () => {
               {/* Decorative elements */}
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lightblueprimary/10 rounded-full blur-[120px]" />
             </div>
+          </div>
+        </section>
+
+        {/* --- DEVELOPER PROGRAM: THE COLLABORATION --- */}
+        <section className="max-w-7xl mx-auto px-6 mb-80">
+          <div className="mb-24">
+            <HUDLabel text="DEVELOPER_PROGRAM" />
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-none italic">
+              Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
+            </h2>
+            <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mt-8">
+              The AnyLayer Developer Program supports teams building trust‑native products with early access, guidance, and direct collaboration.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Early access",
+                desc: "Get first access to SDKs, APIs, and new trust primitives before public release.",
+                icon: <Zap className="w-5 h-5" />
+              },
+              {
+                title: "Builder support",
+                desc: "Hands‑on guidance, best practices, and reference integrations for real products.",
+                icon: <Code2 className="w-5 h-5" />
+              },
+              {
+                title: "Design & use-case feedback",
+                desc: "Work with the AnyLayer team to shape trust flows, UX, and integration patterns.",
+                icon: <Activity className="w-5 h-5" />
+              },
+              {
+                title: "Ecosystem visibility",
+                desc: "Featured integrations, partner showcases, and early ecosystem distribution.",
+                icon: <Share2 className="w-5 h-5" />
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-[32px] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.02] flex items-center justify-center text-white/20 group-hover:text-lightblueprimary transition-all duration-500 mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-bold uppercase tracking-tight mb-4">{item.title}</h3>
+                <p className="text-white/40 text-sm font-light leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-8 rounded-[40px] bg-white/[0.02] border border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono text-lightblueprimary/60 uppercase tracking-[0.4em]">Who it's for</span>
+              <p className="text-white/60 text-sm font-light leading-relaxed max-w-xl">
+                Wallet teams, protocols, marketplaces, consumer apps, and infrastructure builders exploring trust‑based features.
+              </p>
+            </div>
+            <a href="#waitlist" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
+              Join Waitlist
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </section>
 
