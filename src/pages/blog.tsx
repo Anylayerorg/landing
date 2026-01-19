@@ -1,102 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Search, Calendar, ArrowRight, Tag } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-// Placeholder blog data
-const BLOG_POSTS = [
-  {
-    id: 1,
-    slug: 'introducing-anylayer-identity',
-    title: 'Introducing .any — A New Identity Primitive',
-    excerpt: 'Today we\'re launching .any, a universal identity namespace that separates who you are from what you share. Built for privacy, portability, and proof.',
-    category: 'Product',
-    author: 'AnyLayer Team',
-    date: 'Jan 17, 2026',
-    readTime: '5 min read',
-    image: '/blog/identity-launch.jpg',
-    featured: true
-  },
-  {
-    id: 2,
-    slug: 'zk-proofs-explained',
-    title: 'Zero-Knowledge Proofs: Trust Without Exposure',
-    excerpt: 'How ZK proofs enable you to prove anything about your identity or reputation without revealing the underlying data.',
-    category: 'Technical',
-    author: 'Research Team',
-    date: 'Jan 15, 2026',
-    readTime: '8 min read',
-    image: '/blog/zk-proofs.jpg',
-    featured: false
-  },
-  {
-    id: 3,
-    slug: 'ai-agents-reputation',
-    title: 'Building Reputation Systems for AI Agents',
-    excerpt: 'As autonomous agents become more prevalent, how do we ensure they can be trusted? A look at reputation infrastructure for AI.',
-    category: 'Research',
-    author: 'Dr. Sarah Chen',
-    date: 'Jan 12, 2026',
-    readTime: '6 min read',
-    image: '/blog/ai-agents.jpg',
-    featured: false
-  },
-  {
-    id: 4,
-    slug: 'privacy-by-design',
-    title: 'Privacy by Design: Why Data Minimization Matters',
-    excerpt: 'Our approach to building trust infrastructure that collects nothing, proves everything, and puts users in control.',
-    category: 'Philosophy',
-    author: 'Policy Team',
-    date: 'Jan 10, 2026',
-    readTime: '4 min read',
-    image: '/blog/privacy.jpg',
-    featured: false
-  },
-  {
-    id: 5,
-    slug: 'developer-integration-guide',
-    title: 'Integrating .any Into Your dApp',
-    excerpt: 'A step-by-step guide for developers looking to add human-readable identities and trust-based features to their applications.',
-    category: 'Developer',
-    author: 'Dev Relations',
-    date: 'Jan 8, 2026',
-    readTime: '10 min read',
-    image: '/blog/developer-guide.jpg',
-    featured: false
-  },
-  {
-    id: 6,
-    slug: 'naming-policy-announcement',
-    title: 'Announcing the .any Naming Policy',
-    excerpt: 'A comprehensive framework for fair, transparent, and secure allocation of .any identities.',
-    category: 'Policy',
-    author: 'Governance Team',
-    date: 'Jan 5, 2026',
-    readTime: '7 min read',
-    image: '/blog/naming-policy.jpg',
-    featured: false
-  }
-];
+import { client, urlFor } from '@/sanity/lib/client';
 
 const CATEGORIES = ['All', 'Product', 'Technical', 'Research', 'Philosophy', 'Developer', 'Policy'];
 
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [posts, setPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredPosts = BLOG_POSTS.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const query = `*[_type == "post"] | order(publishedAt desc) {
+          _id,
+          title,
+          "slug": slug.current,
+          excerpt,
+          mainImage,
+          publishedAt,
+          "category": categories[0]->title,
+          "author": author->name,
+          "readTime": round(length(pt::text(body)) / 5 / 180) + 1,
+          featured
+        }`;
+        const data = await client.fetch(query);
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  const filteredPosts = posts.filter(post => {
+    const matchesSearch = post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const featuredPost = filteredPosts.find(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPost = filteredPosts.find(post => post.featured) || filteredPosts[0];
+  const regularPosts = filteredPosts.filter(post => post._id !== featuredPost?._id);
+
+  if (loading) {
+    return (
+      <div className="bg-[#08080C] min-h-screen font-geist text-white flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-full border-2 border-white/10 border-t-lightblueprimary animate-spin" />
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-white/20">Loading Content...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -193,9 +157,9 @@ const BlogPage = () => {
                         <div className="flex items-center gap-4 text-xs text-white/30 font-mono pt-2">
                           <span>{featuredPost.author}</span>
                           <span className="w-1 h-1 rounded-full bg-white/20" />
-                          <span>{featuredPost.date}</span>
+                          <span>{new Date(featuredPost.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                           <span className="w-1 h-1 rounded-full bg-white/20" />
-                          <span>{featuredPost.readTime}</span>
+                          <span>{featuredPost.readTime} min read</span>
                         </div>
                         
                         <div className="flex items-center gap-2 text-white font-bold uppercase tracking-wide text-xs group-hover:gap-3 transition-all pt-2">
@@ -206,6 +170,13 @@ const BlogPage = () => {
 
                       {/* Image */}
                       <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[400px] bg-white/[0.02] overflow-hidden border-t lg:border-t-0 lg:border-l border-white/10">
+                        {featuredPost.mainImage && (
+                          <img 
+                            src={urlFor(featuredPost.mainImage).url()} 
+                            alt={featuredPost.title}
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-br from-lightblueprimary/10 via-transparent to-transparent" />
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(166,131,255,0.08),transparent_50%)]" />
                       </div>
@@ -237,6 +208,13 @@ const BlogPage = () => {
                       <div className="group h-full bg-black border border-white/10 rounded-xl overflow-hidden hover:border-white/20 hover:bg-white/[0.02] transition-all cursor-pointer">
                         {/* Image Area */}
                         <div className="aspect-video bg-white/[0.02] relative overflow-hidden border-b border-white/10">
+                          {post.mainImage && (
+                            <img 
+                              src={urlFor(post.mainImage).width(600).url()} 
+                              alt={post.title}
+                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            />
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-br from-lightblueprimary/8 via-transparent to-transparent" />
                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(166,131,255,0.06),transparent_60%)] group-hover:opacity-80 transition-opacity" />
                           
@@ -260,9 +238,9 @@ const BlogPage = () => {
                           
                           <div className="flex items-center justify-between pt-3 border-t border-white/5">
                             <div className="flex items-center gap-2 text-[10px] text-white/30 font-mono">
-                              <span>{post.date}</span>
+                              <span>{new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                               <span className="w-0.5 h-0.5 rounded-full bg-white/20" />
-                              <span>{post.readTime}</span>
+                              <span>{post.readTime} min read</span>
                             </div>
                             
                             <ArrowRight 

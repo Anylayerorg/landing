@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { Send } from 'lucide-react';
+import { Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { client } from '@/sanity/lib/client';
 
 const footerIcon = [
   { title: "Telegram", link: "https://t.me/zksnews#", icon: "/telegram.svg", width: 17, height: 14 },
@@ -12,23 +13,69 @@ const footerIcon = [
   { title: "Twitter", link: "https://x.com/buildonzks", icon: "/twitter.svg", width: 13, height: 13 },
 ];
 
-const Newsletter = () => (
-  <div className="space-y-6 max-w-md">
-    <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tighter leading-tight">
-      Stay updated on <span className="text-lightblueprimary italic">Anylayer.</span>
-    </h3>
-    <div className="relative flex items-center p-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-lightblueprimary/30 transition-all">
-      <input 
-        type="email" 
-        placeholder="Enter email..." 
-        className="bg-transparent flex-1 px-6 py-3 text-sm text-white outline-none placeholder:text-white/20"
-      />
-      <button className="bg-lightblueprimary text-black p-3 rounded-full hover:scale-105 active:scale-95 transition-all">
-        <Send size={18} />
-      </button>
+const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      await client.create({
+        _type: 'subscriber',
+        email,
+        type: 'newsletter',
+        subscribedAt: new Date().toISOString(),
+      });
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
+  return (
+    <div className="space-y-6 max-w-md">
+      <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tighter leading-tight">
+        Stay updated on <span className="text-lightblueprimary italic">Anylayer.</span>
+      </h3>
+      <form onSubmit={handleSubscribe} className="relative flex items-center p-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-lightblueprimary/30 transition-all">
+        <input 
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter email..." 
+          className="bg-transparent flex-1 px-6 py-3 text-sm text-white outline-none placeholder:text-white/20"
+          disabled={status === 'loading' || status === 'success'}
+        />
+        <button 
+          type="submit"
+          disabled={status === 'loading' || status === 'success'}
+          className="bg-lightblueprimary text-black p-3 rounded-full hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
+        >
+          {status === 'loading' ? (
+            <Loader2 size={18} className="animate-spin" />
+          ) : status === 'success' ? (
+            <CheckCircle2 size={18} />
+          ) : (
+            <Send size={18} />
+          )}
+        </button>
+      </form>
+      {status === 'success' && (
+        <p className="text-[10px] text-green-400 font-mono uppercase tracking-widest animate-pulse">Successfully joined the list!</p>
+      )}
+      {status === 'error' && (
+        <p className="text-[10px] text-red-400 font-mono uppercase tracking-widest">Something went wrong. Try again.</p>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 const Links = () => (
   <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">

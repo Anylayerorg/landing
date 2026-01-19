@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { BlogWidget } from '@/components/BlogWidget';
 import {
   ShieldCheck,
   Users,
@@ -706,6 +707,14 @@ export default function IdentityPage() {
       <EverydayUses />
 
       <DeveloperIntegration />
+
+      <BlogWidget 
+        category="Identity" 
+        limit={3} 
+        title="Identity Insights"
+        subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
+        dark={true}
+      />
 
       <FinalClosing />
 

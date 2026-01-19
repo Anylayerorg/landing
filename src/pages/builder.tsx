@@ -12,13 +12,42 @@ import {
   Copy,
   ExternalLink,
   FileText,
-  Download
+  Download,
+  Loader2,
+  CheckCircle2
 } from 'lucide-react';
+import { BlogWidget } from '@/components/BlogWidget';
+import { Footer } from '@/components/layout/Footer';
+import { client } from '@/sanity/lib/client';
 
 export default function BuilderPage() {
   const { scrollY } = useScroll();
   const [headerStyle, setHeaderStyle] = useState('transparent');
-  
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleWaitlist = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      await client.create({
+        _type: 'subscriber',
+        email,
+        type: 'developer',
+        subscribedAt: new Date().toISOString(),
+      });
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Waitlist error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = scrollY.onChange(latest => {
       if (latest > 100) {
@@ -488,14 +517,45 @@ subscription.unsubscribe();`}
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">Ready to Build?</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
               Join hundreds of developers building the future of on-chain reputation.
               Get started today with 300 free credits and comprehensive documentation.
             </p>
+            
+            <div className="max-w-md mx-auto mb-12">
+              <form onSubmit={handleWaitlist} className="relative group">
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter developer email..." 
+                  className="w-full bg-white/5 border border-white/10 rounded-full py-5 px-8 focus:outline-none focus:border-lightblueprimary/50 transition-all placeholder:text-white/20 text-sm mb-4"
+                  disabled={status === 'loading' || status === 'success'}
+                />
+                
+                <button 
+                  type="submit"
+                  disabled={status === 'loading' || status === 'success'}
+                  className="w-full bg-white text-black py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  {status === 'loading' ? (
+                    <>Joining <Loader2 className="animate-spin" size={16} /></>
+                  ) : status === 'success' ? (
+                    <>Joined <CheckCircle2 size={16} /></>
+                  ) : (
+                    "Join Developer Waitlist"
+                  )}
+                </button>
+              </form>
+              {status === 'success' && (
+                <p className="text-xs text-green-400 mt-4 font-mono uppercase tracking-widest animate-pulse">Welcome to the network.</p>
+              )}
+              {status === 'error' && (
+                <p className="text-xs text-red-400 mt-4 font-mono uppercase tracking-widest">Connection error. Try again.</p>
+              )}
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Get 300 Free Credits
-              </button>
               <button className="border border-gray-600 text-white px-8 py-4 rounded-lg font-semibold hover:border-gray-400 transition-colors">
                 View Examples
               </button>
@@ -503,6 +563,16 @@ subscription.unsubscribe();`}
           </motion.div>
         </div>
       </section>
+
+      <BlogWidget 
+        category="Developers" 
+        limit={3} 
+        title="Developer Updates"
+        subtitle="Latest SDK releases, technical guides, and builder community news."
+        dark={false}
+      />
+
+      <Footer />
     </div>
   );
 }

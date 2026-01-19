@@ -11,6 +11,7 @@ import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
 import AIAgents from './AIAgents';
 import Attesters from './Attesters';
+import { BlogWidget } from './BlogWidget';
 import {
   Shield,
   Lock,
@@ -501,11 +502,26 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <AIAgents />
 
+        <BlogWidget 
+          category="Events" 
+          limit={3} 
+          title="Protocol Events"
+          subtitle="Join us at upcoming hackathons, conferences, and community gatherings."
+          dark={false}
+        />
+
         <ParallelCards sectionId="dimension" />
 
         <Attesters />
 
         <CodeIntegration />
+
+        <BlogWidget 
+          limit={3} 
+          title="Latest from Anylayer"
+          subtitle="Stay informed with the latest news, research, and product updates."
+          dark={true}
+        />
 
         <Faqs />
 

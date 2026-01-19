@@ -1,13 +1,40 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { ArrowRight, Globe, Shield, Terminal, Zap } from 'lucide-react';
+import { BlogWidget } from '@/components/BlogWidget';
+import { ArrowRight, Globe, Shield, Terminal, Zap, CheckCircle2, Loader2 } from 'lucide-react';
+import { client } from '@/sanity/lib/client';
 
 const ZenithMinimalistV2 = () => {
+    const [email, setEmail] = useState('');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+    const handleWaitlist = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus('loading');
+        try {
+            await client.create({
+                _type: 'subscriber',
+                email,
+                type: 'attester',
+                subscribedAt: new Date().toISOString(),
+            });
+            setStatus('success');
+            setEmail('');
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (error) {
+            console.error('Waitlist error:', error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
+
     const fadeIn = {
         initial: { opacity: 0, y: 30, filter: "blur(10px)" },
         whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
@@ -252,18 +279,38 @@ const ZenithMinimalistV2 = () => {
                             </motion.div>
 
                             <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="max-w-md mx-auto space-y-12">
-                                <div className="space-y-4 relative group">
+                                <form onSubmit={handleWaitlist} className="space-y-4 relative group">
                                     <input
                                         type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Enter Organization Email"
                                         className="w-full bg-transparent border-b border-white/10 py-8 text-center text-2xl font-light focus:outline-none focus:border-lightblueprimary transition-colors placeholder:text-white/5"
+                                        disabled={status === 'loading' || status === 'success'}
                                     />
                                     <div className="absolute bottom-0 left-0 w-0 h-px bg-lightblueprimary group-focus-within:w-full transition-all duration-1000" />
-                                </div>
+                                    
+                                    {status === 'success' && (
+                                        <p className="text-[10px] text-green-400 font-mono uppercase tracking-[0.4em] animate-pulse">Waitlist Entry Confirmed</p>
+                                    )}
+                                    {status === 'error' && (
+                                        <p className="text-[10px] text-red-400 font-mono uppercase tracking-[0.4em]">Error joining waitlist</p>
+                                    )}
 
-                                <button className="w-full py-6 rounded-full bg-white text-black font-black uppercase tracking-[0.5em] text-[12px] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-                                    Submit Protocol
-                                </button>
+                                    <button 
+                                        type="submit"
+                                        disabled={status === 'loading' || status === 'success'}
+                                        className="w-full mt-12 py-6 rounded-full bg-white text-black font-black uppercase tracking-[0.5em] text-[12px] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-4 disabled:opacity-50"
+                                    >
+                                        {status === 'loading' ? (
+                                            <>Processing <Loader2 className="animate-spin" size={16} /></>
+                                        ) : status === 'success' ? (
+                                            <>Confirmed <CheckCircle2 size={16} /></>
+                                        ) : (
+                                            "Submit Protocol"
+                                        )}
+                                    </button>
+                                </form>
                             </motion.div>
 
                             <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="flex flex-col items-center gap-4">
@@ -275,6 +322,14 @@ const ZenithMinimalistV2 = () => {
                         </div>
                     </section>
                 </main>
+
+                <BlogWidget 
+                  category="Attestation" 
+                  limit={3} 
+                  title="Attestation Network Updates"
+                  subtitle="Latest signals, protocol changes, and attester network news."
+                  dark={true}
+                />
 
                 <Footer />
             </div>
