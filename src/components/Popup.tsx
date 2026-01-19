@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Cross, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const AutoPopupModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,15 +62,15 @@ const AutoPopupModal = () => {
                     {/* Logo */}
                     <div className="flex items-center gap-4 md:gap-9">
                         <Image src="/base-white.svg" alt="Base Logo" width={72} height={18} />
-                        <Image src="/anylayer-logo.svg" alt="Anylayer Logo" width={100} height={18} />
+                        <Image src="/anylayer-logo.svg" alt="Anylayer Logo" width={130} height={18} />
                     </div>
                     
                     {/* Close Button */}
                     <button
                         onClick={closeModal}
-                        className="p-1 w-8 h-8 border-2 border-primaryText rounded-full bg-none flex items-center justify-center transition-all duration-200 group"
+                        className="p-1 w-8 h-8 border-2 border-primaryText rounded-full bg-none flex items-center justify-center transition-all duration-200 group hover:border-white"
                     >
-                        <X className="w-10 h-10 text-primaryText group-hover:text-white transition-colors" />
+                        <X className="w-5 h-5 text-primaryText group-hover:text-white transition-colors" />
                     </button>
                 </div>
 
@@ -80,7 +80,7 @@ const AutoPopupModal = () => {
                 {/* Heading */}
                 <h2 className="text-[2rem] lg:text-[2.5rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] max-w-96">
                     {" "}
-                    10,000 FREE .ZKS Names —  <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> ZK Powered.</span> 
+                    10,000 FREE .ANY Names —  <span className='text-white/20'> ZK Powered.</span> 
                 </h2>
 
                 {/* Description */}

@@ -4,11 +4,12 @@ import { Layout } from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
 
 // Pages that should NOT have the Layout wrapper (landing page handles its own layout)
-const PAGES_WITHOUT_LAYOUT = ['/'];
+const PAGES_WITHOUT_LAYOUT = ['/', '/identity', '/manifesto'];
 
 function AppContent({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const shouldUseLayout = !PAGES_WITHOUT_LAYOUT.includes(router.pathname);
+  const isStudio = router.pathname.startsWith('/studio');
+  const shouldUseLayout = !PAGES_WITHOUT_LAYOUT.includes(router.pathname) && !isStudio;
 
   if (shouldUseLayout) {
     return (

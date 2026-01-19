@@ -3,38 +3,129 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-
 import Image from 'next/image';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
-import TabsCard from './TabsCard';
 import CodeIntegration from './CodeIntegration';
 import Faqs from './Faqs';
 import { Footer } from './layout/Footer';
 import IndustrialArchitecture from './IndustrialArchitecture';
-import Architecture from './Architecture';
 import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
+import AIAgents from './AIAgents';
+import Attesters from './Attesters';
+import { BlogWidget } from './BlogWidget';
+import {
+  Shield,
+  Lock,
+  Cpu,
+  Globe,
+  Fingerprint,
+  Zap,
+  Activity,
+  ShieldCheck,
+  Search,
+  Database,
+  Terminal,
+  Server,
+  Network,
+  Maximize2,
+  ChevronRight,
+  MoreHorizontal,
+  Settings,
+  Box,
+  Sparkles,
+  Plus,
+  Layers,
+  Lock as LockIcon
+} from 'lucide-react';
 
-
-const trustScoreFeatures = [
+const PROCESS_DATA = [
   {
-    icon: '/knight-shield.svg',
-    title: "Sybil resistance",
-    description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore"
+    id: "01",
+    title: "Enroll",
+    desc: "Create a private ZK identity; link multiple wallets or bind an agent to a controller.",
+    icon: <Fingerprint className="w-6 h-6" />,
+    color: "#A683FF"
   },
   {
-    icon: '/robotic.svg',
-    title: "AI + Human scoring",
-    description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents."
+    id: "02",
+    title: "Aggregate",
+    desc: "Reputation composes from on/off‑chain signals (repayments, activity, contributions, audits). Only commitments are anchored on‑chain.",
+    icon: <Activity className="w-6 h-6" />,
+    color: "#8B5CF6"
   },
   {
-    icon: '/circle-lock.svg',
-    title: "zero-knowledge prove",
-    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data"
+    id: "03",
+    title: "Prove",
+    desc: "Share selective, zero‑knowledge proofs like “credit ≥ 720,” “can lock 5,000 USDT,” or “agent within policy.”",
+    icon: <ShieldCheck className="w-6 h-6" />,
+    color: "#7C3AED"
   },
   {
-    icon: '/flow.svg',
-    title: "Cross-chain comparability",
-    description: "Cross-chain support works across multiple blockchains, allowing identity and trust to move freely"
+    id: "04",
+    title: "Verify & Act",
+    desc: "dApps accept the proof and apply pricing, gates, or limits. No PII, no portfolio dumps.",
+    icon: <Zap className="w-6 h-6" />,
+    color: "#6D28D9"
   }
 ];
+
+const ProcessFlow = () => {
+  return (
+    <div className="bg-black py-24 md:py-32 relative border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-20 text-center space-y-4">
+          <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] font-black opacity-60">Architecture Flow</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none">
+            How it <span className="text-lightblueprimary">Works.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 py-4">
+          {PROCESS_DATA.map((p, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="space-y-4 group"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lightblueprimary font-mono text-[10px] font-black">{p.id}</span>
+                <div className="h-px flex-1 bg-white/10 group-hover:bg-lightblueprimary/40 transition-colors" />
+              </div>
+              <h3 className="text-2xl font-black uppercase tracking-tighter text-white">{p.title}</h3>
+              <p className="text-white/40 text-sm leading-relaxed font-medium">{p.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const trustScoreFeatures = [
+    {
+      title: "Sybil resistance",
+    description: "Sybil resistance prevents fake accounts and multi-wallet abuse through reputation and trustscore",
+    icon: '/knight-shield.svg'
+    },
+    {
+      title: "AI + Human scoring",
+    description: "AI Engine evaluates behavior, risk, and reliability for humans, wallets, and autonomous agents.",
+    icon: '/robotic.svg'
+    },
+    {
+    title: "zero-knowledge prove",
+    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
+      icon: '/circle-lock.svg',
+    isPurple: true
+    },
+    {
+      title: "Cross-chain comparability",
+    description: "Cross-chain support works across multiple blockchains, allowing identity and trust move freely",
+    icon: '/flow.svg'
+    }
+  ];
 
 export default function HomePage() {
   return <LandingPage />;
@@ -79,9 +170,66 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentWordIndex, words]);
 
+  const Badge = ({ label, subtitle }: { label: string, subtitle: string }) => (
+    <div className="flex items-center justify-start gap-3 mb-12">
+      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+      <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">{label}</span>
+      <div className="hidden md:block h-px w-8 bg-white/10" />
+      <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
+    </div>
+  );
+
+  // --- TRUST SCORE SECTION (Infinex-Inspired Design) ---
+  const TrustScoreSection = () => (
+    <div className="flex flex-col items-center text-center">
+      {/* Header Area */}
+      <div className="mb-20 space-y-4">
+        <span className="text-[#08080C] font-mono text-[10px] uppercase tracking-[0.6em] font-black opacity-40">
+          Trust Protocol
+        </span>
+        <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-[#08080C] leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
+          Trustscore that <br className="hidden md:block" />
+          unlocks <span className="text-lightblueprimary">Anything</span>
+        </h2>
+      </div>
+
+      {/* 4-Column Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16 w-full text-left max-w-5xl">
+        {trustScoreFeatures.map((f: any, i) => (
+          <div key={i} className="space-y-5 group">
+            <div className={`w-8 h-8 flex items-center justify-center transition-all duration-300 ${f.isPurple ? 'text-lightblueprimary' : 'text-[#08080C]'}`}>
+              <Image
+                src={f.icon}
+                alt={f.title}
+                width={28}
+                height={28}
+                className={`w-full h-full object-contain ${f.isPurple ? 'opacity-100' : 'opacity-80'}`}
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-lg font-medium text-[#08080C] tracking-tight">
+                {f.title}
+              </h4>
+              <p className="text-xs md:text-sm text-black/50 leading-relaxed font-medium max-w-[240px]">
+                {f.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Button - Moved below grid */}
+      <div className="mt-24">
+        <button className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-[filter,transform,box-shadow,background-color] duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
+          Explore Protocol
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
-    <div className="relative w-full min-w-full ">
+      <div className="relative w-full min-w-full font-geist">
         {/* Header & Banner */}
         <Header />
         <section className="relative pt-20 lg:pt-24 pb-10 lg:pb-20 overflow-hidden bg-[url('/swatch.png')] bg-cover bg-top ">
@@ -96,12 +244,15 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   className="text-center"
                 >
                   <div className="space-y-6 z-10 text-center">
-                    <div className="mb-2 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                      <span className="text-sm text-white/50"><span className='font-bold'>Identity </span>, reputation & proof layer</span>
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                    <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
+                    <div className="hidden md:block h-px w-8 bg-white/10" />
+                    <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                     </div>
-                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-none text-primaryText tracking-tighter lg:tracking-[-4px]">
+                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                       Multi-layered Trust Engine for{' '}
-                    <span className="bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
+                    <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                         {currentText}
                         <span className="animate-pulse">|</span>
                       </span>
@@ -109,23 +260,29 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
                       A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-4 items-center justify-center pt-0 md:pt-4">
+                  <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
                       <a
                         href="https://app.anylayer.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-medium max-w-72 md:max-w-42 w-full px-4 md:px-8 py-2.5 rounded-xl transition-all duration-300 transform text-sm lg:text-base text-center flex items-center justify-center gap-2 lg:gap-3"
+                      className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
                       >
+                      <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
+                      <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
                         <span>Create ID</span>
-                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3 h-3 lg:w-[14px] lg:h-[14px]" />
+                        <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
+                      </div>
                       </a>
                       <a
                         href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                      className="bg-primaryText/10 hover:bg-neutral-700 border border-solid border-white/20 text-primaryText font-light px-4 md:px-8 py-2.5 max-w-72 w-full md:max-w-full md:w-auto rounded-xl transition-all duration-300 text-sm lg:text-base text-center"
+                      className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
                       >
+                      <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
+                      <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
                         Documentation
+                      </div>
                       </a>
                     </div>
                   </div>
@@ -222,14 +379,17 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-2">
             <div
-              className="max-w-[39rem] mx-auto flex flex-wrap justify-center items-center"
+              className="max-w-[39rem] mx-auto flex flex-col items-center"
             >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                <span className="text-sm text-white/50">Trust Engine</span>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+                <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Signal</span>
+                <div className="hidden md:block h-px w-8 bg-white/10" />
+                <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
               </div>
-              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[110%] tracking-[-2px] text-center">
+              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}
-                Understand and verify <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> trust </span> across every <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> Signal</span>
+                Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
               </h2>
               <p className="text-primaryText/60 text-base text-center px-10 ">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
@@ -310,7 +470,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
             >
               <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
                 <Image
-                  src="/chain-card-updated.svg"
+                  src="/chain-card-anylayer.svg"
                   alt="Verify credibility anywhere on-chain"
                   width="400"
                   height="350"
@@ -329,109 +489,39 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           </div>
         </section>
 
+        <ProcessFlow />
+
         <IndustrialArchitecture />
 
         {/* Section Trust Score */}
-        <section id="trustScore" className="py-10 md:pt-10 md:pb-20 px-5 max-w-screen-xl mx-auto z-10 relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left Content */}
-            <div
-              className="max-w-[47rem] mx-auto flex flex-wrap justify-start items-center"
-            >
-              <div className="mb-3 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 px-6 py-3">
-                <span className="text-sm text-white/50">Trust Engine</span>
-              </div>
-              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-medium text-primaryText mb-6 leading-[100%]">
-                {" "}
-                Trustscore that <span className='bg-gradient-to-r from-blueprimary to-lightblueprimary bg-clip-text text-transparent'> unlocks </span> Anything
-              </h2>
-              <p className="text-primaryText/60 text-sm md:text-base">
-                Anylayer computes a dynamic Trust Index (0–9000) using identity, on-chain behavior, proofs, achievements, and agent reliability — all privately verified.
-              </p>
-            </div>
-
-            {/* Right Content - Trust Score Card */}
-            <div
-              className="relative pb-10"
-            >
-              <div className="relative bg-[#1C1C26] opacity-60 rounded-2xl p-4 border border-gray-800/50 max-w-[265px] md:max-w-[365px]">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6 md:mb-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET</div>
-                  <div className="text-[#CCD1E9] text-[10px] md:text-sm">0xA6...91F2</div>
-                </div>
-
-                {/* Left Side Labels */}
-                <div className="space-y-2 mt-3">
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">HUMAN</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">Verified</div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">WALLET AGE</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">90+ Days</div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-[#636475] text-[10px] md:text-sm uppercase">ACTIVITY</div>
-                    <div className="text-[#CCD1E9] text-[10px] md:text-sm ">consistent</div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center mt-6 md:mt-10 bg-[#413D57]/20 rounded-xl px-5 py-4">
-                  <div className="text-[#636475] text-[10px] md:text-sm uppercase">SCORE</div>
-                  <div className="text-[#CCD1E9] text-[10px] md:text-sm ">72</div>
-                </div>
-              </div>
-              <div className="bg-[#1C1C26] opacity-80 rounded-xl p-6 border border-gray-700/20 max-w-[265px] md:max-w-[343px] w-full absolute right-0 bottom-0">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 md:w-12 md:h-12 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
-                      <Image src={'/knight-shield.svg'} alt='Shield' width={23} height={23} />
-                    </div>
-                    <span className="text-[#C9D1D9] text-sm md:text-lg font-medium font-geist">Total Trust Score</span>
-                  </div>
-                </div>
-
-                <div className='h-[1.5px] bg-[#E3E3FE]/5 mt-10 md:mt-14 mb-5' />
-
-                <div className="flex items-center justify-between">
-                  <div
-                    className="text-lg md:text-2xl font-bold text-[#CCD1E9] font-mono"
-                  >
-                    120
-                  </div>
-                  <div className="text-[#A683FF] text-xs md:text-sm font-geist">+39 this month</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid sm:grid-cols-4 gap-6 mt-20">
-            {trustScoreFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4"
-              >
-                <div className="w-5 h-5 text-primaryText">
-                  <Image src={feature.icon} alt='Shield' width={20} height={20} className='w-full h-full' />
-                </div>
-                <div className='flex-1'>
-                  <p className="text-[#9095A4] text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+        <section id="trustScore" className="py-24 md:py-32 px-5 w-full z-10 relative bg-white border-y border-black/5">
+          <div className="max-w-screen-xl mx-auto">
+            <TrustScoreSection />
           </div>
         </section>
 
-        <Architecture />
+        <AIAgents />
+
+        <BlogWidget 
+          category="Events" 
+          limit={3} 
+          title="Protocol Events"
+          subtitle="Join us at upcoming hackathons, conferences, and community gatherings."
+          dark={false}
+        />
 
         <ParallelCards sectionId="dimension" />
 
-        <TabsCard />
+        <Attesters />
 
         <CodeIntegration />
+
+        <BlogWidget 
+          limit={3} 
+          title="Latest from Anylayer"
+          subtitle="Stay informed with the latest news, research, and product updates."
+          dark={true}
+        />
 
         <Faqs />
 

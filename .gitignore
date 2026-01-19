@@ -83,3 +83,4 @@ jspm_packages/
 # Package lock files (if using yarn/pnpm)
 package-lock.json
 yarn.lock
+.pnpm-store/

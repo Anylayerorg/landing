@@ -14,7 +14,7 @@
 }
 
 html, body {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", sans-serif;
   line-height: 1.6;
   color: #000000;
   background-color: #0C0C11;
@@ -123,7 +123,7 @@ button {
 body {
   color: hsl(var(--foreground));
   background: #0C0C11;
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", sans-serif;
   width: 100%;
   /* overflow-x: hidden; */
 }
@@ -192,6 +192,10 @@ body {
 
 .animate-revolve {
   animation: revolve 20s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Glass morphism effect */

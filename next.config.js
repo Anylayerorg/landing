@@ -1,12 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  outputFileTracingRoot: __dirname,
   typescript: {
     ignoreBuildErrors: true, // Temporary for demo
   },
   eslint: {
     ignoreDuringBuilds: true, // Temporary for demo
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
   },
   transpilePackages: ['@anylayer/sdk', '@anylayer/shared'],
   webpack: (config) => {

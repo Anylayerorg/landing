@@ -6,25 +6,36 @@ import Image from 'next/image';
 
 const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
   const [count, setCount] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   useEffect(() => {
-    let start = 0;
-    const end = value;
-    if (start === end) return;
+    setIsMounted(true);
+  }, []);
 
-    let totalMiliseconds = duration * 1000;
-    let incrementTime = (totalMiliseconds / end);
+  useEffect(() => {
+    if (!isMounted || !isInView) return;
 
-    let timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, incrementTime);
+    let startTime: number | null = null;
+    let animationFrameId: number;
 
-    return () => clearInterval(timer);
-  }, [value, duration]);
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      setCount(Math.floor(progress * value));
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      }
+    };
 
-  return <span>{count}</span>;
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [value, duration, isMounted, isInView]);
+
+  if (!isMounted) return <span>{value}</span>;
+
+  return <span ref={ref}>{isInView ? count : value}</span>;
 };
 
 const IndustrialTrustScore = () => {
@@ -32,7 +43,7 @@ const IndustrialTrustScore = () => {
     <section id="trustScore" className="py-24 md:py-48 px-6 bg-[#08080C] overflow-hidden">
       <div className="max-w-screen-xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-          
+
           {/* Left Content - Precise Layout kept */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -40,10 +51,13 @@ const IndustrialTrustScore = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-8 inline-flex items-center justify-center gap-3 rounded-full bg-white/5 border border-white/10 px-6 py-3">
-              <span className="text-xs text-white/40 uppercase tracking-[0.3em] font-black">Trust Engine</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Velocity</span>
+              <div className="hidden md:block h-px w-8 bg-white/10" />
+              <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
-            <h2 className="text-[3.5rem] md:text-[5.5rem] font-medium text-primaryText mb-10 leading-[0.9] tracking-tighter">
+            <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
               <span className="text-lightblueprimary">unlocks</span> Anything
             </h2>
@@ -54,7 +68,7 @@ const IndustrialTrustScore = () => {
 
           {/* Right Content - Technical Industrial HUD (Solid, Dark, No Glass) */}
           <div className="relative h-[600px] flex items-center justify-center">
-            
+
             {/* Base Module Panel */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, rotateY: -10 }}
@@ -65,17 +79,17 @@ const IndustrialTrustScore = () => {
               style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Technical Grid Overlay */}
-              <div className="absolute inset-0 opacity-10 pointer-events-none" 
-                style={{ 
+              <div className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
                   backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
                   backgroundSize: '30px 30px'
-                }} 
+                }}
               />
 
               <div className="flex justify-between items-center mb-12 pb-8 border-b border-white/5 relative z-10">
                 <div className="space-y-1">
                   <div className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-black">Identity Module</div>
-                  <div className="text-lightblueprimary/80 font-mono text-sm tracking-tighter uppercase">ID_0xA6...91F2</div>
+                  <div className="text-lightblueprimary/80 font-mono text-sm tracking-tighter uppercase">ID 0xA6...91F2</div>
                 </div>
                 <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center">
                   <div className="w-2.5 h-2.5 rounded-full bg-lightblueprimary animate-pulse shadow-[0_0_20px_rgba(166,131,255,1)]" />
@@ -87,7 +101,7 @@ const IndustrialTrustScore = () => {
                   { label: "HUMAN", value: "VERIFIED" },
                   { label: "WALLET AGE", value: "90+ DAYS" },
                   { label: "ACTIVITY", value: "CONSISTENT" },
-                  { label: "SECURITY", value: "ZKS_ENCLAVE" }
+                  { label: "SECURITY", value: "ZKS ENCLAVE" }
                 ].map((item, i) => (
                   <div key={i} className="space-y-2">
                     <div className="text-white/10 text-[10px] uppercase tracking-[0.2em] font-black">{item.label}</div>
@@ -98,7 +112,7 @@ const IndustrialTrustScore = () => {
 
               {/* Console Accents */}
               <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between relative z-10">
-                <div className="text-white/[0.05] font-mono text-[10px] uppercase tracking-[0.4em]">AUTH_STATUS: VALID</div>
+                <div className="text-white/[0.05] font-mono text-[10px] uppercase tracking-[0.4em]">AUTH STATUS: VALID</div>
                 <div className="flex gap-1.5">
                   {[...Array(3)].map((_, i) => (
                     <div key={i} className="w-1.5 h-1.5 rounded-full bg-lightblueprimary/20" />
@@ -117,7 +131,7 @@ const IndustrialTrustScore = () => {
             >
               {/* Internal Bezel Effect */}
               <div className="absolute inset-0 border-[20px] border-white/[0.01] pointer-events-none rounded-[48px]" />
-              
+
               <div className="relative z-10 flex items-center gap-6">
                 <div className="w-18 h-18 rounded-3xl bg-white/[0.02] border border-white/10 flex items-center justify-center transition-all duration-700 group-hover:border-lightblueprimary/40 shadow-inner">
                   <Image src="/knight-shield.svg" alt="Shield" width={40} height={40} className="opacity-40" />
@@ -133,7 +147,7 @@ const IndustrialTrustScore = () => {
 
               <div className="relative z-10 flex items-end justify-between border-t border-white/5 pt-8">
                 <div className="space-y-1">
-                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-black mb-2">INDEX_VAL</div>
+                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-black mb-2">INDEX VAL</div>
                   <div className="text-8xl font-medium text-primaryText tracking-tighter flex items-baseline leading-none">
                     <Counter value={120} />
                   </div>
@@ -143,11 +157,11 @@ const IndustrialTrustScore = () => {
                     +39.20
                   </div>
                   <div className="w-32 h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: "70%" }}
                       transition={{ duration: 2, delay: 1 }}
-                      className="h-full bg-lightblueprimary shadow-[0_0_25px_rgba(166,131,255,1)]" 
+                      className="h-full bg-lightblueprimary shadow-[0_0_25px_rgba(166,131,255,1)]"
                     />
                   </div>
                 </div>
