@@ -117,8 +117,8 @@ export function Header() {
     >
       <motion.div
         initial={{
-          backgroundColor: "rgba(13, 13, 18, 0.7)",
-          backdropFilter: "blur(12px) saturate(180%)",
+          backgroundColor: "#0D0D12",
+          backdropFilter: "none",
           borderColor: "rgba(255, 255, 255, 0.08)",
           borderBottomWidth: "1px",
           width: "auto",
@@ -128,8 +128,8 @@ export function Header() {
           boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
         }}
         animate={{
-          backgroundColor: "rgba(13, 13, 18, 0.7)",
-          backdropFilter: "blur(12px) saturate(180%)",
+          backgroundColor: "#0D0D12",
+          backdropFilter: "none",
           borderColor: "rgba(255, 255, 255, 0.08)",
           borderBottomWidth: "1px",
           width: "auto",
@@ -411,7 +411,7 @@ export function Header() {
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                </div>
+                                    </div>
                                   </Link>
                                 </div>
                               </div>
@@ -424,7 +424,7 @@ export function Header() {
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                            </div>
+                                      </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate trust into your apps with our core APIs.</p>
@@ -440,8 +440,8 @@ export function Header() {
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
+                                      </div>
                                     </div>
-                                  </div>
                                   </a>
 
                                   <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
@@ -490,11 +490,11 @@ export function Header() {
               >
                 <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                 <div className="relative bg-white text-[#0D0D12] px-6 py-2.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)] hover:scale-[1.02] transition-all">
-                Launch App
+                  Launch App
                   <motion.div
                     animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                >
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  >
                     <ArrowUpRight size={16} strokeWidth={3} />
                   </motion.div>
                 </div>
@@ -542,7 +542,7 @@ export function Header() {
                       Home
                     </Link>
 
-                      <button
+                    <button
                       onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
                     >
@@ -599,7 +599,7 @@ export function Header() {
                                   }
                                 }}>
                                   {MobileContent}
-                      </button>
+                                </button>
                               );
                             })}
                           </div>
@@ -683,10 +683,10 @@ export function Header() {
                                 if (item.href) {
                                   const isExternal = item.href.startsWith('http');
                                   if (isExternal) {
-                                  return (
-                                    <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                      {MobileContent}
-                                    </a>
+                                    return (
+                                      <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                        {MobileContent}
+                                      </a>
                                     );
                                   }
                                   return (
@@ -703,8 +703,8 @@ export function Header() {
                                       return;
                                     }
                                     if (item.id) {
-                                    scrollToSection(item.id);
-                                    setIsMobileMenuOpen(false);
+                                      scrollToSection(item.id);
+                                      setIsMobileMenuOpen(false);
                                     }
                                   }}>
                                     {MobileContent}
@@ -725,7 +725,7 @@ export function Header() {
                     >
                       <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                       <div className="relative w-full bg-white text-[#0D0D12] rounded-full font-bold flex items-center justify-center gap-3 py-4 shadow-[0_8px_30px_rgba(255,255,255,0.1)] transition-all">
-                      Launch App
+                        Launch App
                         <ArrowUpRight size={20} strokeWidth={2.5} />
                       </div>
                     </a>

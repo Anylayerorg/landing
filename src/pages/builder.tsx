@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Terminal, 
-  Cpu, 
-  ShieldCheck, 
-  Zap, 
-  ArrowRight, 
-  Wallet, 
-  Layers, 
-  Lock, 
-  Users, 
+import {
+  Terminal,
+  Cpu,
+  ShieldCheck,
+  Zap,
+  ArrowRight,
+  Wallet,
+  Layers,
+  Lock,
+  Users,
   Webhook,
   Loader2,
   CheckCircle2,
@@ -58,7 +58,164 @@ const BuilderPage = () => {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.8, ease: "easeOut" } as const
+  };
+
+  const WalletSimulationLoop = () => {
+    const [step, setStep] = useState<'input' | 'review' | 'sending' | 'sent'>('input');
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setStep((prev) => {
+          if (prev === 'input') return 'review';
+          if (prev === 'review') return 'sending';
+          if (prev === 'sending') return 'sent';
+          return 'input';
+        });
+      }, 4000);
+      return () => clearInterval(timer);
+    }, []);
+
+    return (
+      <div className="relative h-full flex flex-col p-6 pt-16">
+        <AnimatePresence mode="wait">
+          {(step === 'input' || step === 'review' || step === 'sending') && (
+            <motion.div
+              key="transfer-view"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex-1 flex flex-col"
+            >
+              <div className="flex justify-between items-center mb-8">
+                <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                  <ChevronRight className="rotate-180 w-4 h-4 text-white/40" />
+                </div>
+                <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                  <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">Transfer_Protocol</span>
+                </div>
+              </div>
+
+              <div className="space-y-0 mb-8">
+                <h3 className="text-3xl font-black uppercase tracking-tighter leading-none">Send</h3>
+                <h3 className="text-3xl font-black uppercase tracking-tighter leading-none text-white/20">Assets</h3>
+              </div>
+
+              <div className="space-y-4 flex-1">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-mono text-white/20 uppercase tracking-widest block">Destination_Address</label>
+                  <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <motion.span
+                        initial={{ width: 0 }}
+                        animate={{ width: "auto" }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="text-white font-bold tracking-tight overflow-hidden whitespace-nowrap border-r-2 border-lightblueprimary h-6"
+                      >
+                        whale.any
+                      </motion.span>
+                    </div>
+                    <Fingerprint className="text-white/10 w-4 h-4" />
+                  </div>
+                </div>
+
+                {step !== 'input' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-2xl bg-lightblueprimary/5 border border-lightblueprimary/20 backdrop-blur-md relative overflow-hidden"
+                  >
+                    <div className="relative z-10 flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/30 flex items-center justify-center">
+                          <ShieldCheck className="text-lightblueprimary w-4 h-4" />
+                        </div>
+                        <div className="space-y-0.5">
+                          <p className="text-[7px] font-mono text-white/20 uppercase tracking-widest">Reputation_Engine</p>
+                          <p className="text-[9px] font-bold text-lightblueprimary uppercase tracking-widest">Trusted Endpoint</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xl font-black text-white tabular-nums">8631</p>
+                        <p className="text-[5px] font-mono text-white/20 uppercase tracking-[0.2em]">Trust_Score</p>
+                      </div>
+                    </div>
+
+                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: "86%" }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className="h-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.4)]"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+
+                <div className="text-center pt-8">
+                  <div className="text-5xl font-black tracking-tighter mb-1">523<span className="text-xl text-white/20 ml-2 uppercase">ANY</span></div>
+                </div>
+              </div>
+
+              <div className="pt-8" />
+
+              <motion.div
+                className="w-full py-4 rounded-2xl bg-lightblueprimary flex items-center justify-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]"
+              >
+                {step === 'sending' ? (
+                  <>Sending <Loader2 className="animate-spin" size={14} /></>
+                ) : (
+                  <>Review_Transfer <ChevronRight size={14} /></>
+                )}
+              </motion.div>
+            </motion.div>
+          )}
+
+          {step === 'sent' && (
+            <motion.div
+              key="sent-view"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex-1 flex flex-col items-center justify-center text-center space-y-8"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", damping: 12 }}
+                className="w-20 h-20 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20 flex items-center justify-center relative"
+              >
+                <div className="absolute inset-0 bg-lightblueprimary/20 blur-xl rounded-full" />
+                <CheckCircle2 className="text-lightblueprimary w-10 h-10 relative z-10" />
+              </motion.div>
+
+              <div className="space-y-2">
+                <h3 className="text-2xl font-black uppercase tracking-tighter">Transfer Sent</h3>
+                <p className="text-white/40 text-[10px] font-mono uppercase tracking-[0.2em]">Transaction_Broadcasted</p>
+              </div>
+
+              <div className="w-full p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-[8px] font-mono text-white/20 uppercase">Amount</span>
+                  <span className="text-sm font-bold tracking-tight">523 ANY</span>
+                </div>
+                <div className="w-full h-px bg-white/5" />
+                <div className="flex justify-between items-center">
+                  <span className="text-[8px] font-mono text-white/20 uppercase">Recipient</span>
+                  <span className="text-sm font-bold tracking-tight text-lightblueprimary">whale.any</span>
+                </div>
+              </div>
+
+              <div className="w-full pt-8">
+                <div className="w-full py-4 rounded-xl border border-white/10 text-[10px] font-mono uppercase tracking-widest text-white/40">
+                  Transaction_Complete
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
   };
 
   const HUDLabel = ({ text, side = "left" }: { text: string, side?: "left" | "right" }) => (
@@ -91,10 +248,10 @@ const BuilderPage = () => {
         </div>
 
         {/* --- HERO: ARCHITECTURAL DECONSTRUCTION --- */}
-        <section className="max-w-7xl mx-auto px-6 mb-60 relative">
+        <section className="max-w-7xl mx-auto px-6 mb-32 relative">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-12">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm"
@@ -103,24 +260,24 @@ const BuilderPage = () => {
                 <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Build v1.0 // Trust Layer Protocol</span>
               </motion.div>
 
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-7xl md:text-[120px] font-black tracking-tighter uppercase leading-[0.8] italic"
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.8] italic"
               >
                 Integrate <br />
                 <span className="text-lightblueprimary">Verified</span> <br />
                 <span className="text-white/10 outline-text">Behavior.</span>
               </motion.h1>
 
-              <motion.div 
-                {...fadeIn} 
+              <motion.div
+                {...fadeIn}
                 transition={{ delay: 0.2 }}
                 className="max-w-xl space-y-8"
               >
-                <p className="text-xl md:text-2xl text-white/40 font-light leading-relaxed italic border-l border-white/10 pl-8">
-                  AnyLayer is the trust primitive for developers. 
+                <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed italic border-l border-white/10 pl-8">
+                  AnyLayer is the trust primitive for developers.
                   Build applications where decisions are based on verified behavior rather than assumptions.
                 </p>
 
@@ -139,24 +296,42 @@ const BuilderPage = () => {
               </motion.div>
             </div>
 
-            <div className="lg:col-span-5 relative hidden lg:block">
+            <div className="lg:col-span-5 relative hidden lg:block scale-[0.8] origin-right">
               {/* Abstract Technical Visual */}
               <div className="relative aspect-square">
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 border border-white/[0.03] rounded-full"
+                {/* Outer Ring - More visible, active rotation */}
+                <motion.div
+                  animate={{ rotate: 360, scale: [1, 1.02, 1] }}
+                  transition={{
+                    rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  className="absolute inset-0 border-[1.5px] border-white/20 rounded-full"
                 />
-                <motion.div 
+
+                {/* Middle Ring - Dashed, counter-rotation */}
+                <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-8 border border-white/[0.05] rounded-full border-dashed"
+                  className="absolute inset-8 border-[1.5px] border-white/10 rounded-full border-dashed"
                 />
-                
+
+                {/* Inner Ring - Scanning effect */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-16 border border-lightblueprimary/30 rounded-full border-t-transparent border-l-transparent"
+                />
+
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative">
-                    <div className="w-32 h-32 bg-lightblueprimary/5 rounded-full blur-3xl animate-pulse" />
-                    <Activity className="absolute inset-0 m-auto text-lightblueprimary/20 w-12 h-12" />
+                    {/* Removed blur/glow, kept clean icon with subtle float */}
+                    <motion.div
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Activity className="text-lightblueprimary/60 w-16 h-16" />
+                    </motion.div>
                   </div>
                 </div>
 
@@ -167,7 +342,7 @@ const BuilderPage = () => {
                   { icon: <Fingerprint size={12} />, label: "ID_RESOLVER", bottom: "25%", left: "5%" },
                   { icon: <Network size={12} />, label: "NODE_MESH", bottom: "15%", right: "10%" }
                 ].map((tag, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -200,36 +375,36 @@ const BuilderPage = () => {
 
               <div className="grid lg:grid-cols-4 gap-12 relative z-10">
                 {[
-                  { 
-                    step: "01", 
-                    icon: <Blocks size={24} />, 
-                    title: "SDK Core", 
+                  {
+                    step: "01",
+                    icon: <Blocks size={24} />,
+                    title: "SDK Core",
                     desc: "Inject trust scores and verify claims with 3 lines of code.",
                     code: "anylayer.verify({ user })"
                   },
-                  { 
-                    step: "02", 
-                    icon: <Terminal size={24} />, 
-                    title: "REST APIs", 
+                  {
+                    step: "02",
+                    icon: <Terminal size={24} />,
+                    title: "REST APIs",
                     desc: "Query reputation vectors and attestation history instantly.",
                     code: "GET /v1/reputation/0x..."
                   },
-                  { 
-                    step: "03", 
-                    icon: <Cpu size={24} />, 
-                    title: "ZK Hooks", 
+                  {
+                    step: "03",
+                    icon: <Cpu size={24} />,
+                    title: "Smart Contracts",
                     desc: "On-chain verification for smart contract gated access.",
                     code: "function _checkTrust() internal"
                   },
-                  { 
-                    step: "04", 
-                    icon: <Webhook size={24} />, 
-                    title: "Event Hub", 
+                  {
+                    step: "04",
+                    icon: <Webhook size={24} />,
+                    title: "Webhooks",
                     desc: "Subscribe to reputation changes and trust revocations.",
                     code: "WEBHOOK: 'score_update'"
                   }
                 ].map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     {...fadeIn}
                     transition={{ delay: i * 0.1 }}
@@ -241,13 +416,13 @@ const BuilderPage = () => {
                       </div>
                       <span className="absolute -top-3 -right-3 font-mono text-[10px] text-white/10 group-hover:text-lightblueprimary/40 transition-colors">{item.step}</span>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <h4 className="text-xl font-black uppercase italic tracking-tight">{item.title}</h4>
                       <p className="text-white/40 text-sm leading-relaxed font-light">{item.desc}</p>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-black/40 border border-white/5 font-mono text-[10px] text-lightblueprimary/40 group-hover:text-lightblueprimary/80 transition-colors">
+                    <div className="p-4 rounded-xl bg-[#121119] border border-white/5 font-mono text-[10px] text-lightblueprimary/90 transition-colors">
                       {item.code}
                     </div>
                   </motion.div>
@@ -257,144 +432,139 @@ const BuilderPage = () => {
           </div>
         </section>
 
-        {/* --- CAPABILITIES: BLUEPRINT VIEW --- */}
+        {/* --- CAPABILITIES: COMPACT LIST --- */}
         <section className="max-w-7xl mx-auto px-6 mb-80">
-          <div className="relative min-h-[800px] border border-white/5 rounded-[40px] bg-white/[0.01] overflow-hidden">
-            {/* Grid Pattern Background */}
-            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-            
-            <div className="absolute top-12 left-12">
-              <HUDLabel text="CAPABILITY_MAP" />
-              <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic mt-4 leading-none">
-                Build Beyond <br /> <span className="text-white/20">Assumptions.</span>
-              </h2>
-            </div>
+          <div className="mb-20">
+            <HUDLabel text="CAPABILITY_REGISTRY" />
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mt-4 leading-none">
+              Building With <span className="text-lightblueprimary">Verified Trust.</span>
+            </h2>
+          </div>
 
-            {/* Scatter Layout (Non-Grid) */}
-            <div className="absolute inset-0 p-12 lg:p-24 flex items-center justify-center">
-              <div className="relative w-full h-full max-w-4xl mx-auto">
-                
-                {/* Central Focus */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-lightblueprimary/10 rounded-full flex items-center justify-center">
-                  <div className="w-32 h-32 border border-lightblueprimary/20 rounded-full flex items-center justify-center animate-pulse">
-                    <Code2 className="text-lightblueprimary w-8 h-8" />
+          <div className="border-t border-white/5">
+            {[
+              {
+                id: "01",
+                title: "Trust-based access",
+                desc: "Gate features using reputation thresholds instead of KYC uploads.",
+                icon: <Lock className="w-4 h-4" />
+              },
+              {
+                id: "02",
+                title: "Risk-aware pricing",
+                desc: "Adjust fees, limits, or rates based on verified credibility.",
+                icon: <Activity className="w-4 h-4" />
+              },
+              {
+                id: "03",
+                title: "Sybil-safe rewards",
+                desc: "Run campaigns and airdrops without bot abuse.",
+                icon: <ShieldCheck className="w-4 h-4" />
+              },
+              {
+                id: "04",
+                title: "Reputation-driven marketplaces",
+                desc: "Rank users, sellers, or agents by real outcomes.",
+                icon: <Layers className="w-4 h-4" />
+              },
+              {
+                id: "05",
+                title: "Private compliance flows",
+                desc: "Prove eligibility without exposing documents.",
+                icon: <Users className="w-4 h-4" />
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="border-b border-white/5 transition-all duration-300"
+              >
+                <div className="flex flex-col md:flex-row md:items-center py-8 gap-4 md:gap-12 px-4">
+                  <div className="flex items-center gap-6 min-w-[140px]">
+                    <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.4em]">{item.id}</span>
+                    <div className="text-lightblueprimary/40">
+                      {item.icon}
+                    </div>
+                  </div>
+
+                  <div className="md:w-1/3">
+                    <h3 className="text-lg font-bold uppercase tracking-tight">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <div className="md:flex-1">
+                    <p className="text-white/40 text-sm font-light leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
-
-                {/* Distributed Nodes */}
-                {[
-                  { title: "Trust-based Access", x: "-20%", y: "-30%", icon: <Lock size={16} /> },
-                  { title: "Risk Pricing", x: "25%", y: "-25%", icon: <Activity size={16} /> },
-                  { title: "Sybil Protection", x: "-30%", y: "20%", icon: <ShieldCheck size={16} /> },
-                  { title: "Verified Markets", x: "35%", y: "15%", icon: <Layers size={16} /> },
-                  { title: "Private Flows", x: "5%", y: "35%", icon: <Users size={16} /> }
-                ].map((node, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="absolute flex items-center gap-4 group"
-                    style={{ left: `calc(50% + ${node.x})`, top: `calc(50% + ${node.y})` }}
-                  >
-                    <div className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover:border-lightblueprimary/40 transition-all">
-                      <div className="text-white/20 group-hover:text-lightblueprimary transition-colors">
-                        {node.icon}
-                      </div>
-                    </div>
-                    <div className="space-y-1">
-                      <h4 className="text-xs font-black uppercase tracking-[0.2em] group-hover:text-lightblueprimary transition-colors">{node.title}</h4>
-                      <div className="w-0 h-px bg-lightblueprimary/40 group-hover:w-full transition-all duration-700" />
-                    </div>
-                  </motion.div>
-                ))}
-
-                {/* Connection Lines (SVG) */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
-                  <path d="M 50% 50% L 30% 20% M 50% 50% L 75% 25% M 50% 50% L 20% 70% M 50% 50% L 85% 65% M 50% 50% L 55% 85%" fill="none" stroke="white" strokeWidth="1" strokeDasharray="4 4" />
-                </svg>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* --- WALLETS: NATIVE HUD --- */}
+        {/* --- WALLETS: ZENITH OBSIDIAN --- */}
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-8 order-2 lg:order-1">
+            <div className="space-y-12">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lightblueprimary/10 border border-lightblueprimary/20">
                 <span className="text-[10px] font-mono font-bold text-lightblueprimary uppercase tracking-widest">Protocol Support</span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic leading-[0.9]">
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
                 The Layer for <br /> <span className="text-lightblueprimary">Wallets.</span>
               </h2>
-              <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed italic max-w-lg">
-                Wallets can natively integrate AnyLayer to resolve .any names and surface reputation signals directly in the transaction flow.
+              <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                Wallets natively integrate AnyLayer to resolve human-readable names and surface reputation signals directly in the transaction flow.
               </p>
-              
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-8 border-t border-white/5">
+
+              <div className="space-y-8 pt-8 border-t border-white/5">
                 {[
-                  { label: "NAME_RES", val: "Human-Readable IDs" },
-                  { label: "REP_SIG", val: "Trust Score Visibility" },
-                  { label: "PROOF_OPS", val: "On-Chain Attestations" },
-                  { label: "ROUTE_SAFE", val: "Smart Path Routing" }
+                  { label: "REAL_TIME_LOOKUP", val: "Instant Identity Resolution", status: "Active" },
+                  { label: "SECURE_RES_VECTOR", val: "Cross-Chain Reputation", status: "Enabled" },
+                  { label: "TRUST_BAND_METRIC", val: "8631 Precision Score", status: "Verified" }
                 ].map((item, i) => (
-                  <div key={i} className="space-y-2">
-                    <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em]">{item.label}</span>
-                    <p className="text-sm font-bold uppercase tracking-tight">{item.val}</p>
+                  <div key={i} className="flex items-center justify-between group">
+                    <div className="space-y-1">
+                      <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em]">{item.label}</span>
+                      <p className="text-base font-bold uppercase tracking-tight text-white/60 group-hover:text-white transition-colors">{item.val}</p>
+                    </div>
+                    <div className="flex items-center gap-2 px-2 py-1 rounded-sm bg-white/[0.02] border border-white/5">
+                      <div className="w-1 h-1 rounded-full bg-lightblueprimary animate-pulse" />
+                      <span className="text-[8px] font-mono text-lightblueprimary uppercase tracking-widest">{item.status}</span>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="order-1 lg:order-2 relative">
-              <div className="relative p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[40px]">
-                <div className="bg-[#0D0D12] rounded-[39px] p-8 md:p-12 space-y-12">
-                  <div className="flex justify-between items-center">
-                    <HUDLabel text="WALLET_UI_MOCK" />
-                    <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500/40" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                    </div>
-                  </div>
+            <div className="relative">
+              {/* Phone Frame */}
+              <div className="relative mx-auto w-full max-w-[320px] aspect-[9/19] rounded-[3rem] bg-[#050508] border-[8px] border-[#1A1A1F] shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden">
+                {/* Ethereal Background */}
+                <div className="absolute inset-0 opacity-40">
+                  <img
+                    src="/wallet_bg_obdiff.png"
+                    alt=""
+                    className="w-full h-full object-cover grayscale brightness-50"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+                </div>
 
-                  <div className="space-y-6">
-                    <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-lightblueprimary/20 flex items-center justify-center">
-                          <Fingerprint size={20} className="text-lightblueprimary" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] font-mono text-white/20 uppercase">Resolved Name</p>
-                          <h4 className="text-lg font-black tracking-tight">whale.any</h4>
-                        </div>
-                      </div>
-                      <ChevronRight className="text-white/10" />
-                    </div>
+                {/* Looping Content Logic */}
+                <WalletSimulationLoop />
 
-                    <div className="p-6 rounded-2xl bg-lightblueprimary/[0.03] border border-lightblueprimary/10 space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-mono text-lightblueprimary/60 uppercase">Trust Band</span>
-                        <span className="text-[10px] font-mono text-white/40">Verified via 4 Attesters</span>
-                      </div>
-                      <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "85%" }}
-                          transition={{ duration: 1.5, ease: "easeOut" }}
-                          className="h-full bg-lightblueprimary shadow-[0_0_15px_rgba(166,131,255,0.5)]"
-                        />
-                      </div>
-                      <p className="text-[11px] font-bold uppercase tracking-widest text-center text-lightblueprimary">Highly Reputable</p>
-                    </div>
-                  </div>
-
-                  <div className="pt-8 flex justify-center">
-                    <div className="px-8 py-3 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">
-                      SECURE_RESOLVER_ACTIVE
-                    </div>
-                  </div>
+                {/* iPhone Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1A1A1F] rounded-b-2xl flex items-center justify-center">
+                  <div className="w-12 h-1 bg-white/5 rounded-full" />
                 </div>
               </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lightblueprimary/10 rounded-full blur-[120px]" />
             </div>
           </div>
         </section>
@@ -437,17 +607,17 @@ const BuilderPage = () => {
                 <form onSubmit={handleWaitlist} className="space-y-12 relative z-10">
                   <div className="space-y-2">
                     <label className="text-[10px] font-mono text-lightblueprimary uppercase tracking-[0.5em]">Auth_Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="developer@node.local" 
+                      placeholder="developer@node.local"
                       className="w-full bg-transparent border-b border-white/10 py-6 text-2xl font-light focus:outline-none focus:border-lightblueprimary transition-all placeholder:text-white/5"
                       disabled={status === 'loading' || status === 'success'}
                     />
                   </div>
 
-                  <button 
+                  <button
                     type="submit"
                     disabled={status === 'loading' || status === 'success'}
                     className="group relative w-full py-6 rounded-full overflow-hidden transition-all"
@@ -466,7 +636,7 @@ const BuilderPage = () => {
 
                   <AnimatePresence>
                     {status === 'success' && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="p-4 rounded-xl bg-green-500/5 border border-green-500/20 text-center"
@@ -490,7 +660,7 @@ const BuilderPage = () => {
         {/* --- CLOSING: THE TRUST STATEMENT --- */}
         <section className="max-w-4xl mx-auto py-60 text-center relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-lightblueprimary to-transparent" />
-          
+
           <motion.div {...fadeIn} className="space-y-12">
             <h2 className="text-6xl md:text-[100px] font-black tracking-tighter uppercase italic leading-none">
               Start Building. <br /> <span className="text-lightblueprimary">Start Verifying.</span>
@@ -508,9 +678,9 @@ const BuilderPage = () => {
 
         {/* --- NEWS WIDGET --- */}
         <div className="border-t border-white/5 pt-20">
-          <BlogWidget 
-            category="Developers" 
-            limit={3} 
+          <BlogWidget
+            category="Developers"
+            limit={3}
             title="Developer Updates"
             subtitle="Technical guides, SDK releases, and builder showcases."
             dark={true}
@@ -519,7 +689,7 @@ const BuilderPage = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

@@ -50,13 +50,24 @@ const AIAgents = () => {
             ))}
           </div>
 
-          <div className="max-w-3xl ml-auto text-right space-y-6">
+          <div className="max-w-3xl ml-auto text-right space-y-8">
             <p className="text-black/40 text-lg md:text-xl font-medium leading-relaxed">
               {AGENT_CONTENT.visibility}
             </p>
-            <div className="flex items-center justify-end gap-4 text-[#08080C]">
-              <span className="text-[10px] font-mono font-black uppercase tracking-[0.4em]">{AGENT_CONTENT.ecosystem}</span>
-              <div className="w-12 h-px bg-[#08080C]" />
+            <div className="flex flex-col items-end gap-6">
+              <div className="flex items-center justify-end gap-4 text-[#08080C]">
+                <span className="text-[10px] font-mono font-black uppercase tracking-[0.4em]">{AGENT_CONTENT.ecosystem}</span>
+                <div className="w-12 h-px bg-[#08080C]" />
+              </div>
+
+              <button className="group relative flex items-center gap-3 bg-lightblueprimary text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
+                <span>See More Info About AI Agents</span>
+                <div className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                  </svg>
+                </div>
+              </button>
             </div>
           </div>
         </div>
