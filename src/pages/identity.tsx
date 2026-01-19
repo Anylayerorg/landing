@@ -88,7 +88,7 @@ const IdentityProblem = () => {
       <div className="max-w-7xl mx-auto space-y-24">
         {/* Compact Title - Matching user's preferred style but smaller */}
         <div className="space-y-2">
-          <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.5em] block">
+          <span className="hidden md:block text-white/40 font-mono text-[10px] uppercase tracking-[0.5em]">
             The Current State
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none italic">
@@ -126,7 +126,7 @@ const IdentityProblem = () => {
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lightblueprimary animate-pulse" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
+            <span className="hidden md:inline-block text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
           </div>
         </div>
       </div>

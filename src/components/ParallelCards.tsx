@@ -82,8 +82,8 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
         <div className="flex items-center justify-center gap-3 mb-6">
           <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
           <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Dimensions</span>
-          <div className="h-px w-8 bg-white/10" />
-          <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Multichain Trust Layer</span>
+          <div className="hidden md:block h-px w-8 bg-white/10" />
+          <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Multichain Trust Layer</span>
         </div>
 
         <h2 className="text-[1.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-geist font-black uppercase text-primaryText mb-6 leading-[1.1] tracking-tighter lg:tracking-[-0.05em]">
@@ -97,99 +97,99 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
 
       {/* ================= DESKTOP (STICKY PARALLAX) ================= */}
       <div className="hidden md:block">
-        <div
-          ref={containerRef}
-          style={{ height: `${total * 100}vh` }}
-          className="relative mt-10"
-        >
-          <div className="sticky top-20 h-screen flex">
-            {/* Gradient — bound to card sticky */}
-            <motion.div
-              style={{ y: gradientY }}
-              className="absolute -top-40 h-full inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
-            />
-            <div
-              className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
-              style={{ height: CARD_HEIGHT }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full">
-                {/* IMAGE COLUMN */}
-                <div
-                  className="relative overflow-hidden flex justify-center"
-                  style={{ height: IMAGE_VIEWPORT_HEIGHT }}
-                >
-                  <motion.div style={{ y: translateY }}>
-                    {data.map((item, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center justify-center"
-                        style={{ height: IMAGE_VIEWPORT_HEIGHT }}
-                      >
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={320}
-                          height={320}
-                          className="w-full h-auto object-contain"
-                        />
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-
-                {/* TEXT COLUMN */}
-                <div className="flex flex-col justify-between">
-                  <div
-                    key={active}
-                  >
-                    <motion.h3
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="text-3xl text-primaryText mb-6">
-                      {data[active].title}
-                    </motion.h3>
-                    <motion.p initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-primaryText/60">
-                      {data[active].description}
-                    </motion.p>
-                    <motion.p initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-primaryText/60">
-                      {data[active].line2}
-                    </motion.p>
-
-                    {/* Signal badges */}
-                    <motion.div initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-5 mt-10">
-                      {data[active].signals.map((signal, index) => (
-                        <Image key={index} src={signal.icon} alt={signal.label} width={20} height={20} />
-                      ))}
-                    </motion.div>
-                  </div>
-
-                  {/* INDICATORS */}
-                  <div className="space-y-3 pt-10">
-                    {data.map((item, i) => (
-                      <div
-                        key={i}
+       <div
+               ref={containerRef}
+               style={{ height: `${total * 100}vh` }}
+               className="relative mt-10"
+             >
+               <div className="sticky top-20 h-screen flex">
+                 {/* Gradient — bound to card sticky */}
+                 <motion.div
+                   style={{ y: gradientY }}
+                   className="absolute -top-40 h-full inset-0 -z-10 rounded-[20px] bg-[linear-gradient(to_bottom,#0C0C11_12%,#231B3D_32%,#4E3391_60%,rgba(91,108,222,0.67)_70%,#0C0C11_100%)]"
+                 />
+                 <div
+                   className="bg-[#121119] rounded-[20px] mx-auto w-full max-w-screen-xl px-12 py-16"
+                   style={{ height: CARD_HEIGHT }}
+                 >
+                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full">
+                     {/* IMAGE COLUMN */}
+                     <div
+                       className="relative overflow-hidden flex justify-center"
+                       style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+                     >
+                       <motion.div style={{ y: translateY }}>
+                         {data.map((item, i) => (
+                           <div
+                             key={i}
+                             className="flex items-center justify-center"
+                             style={{ height: IMAGE_VIEWPORT_HEIGHT }}
+                           >
+                             <Image
+                               src={item.image}
+                               alt={item.title}
+                               width={320}
+                               height={320}
+                               className="w-full h-auto object-contain"
+                             />
+                           </div>
+                         ))}
+                       </motion.div>
+                     </div>
+       
+                     {/* TEXT COLUMN */}
+                     <div className="flex flex-col justify-between">
+                       <div
+                         key={active}
+                       >
+                         <motion.h3
+                         initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut" }} 
+                         className="text-3xl text-primaryText mb-6">
+                           {data[active].title}
+                         </motion.h3>
+                         <motion.p initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }} className="text-primaryText/60">
+                           {data[active].description}
+                         </motion.p>
+                         <motion.p initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }} className="text-primaryText/60">
+                           {data[active].line2}
+                         </motion.p>
+       
+                         {/* Signal badges */}
+                         <motion.div initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }} className="flex flex-wrap gap-5 mt-10">
+                           {data[active].signals.map((signal, index) => (
+                             <Image key={index} src={signal.icon} alt={signal.label} width={20} height={20} />
+                           ))}
+                         </motion.div>
+                       </div>
+       
+                       {/* INDICATORS */}
+                       <div className="space-y-3 pt-10">
+                         {data.map((item, i) => (
+                           <div
+                             key={i}
                         className={`flex gap-4 ${i === active ? "text-primaryText" : "text-primaryText/40"
-                          }`}
-                      >
-                        <span>{String(i + 1).padStart(2, "0")}</span>
-                        <span className="uppercase text-sm">
-                          {item.title}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                             }`}
+                           >
+                             <span>{String(i + 1).padStart(2, "0")}</span>
+                             <span className="uppercase text-sm">
+                               {item.title}
+                             </span>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
       </div>
 
       {/* ================= MOBILE (NORMAL SCROLL) ================= */}
@@ -229,17 +229,17 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
 
             <div className="mt-10">
               {data.map((item, i) => (
-                <div
-                  key={i}
+                      <div
+                        key={i}
                   className={`flex gap-4 mb-2 ${i === sectionIndex ? "text-white" : "text-white/40"
-                    }`}
-                >
-                  <span>{String(i + 1).padStart(2, "0")}</span>
-                  <span className="uppercase text-sm">
-                    {item.title}
-                  </span>
-                </div>
-              ))}
+                        }`}
+                      >
+                        <span>{String(i + 1).padStart(2, "0")}</span>
+                        <span className="uppercase text-sm">
+                          {item.title}
+                        </span>
+                      </div>
+                    ))}
             </div>
           </div>
         ))}

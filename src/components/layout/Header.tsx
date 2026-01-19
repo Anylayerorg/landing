@@ -80,6 +80,32 @@ export function Header() {
     };
   }, [resourcesDropdownTimeout]);
 
+  // Handle body scroll lock on mobile
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflowY = 'hidden';
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflowY = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflowY = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <motion.header
       initial={false}
@@ -288,6 +314,13 @@ export function Header() {
               </Link>
 
               <Link
+                href="/builder"
+                className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
+              >
+                Developers
+              </Link>
+
+              <Link
                 href="/blog"
                 className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
               >
@@ -378,7 +411,7 @@ export function Header() {
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
                                       </div>
-                                    </div>
+                                </div>
                                   </Link>
                                 </div>
                               </div>
@@ -387,17 +420,17 @@ export function Header() {
                               <div>
                                 <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 mb-6">Technical Resources</h4>
                                 <div className="space-y-8">
-                                  <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <Link href="/builder" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
+                            </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate trust into your apps with our core APIs.</p>
                                       </div>
                                     </div>
-                                  </a>
+                                  </Link>
 
                                   <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -407,8 +440,8 @@ export function Header() {
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
-                                      </div>
                                     </div>
+                                  </div>
                                   </a>
 
                                   <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
@@ -457,11 +490,11 @@ export function Header() {
               >
                 <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                 <div className="relative bg-white text-[#0D0D12] px-6 py-2.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 shadow-[0_8px_30px_rgba(255,255,255,0.1)] hover:scale-[1.02] transition-all">
-                  Launch App
+                Launch App
                   <motion.div
                     animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                  >
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                >
                     <ArrowUpRight size={16} strokeWidth={3} />
                   </motion.div>
                 </div>
@@ -494,13 +527,13 @@ export function Header() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="md:hidden fixed inset-0 z-50 pt-20"
+                  className="md:hidden fixed inset-0 z-50 pt-20 flex flex-col"
                 >
                   <motion.div
                     onClick={toggleMenu}
                     className="absolute inset-0 z-[-1] bg-[#0D0D12]/90 backdrop-blur-xl"
                   />
-                  <div className="px-6 space-y-2">
+                  <div className="px-6 space-y-2 flex-1 overflow-y-auto pb-12">
                     <Link
                       href="/"
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -509,7 +542,7 @@ export function Header() {
                       Home
                     </Link>
 
-                    <button
+                      <button
                       onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
                     >
@@ -566,7 +599,7 @@ export function Header() {
                                   }
                                 }}>
                                   {MobileContent}
-                                </button>
+                      </button>
                               );
                             })}
                           </div>
@@ -580,6 +613,14 @@ export function Header() {
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
                     >
                       Use Cases
+                    </Link>
+
+                    <Link
+                      href="/builder"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
+                    >
+                      Developers
                     </Link>
 
                     <Link
@@ -616,10 +657,10 @@ export function Header() {
                               {[
                                 { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore" },
                                 { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, href: "/roadmap" },
-                                { label: "Builders", desc: "Core SDKs", icon: <Code2 size={20} />, href: "https://docs.onzks.com" },
-                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.onzks.com" },
+                                { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
+                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.anylayer.org" },
                                 { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
-                                { label: "Naming Policy", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
+                                { label: "Official Policies", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
                               ].map((item, idx) => {
                                 const MobileContent = (
                                   <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
@@ -642,10 +683,10 @@ export function Header() {
                                 if (item.href) {
                                   const isExternal = item.href.startsWith('http');
                                   if (isExternal) {
-                                    return (
-                                      <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
-                                        {MobileContent}
-                                      </a>
+                                  return (
+                                    <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                      {MobileContent}
+                                    </a>
                                     );
                                   }
                                   return (
@@ -662,8 +703,8 @@ export function Header() {
                                       return;
                                     }
                                     if (item.id) {
-                                      scrollToSection(item.id);
-                                      setIsMobileMenuOpen(false);
+                                    scrollToSection(item.id);
+                                    setIsMobileMenuOpen(false);
                                     }
                                   }}>
                                     {MobileContent}
@@ -684,7 +725,7 @@ export function Header() {
                     >
                       <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                       <div className="relative w-full bg-white text-[#0D0D12] rounded-full font-bold flex items-center justify-center gap-3 py-4 shadow-[0_8px_30px_rgba(255,255,255,0.1)] transition-all">
-                        Launch App
+                      Launch App
                         <ArrowUpRight size={20} strokeWidth={2.5} />
                       </div>
                     </a>

@@ -78,7 +78,7 @@ const Newsletter = () => {
 };
 
 const Links = () => (
-  <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-24">
     <div className="space-y-6">
       <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Protocol</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
@@ -117,11 +117,11 @@ const Links = () => (
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#08080C] overflow-hidden pt-20">
+    <footer className="relative bg-[#08080C] overflow-hidden pt-20 w-full">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
       
-      <div className="relative w-full max-w-screen-xl mx-auto px-6 py-20">
-        <div className="bg-[#0D0D12] border-t border-x border-white/5 rounded-t-[80px] p-12 md:p-24 relative overflow-hidden">
+      <div className="relative w-full max-w-screen-xl mx-auto px-4 md:px-6 py-20">
+        <div className="bg-[#0D0D12] border-t border-x border-white/5 rounded-t-[40px] md:rounded-t-[80px] p-8 md:p-24 relative overflow-hidden">
           {/* Faceted Top Border Accent */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent" />
           

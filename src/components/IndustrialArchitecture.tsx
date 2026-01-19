@@ -4,12 +4,12 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValue, useTransform, animate } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const layers = [
   {
     id: '01',
-    title: 'Identity — Private & Portable',
+    title: 'Identity: Private & Portable',
     subtitle: 'THE ANCHOR',
     description: 'Bind human, wallet, or agent identities without doxxing. Link multiple wallets, rotate keys, and keep relationships unlinkable by default. Your identity moves with you; your data does not.',
     cta: 'See Identity Specs',
@@ -20,7 +20,7 @@ const layers = [
   },
   {
     id: '02',
-    title: 'Reputation — Dynamic & Composable',
+    title: 'Reputation: Dynamic & Composable',
     subtitle: 'THE MULTIPLIER',
     description: 'Anylayer turns on/off‑chain behavior—swaps, lending repayments, asset holdings/transfers, LP activity, and social signals into concise sub‑scores. Apps can price, tier, and gate without raw data.',
     cta: 'View Trust Model',
@@ -31,7 +31,7 @@ const layers = [
   },
   {
     id: '03',
-    title: 'Proof — Share Claims, Not Data',
+    title: 'Proof: Share Claims, Not Data',
     subtitle: 'THE SHIELD',
     description: 'Selective, zero‑knowledge proofs let users confirm exactly what a policy needs—ranges, set‑membership, or boolean checks—fresh and revocable. It’s verification without exposure.',
     cta: 'Explore Proof Tech',
@@ -42,7 +42,7 @@ const layers = [
   },
   {
     id: '04',
-    title: 'Utility — Build With Trust',
+    title: 'Utility: Build With Trust',
     subtitle: 'THE UNLOCK',
     description: 'Build trust‑based applications using Identity, Reputation, and Proof via SDK, API, or contracts. Power payments, lending, loyalty rewards, marketplaces, and agent hubs—pull the signals you need, apply your rules, and go live without exposing raw data.',
     cta: 'Discover App Utility',
@@ -575,18 +575,19 @@ const IndustrialArchitecture = () => {
                     <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">
                       Layer {layers[active].id}
                     </span>
-                    <div className="h-px w-8 bg-white/10" />
-                    <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">
+                    <div className="hidden md:block h-px w-8 bg-white/10" />
+                    <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">
                       {layers[active].subtitle}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-center md:justify-start">
                     <h3 className="text-4xl md:text-6xl font-geist font-black uppercase text-white tracking-tighter lg:tracking-[-0.05em] leading-none">
-                      {layers[active].title.split(' — ')[0]}
-                      {layers[active].title.includes(' — ') && (
+                      {layers[active].title.split(' : ')[0]}
+                      {layers[active].title.includes(' : ') && (
                         <span className="text-lightblueprimary block md:inline md:ml-4">
-                          — {layers[active].title.split(' — ')[1]}
+                          <span className="inline md:hidden">:</span>
+                          <span className="hidden md:inline"> —</span> {layers[active].title.split(' : ')[1]}
                         </span>
                       )}
                     </h3>
@@ -626,7 +627,8 @@ const IndustrialArchitecture = () => {
 
         {/* --- SUBTLE MINIMAL SELECTOR --- */}
         <div className="flex justify-center mt-12">
-          <div className="inline-flex items-center bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-2 py-1.5 shadow-2xl">
+          {/* Desktop Selector */}
+          <div className="hidden md:inline-flex items-center bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-2 py-1.5 shadow-2xl">
             {layers.map((layer, i) => (
               <button
                 key={layer.id}
@@ -638,13 +640,10 @@ const IndustrialArchitecture = () => {
                     {layer.id}
                   </span>
                   <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/10'}`}>
-                    <span className="hidden md:inline">
-                      {layer.title.split(' — ')[0]}
-                      {layer.title.includes(' — ') && (
-                        <span className="text-lightblueprimary/40 font-normal"> — {layer.title.split(' — ')[1]}</span>
-                      )}
-                    </span>
-                    <span className="md:hidden">{layer.title.split(' — ')[0]}</span>
+                    {layer.title.split(' : ')[0]}
+                    {layer.title.includes(' : ') && (
+                      <span className="text-lightblueprimary/40 font-normal"> — {layer.title.split(' : ')[1]}</span>
+                    )}
                   </span>
                 </div>
 
@@ -657,6 +656,32 @@ const IndustrialArchitecture = () => {
                 )}
               </button>
             ))}
+          </div>
+
+          {/* Mobile Carousel Selector */}
+          <div className="flex md:hidden items-center gap-4 bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-4 py-2 shadow-2xl w-full max-w-[300px] justify-between">
+            <button
+              onClick={() => setActive((prev) => (prev - 1 + total) % total)}
+              className={`p-2 rounded-full hover:bg-white/5 transition-colors ${active === 0 ? 'opacity-30 pointer-events-none' : ''}`}
+            >
+              <ArrowLeft size={16} className="text-white" />
+            </button>
+
+            <div className="flex flex-col items-center">
+              <span className="font-mono text-[10px] font-black text-lightblueprimary">
+                LAYER {layers[active].id}
+              </span>
+              <span className="text-[11px] uppercase tracking-widest font-bold text-white text-center truncate px-2">
+                {layers[active].shortName}
+              </span>
+            </div>
+
+            <button
+              onClick={() => setActive((prev) => (prev + 1) % total)}
+              className={`p-2 rounded-full hover:bg-white/5 transition-colors ${active === total - 1 ? 'opacity-30 pointer-events-none' : ''}`}
+            >
+              <ArrowRight size={16} className="text-white" />
+            </button>
           </div>
         </div>
       </div>

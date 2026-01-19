@@ -174,8 +174,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
     <div className="flex items-center justify-start gap-3 mb-12">
       <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
       <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">{label}</span>
-      <div className="h-px w-8 bg-white/10" />
-      <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
+      <div className="hidden md:block h-px w-8 bg-white/10" />
+      <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">{subtitle}</span>
     </div>
   );
 
@@ -247,8 +247,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <div className="flex items-center justify-center gap-3 mb-6">
                     <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                     <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Core</span>
-                    <div className="h-px w-8 bg-white/10" />
-                    <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
+                    <div className="hidden md:block h-px w-8 bg-white/10" />
+                    <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Identity & Reputation Layer</span>
                     </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                       Multi-layered Trust Engine for{' '}
@@ -384,8 +384,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
                 <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Signal</span>
-                <div className="h-px w-8 bg-white/10" />
-                <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
+                <div className="hidden md:block h-px w-8 bg-white/10" />
+                <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Analytics</span>
               </div>
               <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
                 {" "}

@@ -54,8 +54,8 @@ const IndustrialTrustScore = () => {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Velocity</span>
-              <div className="h-px w-8 bg-white/10" />
-              <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
+              <div className="hidden md:block h-px w-8 bg-white/10" />
+              <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
             <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
