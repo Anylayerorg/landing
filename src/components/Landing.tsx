@@ -39,8 +39,8 @@ import {
 
 const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtitle?: string, theme?: 'dark' | 'light' }) => (
   <div className={`inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border ${theme === 'dark'
-      ? 'bg-white/[0.02] border-white/5 text-white/40'
-      : 'bg-black/[0.03] border-black/5 text-black/40'
+    ? 'bg-white/[0.02] border-white/5 text-white/40'
+    : 'bg-black/[0.03] border-black/5 text-black/40'
     }`}>
     <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
     <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
@@ -86,7 +86,7 @@ const ProcessFlow = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center space-y-4">
           <SectionTag label="Architecture Flow" />
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-none">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-[0.9]">
             How it <span className="text-lightblueprimary">Works.</span>
           </h2>
         </div>
@@ -194,7 +194,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       {/* Header Area */}
       <div className="mb-20 space-y-4">
         <SectionTag label="Trust Protocol" theme="light" />
-        <h2 className="text-[2.5rem] md:text-[4.5rem] font-geist font-black uppercase text-[#08080C] leading-[0.95] tracking-tighter lg:tracking-[-0.05em] max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-6xl font-black uppercase text-[#08080C] leading-[0.9] tracking-tighter max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-lightblueprimary">Anything</span>
         </h2>
@@ -388,7 +388,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="mb-6">
                 <SectionTag label="Signal" subtitle="Trust Analytics" />
               </div>
-              <h2 className="text-[2.25rem] lg:text-[3.25rem] font-geist font-black uppercase text-primaryText mb-6 leading-[110%] tracking-tighter lg:tracking-[-0.05em] text-center">
+              <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText mb-6 leading-[0.9] tracking-tighter text-center">
                 {" "}
                 Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
               </h2>

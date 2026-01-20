@@ -154,7 +154,7 @@ const ManifestoPage = () => {
         switch (type) {
             case "mono": return "font-mono text-xs md:text-lg text-lightblueprimary/50 tracking-[0.5em] uppercase";
             case "mono-small": return "font-mono text-[10px] md:text-xs text-white/30 tracking-[1em] uppercase mb-4";
-            case "impact": return "text-4xl md:text-7xl font-black tracking-tighter uppercase leading-none text-white";
+            case "impact": return "text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white";
             case "impact-small": return "text-2xl md:text-5xl font-black tracking-tighter uppercase leading-none text-white/90";
             case "serif-italic": return "font-serif text-6xl md:text-[10rem] text-lightblueprimary leading-[0.8]";
             case "serif-italic-small": return "font-serif text-xl md:text-3xl text-lightblueprimary/60 block mt-1";

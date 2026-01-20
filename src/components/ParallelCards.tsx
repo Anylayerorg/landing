@@ -86,7 +86,7 @@ export default function ParallelCards({ sectionId }: { sectionId: string }) {
           </div>
         </div>
 
-        <h2 className="text-[1.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-geist font-black uppercase text-primaryText mb-6 leading-[1.1] tracking-tighter lg:tracking-[-0.05em]">
+        <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText mb-6 leading-[0.9] tracking-tighter">
           Dimensions of trust <br className="hidden md:block" /> for the digital internet
         </h2>
 

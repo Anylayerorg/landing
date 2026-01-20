@@ -37,7 +37,7 @@ const AIAgents = () => {
                 <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-black/40">AI Agents // Protocol Verification</span>
               </div>
             </div>
-            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#08080C] leading-none">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#08080C] leading-[0.9]">
               AI Agents — <br />
               <span className="text-lightblueprimary text-3xl md:text-5xl">Trust Built on Proven Outcomes</span>
             </h2>

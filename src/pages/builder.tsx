@@ -358,8 +358,8 @@ const BuilderPage = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-24">
               <HUDLabel text="INTEGRATION_PIPELINE" />
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4">
-                Bring Trust into <br /> Your <span className="text-lightblueprimary">Execution Stack.</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
+                Bring Trust into <br /> <span className="text-lightblueprimary">Your Execution Stack.</span>
               </h2>
             </div>
 
@@ -430,8 +430,8 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-20">
             <HUDLabel text="CAPABILITY_REGISTRY" />
-            <h2 className="text-6xl md:text-[80px] font-black uppercase tracking-tighter mt-4 leading-none">
-              Building With <span className="text-lightblueprimary">Verified Trust.</span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
+              Building With <br /> <span className="text-lightblueprimary">Verified Trust.</span>
             </h2>
           </div>
 
@@ -506,7 +506,7 @@ const BuilderPage = () => {
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
               <HUDLabel text="Protocol Support" />
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
                 The Layer for <br /> <span className="text-lightblueprimary">Wallets.</span>
               </h2>
               <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
@@ -565,7 +565,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-24">
             <HUDLabel text="DEVELOPER_PROGRAM" />
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-none">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
               Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
             </h2>
             <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mt-8">
@@ -627,90 +627,66 @@ const BuilderPage = () => {
           </div>
         </section>
 
-        {/* --- WAITLIST: TERMINAL INTERFACE --- */}
+        {/* --- WAITLIST: REFINED BUILDER PROGRAM --- */}
         <section id="waitlist" className="max-w-7xl mx-auto px-6 mb-60">
-          <div className="bg-[#0D0D12] border border-white/10 rounded-[60px] overflow-hidden relative">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-12 md:p-24 space-y-12">
-                <div className="space-y-4">
-                  <HUDLabel text="JOIN_THE_OPEN_BUILD" />
-                  <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-                    Start <br /> <span className="text-lightblueprimary">Building.</span>
-                  </h2>
+          <div className="flex flex-col items-center text-center space-y-16">
+            <div className="max-w-3xl space-y-6">
+              <div className="flex flex-col items-center gap-4">
+                <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Builder Ecosystem</span>
                 </div>
-                <p className="text-white/30 text-lg font-light leading-relaxed">
-                  Join the developer group to get early access to SDKs, APIs, and trust primitives. We build in the open with verified partners.
-                </p>
-
-                <ul className="space-y-6">
-                  {[
-                    "Direct feedback with core engineers",
-                    "Early access to protocol updates",
-                    "Integration grants & builder support",
-                    "Custom trust vector modeling"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-sm font-bold uppercase tracking-tight text-white/60">
-                      <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
+                  Join the <span className="text-lightblueprimary">Builder Waitlist.</span>
+                </h2>
               </div>
+              <p className="text-white/30 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                Be the first to integrate AnyLayer. Get early access to our trust primitives, SDKs, and developer grants.
+              </p>
+            </div>
 
-              <div className="bg-black/40 border-l border-white/5 p-12 md:p-24 flex flex-col justify-center relative">
-                <div className="absolute top-0 right-0 p-8">
-                  <Terminal size={40} className="text-white/[0.02]" />
-                </div>
-
-                <form onSubmit={handleWaitlist} className="space-y-12 relative z-10">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-mono text-lightblueprimary uppercase tracking-[0.5em]">Auth_Email</label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="developer@node.local"
-                      className="w-full bg-transparent border-b border-white/10 py-6 text-2xl font-light focus:outline-none focus:border-lightblueprimary transition-all placeholder:text-white/5"
-                      disabled={status === 'loading' || status === 'success'}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
+            <div className="w-full max-w-xl">
+              <form onSubmit={handleWaitlist} className="space-y-8">
+                <div className="relative group">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email Address"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-8 py-6 text-xl font-light focus:outline-none focus:border-lightblueprimary focus:bg-white/[0.05] transition-all placeholder:text-white/10 text-center"
                     disabled={status === 'loading' || status === 'success'}
-                    className="group relative w-full py-6 rounded-full overflow-hidden transition-all"
-                  >
-                    <div className="absolute inset-0 bg-white" />
-                    <div className="relative flex items-center justify-center gap-3 text-black font-black uppercase tracking-[0.4em] text-xs">
-                      {status === 'loading' ? (
-                        <>In_Progress <Loader2 className="animate-spin" size={16} /></>
-                      ) : status === 'success' ? (
-                        <>Access_Granted <CheckCircle2 size={16} /></>
-                      ) : (
-                        <>Initialize_Access <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" /></>
-                      )}
-                    </div>
-                  </button>
+                  />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-lightblueprimary/5 to-transparent opacity-0 group-focus-within:opacity-100 pointer-events-none transition-opacity" />
+                </div>
 
-                  <AnimatePresence>
-                    {status === 'success' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="p-4 rounded-xl bg-green-500/5 border border-green-500/20 text-center"
-                      >
-                        <p className="text-[10px] text-green-400 font-mono uppercase tracking-widest">Initialization successful. Check your terminal.</p>
-                      </motion.div>
+                <button
+                  type="submit"
+                  disabled={status === 'loading' || status === 'success'}
+                  className="group relative w-full py-6 rounded-2xl overflow-hidden transition-all hover:bg-white/90 active:scale-[0.99] bg-white text-black font-black uppercase tracking-[0.4em] text-[11px]"
+                >
+                  <div className="relative flex items-center justify-center gap-3">
+                    {status === 'loading' ? (
+                      <>Processing <Loader2 className="animate-spin" size={16} /></>
+                    ) : status === 'success' ? (
+                      <>Success <CheckCircle2 size={16} /></>
+                    ) : (
+                      <>Submit <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" /></>
                     )}
-                  </AnimatePresence>
-
-                  <div className="flex justify-between items-center text-[8px] font-mono text-white/10 uppercase tracking-widest">
-                    <span>Build_Status: STABLE</span>
-                    <span>Region: GLOBAL</span>
-                    <span>Lat: 20ms</span>
                   </div>
-                </form>
-              </div>
+                </button>
+
+                <AnimatePresence>
+                  {status === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-green-500/5 border border-green-500/20"
+                    >
+                      <p className="text-sm text-green-400 font-medium">Thank you. We will contact you soon.</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </form>
             </div>
           </div>
         </section>
@@ -720,7 +696,7 @@ const BuilderPage = () => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-lightblueprimary to-transparent" />
 
           <motion.div {...fadeIn} className="space-y-12">
-            <h2 className="text-6xl md:text-[100px] font-black tracking-tighter uppercase leading-none">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
               Start Building. <br /> <span className="text-lightblueprimary">Start Verifying.</span>
             </h2>
             <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">

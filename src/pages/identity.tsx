@@ -91,7 +91,7 @@ const IdentityProblem = () => {
           <span className="hidden md:block text-white/40 font-mono text-[10px] uppercase tracking-[0.5em]">
             The Current State
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
             Today, Identity Onchain is <span className="text-lightblueprimary">Broken.</span>
           </h2>
         </div>
@@ -152,7 +152,7 @@ const IdentityDefinition = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-2">
               <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Identity Abstract</span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none uppercase opacity-90">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase opacity-90">
                 One You. <br /> Every App.
               </h2>
             </div>
@@ -279,7 +279,7 @@ const DeveloperIntegration = () => {
         {/* Header Block */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
             Integrate <span className="text-lightblueprimary">.any</span> <br /> Into Your Apps.
           </h2>
           <p className="text-white/40 text-base font-medium leading-relaxed">
@@ -435,7 +435,7 @@ const IdentityHomeSection = () => (
         <span className="text-lightblueprimary font-bold text-sm tracking-tight uppercase">
           Core Structure
         </span>
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] uppercase">
+        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase">
           What Your <br className="hidden md:block" /> Identity Holds
         </h2>
         <p className="text-black/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
@@ -655,7 +655,7 @@ const FinalClosing = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
+        <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
           A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
         </h2>
       </motion.div>

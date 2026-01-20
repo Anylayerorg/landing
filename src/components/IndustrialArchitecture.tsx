@@ -580,7 +580,7 @@ const IndustrialArchitecture = () => {
                   </div>
 
                   <div className="flex items-center justify-center md:justify-start">
-                    <h3 className="text-4xl md:text-6xl font-geist font-black uppercase text-white tracking-tighter lg:tracking-[-0.05em] leading-none">
+                    <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white">
                       {layers[active].title.split(' : ')[0]}
                       {layers[active].title.includes(' : ') && (
                         <span className="text-lightblueprimary block md:inline md:ml-4">
@@ -670,7 +670,7 @@ const IndustrialArchitecture = () => {
                 LAYER {layers[active].id}
               </span>
               <span className="text-[11px] uppercase tracking-widest font-bold text-white text-center truncate px-2">
-                {layers[active].shortName}
+                {layers[active].subtitle}
               </span>
             </div>
 

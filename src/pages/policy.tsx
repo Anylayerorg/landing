@@ -232,7 +232,7 @@ const POLICIES = [
             <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] block font-black">
               Why .any?
             </span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white leading-[0.9]">
               One Identity. <br />
               <span className="text-white/20">Any App. Any Chain.</span>
             </h2>
@@ -258,7 +258,7 @@ const POLICIES = [
             </p>
           </div>
           <div className="pt-4">
-            <p className="text-xl md:text-2xl font-black uppercase tracking-[0.2em] text-white">
+            <p className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white">
               .any — <span className="text-lightblueprimary">identity, without limits.</span>
             </p>
           </div>
@@ -809,7 +809,7 @@ const POLICIES = [
     lastUpdated: 'Oct 2025',
     content: (
       <div className="space-y-8">
-        <h2 className="text-2xl font-black text-white uppercase tracking-tight">Terms of Service</h2>
+        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-white">Terms of Service</h2>
         <p className="text-white/60">General terms for using the Anylayer protocol and .any namespace.</p>
         <div className="p-12 bg-white/[0.02] border border-dashed border-white/10 rounded-2xl text-center">
           <p className="text-white/20 font-mono text-sm">Full Terms of Service document coming soon.</p>
@@ -905,8 +905,8 @@ const PolicyPage = () => {
                           key={policy.id}
                           onClick={() => handlePolicyChange(policy)}
                           className={`text-left transition-all ${activePolicy.id === policy.id
-                              ? 'text-white font-black'
-                              : 'text-white/40 hover:text-white/60 font-medium'
+                            ? 'text-white font-black'
+                            : 'text-white/40 hover:text-white/60 font-medium'
                             } text-sm tracking-tight`}
                         >
                           {policy.title}
@@ -955,7 +955,7 @@ const PolicyPage = () => {
                             {activePolicy.id}.anylayer.org
                           </span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] italic">
+                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
                           {activePolicy.title}
                         </h2>
                       </div>

@@ -119,7 +119,7 @@ const Faqs = () => {
                   <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-white/40">Support // Help Center</span>
                 </div>
               </div>
-              <h2 className="text-[2.25rem] md:text-[3.25rem] font-geist font-black uppercase text-primaryText leading-[1.1] tracking-tighter lg:tracking-[-0.05em] mb-4">
+              <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText leading-[0.9] tracking-tighter mb-4">
                 Common Questions
               </h2>
               <p className="text-primaryText/40 text-base md:text-lg font-light">

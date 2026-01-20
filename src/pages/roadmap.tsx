@@ -180,8 +180,8 @@ export default function RoadmapPage() {
                         <div className="relative group shrink-0">
                           <div className={`absolute -inset-4 rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-all duration-700`} style={{ backgroundColor: phase.color }} />
                           <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border-2 transition-all duration-700 bg-[#08080C] relative z-10 ${isCompleted ? 'border-green-500/40 text-green-400' :
-                              isInProgress ? 'border-lightblueprimary text-lightblueprimary shadow-[0_0_30px_rgba(166,131,255,0.2)]' :
-                                'border-white/5 text-white/20'
+                            isInProgress ? 'border-lightblueprimary text-lightblueprimary shadow-[0_0_30px_rgba(166,131,255,0.2)]' :
+                              'border-white/5 text-white/20'
                             }`}>
                             <Icon size={32} strokeWidth={1.2} />
                           </div>
@@ -189,8 +189,8 @@ export default function RoadmapPage() {
                           {/* Phase Badge */}
                           <div className="absolute -top-3 -right-3 z-20">
                             <div className={`text-[9px] font-mono font-black uppercase px-2 py-0.5 rounded-md border backdrop-blur-xl ${isCompleted ? 'bg-green-500 text-black border-green-500' :
-                                isInProgress ? 'bg-lightblueprimary text-black border-lightblueprimary' :
-                                  'bg-white/5 text-white/20 border-white/10'
+                              isInProgress ? 'bg-lightblueprimary text-black border-lightblueprimary' :
+                                'bg-white/5 text-white/20 border-white/10'
                               }`}>
                               {phase.number}
                             </div>
@@ -199,7 +199,7 @@ export default function RoadmapPage() {
 
                         {/* Text Content Card */}
                         <div className={`flex-1 md:text-center p-4 rounded-3xl bg-[#08080C]/80 backdrop-blur-sm border border-white/[0.03] shadow-2xl`}>
-                          <h2 className="text-2xl md:text-3xl font-geist font-black uppercase tracking-tighter text-white mb-2">
+                          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-white mb-2">
                             {phase.title}
                           </h2>
                           <p className="text-white/40 text-xs md:text-sm font-light mb-6 leading-relaxed max-w-[280px] md:mx-auto">
@@ -211,8 +211,8 @@ export default function RoadmapPage() {
                             {phase.milestones.map((m, mIdx) => (
                               <div key={mIdx} className="flex items-center gap-3">
                                 <div className={`shrink-0 w-1.5 h-1.5 rounded-full ${m.completed ? 'bg-green-500' :
-                                    isInProgress && mIdx === phase.milestones.findIndex(item => !item.completed) ? 'bg-lightblueprimary shadow-[0_0_8px_#A683FF] animate-pulse' :
-                                      'bg-white/10'
+                                  isInProgress && mIdx === phase.milestones.findIndex(item => !item.completed) ? 'bg-lightblueprimary shadow-[0_0_8px_#A683FF] animate-pulse' :
+                                    'bg-white/10'
                                   }`} />
                                 <span className={`text-[11px] font-medium tracking-tight ${m.completed ? 'text-white/80' : 'text-white/30'
                                   }`}>
