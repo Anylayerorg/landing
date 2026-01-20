@@ -272,7 +272,7 @@ export function Header() {
                                     </div>
                                   </button>
 
-                                  <Link href="/attesters" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
+                                  {/* <Link href="/attesters" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <Radio size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
@@ -282,7 +282,7 @@ export function Header() {
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Verify outcomes and issue trust signals for the network.</p>
                                       </div>
                                     </div>
-                                  </Link>
+                                  </Link> */}
 
                                   <button onClick={() => { scrollToSection('dimension'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -313,12 +313,6 @@ export function Header() {
                 Use Cases
               </Link>
 
-              <Link
-                href="/builder"
-                className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
-              >
-                Developers
-              </Link>
 
               <Link
                 href="/blog"
@@ -392,27 +386,33 @@ export function Header() {
                                 <div className="space-y-8">
                                   <button onClick={() => { scrollToSection('trustscore'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
                                     <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors relative">
                                         <Globe size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-lightblueprimary rounded-full border-2 border-[#0D0D12]" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
+                                        <div className="flex items-center gap-2">
+                                          <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
+                                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Coming Soon</span>
+                                        </div>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
                                       </div>
                                     </div>
                                   </button>
 
-                                  <Link href="/roadmap" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
+                                  <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Map size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors shrink-0">
+                                        <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center group-hover:border-lightblueprimary/60 transition-colors">
+                                          <div className="w-1 h-1 bg-white/40 group-hover:bg-lightblueprimary transition-colors rounded-full" />
+                                        </div>
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Strategic Roadmap</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Strategic milestones and future development of the trust layer.</p>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Media Kit</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Brand assets, guidelines, and press materials.</p>
                                       </div>
                                     </div>
-                                  </Link>
+                                  </button>
                                 </div>
                               </div>
 
@@ -443,20 +443,6 @@ export function Header() {
                                       </div>
                                     </div>
                                   </a>
-
-                                  <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors shrink-0">
-                                        <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center group-hover:border-lightblueprimary/60 transition-colors">
-                                          <div className="w-1 h-1 bg-white/40 group-hover:bg-lightblueprimary transition-colors rounded-full" />
-                                        </div>
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Media Kit</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Brand assets, guidelines, and press materials.</p>
-                                      </div>
-                                    </div>
-                                  </button>
 
                                   <Link href="/policy" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -566,7 +552,7 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                              { label: "Attesters", desc: "Issue trust signals", icon: <Radio size={20} />, href: "/attesters" },
+                              // { label: "Attesters", desc: "Issue trust signals", icon: <Radio size={20} />, href: "/attesters" },
                               { label: "Reputation", desc: "Trust metrics", icon: <Award size={20} />, id: "reputation" },
                               { label: "Proof", desc: "ZK-attestations", icon: <ShieldCheck size={20} />, id: "architecture" },
                               { label: "Utility", desc: "Interoperability tools", icon: <Cpu size={20} />, id: "dimension" }
@@ -615,13 +601,6 @@ export function Header() {
                       Use Cases
                     </Link>
 
-                    <Link
-                      href="/builder"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
-                    >
-                      Developers
-                    </Link>
 
                     <Link
                       href="/blog"
@@ -655,11 +634,10 @@ export function Header() {
                           >
                             <div className="p-4 space-y-4">
                               {[
-                                { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore" },
-                                { label: "Roadmap", desc: "Future milestones", icon: <Map size={20} />, href: "/roadmap" },
+                                { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore", isComingSoon: true },
+                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
                                 { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
                                 { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.anylayer.org" },
-                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
                                 { label: "Official Policies", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
                               ].map((item, idx) => {
                                 const MobileContent = (
@@ -673,8 +651,13 @@ export function Header() {
                                         item.icon
                                       )}
                                     </div>
-                                    <div className="flex flex-col">
-                                      <span className="text-white font-medium">{item.label}</span>
+                                    <div className="flex-1 flex flex-col">
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-white font-medium">{item.label}</span>
+                                        {item.isComingSoon && (
+                                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
+                                        )}
+                                      </div>
                                       <span className="text-[#636475] text-xs">{item.desc}</span>
                                     </div>
                                   </div>
