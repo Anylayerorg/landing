@@ -16,8 +16,18 @@ import {
   PenTool,
   CheckCircle2,
   ChevronRight,
-  Plus
+  Plus,
+  ArrowRight
 } from 'lucide-react';
+
+const SectionTag = ({ label }: { label: string }) => (
+  <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-4">
+    <div className="w-1.5 h-1.5 rounded-full bg-[#A855F7]" />
+    <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
+      {label}
+    </span>
+  </div>
+);
 
 const PROBLEM_DATA = {
   title: "Today, identity onchain is broken.",
@@ -42,42 +52,57 @@ const Section = React.forwardRef<HTMLElement, { children: React.ReactNode, class
 Section.displayName = "Section";
 
 const IdentityHero = () => (
-  <section className="relative min-h-screen flex flex-col justify-end bg-black overflow-hidden pb-32">
-    {/* Atmospheric Background */}
-    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.1),transparent_70%)]" />
+  <section className="relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-32 pb-20">
+    {/* Simple Atmospheric Background */}
+    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.03),transparent_70%)]" />
 
-    <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full text-center space-y-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <h1 className="text-6xl md:text-[180px] font-black text-white leading-none tracking-tighter select-none">
-          BE <span className="relative inline-block group">
-            <span className="text-lightblueprimary">ANY</span>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-2 left-0 h-1.5 md:h-2.5 bg-lightblueprimary/20 rounded-full"
-            />
-          </span>THING.
-        </h1>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-        className="flex flex-col md:flex-row items-center justify-center gap-12 pt-12"
-      >
-        <p className="text-white/40 text-sm md:text-lg font-light tracking-[0.3em] uppercase">Your Identity, Your Control.</p>
-        <div className="relative">
-          <button className="relative px-12 py-4 bg-white text-black font-black rounded-full hover:scale-105 transition-all shadow-xl active:scale-95 text-xs md:text-sm uppercase tracking-widest">
-            Create a .any <span className="opacity-40 text-[10px] ml-1">(coming soon)</span>
-          </button>
+    <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+      <div className="flex gap-12 lg:gap-24">
+        {/* Vertical Accent Label */}
+        <div className="hidden lg:flex flex-col items-center gap-6">
+          <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-white/5" />
+          <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
+            ANYLAYER NETWORK
+          </span>
+          <div className="h-24 w-px bg-gradient-to-t from-transparent via-white/10 to-white/5" />
         </div>
-      </motion.div>
+
+        {/* Main Hero Content */}
+        <div className="flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-12"
+          >
+            <div className="space-y-10">
+              <SectionTag label="CORE PROTOCOL" />
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] max-w-4xl">
+                Be <span className="text-lightblueprimary">Anything.</span>
+              </h1>
+              <p className="text-base md:text-xl text-white/40 max-w-xl leading-relaxed font-light tracking-tight">
+                Your Identity, Your Control. <span className="text-white/60">Separate reputation from exposure, and trust from fixed addresses.</span>
+              </p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-8"
+            >
+              <button
+                className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+              >
+                <span className="text-[11px] font-black uppercase tracking-[0.3em]">
+                  Create a .any <span className="opacity-40">(COMING SOON)</span>
+                </span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   </section>
 );
