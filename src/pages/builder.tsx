@@ -26,7 +26,6 @@ import {
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
-import { client } from '@/sanity/lib/client';
 
 const BuilderPage = () => {
   const [email, setEmail] = useState('');
@@ -38,12 +37,14 @@ const BuilderPage = () => {
 
     setStatus('loading');
     try {
-      await client.create({
-        _type: 'subscriber',
-        email,
-        type: 'developer',
-        subscribedAt: new Date().toISOString(),
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'developer' }),
       });
+
+      if (!response.ok) throw new Error('Waitlist submission failed');
+
       setStatus('success');
       setEmail('');
       setTimeout(() => setStatus('idle'), 5000);

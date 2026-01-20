@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
 
 const footerIcon = [
   { title: "Telegram", link: "https://t.me/zksnews#", icon: "/telegram.svg", width: 17, height: 14 },
@@ -23,12 +22,14 @@ const Newsletter = () => {
 
     setStatus('loading');
     try {
-      await client.create({
-        _type: 'subscriber',
-        email,
-        type: 'newsletter',
-        subscribedAt: new Date().toISOString(),
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'newsletter' }),
       });
+
+      if (!response.ok) throw new Error('Subscription failed');
+
       setStatus('success');
       setEmail('');
       setTimeout(() => setStatus('idle'), 5000);

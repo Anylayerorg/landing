@@ -7,7 +7,6 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
 import { ArrowRight, Globe, Shield, Zap, CheckCircle2, Loader2, Cpu, Activity } from 'lucide-react';
-import { client } from '@/sanity/lib/client';
 
 // --- SHARED COMPONENTS ---
 
@@ -38,9 +37,14 @@ const AttestersPage = () => {
         if (!email) return;
         setStatus('loading');
         try {
-            await client.create({
-                _type: 'subscriber', email, type: 'attester', subscribedAt: new Date().toISOString(),
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, type: 'attester' }),
             });
+
+            if (!response.ok) throw new Error('Waitlist submission failed');
+
             setStatus('success');
             setEmail('');
             setTimeout(() => setStatus('idle'), 5000);
