@@ -581,11 +581,11 @@ const IndustrialArchitecture = () => {
 
                   <div className="flex items-center justify-center md:justify-start">
                     <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white">
-                      {layers[active].title.split(' : ')[0]}
-                      {layers[active].title.includes(' : ') && (
+                      {layers[active].title.split(': ')[0]}
+                      {layers[active].title.includes(': ') && (
                         <span className="text-lightblueprimary block md:inline md:ml-4">
                           <span className="inline md:hidden">:</span>
-                          <span className="hidden md:inline"> —</span> {layers[active].title.split(' : ')[1]}
+                          <span className="hidden md:inline"> —</span> {layers[active].title.split(': ')[1]}
                         </span>
                       )}
                     </h3>
@@ -634,13 +634,13 @@ const IndustrialArchitecture = () => {
                 className="relative px-6 py-2.5 outline-none"
               >
                 <div className="relative z-10 flex items-center gap-2">
-                  <span className={`font-mono text-[9px] font-black tracking-widest transition-colors ${active === i ? 'text-lightblueprimary' : 'text-lightblueprimary/40'}`}>
+                  <span className={`font-mono text-[9px] font-black tracking-widest transition-colors ${active === i ? 'text-lightblueprimary' : 'text-lightblueprimary/60'}`}>
                     {layer.id}
                   </span>
-                  <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/10'}`}>
-                    {layer.title.split(' : ')[0]}
-                    {layer.title.includes(' : ') && (
-                      <span className="text-lightblueprimary/40 font-normal"> — {layer.title.split(' : ')[1]}</span>
+                  <span className={`text-[10px] uppercase tracking-[0.2em] font-medium transition-colors ${active === i ? 'text-white' : 'text-white/40'}`}>
+                    {layer.title.split(': ')[0]}
+                    {layer.title.includes(': ') && (
+                      <span className={`transition-colors font-normal ${active === i ? 'text-lightblueprimary/40' : 'text-lightblueprimary/20'}`}> — {layer.title.split(': ')[1]}</span>
                     )}
                   </span>
                 </div>
