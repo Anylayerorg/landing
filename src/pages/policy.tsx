@@ -13,7 +13,7 @@ import {
 const POLICIES = [
   {
     id: 'any-naming',
-    title: '.any Naming Policy',
+    title: 'Anylayer Name Service (ANS) Naming Policy',
     category: 'Identity',
     lastUpdated: 'Jan 17, 2026',
     content: (
@@ -29,9 +29,9 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>1.1 This Naming Policy governs the creation, allocation, renewal, transfer, and use of names within the <strong>.any</strong> namespace (the “Namespace”), operated by Anylayer.</p>
-            <p>1.2 The Policy applies to all applicants and registrants (collectively, “Registrants”), to accredited registrars acting on behalf of Anylayer (the “Registrar”), and to any person or entity asserting a claim or dispute concerning a .any name (a “Claimant”).</p>
-            <p>1.3 By applying for, registering, renewing, transferring, or using a .any name, a Registrant accepts and agrees to be bound by this Policy and all related policies referenced herein.</p>
+            <p>1.1 This Naming Policy governs the creation, allocation, renewal, transfer, and use of names within the <strong>ANS</strong> namespace (the “Namespace”), operated by Anylayer.</p>
+            <p>1.2 The Policy applies to all applicants and registrants (collectively, “Registrants”), to accredited registrars acting on behalf of Anylayer (the “Registrar”), and to any person or entity asserting a claim or dispute concerning an ANS name (a “Claimant”).</p>
+            <p>1.3 By applying for, registering, renewing, transferring, or using an ANS name, a Registrant accepts and agrees to be bound by this Policy and all related policies referenced herein.</p>
           </div>
         </section>
 
@@ -39,9 +39,9 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">2. Definitions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             {[
-              { term: "Name / Handle", def: "A unique identifier under the .any Namespace (e.g., alex.any)." },
-              { term: "Registrant / Owner", def: "The wallet or entity in whose name a .any registration is recorded." },
-              { term: "Registrar", def: "Anylayer’s registration service and affiliated smart contracts authorized to process .any registrations." },
+              { term: "Name / Handle", def: "A unique identifier under the ANS Namespace (e.g., alex.ans)." },
+              { term: "Registrant / Owner", def: "The wallet or entity in whose name an ANS registration is recorded." },
+              { term: "Registrar", def: "Anylayer’s registration service and affiliated smart contracts authorized to process ANS registrations." },
               { term: "Reserved Name", def: "A term withheld from general availability for reasons including protocol operation or trademark protection." },
               { term: "Premium Name", def: "A name categorized as higher-value due to length or market demand, priced above standard tiers." },
               { term: "Grace Period", def: "The period following expiration during which a Registrant may renew without loss of the Name." },
@@ -59,7 +59,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>3.1 <strong>Namespace Ownership.</strong> Anylayer (and its licensors, where applicable) owns and controls the .any Namespace, the associated registries, smart contracts, code, and marks. No title or intellectual property right in the Namespace is transferred to any Registrant by virtue of registration or use.</p>
+            <p>3.1 <strong>Namespace Ownership.</strong> Anylayer (and its licensors, where applicable) owns and controls the ANS Namespace, the associated registries, smart contracts, code, and marks. No title or intellectual property right in the Namespace is transferred to any Registrant by virtue of registration or use.</p>
             <p>3.2 <strong>License to Use.</strong> A registration confers a limited, revocable, time‑bounded license to use and resolve the registered Name in accordance with this Policy and applicable law. It does not confer a property right or any proprietary interest in the string of characters comprising the Name.</p>
             <p>3.3 <strong>No IP in the String.</strong> Registrants acquire no copyright, trademark, or other IP rights in a Name solely by registering it. Rights, if any, must arise from separate lawful use or recognized legal protection.</p>
             <p>3.4 <strong>Authoritative Record.</strong> The on‑chain registry and associated smart contracts are the authoritative record of allocation, renewal, and transfer. Off‑chain displays and indexes are provided for convenience only.</p>
@@ -85,7 +85,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">5. Eligibility</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>5.1 .any Names are open to natural persons and legal entities that (a) accept this Policy and (b) are not prohibited by applicable law from owning or using such Names.</p>
+            <p>5.1 ANS Names are open to natural persons and legal entities that (a) accept this Policy and (b) are not prohibited by applicable law from owning or using such Names.</p>
             <p>5.2 Names that correspond to trademarks, public institutions, or otherwise sensitive terms may require additional verification prior to allocation or transfer.</p>
             <p>5.3 The Registrar may refuse, suspend, or revoke a registration if the Registrant provides false information, fails verification where required, or violates this Policy.</p>
           </div>
@@ -94,7 +94,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">6. Formatting and Technical Rules</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
-            <p>6.1 <strong>Character Set and Length.</strong> Names must use the characters a–z (case-insensitive), digits 0–9, and hyphen -. Names must be 3–32 characters in length, exclusive of the .any suffix.</p>
+            <p>6.1 <strong>Character Set and Length.</strong> Names must use the characters a–z (case-insensitive), digits 0–9, and hyphen -. Names must be 3–32 characters in length, exclusive of the ANS suffix.</p>
             <p>6.2 <strong>Case and Storage.</strong> Names are case-insensitive and shall be stored and displayed in lowercase by default.</p>
             <p>6.3 <strong>Hyphen Use.</strong> Hyphens may not appear at the start or end of a Name and may not appear consecutively.</p>
             <p>6.4 <strong>Emoji/Unicode.</strong> Emoji and extended Unicode are not supported in Version 1.0.</p>
@@ -169,7 +169,7 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">13. Anti‑Squatting and Acceptable Use</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
             <p>13.1 <strong>Anti‑Hoarding.</strong> The Registrar may impose bulk limits and dynamic throttles to deter automated mass registrations.</p>
-            <p>13.2 <strong>No Deception.</strong> Names must not be used to mislead, impersonate, or facilitate fraud (including look‑alikes like g00gle.any).</p>
+            <p>13.2 <strong>No Deception.</strong> Names must not be used to mislead, impersonate, or facilitate fraud (including look‑alikes like g00gle.ans).</p>
             <p>13.3 <strong>Abuse Response.</strong> Confirmed abuse may result in suspension, removal from releases, or registration blocks.</p>
             <p>13.4 <strong>Notice and Cure.</strong> Except in urgent cases, the Registrar will provide notice and opportunity to cure before imposing sanctions.</p>
           </div>
@@ -230,7 +230,7 @@ const POLICIES = [
         <section className="bg-lightblueprimary/5 border border-lightblueprimary/10 p-12 rounded-[32px] space-y-8">
           <div className="space-y-2">
             <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] block font-black">
-              Why .any?
+              Why ANS?
             </span>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white leading-[0.9]">
               One Identity. <br />
@@ -239,17 +239,17 @@ const POLICIES = [
           </div>
           <div className="space-y-6 text-white/60 text-base md:text-lg font-light leading-relaxed">
             <p>
-              .any is the universal identity namespace of Anylayer. It is designed for a world where
+              ANS is the universal identity namespace of Anylayer. It is designed for a world where
               identity, trust, and access move freely across ecosystems—without sacrificing privacy.
             </p>
             <p>
-              A .any name is more than a username. It is a programmable onchain identity that carries
+              An ANS name is more than a username. It is a programmable onchain identity that carries
               reputation, credentials, and proofs across apps, wallets, games, and protocols. Whether
-              you are an individual, a creator, or a global brand, .any gives you a single, verifiable
+              you are an individual, a creator, or a global brand, ANS gives you a single, verifiable
               identity that works everywhere.
             </p>
             <p>
-              Unlike traditional naming systems, .any is privacy-first by default and powered by
+              Unlike traditional naming systems, ANS is privacy-first by default and powered by
               zero-knowledge proofs. You can prove what matters—trust, status, eligibility—without
               revealing who you are or exposing sensitive data.
             </p>
@@ -259,7 +259,7 @@ const POLICIES = [
           </div>
           <div className="pt-4">
             <p className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white">
-              .any — <span className="text-lightblueprimary">identity, without limits.</span>
+              ANS — <span className="text-lightblueprimary">identity, without limits.</span>
             </p>
           </div>
         </section>
@@ -678,7 +678,7 @@ const POLICIES = [
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
             <p>1.1 This Privacy & Consent Policy (the "Policy") describes how Anylayer handles information about <strong>Humans</strong>, <strong>Wallets</strong>, and <strong>AI Agents</strong> (collectively, "Participants") in connection with identity, reputation, and proof functions.</p>
             <p>1.2 The Policy focuses on <strong>data minimization</strong>, <strong>selective disclosure</strong>, <strong>user/agent consent</strong>, and <strong>portability/erasure</strong> in a zero‑knowledge trust environment.</p>
-            <p>1.3 This Policy operates alongside the <strong>Reputation Policy</strong>, <strong>Proof Validity Policy</strong>, <strong>Participant Use Policy</strong>, and <strong>.any Naming Policy</strong>. Where conflicts arise, the more privacy‑protective control prevails unless required by law.</p>
+            <p>1.3 This Policy operates alongside the <strong>Reputation Policy</strong>, <strong>Proof Validity Policy</strong>, <strong>Participant Use Policy</strong>, and <strong>Anylayer Name Service (ANS) Naming Policy</strong>. Where conflicts arise, the more privacy‑protective control prevails unless required by law.</p>
           </div>
         </section>
 

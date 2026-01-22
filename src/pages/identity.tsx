@@ -37,7 +37,7 @@ const PROBLEM_DATA = {
     { id: "03", title: "Reputation", label: "Resets Everywhere", desc: "Your trust history vanishes every time you switch to a new application or chain." },
     { id: "04", title: "Privacy", label: "Optional", desc: "Onchain privacy is treated as a premium feature, not a default requirement." }
   ],
-  solution: ".any exists to fix this — by separating identity from addresses, and trust from exposure."
+  solution: "ANS exists to fix this — by separating identity from addresses, and trust from exposure."
 };
 
 const Section = React.forwardRef<HTMLElement, { children: React.ReactNode, className?: string, id?: string }>(
@@ -95,7 +95,7 @@ const IdentityHero = () => (
                 className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
               >
                 <span className="text-[11px] font-black uppercase tracking-[0.3em]">
-                  Create a .any <span className="opacity-40">(COMING SOON)</span>
+                  Create an ANS <span className="opacity-40">(COMING SOON)</span>
                 </span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -161,7 +161,7 @@ const IdentityProblem = () => {
 
 const IdentityDefinition = () => {
   const negations = ["Username", "Wallet", "Platform Profile"];
-  const definition = ".any is a persistent onchain identity that represents you — independently of devices, wallets, or applications.";
+  const definition = "ANS is a persistent onchain identity that represents you — independently of devices, wallets, or applications.";
   const closing = "It stays with you as everything else changes.";
 
   return (
@@ -261,7 +261,7 @@ const EverydayUses = () => {
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
           </div>
           <p className="text-white/30 text-sm max-w-[320px] font-medium leading-relaxed pb-1 border-l border-white/10 pl-6">
-            A .any identity is more than a name. It's your verified toolkit for an authentic digital life.
+            An ANS identity is more than a name. It's your verified toolkit for an authentic digital life.
           </p>
         </div>
 
@@ -305,10 +305,10 @@ const DeveloperIntegration = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
-            Integrate <span className="text-lightblueprimary">.any</span> <br /> Into Your Apps.
+            Integrate <span className="text-lightblueprimary">ANS</span> <br /> Into Your Apps.
           </h2>
           <p className="text-white/40 text-base font-medium leading-relaxed">
-            .any is built to plug directly into wallets, dApps, and applications.
+            ANS is built to plug directly into wallets, dApps, and applications.
           </p>
         </div>
 
@@ -328,7 +328,7 @@ const DeveloperIntegration = () => {
                     <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
                     <div className="flex items-center gap-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-black text-white">whale.any</span>
+                      <span className="text-[10px] font-black text-white">whale.ans</span>
                     </div>
                   </div>
                   <div className="h-px w-full bg-white/5" />
@@ -353,7 +353,7 @@ const DeveloperIntegration = () => {
                 <div className="space-y-3">
                   <div className="w-full h-10 bg-white rounded-xl flex items-center px-4 gap-3 border border-white/10 shadow-2xl group-hover:scale-[1.02] transition-transform">
                     <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-[9px] text-white font-black">.any</span>
+                      <span className="text-[9px] text-white font-black">ANS</span>
                     </div>
                     <div className="h-3 w-[1px] bg-black/10" />
                     <span className="text-[10px] font-black text-black uppercase tracking-tighter">Connect Identity</span>
@@ -372,7 +372,7 @@ const DeveloperIntegration = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]" />
             <div className="relative z-10 space-y-4 pt-2">
               <span className="text-[10px] font-mono font-black uppercase tracking-widest opacity-40">Identity SDK</span>
-              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> .any Identity.</h3>
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> ANS Identity.</h3>
             </div>
             <div className="relative z-10 space-y-6">
               <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
@@ -398,7 +398,7 @@ const DeveloperIntegration = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
-                    <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
+                    <h4 className="text-[10px] font-black uppercase text-white">alex.ans</h4>
                     <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
                   </div>
                   <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
@@ -432,7 +432,7 @@ const DeveloperIntegration = () => {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-[9px]">
                   <span className="text-white/40">Initiator</span>
-                  <span className="text-lightblueprimary font-black">alpha.any</span>
+                  <span className="text-lightblueprimary font-black">alpha.ans</span>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="flex justify-between items-center text-[9px]">
@@ -464,7 +464,7 @@ const IdentityHomeSection = () => (
           What Your <br className="hidden md:block" /> Identity Holds
         </h2>
         <p className="text-black/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
-          .any identity works like a secure digital home. Inside it lives your name, reputation, and proofs — organized and under your control.
+          An ANS identity works like a secure digital home. Inside it lives your name, reputation, and proofs — organized and under your control.
         </p>
 
         <div className="pt-6">
@@ -645,7 +645,7 @@ const FinalClosing = () => (
         className="space-y-12"
       >
         <p className="text-white/40 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
-          .any is building a future where identity is human‑readable, reputation is earned, and privacy is respected by default.
+          ANS is building a future where identity is human‑readable, reputation is earned, and privacy is respected by default.
         </p>
 
         <div className="flex flex-col items-center gap-6">
@@ -664,7 +664,7 @@ export default function IdentityPage() {
   return (
     <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
       <Head>
-        <title>.any Identity — Your Private Digital Self</title>
+        <title>ANS Identity — Your Private Digital Self</title>
         <meta name="description" content="One Identity. Any App. Any Chain. Privacy-first onchain identity by Anylayer." />
       </Head>
 
