@@ -12,6 +12,7 @@ import AutoPopupModal from './Popup';
 import AIAgents from './AIAgents';
 import Attesters from './Attesters';
 import { BlogWidget } from './BlogWidget';
+import { EventsSection } from './EventsSection';
 import {
   Shield,
   Lock,
@@ -503,8 +504,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <AIAgents />
 
-        <BlogWidget
-          category="Events"
+        <EventsSection
           limit={3}
           title="Protocol Events"
           subtitle="Join us at upcoming hackathons, conferences, and community gatherings."

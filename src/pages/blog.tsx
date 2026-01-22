@@ -17,7 +17,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const postsQuery = `*[_type == "post"] | order(publishedAt desc) {
+        const postsQuery = `*[_type == "post" && !("Events" in categories[]->title)] | order(publishedAt desc) {
           _id,
           title,
           "slug": slug.current,
@@ -40,7 +40,9 @@ const BlogPage = () => {
         setPosts(postsData);
 
         if (categoriesData) {
-          const dynamicCategories = categoriesData.map((cat: any) => cat.title).filter(Boolean);
+          const dynamicCategories = categoriesData
+            .map((cat: any) => cat.title)
+            .filter((title: string) => title && title !== 'Events');
           setCategories(['All', ...dynamicCategories]);
         }
       } catch (error) {

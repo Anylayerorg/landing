@@ -5,6 +5,7 @@ import post from './schema/post';
 import author from './schema/author';
 import category from './schema/category';
 import subscriber from './schema/subscriber';
+import event from './schema/event';
 import { structure } from './lib/structure';
 
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   title: 'Anylayer Content Studio',
   schema: {
-    types: [post, author, category, subscriber],
+    types: [post, author, category, subscriber, event],
   },
   plugins: [
     structureTool({
