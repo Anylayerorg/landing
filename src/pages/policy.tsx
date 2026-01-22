@@ -22,15 +22,15 @@ const POLICIES = [
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
           <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
           <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
-          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> Anylayer Governance</div>
           <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
         </div>
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>1.1 This Naming Policy governs the creation, allocation, renewal, transfer, and use of names within the <strong>.any</strong> namespace (the “Namespace”), operated by AnyLayer.</p>
-            <p>1.2 The Policy applies to all applicants and registrants (collectively, “Registrants”), to accredited registrars acting on behalf of AnyLayer (the “Registrar”), and to any person or entity asserting a claim or dispute concerning a .any name (a “Claimant”).</p>
+            <p>1.1 This Naming Policy governs the creation, allocation, renewal, transfer, and use of names within the <strong>.any</strong> namespace (the “Namespace”), operated by Anylayer.</p>
+            <p>1.2 The Policy applies to all applicants and registrants (collectively, “Registrants”), to accredited registrars acting on behalf of Anylayer (the “Registrar”), and to any person or entity asserting a claim or dispute concerning a .any name (a “Claimant”).</p>
             <p>1.3 By applying for, registering, renewing, transferring, or using a .any name, a Registrant accepts and agrees to be bound by this Policy and all related policies referenced herein.</p>
           </div>
         </section>
@@ -41,7 +41,7 @@ const POLICIES = [
             {[
               { term: "Name / Handle", def: "A unique identifier under the .any Namespace (e.g., alex.any)." },
               { term: "Registrant / Owner", def: "The wallet or entity in whose name a .any registration is recorded." },
-              { term: "Registrar", def: "AnyLayer’s registration service and affiliated smart contracts authorized to process .any registrations." },
+              { term: "Registrar", def: "Anylayer’s registration service and affiliated smart contracts authorized to process .any registrations." },
               { term: "Reserved Name", def: "A term withheld from general availability for reasons including protocol operation or trademark protection." },
               { term: "Premium Name", def: "A name categorized as higher-value due to length or market demand, priced above standard tiers." },
               { term: "Grace Period", def: "The period following expiration during which a Registrant may renew without loss of the Name." },
@@ -59,11 +59,11 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>3.1 <strong>Namespace Ownership.</strong> AnyLayer (and its licensors, where applicable) owns and controls the .any Namespace, the associated registries, smart contracts, code, and marks. No title or intellectual property right in the Namespace is transferred to any Registrant by virtue of registration or use.</p>
+            <p>3.1 <strong>Namespace Ownership.</strong> Anylayer (and its licensors, where applicable) owns and controls the .any Namespace, the associated registries, smart contracts, code, and marks. No title or intellectual property right in the Namespace is transferred to any Registrant by virtue of registration or use.</p>
             <p>3.2 <strong>License to Use.</strong> A registration confers a limited, revocable, time‑bounded license to use and resolve the registered Name in accordance with this Policy and applicable law. It does not confer a property right or any proprietary interest in the string of characters comprising the Name.</p>
             <p>3.3 <strong>No IP in the String.</strong> Registrants acquire no copyright, trademark, or other IP rights in a Name solely by registering it. Rights, if any, must arise from separate lawful use or recognized legal protection.</p>
             <p>3.4 <strong>Authoritative Record.</strong> The on‑chain registry and associated smart contracts are the authoritative record of allocation, renewal, and transfer. Off‑chain displays and indexes are provided for convenience only.</p>
-            <p>3.5 <strong>Custody & Keys.</strong> Control of a Name follows control of the private keys for the wallet recorded as Registrant. AnyLayer is not responsible for lost, stolen, or compromised keys or wallets.</p>
+            <p>3.5 <strong>Custody & Keys.</strong> Control of a Name follows control of the private keys for the wallet recorded as Registrant. Anylayer is not responsible for lost, stolen, or compromised keys or wallets.</p>
             <p>3.6 <strong>Upgrades & Migrations.</strong> The Registrar may modify, upgrade, or migrate registry contracts to maintain security and performance. Where feasible, advance notice will be provided under Section 17.</p>
             <p>3.7 <strong>Normalization Effects.</strong> Where normalization or technical rules affect the display or resolution of a Name, the normalized form and registry state control.</p>
           </div>
@@ -75,10 +75,10 @@ const POLICIES = [
             <p>4.1 <strong>Acceptable Use.</strong> Registrants must use Names lawfully and in good faith. Prohibited uses include deception, phishing, malware distribution, and violations outlined in Sections 5 and 13.</p>
             <p>4.2 <strong>Representations.</strong> By registering or using a Name, a Registrant represents and warrants that (a) they have legal capacity and authority; (b) information provided to the Registrar is accurate and complete; and (c) use of the Name will not infringe third‑party rights or applicable law.</p>
             <p>4.3 <strong>Suspension/Termination.</strong> The Registrar may suspend, revoke, or place a Name on hold for violations of this Policy, credible abuse, legal orders, or security risks.</p>
-            <p>4.4 <strong>No Warranties.</strong> The Namespace and registration services are provided “as is” and “as available.” To the maximum extent permitted by law, AnyLayer disclaims warranties of merchantability, fitness for a particular purpose, and non‑infringement.</p>
-            <p>4.5 <strong>Limitation of Liability.</strong> To the maximum extent permitted by law, AnyLayer shall not be liable for indirect, incidental, special, punitive, or consequential damages. Direct damages, if any, are limited to the fees paid by the Registrant for the Name during the twelve (12) months preceding the event.</p>
-            <p>4.6 <strong>Indemnification.</strong> Registrants agree to indemnify and hold harmless AnyLayer and its affiliates from claims arising from the Registrant’s use of a Name in violation of this Policy.</p>
-            <p>4.7 <strong>Governing Law & Forum.</strong> Governing law and forum for disputes under this Policy shall be as specified by AnyLayer governance from time to time.</p>
+            <p>4.4 <strong>No Warranties.</strong> The Namespace and registration services are provided “as is” and “as available.” To the maximum extent permitted by law, Anylayer disclaims warranties of merchantability, fitness for a particular purpose, and non‑infringement.</p>
+            <p>4.5 <strong>Limitation of Liability.</strong> To the maximum extent permitted by law, Anylayer shall not be liable for indirect, incidental, special, punitive, or consequential damages. Direct damages, if any, are limited to the fees paid by the Registrant for the Name during the twelve (12) months preceding the event.</p>
+            <p>4.6 <strong>Indemnification.</strong> Registrants agree to indemnify and hold harmless Anylayer and its affiliates from claims arising from the Registrant’s use of a Name in violation of this Policy.</p>
+            <p>4.7 <strong>Governing Law & Forum.</strong> Governing law and forum for disputes under this Policy shall be as specified by Anylayer governance from time to time.</p>
           </div>
         </section>
 
@@ -158,7 +158,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">12. Reserved and Premium Names</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>12.1 <strong>Reserved Catalog.</strong> AnyLayer maintains a catalog of Reserved Names (protocol terms, public-interest, protected brands) not available for FCFS registration.</p>
+            <p>12.1 <strong>Reserved Catalog.</strong> Anylayer maintains a catalog of Reserved Names (protocol terms, public-interest, protected brands) not available for FCFS registration.</p>
             <p>12.2 <strong>Claims and Verification.</strong> Verified rights holders may request matching Reserved Names by submitting evidence under the Dispute Resolution process.</p>
             <p>12.3 <strong>Premium Catalog.</strong> Premium Names (short, dictionary, high-demand) may be released through auctions or drops.</p>
             <p>12.4 <strong>Misuse.</strong> Violation of this Policy may result in suspension or cancellation after due process.</p>
@@ -203,7 +203,7 @@ const POLICIES = [
             <p>16.1 <strong>Wallet‑Based Identity.</strong> No personally identifiable information is collected by default.</p>
             <p>16.2 <strong>Verification Records.</strong> Verification evidence is provided via attestations; raw documents are not published on-chain.</p>
             <p>16.3 <strong>Logging.</strong> Audit logs capture lifecycle events without exposing personal datasets.</p>
-            <p>16.4 <strong>Data Requests.</strong> AnyLayer responds to lawful data requests consistent with law and this Policy.</p>
+            <p>16.4 <strong>Data Requests.</strong> Anylayer responds to lawful data requests consistent with law and this Policy.</p>
           </div>
         </section>
 
@@ -277,14 +277,14 @@ const POLICIES = [
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
           <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
           <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
-          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> Anylayer Governance</div>
           <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
         </div>
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>1.1 This Reputation Policy governs the collection, computation, issuance, update, and use of reputation and sub‑scores (collectively, “Reputation”) within the AnyLayer ecosystem.</p>
+            <p>1.1 This Reputation Policy governs the collection, computation, issuance, update, and use of reputation and sub‑scores (collectively, “Reputation”) within the Anylayer ecosystem.</p>
             <p>1.2 The Policy applies to all subjects for whom Reputation may be computed, including humans, wallets, and AI agents (each, a “Subject”), to accredited attesters and data providers (each, an “Attester”), and to integrators that request or act upon Reputation (each, an “Integrator”).</p>
             <p>1.3 By submitting data, issuing attestations, requesting Reputation, or acting upon Reputation, Attesters and Integrators agree to comply with this Policy and the policies incorporated by reference.</p>
           </div>
@@ -312,10 +312,10 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>3.1 <strong>System Ownership.</strong> AnyLayer owns and controls the algorithms, models, registries, code, and interfaces used to compute and publish Reputation.</p>
+            <p>3.1 <strong>System Ownership.</strong> Anylayer owns and controls the algorithms, models, registries, code, and interfaces used to compute and publish Reputation.</p>
             <p>3.2 <strong>License to Use.</strong> Integrators receive a limited, revocable license to access and use Reputation for lawful purposes and in accordance with this Policy and user consent.</p>
             <p>3.3 <strong>No Property Right in Scores.</strong> Reputation scores are dynamic evaluative outputs; they do not confer property rights.</p>
-            <p>3.4 <strong>Authoritative Record.</strong> The authoritative state of Reputation is maintained by AnyLayer’s commitment registry and associated proofs.</p>
+            <p>3.4 <strong>Authoritative Record.</strong> The authoritative state of Reputation is maintained by Anylayer’s commitment registry and associated proofs.</p>
           </div>
         </section>
 
@@ -324,9 +324,9 @@ const POLICIES = [
           <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
             <p>4.1 <strong>Acceptable Use.</strong> Reputation may be used to price, tier, gate, or inform risk management but shall not be used to unlawfully discriminate.</p>
             <p>4.2 <strong>Representations.</strong> Attesters and Integrators represent that they have authority to use Reputation and will implement reasonable safeguards.</p>
-            <p>4.3 <strong>No Warranties.</strong> Reputation is provided “as is” and “as available.” AnyLayer disclaims warranties of merchantability and non‑infringement.</p>
-            <p>4.4 <strong>Limitation of Liability.</strong> AnyLayer shall not be liable for indirect, incidental, special, or consequential damages arising from the use of Reputation.</p>
-            <p>4.5 <strong>Indemnification.</strong> Attesters and Integrators shall indemnify AnyLayer for claims arising from misuse or violations of this Policy.</p>
+            <p>4.3 <strong>No Warranties.</strong> Reputation is provided “as is” and “as available.” Anylayer disclaims warranties of merchantability and non‑infringement.</p>
+            <p>4.4 <strong>Limitation of Liability.</strong> Anylayer shall not be liable for indirect, incidental, special, or consequential damages arising from the use of Reputation.</p>
+            <p>4.5 <strong>Indemnification.</strong> Attesters and Integrators shall indemnify Anylayer for claims arising from misuse or violations of this Policy.</p>
           </div>
         </section>
 
@@ -399,7 +399,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">11. AI Agent Reputation</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
-            <p>11.1 <strong>Scope.</strong> AnyLayer aggregates sub‑scores reflecting task outcomes and reliability; it does not define agent behavior.</p>
+            <p>11.1 <strong>Scope.</strong> Anylayer aggregates sub‑scores reflecting task outcomes and reliability; it does not define agent behavior.</p>
             <p>11.2 <strong>Outcome Metrics.</strong> Completion rates, incident rates, instruction adherence, and slippage control.</p>
             <p>11.3 <strong>Portability.</strong> Agent Reputation is portable across marketplaces via Subject Identifiers.</p>
             <p>11.4 <strong>Reset & Recovery.</strong> Agents may request recalibration following verified upgrades.</p>
@@ -438,7 +438,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">15. Security & Audit</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>15.1 <strong>Security.</strong> AnyLayer implements measures to protect computation pipelines.</p>
+            <p>15.1 <strong>Security.</strong> Anylayer implements measures to protect computation pipelines.</p>
             <p>15.2 <strong>Audits.</strong> Models and circuits subject to periodic independent audits.</p>
             <p>15.3 <strong>Incident Response.</strong> Material incidents disclosed consistent with protocol procedure.</p>
           </div>
@@ -464,7 +464,7 @@ const POLICIES = [
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">18. Governing Law & Forum</h3>
-          <p className="text-white/60 font-light">18.1 Published by AnyLayer governance [placeholder].</p>
+          <p className="text-white/60 font-light">18.1 Published by Anylayer governance [placeholder].</p>
         </section>
       </div>
     )
@@ -480,14 +480,14 @@ const POLICIES = [
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
           <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
           <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
-          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> Anylayer Governance</div>
           <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
         </div>
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>1.1 This Proof Validity Policy (the "Policy") defines the rules under which cryptographic proofs ("Proofs") are generated, submitted, verified, accepted, rejected, and revoked within the AnyLayer ecosystem.</p>
+            <p>1.1 This Proof Validity Policy (the "Policy") defines the rules under which cryptographic proofs ("Proofs") are generated, submitted, verified, accepted, rejected, and revoked within the Anylayer ecosystem.</p>
             <p>1.2 The Policy applies to Subjects (humans, wallets, AI agents), Integrators (dApps, protocols, wallets), and Attesters (approved data providers) that request, produce, or rely on Proofs.</p>
             <p>1.3 This Policy governs Proofs used to establish facts about identity, reputation sub‑scores, asset readiness, uniqueness, and other permitted claims without disclosing raw data.</p>
           </div>
@@ -517,7 +517,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>3.1 AnyLayer owns and controls the circuits, parameters, registries, and verification interfaces used for Proof handling, except for open‑source components which remain under their respective licenses.</p>
+            <p>3.1 Anylayer owns and controls the circuits, parameters, registries, and verification interfaces used for Proof handling, except for open‑source components which remain under their respective licenses.</p>
             <p>3.2 Integrators and Subjects receive a limited, revocable license to use Proof tooling in accordance with this Policy and applicable law. No proprietary right in circuits, parameters, or registries is transferred by use.</p>
           </div>
         </section>
@@ -527,8 +527,8 @@ const POLICIES = [
           <div className="space-y-4 text-white/60 leading-relaxed font-light text-sm">
             <p>4.1 Proofs may be used to price, gate, or automate actions but shall not be used to unlawfully discriminate or contravene applicable law.</p>
             <p>4.2 Integrators must implement reasonable safeguards to validate freshness, bind context, and handle revocations.</p>
-            <p>4.3 AnyLayer provides Proof tooling "as is" and disclaims warranties to the maximum extent permitted by law; liability is limited to fees paid in the twelve (12) months preceding a claim.</p>
-            <p>4.4 Subjects and Integrators shall indemnify AnyLayer for misuse of Proofs or violations of this Policy.</p>
+            <p>4.3 Anylayer provides Proof tooling "as is" and disclaims warranties to the maximum extent permitted by law; liability is limited to fees paid in the twelve (12) months preceding a claim.</p>
+            <p>4.4 Subjects and Integrators shall indemnify Anylayer for misuse of Proofs or violations of this Policy.</p>
           </div>
         </section>
 
@@ -549,7 +549,7 @@ const POLICIES = [
             <p>6.1 <strong>Epoch Freshness.</strong> Proofs must reference a current or Integrator‑accepted Epoch; out‑of‑window Proofs are invalid.</p>
             <p>6.2 <strong>TTL.</strong> Integrators may specify a maximum time‑to‑live (TTL) for acceptance.</p>
             <p>6.3 <strong>State Commitments.</strong> Proofs must be generated against the latest applicable commitment roots published in the Commitment Registry.</p>
-            <p>6.4 <strong>Clock Skew.</strong> A small skew tolerance may be applied; parameters are published by AnyLayer.</p>
+            <p>6.4 <strong>Clock Skew.</strong> A small skew tolerance may be applied; parameters are published by Anylayer.</p>
           </div>
         </section>
 
@@ -593,7 +593,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">11. Cryptographic Assumptions & Upgrades</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>11.1 <strong>Assumptions.</strong> Proof systems rely on stated cryptographic assumptions (e.g., soundness, knowledge‑of‑exponent). AnyLayer will publish a summary of assumptions and circuit constraints.</p>
+            <p>11.1 <strong>Assumptions.</strong> Proof systems rely on stated cryptographic assumptions (e.g., soundness, knowledge‑of‑exponent). Anylayer will publish a summary of assumptions and circuit constraints.</p>
             <p>11.2 <strong>Upgrades.</strong> Critical parameter or circuit upgrades will follow the Change Management process with clear deprecation windows.</p>
             <p>11.3 <strong>Backward Compatibility.</strong> Where feasible, prior Proofs remain valid within their TTL and Epoch; otherwise Integrators must require regeneration.</p>
           </div>
@@ -646,14 +646,14 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">17. Change Management & Versioning</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
             <p>17.1 <strong>Amendments.</strong> Material changes follow an RFC process with reasonable comment period and, where required, governance vote.</p>
-            <p>17.2 <strong>Notice.</strong> Except for urgent security/legal updates, AnyLayer will provide at least fourteen (14) days' notice before changes take effect.</p>
+            <p>17.2 <strong>Notice.</strong> Except for urgent security/legal updates, Anylayer will provide at least fourteen (14) days' notice before changes take effect.</p>
             <p>17.3 <strong>Version Tags.</strong> All circuits, parameters, and SDKs will carry version tags; deprecation windows will be announced.</p>
           </div>
         </section>
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">18. Governing Law & Forum</h3>
-          <p className="text-white/60 font-light">18.1 Governing law and forum for disputes shall be published by AnyLayer governance <strong>[placeholder to be finalized]</strong>.</p>
+          <p className="text-white/60 font-light">18.1 Governing law and forum for disputes shall be published by Anylayer governance <strong>[placeholder to be finalized]</strong>.</p>
         </section>
       </div>
     )
@@ -669,14 +669,14 @@ const POLICIES = [
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/5 text-[10px] font-mono uppercase tracking-widest text-white/40">
           <div><span className="text-white/20 block mb-1">Status</span> <span className="text-lightblueprimary">Active</span></div>
           <div><span className="text-white/20 block mb-1">Effective</span> Jan 17, 2026</div>
-          <div><span className="text-white/20 block mb-1">Owner</span> AnyLayer Governance</div>
+          <div><span className="text-white/20 block mb-1">Owner</span> Anylayer Governance</div>
           <div><span className="text-white/20 block mb-1">Version</span> v1.0</div>
         </div>
 
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>1.1 This Privacy & Consent Policy (the "Policy") describes how AnyLayer handles information about <strong>Humans</strong>, <strong>Wallets</strong>, and <strong>AI Agents</strong> (collectively, "Participants") in connection with identity, reputation, and proof functions.</p>
+            <p>1.1 This Privacy & Consent Policy (the "Policy") describes how Anylayer handles information about <strong>Humans</strong>, <strong>Wallets</strong>, and <strong>AI Agents</strong> (collectively, "Participants") in connection with identity, reputation, and proof functions.</p>
             <p>1.2 The Policy focuses on <strong>data minimization</strong>, <strong>selective disclosure</strong>, <strong>user/agent consent</strong>, and <strong>portability/erasure</strong> in a zero‑knowledge trust environment.</p>
             <p>1.3 This Policy operates alongside the <strong>Reputation Policy</strong>, <strong>Proof Validity Policy</strong>, <strong>Participant Use Policy</strong>, and <strong>.any Naming Policy</strong>. Where conflicts arise, the more privacy‑protective control prevails unless required by law.</p>
           </div>
@@ -739,7 +739,7 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">7. Portability</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
             <p>7.1 <strong>Export.</strong> Participants may export references to commitments, high‑level score summaries, and relevant proofs in a standard, documented format.</p>
-            <p>7.2 <strong>Interoperability.</strong> AnyLayer will document APIs/SDKs to allow Participants to port their permitted summaries between integrators and chains where supported.</p>
+            <p>7.2 <strong>Interoperability.</strong> Anylayer will document APIs/SDKs to allow Participants to port their permitted summaries between integrators and chains where supported.</p>
             <p>7.3 <strong>Limitations.</strong> Portability covers <strong>derived</strong> elements (commitments/proofs) rather than immutable public chain history.</p>
           </div>
         </section>
@@ -747,7 +747,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">8. Erasure & Revocation</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>8.1 <strong>Best‑Effort Erasure.</strong> For mutable off‑chain data and attestations, AnyLayer will, upon valid request, instruct Attesters to revoke or update records and will update commitments accordingly.</p>
+            <p>8.1 <strong>Best‑Effort Erasure.</strong> For mutable off‑chain data and attestations, Anylayer will, upon valid request, instruct Attesters to revoke or update records and will update commitments accordingly.</p>
             <p>8.2 <strong>Immutable Records.</strong> Public on‑chain history cannot be erased; instead, new commitments supersede prior states and future disclosures are curtailed.</p>
             <p>8.3 <strong>Downstream Notice.</strong> Where feasible, Integrators who consumed revoked attestations will be notified via webhook/registry events.</p>
           </div>
@@ -785,7 +785,7 @@ const POLICIES = [
         <section className="space-y-6">
           <h3 className="text-xl font-black text-white uppercase tracking-tight">12. Compliance</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
-            <p>12.1 <strong>Legal Requests.</strong> AnyLayer responds to lawful requests in a manner consistent with data minimization, notifying Participants where permitted.</p>
+            <p>12.1 <strong>Legal Requests.</strong> Anylayer responds to lawful requests in a manner consistent with data minimization, notifying Participants where permitted.</p>
             <p>12.2 <strong>Sanctions/Geo.</strong> Privacy‑preserving allow/deny checks may be applied where legally required.</p>
             <p>12.3 <strong>Children's Data.</strong> The platform is not directed at children; minors may participate only where lawful and with appropriate consents.</p>
           </div>
@@ -795,7 +795,7 @@ const POLICIES = [
           <h3 className="text-xl font-black text-white uppercase tracking-tight">13. Change Management & Versioning</h3>
           <div className="space-y-4 text-white/60 leading-relaxed font-light">
             <p>13.1 <strong>Amendments.</strong> Material changes follow an RFC process with community comment and, where required, governance vote.</p>
-            <p>13.2 <strong>Notice.</strong> Except for urgent legal/security changes, AnyLayer provides at least fourteen (14) days' notice before changes take effect.</p>
+            <p>13.2 <strong>Notice.</strong> Except for urgent legal/security changes, Anylayer provides at least fourteen (14) days' notice before changes take effect.</p>
             <p>13.3 <strong>Changelog.</strong> A public changelog will be maintained and linked.</p>
           </div>
         </section>

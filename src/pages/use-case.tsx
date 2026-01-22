@@ -9,8 +9,8 @@ export default function UseCasePage() {
     return (
         <div className="bg-[#08080C] min-h-screen font-geist selection:bg-lightblueprimary/30">
             <Head>
-                <title>Use Cases | AnyLayer</title>
-                <meta name="description" content="Unlock capital, not your data. Explore the diverse use cases of AnyLayer's trust protocol across DeFi, payments, and commerce." />
+                <title>Use Cases | Anylayer</title>
+                <meta name="description" content="Unlock capital, not your data. Explore the diverse use cases of Anylayer's trust protocol across DeFi, payments, and commerce." />
             </Head>
 
             {/* Atmospheric Background Controls */}

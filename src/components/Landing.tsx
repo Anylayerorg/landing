@@ -52,29 +52,29 @@ const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtit
 const PROCESS_DATA = [
   {
     id: "01",
-    title: "Enroll",
-    desc: "Create a private ZK identity; link multiple wallets or bind an agent to a controller.",
+    title: "Create",
+    desc: "Generate your secure ZK-identity. Connect multiple wallets and manage your reputation privately.",
     icon: <Fingerprint className="w-6 h-6" />,
     color: "#A683FF"
   },
   {
     id: "02",
-    title: "Aggregate",
-    desc: "Reputation composes from on/off‑chain signals (repayments, activity, contributions, audits). Only commitments are anchored on‑chain.",
+    title: "Link",
+    desc: "Connect your on-chain and off-chain data. Our protocol transforms fragmented signals into a unified reputation score.",
     icon: <Activity className="w-6 h-6" />,
     color: "#8B5CF6"
   },
   {
     id: "03",
     title: "Prove",
-    desc: "Share selective, zero‑knowledge proofs like “credit ≥ 720,” “can lock 5,000 USDT,” or “agent within policy.”",
+    desc: "Generate zero-knowledge proofs to share specific parts of your reputation without ever revealing sensitive user data.",
     icon: <ShieldCheck className="w-6 h-6" />,
     color: "#7C3AED"
   },
   {
     id: "04",
-    title: "Verify & Act",
-    desc: "dApps accept the proof and apply pricing, gates, or limits. No PII, no portfolio dumps.",
+    title: "Unlock",
+    desc: "Access better rates, gated communities, and capital-efficient protocols using your verified trust signals.",
     icon: <Zap className="w-6 h-6" />,
     color: "#6D28D9"
   }

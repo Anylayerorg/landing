@@ -7,18 +7,17 @@ import { Search, Calendar, ArrowRight, Tag } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { client, urlFor } from '@/sanity/lib/client';
 
-const CATEGORIES = ['All', 'Product', 'Technical', 'Research', 'Philosophy', 'Developer', 'Policy'];
-
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [posts, setPosts] = useState<any[]>([]);
+  const [categories, setCategories] = useState<string[]>(['All']);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchData = async () => {
       try {
-        const query = `*[_type == "post"] | order(publishedAt desc) {
+        const postsQuery = `*[_type == "post"] | order(publishedAt desc) {
           _id,
           title,
           "slug": slug.current,
@@ -30,20 +29,32 @@ const BlogPage = () => {
           "readTime": round(length(pt::text(body)) / 5 / 180) + 1,
           featured
         }`;
-        const data = await client.fetch(query);
-        setPosts(data);
+
+        const categoriesQuery = `*[_type == "category"] { title }`;
+
+        const [postsData, categoriesData] = await Promise.all([
+          client.fetch(postsQuery),
+          client.fetch(categoriesQuery)
+        ]);
+
+        setPosts(postsData);
+
+        if (categoriesData) {
+          const dynamicCategories = categoriesData.map((cat: any) => cat.title).filter(Boolean);
+          setCategories(['All', ...dynamicCategories]);
+        }
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching blog data:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchPosts();
+    fetchData();
   }, []);
 
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
+      post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -66,7 +77,7 @@ const BlogPage = () => {
     <>
       <Head>
         <title>Blog | Anylayer</title>
-        <meta name="description" content="News, insights, and updates from the AnyLayer team" />
+        <meta name="description" content="News, insights, and updates from the Anylayer team" />
       </Head>
 
       <div className="bg-[#08080C] min-h-screen font-geist text-white">
@@ -106,15 +117,14 @@ const BlogPage = () => {
 
                   {/* Category Filters */}
                   <div className="flex flex-wrap gap-2">
-                    {CATEGORIES.map((category) => (
+                    {categories.map((category) => (
                       <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] transition-all ${
-                          selectedCategory === category
-                            ? 'bg-white text-black'
-                            : 'bg-white/[0.02] text-white/30 hover:bg-white/[0.08] hover:text-white/60 border border-white/10'
-                        }`}
+                        className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] transition-all ${selectedCategory === category
+                          ? 'bg-white text-black'
+                          : 'bg-white/[0.02] text-white/30 hover:bg-white/[0.08] hover:text-white/60 border border-white/10'
+                          }`}
                       >
                         {category}
                       </button>
@@ -145,15 +155,15 @@ const BlogPage = () => {
                           </span>
                           <span className="text-white/30 font-mono uppercase tracking-wider">{featuredPost.category}</span>
                         </div>
-                        
+
                         <h2 className="text-2xl md:text-3xl font-black tracking-tight leading-tight group-hover:text-white/90 transition-colors">
                           {featuredPost.title}
                         </h2>
-                        
+
                         <p className="text-white/50 leading-relaxed text-base font-light">
                           {featuredPost.excerpt}
                         </p>
-                        
+
                         <div className="flex items-center gap-4 text-xs text-white/30 font-mono pt-2">
                           <span>{featuredPost.author}</span>
                           <span className="w-1 h-1 rounded-full bg-white/20" />
@@ -161,7 +171,7 @@ const BlogPage = () => {
                           <span className="w-1 h-1 rounded-full bg-white/20" />
                           <span>{featuredPost.readTime} min read</span>
                         </div>
-                        
+
                         <div className="flex items-center gap-2 text-white font-bold uppercase tracking-wide text-xs group-hover:gap-3 transition-all pt-2">
                           Read Article
                           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -171,8 +181,8 @@ const BlogPage = () => {
                       {/* Image */}
                       <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[400px] bg-white/[0.02] overflow-hidden border-t lg:border-t-0 lg:border-l border-white/10">
                         {featuredPost.mainImage && (
-                          <img 
-                            src={urlFor(featuredPost.mainImage).url()} 
+                          <img
+                            src={urlFor(featuredPost.mainImage).url()}
                             alt={featuredPost.title}
                             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                           />
@@ -195,7 +205,7 @@ const BlogPage = () => {
                   All Articles
                 </h2>
               )}
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {regularPosts.map((post, index) => (
                   <motion.div
@@ -209,15 +219,15 @@ const BlogPage = () => {
                         {/* Image Area */}
                         <div className="aspect-video bg-white/[0.02] relative overflow-hidden border-b border-white/10">
                           {post.mainImage && (
-                            <img 
-                              src={urlFor(post.mainImage).width(600).url()} 
+                            <img
+                              src={urlFor(post.mainImage).width(600).url()}
                               alt={post.title}
                               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-br from-lightblueprimary/8 via-transparent to-transparent" />
                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(166,131,255,0.06),transparent_60%)] group-hover:opacity-80 transition-opacity" />
-                          
+
                           {/* Category Badge */}
                           <div className="absolute top-3 left-3">
                             <span className="px-2.5 py-0.5 bg-black/60 backdrop-blur-sm border border-white/10 text-white/80 rounded-full text-[9px] font-black uppercase tracking-[0.15em]">
@@ -231,21 +241,21 @@ const BlogPage = () => {
                           <h3 className="text-lg font-black tracking-tight leading-tight group-hover:text-white/90 transition-colors line-clamp-2">
                             {post.title}
                           </h3>
-                          
+
                           <p className="text-white/40 text-xs leading-relaxed line-clamp-2 font-light">
                             {post.excerpt}
                           </p>
-                          
+
                           <div className="flex items-center justify-between pt-3 border-t border-white/5">
                             <div className="flex items-center gap-2 text-[10px] text-white/30 font-mono">
                               <span>{new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                               <span className="w-0.5 h-0.5 rounded-full bg-white/20" />
                               <span>{post.readTime} min read</span>
                             </div>
-                            
-                            <ArrowRight 
-                              size={14} 
-                              className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" 
+
+                            <ArrowRight
+                              size={14}
+                              className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all"
                             />
                           </div>
                         </div>
@@ -275,7 +285,7 @@ const BlogPage = () => {
                 {/* Background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-lightblueprimary/5 via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.08),transparent_70%)]" />
-                
+
                 <div className="relative z-10 space-y-6">
                   <div className="space-y-3">
                     <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">
@@ -285,7 +295,7 @@ const BlogPage = () => {
                       Get the latest updates on identity, trust, and privacy infrastructure delivered to your inbox.
                     </p>
                   </div>
-                  
+
                   <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
                     <input
                       type="email"

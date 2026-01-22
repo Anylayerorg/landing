@@ -168,8 +168,8 @@ const ManifestoPage = () => {
     return (
         <>
             <Head>
-                <title>Manifesto | AnyLayer</title>
-                <meta name="description" content="Cinematic manifesto animation of the AnyLayer vision." />
+                <title>Manifesto | Anylayer</title>
+                <meta name="description" content="Cinematic manifesto animation of the Anylayer vision." />
             </Head>
 
             <div className="bg-[#08080C] min-h-screen flex items-center justify-center overflow-hidden font-geist selection:bg-lightblueprimary selection:text-black">

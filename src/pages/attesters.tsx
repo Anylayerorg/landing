@@ -159,7 +159,7 @@ const WhoCanBecome_Layout3_LogicPath = ({ fadeIn }: any) => (
         <div className="max-w-2xl space-y-6">
             <h2 className="text-3xl font-black uppercase tracking-tight">ADMISSION_LOGIC_GATE_v1</h2>
             <p className="text-white/30 leading-relaxed">
-                Trust within AnyLayer is earned through accuracy, consistency, and accountability, not permission. Any entity that can objectively verify outcomes may apply.
+                Trust within Anylayer is earned through accuracy, consistency, and accountability, not permission. Any entity that can objectively verify outcomes may apply.
             </p>
         </div>
 
@@ -289,7 +289,7 @@ const WhoCanBecome_Layout7_MinimalTimeline = ({ fadeIn }: any) => (
             <div className="space-y-6">
                 <SectionLabel text="Network Eligibility" />
                 <h2 className="text-5xl font-black uppercase tracking-tighter">WHO QUALIFIES?</h2>
-                <p className="text-white/40 max-w-xl">Trust within AnyLayer is earned through accuracy and accountability, not permission.</p>
+                <p className="text-white/40 max-w-xl">Trust within Anylayer is earned through accuracy and accountability, not permission.</p>
             </div>
 
             <div className="space-y-20">
@@ -326,7 +326,7 @@ const WhoCanBecome_Layout8_FloatingSignals = ({ fadeIn }: any) => {
                 <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none">
                     BUILT BY <br /> <span className="text-lightblueprimary">NETWORK SIGNALS</span>
                 </h2>
-                <p className="text-white/40 mx-auto max-w-md italic">Trust within AnyLayer is earned through accuracy, consistency, and accountability, not permission.</p>
+                <p className="text-white/40 mx-auto max-w-md italic">Trust within Anylayer is earned through accuracy, consistency, and accountability, not permission.</p>
             </div>
 
             {/* Static labels with floating surrounding icons */}
@@ -493,7 +493,7 @@ const AttestersPage = () => {
     return (
         <div className="bg-[#08080C] min-h-screen font-geist text-white selection:bg-lightblueprimary selection:text-black relative overflow-hidden">
             <Head>
-                <title>Attesters | AnyLayer</title>
+                <title>Attesters | Anylayer</title>
                 <meta name="description" content="The Infrastructure of Verifiable Truth." />
             </Head>
 

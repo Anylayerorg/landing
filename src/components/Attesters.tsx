@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 const Attesters = () => {
     const copy = {
         title: "Become an Attester",
-        p1: "Attesters are the backbone of AnyLayer. They observe real behavior—on‑chain, off‑chain, or autonomous—and turn it into verifiable reputation without exposing raw data.",
+        p1: "Attesters are the backbone of Anylayer. They observe real behavior—on‑chain, off‑chain, or autonomous—and turn it into verifiable reputation without exposing raw data.",
         p2: "Any protocol, application, or organization that can verifiably observe real outcomes can become an attester—trust is earned by accuracy, not permission."
     };
 

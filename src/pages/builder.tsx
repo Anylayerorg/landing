@@ -229,8 +229,8 @@ const BuilderPage = () => {
   return (
     <div className="bg-[#08080C] min-h-screen font-geist text-white selection:bg-lightblueprimary selection:text-black overflow-x-hidden">
       <Head>
-        <title>Developers | AnyLayer — Build with Verified Trust</title>
-        <meta name="description" content="Integrate trust, reputation, and proofs into your product with AnyLayer's SDKs and APIs." />
+        <title>Developers | Anylayer — Build with Verified Trust</title>
+        <meta name="description" content="Integrate trust, reputation, and proofs into your product with Anylayer's SDKs and APIs." />
       </Head>
 
       <Header />
@@ -272,7 +272,7 @@ const BuilderPage = () => {
                 className="max-w-xl space-y-8"
               >
                 <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed border-l border-white/10 pl-8">
-                  AnyLayer is the trust primitive for developers.
+                  Anylayer is the trust primitive for developers.
                   Build applications where decisions are based on verified behavior rather than assumptions.
                 </p>
 
@@ -511,7 +511,7 @@ const BuilderPage = () => {
                 The Layer for <br /> <span className="text-lightblueprimary">Wallets.</span>
               </h2>
               <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
-                Wallets natively integrate AnyLayer to resolve human-readable names and surface reputation signals directly in the transaction flow.
+                Wallets natively integrate Anylayer to resolve human-readable names and surface reputation signals directly in the transaction flow.
               </p>
 
               <div className="space-y-8 pt-8 border-t border-white/5">
@@ -570,7 +570,7 @@ const BuilderPage = () => {
               Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
             </h2>
             <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mt-8">
-              The AnyLayer Developer Program supports teams building trust‑native products with early access, guidance, and direct collaboration.
+              The Anylayer Developer Program supports teams building trust‑native products with early access, guidance, and direct collaboration.
             </p>
           </div>
 
@@ -588,7 +588,7 @@ const BuilderPage = () => {
               },
               {
                 title: "Design & use-case feedback",
-                desc: "Work with the AnyLayer team to shape trust flows, UX, and integration patterns.",
+                desc: "Work with the Anylayer team to shape trust flows, UX, and integration patterns.",
                 icon: <Activity className="w-5 h-5" />
               },
               {
@@ -642,7 +642,7 @@ const BuilderPage = () => {
                 </h2>
               </div>
               <p className="text-white/30 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-                Be the first to integrate AnyLayer. Get early access to our trust primitives, SDKs, and developer grants.
+                Be the first to integrate Anylayer. Get early access to our trust primitives, SDKs, and developer grants.
               </p>
             </div>
 
@@ -701,7 +701,7 @@ const BuilderPage = () => {
               Start Building. <br /> <span className="text-lightblueprimary">Start Verifying.</span>
             </h2>
             <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">
-              AnyLayer provides the trust layer for the next generation of safer, smarter products.
+              Anylayer provides the trust layer for the next generation of safer, smarter products.
             </p>
             <div className="flex justify-center gap-12">
               <Share2 className="text-white/5 w-6 h-6" />
