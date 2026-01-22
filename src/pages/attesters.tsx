@@ -682,7 +682,7 @@ const AttestersPage = () => {
 
                 <div className="border-t border-white/5 pt-20">
                     <BlogWidget
-                        category="Attestation" limit={3}
+                        category="Reputation Layer" limit={3}
                         title="Attestation Network Updates"
                         subtitle="Latest signals, protocol changes, and attester network news."
                         dark={true}

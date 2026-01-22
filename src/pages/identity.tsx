@@ -622,54 +622,6 @@ const UseCaseReel = () => {
   );
 };
 
-const EverythingIdentity = () => {
-  const features = [
-    { title: "Asset Hub", desc: "Aggregate every asset. Resolve multiple balances into a single unified profile." },
-    { title: "Privacy", desc: "Granular metadata control. Choose exactly what history you share." },
-    { title: "Omni-Chain", desc: "Universal pointer. One destination for every chain (Base, ETH, SOL)." },
-    { title: "Reputation", desc: "History that builds value. Portable trust scores." }
-  ];
-
-  return (
-    <Section className="bg-[#F9F7F2] py-32 md:py-48" id="everything">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col md:flex-row items-stretch border-y border-black/5">
-          {/* Sidebar Label */}
-          <div className="md:w-24 bg-black flex items-center justify-center py-12 md:py-0">
-            <span className="text-white font-black text-[10px] uppercase tracking-[0.6em] md:-rotate-90 whitespace-nowrap">
-              Ecosystem
-            </span>
-          </div>
-
-          {/* Feature Strip */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-4 divide-x divide-black/5 bg-[#EBEBEB]">
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className="p-12 space-y-6 hover:bg-white transition-all duration-500 cursor-default group"
-              >
-                <div className="flex flex-col gap-2">
-                  <span className="font-mono text-[8px] text-lightblueprimary/40 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
-                    Module 0{i + 1}
-                  </span>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-black/80">
-                    {f.title}
-                  </h3>
-                </div>
-                <p className="text-black/40 text-xs leading-relaxed max-w-[200px] font-medium">
-                  {f.desc}
-                </p>
-                <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-[1px] bg-black/10" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Section>
-  );
-};
 
 const FinalClosing = () => (
   <Section className="bg-black text-white py-32 md:py-48 border-t border-white/5" id="closing">
@@ -707,6 +659,7 @@ const FinalClosing = () => (
   </Section>
 );
 
+
 export default function IdentityPage() {
   return (
     <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
@@ -727,19 +680,20 @@ export default function IdentityPage() {
 
       <IdentityHomeSection />
 
-      <EverythingIdentity />
+      <div className="pb-24">
+        <BlogWidget
+          category="Identitty Layer"
+          limit={3}
+          title="Identity Insights"
+          subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
+          dark={false}
+        />
+      </div>
+
 
       <EverydayUses />
 
       <DeveloperIntegration />
-
-      <BlogWidget
-        category="Identity"
-        limit={3}
-        title="Identity Insights"
-        subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
-        dark={true}
-      />
 
       <FinalClosing />
 
