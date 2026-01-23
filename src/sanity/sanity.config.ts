@@ -12,9 +12,9 @@ export default defineConfig({
   basePath: '/studio',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'wuo60cqr',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-  title: 'Anylayer Content Studio',
+  title: 'Anylayer Content Studio v2',
   schema: {
-    types: [post, author, category, subscriber, event],
+    types: [event, post, author, category, subscriber],
   },
   plugins: [
     structureTool({

@@ -16,6 +16,9 @@ const nextConfig = {
       },
     ],
   },
+  compiler: {
+    styledComponents: true,
+  },
   transpilePackages: ['@anylayer/sdk', '@anylayer/shared'],
   webpack: (config) => {
     config.resolve.fallback = {

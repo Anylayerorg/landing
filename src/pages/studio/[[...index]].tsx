@@ -6,7 +6,7 @@ export default function StudioPage() {
   return (
     <>
       <Head>
-        <title>Anylayer Studio</title>
+        <title>Anylayer Studio v2</title>
       </Head>
       <div className="h-screen min-h-screen">
         <NextStudio config={config} />

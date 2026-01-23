@@ -1,5 +1,5 @@
 export default {
-    name: 'event',
+    name: 'protocolEvent',
     title: 'Protocol Event',
     type: 'document',
     fields: [

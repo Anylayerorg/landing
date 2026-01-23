@@ -315,6 +315,7 @@ export function Header() {
               </Link>
 
 
+
               <Link
                 href="/blog"
                 className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
@@ -400,6 +401,18 @@ export function Header() {
                                       </div>
                                     </div>
                                   </button>
+
+                                  <Link href="/events" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors shrink-0">
+                                        <Radio size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                      </div>
+                                      <div>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Protocol Events</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Global summits, hackathons, and protocol sessions.</p>
+                                      </div>
+                                    </div>
+                                  </Link>
 
                                   <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -601,6 +614,7 @@ export function Header() {
                     </Link>
 
 
+
                     <Link
                       href="/blog"
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -634,6 +648,7 @@ export function Header() {
                             <div className="p-4 space-y-4">
                               {[
                                 { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore", isComingSoon: true },
+                                { label: "Protocol Events", desc: "Summits & Sessions", icon: <Radio size={20} />, href: "/events" },
                                 { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
                                 { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
                                 { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.anylayer.org" },

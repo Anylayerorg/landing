@@ -1,10 +1,18 @@
 import { StructureBuilder } from 'sanity/structure';
-import { Mail, Users, Code, Newspaper } from 'lucide-react';
+import { Mail, Users, Code, Newspaper, Calendar } from 'lucide-react';
 
 export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Anylayer Content')
     .items([
+      // Protocol Events Section
+      S.listItem()
+        .title('Protocol Events')
+        .icon(Calendar)
+        .child(S.documentTypeList('protocolEvent').title('Protocol Events')),
+
+      S.divider(),
+
       // Blog Section
       S.listItem()
         .title('Blog Posts')
@@ -17,7 +25,7 @@ export const structure = (S: StructureBuilder) =>
       S.listItem()
         .title('Categories')
         .child(S.documentTypeList('category').title('Categories')),
-      
+
       S.divider(),
 
       // Waitlists Section
@@ -58,9 +66,9 @@ export const structure = (S: StructureBuilder) =>
                 ),
             ])
         ),
-        
+
       // Filter out types that we've already defined custom items for
       ...S.documentTypeListItems().filter(
-        (listItem) => !['post', 'author', 'category', 'subscriber'].includes(listItem.getId() || '')
+        (listItem) => !['post', 'author', 'category', 'subscriber', 'protocolEvent'].includes(listItem.getId() || '')
       ),
     ]);
