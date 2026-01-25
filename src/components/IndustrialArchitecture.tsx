@@ -11,7 +11,7 @@ const layers = [
     id: '01',
     title: 'Identity: Private & Portable',
     subtitle: 'THE ANCHOR',
-    description: 'Bind human, wallet, or agent identities without doxxing. Link multiple wallets, rotate keys, and keep relationships unlinkable by default. Your identity moves with you; your data does not.',
+    description: "A persistent, human-readable identity that anchors trust, reputation, and proofs across applications without exposing personal data.",
     cta: 'See Identity Specs',
     visualSrc: '/identity-layer.svg',
     iconSrc: '/identity-bgicon.svg',
