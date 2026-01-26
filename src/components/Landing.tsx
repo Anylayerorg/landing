@@ -13,6 +13,7 @@ import AIAgents from './AIAgents';
 import Attesters from './Attesters';
 import { BlogWidget } from './BlogWidget';
 import { EventsSection } from './EventsSection';
+import { SEO } from './layout/SEO';
 import {
   Shield,
   Lock,
@@ -237,6 +238,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
   return (
     <>
+      <SEO
+        title="Anylayer"
+        description="The zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more."
+        image="/banner.png"
+      />
       <div className="relative w-full min-w-full font-geist">
         {/* Header & Banner */}
         <Header />

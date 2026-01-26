@@ -112,9 +112,9 @@ const ScoreGainer = () => {
       const type = gainTypes[Math.floor(Math.random() * gainTypes.length)];
       const val = `+${Math.floor(Math.random() * 100 + 10)}`;
 
-      // Scatter points around the shield area
-      const x = (Math.random() - 0.5) * 350;
-      const y = (Math.random() - 0.5) * 300;
+      // Scatter points around the shield area, avoiding the bottom score plate
+      const x = (Math.random() - 0.5) * 380;
+      const y = (Math.random() * 0.6 - 0.7) * 350; // Shifted even further upwards to avoid score plate
 
       setGains(prev => [...prev.slice(-5), { id, label: type.text, value: val, x, y, color: type.color }]);
 
@@ -389,16 +389,13 @@ const SolidRotatingRing = () => {
       >
         {/* The Solid Physical Ring */}
         <div
-          className="absolute border-[16px] border-lightblueprimary/20 rounded-full"
           style={{
-            width: '480px',
-            height: '480px',
-            boxShadow: 'inset 0 0 40px rgba(166, 131, 255, 0.1), 0 0 40px rgba(166, 131, 255, 0.1)',
-            transform: 'translateZ(0px)'
+            transform: 'translateZ(-20px)',
           }}
+          className="absolute border-[6px] md:border-[16px] border-lightblueprimary/20 rounded-full w-[320px] h-[320px] md:w-[480px] md:h-[480px] shadow-[inset_0_0_20px_rgba(166,131,255,0.1),0_0_20px_rgba(166,131,255,0.1)] md:shadow-[inset_0_0_40px_rgba(166,131,255,0.1),0_0_40px_rgba(166,131,255,0.1)]"
         >
           {/* Inner highlight for "solid" look */}
-          <div className="absolute inset-0 border border-white/10 rounded-full" />
+          <div className="absolute inset-0 border border-white/5 md:border-white/10 rounded-full" />
           <div className="absolute -inset-[1px] border border-black/20 rounded-full" />
 
           {/* Light Streaks passing through the ring */}
@@ -408,31 +405,30 @@ const SolidRotatingRing = () => {
             className="absolute inset-0"
           >
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-4 bg-gradient-to-r from-transparent via-lightblueprimary to-transparent blur-md opacity-80"
-              style={{ transform: 'translateY(-10px)' }}
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-20 md:w-32 h-1.5 md:h-4 bg-gradient-to-r from-transparent via-lightblueprimary to-transparent blur-md opacity-80"
+              style={{ transform: 'translateY(-6px) md:translateY(-10px)' } as any}
             />
           </motion.div>
 
+          {/* Secondary Light Streak */}
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0"
           >
             <div
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-4 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-lg opacity-40"
-              style={{ transform: 'translateY(10px)' }}
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 md:w-48 h-1.5 md:h-4 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-lg opacity-40"
+              style={{ transform: 'translateY(6px) md:translateY(10px)' } as any}
             />
           </motion.div>
         </div>
 
         {/* Secondary Inner Ring */}
         <div
-          className="absolute border-[4px] border-lightblueprimary/10 rounded-full"
           style={{
-            width: '400px',
-            height: '400px',
-            transform: 'translateZ(10px)'
+            transform: 'translateZ(10px)',
           }}
+          className="absolute border border-lightblueprimary/10 md:border-[4px] rounded-full w-[260px] h-[260px] md:w-[400px] md:h-[400px]"
         />
       </div>
     </div>
@@ -451,7 +447,7 @@ const LuminousVisual = ({ active }: { active: number }) => {
           animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, scale: 1.05, y: -10, filter: 'blur(10px)' }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative w-[240px] h-[240px] md:w-[600px] md:h-[600px] flex items-center justify-center"
+          className="relative w-[380px] h-[380px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
           {/* Main Glow Backdrop - NOW UNIFORM PURPLE */}
           <motion.div
@@ -472,13 +468,13 @@ const LuminousVisual = ({ active }: { active: number }) => {
                 alt=""
                 width={600}
                 height={600}
-                className="w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
+                className="w-full h-full object-contain scale-[1.3] md:scale-100 drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
                 priority
               />
 
               {/* Redesigned Total Trust Score Display - NOW RECTANGULAR & BELOW */}
               {active === 1 && (
-                <div className="absolute bottom-10 md:bottom-16 left-1/2 -translate-x-1/2 z-20 w-[240px] md:w-[320px] scale-[0.8] md:scale-100">
+                <div className="absolute bottom-4 md:bottom-16 left-1/2 -translate-x-1/2 z-20 w-[240px] md:w-[320px] scale-[0.7] md:scale-100">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -550,16 +546,37 @@ const IndustrialArchitecture = () => {
   return (
     <section
       id="architecture"
-      className="relative bg-[#08080C] overflow-hidden select-none py-20 md:py-32"
+      className="relative bg-[#08080C] overflow-hidden select-none py-10 md:py-32"
     >
       {/* Background Atmosphere */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(166,131,255,0.03),transparent_70%)]" />
 
       <div className="max-w-screen-xl mx-auto px-6 md:px-10 w-full relative z-10">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-40 items-center mb-24">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-0 md:gap-40 items-center mb-0 md:mb-24">
+          {/* Right Column: Luminous Visual (Moved up on mobile) */}
+          <div className="order-1 md:order-2 relative flex justify-center items-center h-[40vh] md:h-[60vh] w-full">
+            <LuminousVisual active={active} />
+
+            {/* Minimalist Mobile Navigation arrows at extreme edges */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex md:hidden justify-between w-full z-50 pointer-events-none">
+              <button
+                onClick={() => setActive((prev) => (prev - 1 + total) % total)}
+                className={`p-2 pointer-events-auto active:scale-90 transition-all ${active === 0 ? 'opacity-10 pointer-events-none' : 'text-lightblueprimary/40'}`}
+              >
+                <ArrowLeft size={40} strokeWidth={1} />
+              </button>
+
+              <button
+                onClick={() => setActive((prev) => (prev + 1) % total)}
+                className={`p-2 pointer-events-auto active:scale-90 transition-all ${active === total - 1 ? 'opacity-10 pointer-events-none' : 'text-lightblueprimary/40'}`}
+              >
+                <ArrowRight size={40} strokeWidth={1} />
+              </button>
+            </div>
+          </div>
 
           {/* Left Column: Clean Text */}
-          <div className="order-2 md:order-1 relative min-h-[400px] flex flex-col justify-center items-center md:items-start text-center md:text-left">
+          <div className="order-2 md:order-1 relative min-h-[520px] md:min-h-[440px] flex flex-col justify-start items-center md:items-start text-center md:text-left pt-8 md:pt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -567,10 +584,10 @@ const IndustrialArchitecture = () => {
                 animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, x: 5, filter: 'blur(5px)' }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="space-y-6 md:space-y-8"
+                className="space-y-4 md:space-y-8"
               >
-                <div className="space-y-4">
-                  <div className="mb-6">
+                <div className="space-y-3 md:space-y-4">
+                  <div className="mb-4 md:mb-6">
                     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
                       <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                       <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-white/40">
@@ -616,17 +633,11 @@ const IndustrialArchitecture = () => {
               </motion.div>
             </AnimatePresence>
           </div>
-
-          {/* Right Column: Luminous Visual */}
-          <div className="order-1 md:order-2 relative flex justify-center items-center h-[35vh] md:h-[60vh] w-full">
-            <LuminousVisual active={active} />
-          </div>
         </div>
 
-        {/* --- SUBTLE MINIMAL SELECTOR --- */}
-        <div className="flex justify-center mt-12">
-          {/* Desktop Selector */}
-          <div className="hidden md:inline-flex items-center bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-2 py-1.5 shadow-2xl">
+        {/* Desktop Selector Only */}
+        <div className="hidden md:flex justify-center mt-12">
+          <div className="inline-flex items-center bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-2 py-1.5 shadow-2xl">
             {layers.map((layer, i) => (
               <button
                 key={layer.id}
@@ -654,32 +665,6 @@ const IndustrialArchitecture = () => {
                 )}
               </button>
             ))}
-          </div>
-
-          {/* Mobile Carousel Selector */}
-          <div className="flex md:hidden items-center gap-4 bg-[#0D0D12]/40 backdrop-blur-md border border-white/5 rounded-full px-4 py-2 shadow-2xl w-full max-w-[300px] justify-between">
-            <button
-              onClick={() => setActive((prev) => (prev - 1 + total) % total)}
-              className={`p-2 rounded-full hover:bg-white/5 transition-colors ${active === 0 ? 'opacity-30 pointer-events-none' : ''}`}
-            >
-              <ArrowLeft size={16} className="text-white" />
-            </button>
-
-            <div className="flex flex-col items-center">
-              <span className="font-mono text-[10px] font-black text-lightblueprimary">
-                LAYER {layers[active].id}
-              </span>
-              <span className="text-[11px] uppercase tracking-widest font-bold text-white text-center truncate px-2">
-                {layers[active].subtitle}
-              </span>
-            </div>
-
-            <button
-              onClick={() => setActive((prev) => (prev + 1) % total)}
-              className={`p-2 rounded-full hover:bg-white/5 transition-colors ${active === total - 1 ? 'opacity-30 pointer-events-none' : ''}`}
-            >
-              <ArrowRight size={16} className="text-white" />
-            </button>
           </div>
         </div>
       </div>

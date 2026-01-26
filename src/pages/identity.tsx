@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Head from 'next/head';
+import { SEO } from '@/components/layout/SEO';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -663,10 +663,11 @@ const FinalClosing = () => (
 export default function IdentityPage() {
   return (
     <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
-      <Head>
-        <title>ANS Identity — Your Private Digital Self</title>
-        <meta name="description" content="One Identity. Any App. Any Chain. Privacy-first onchain identity by Anylayer." />
-      </Head>
+      <SEO
+        title="ANS Identity"
+        description="One Identity. Any App. Any Chain. Privacy-first onchain identity by Anylayer."
+        image="/identity-layer.svg"
+      />
 
       <Header />
 

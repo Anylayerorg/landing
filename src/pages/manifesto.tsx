@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
+import { SEO } from '@/components/layout/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Layers, Maximize2, Shield, Globe, Fingerprint, Search, Hammer, Box } from 'lucide-react';
 
@@ -255,10 +255,11 @@ const ManifestoPage = () => {
 
     return (
         <div className="relative w-full h-screen overflow-hidden">
-            <Head>
-                <title>10,000 .ANY Privacy Identities | Airdrop Sequence</title>
-                <meta name="description" content="Secure your universal trust handle in the Anylayer genesis airdrop." />
-            </Head>
+            <SEO
+                title="10,000 .ANY Privacy Identities"
+                description="Secure your universal trust handle in the Anylayer genesis airdrop."
+                image="/banner.png"
+            />
             <AnimatePresence mode="wait">
                 <motion.div key={activeLayout} initial={{ opacity: 0, filter: "blur(20px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} exit={{ opacity: 0, filter: "blur(20px)" }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="w-full h-full">
                     {layouts[activeLayout].component}
