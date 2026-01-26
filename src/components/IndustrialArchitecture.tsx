@@ -436,16 +436,25 @@ const SolidRotatingRing = () => {
 };
 
 const LuminousVisual = ({ active }: { active: number }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const purpleGlow = "rgba(166, 131, 255, 0.4)"; // Uniform purple for all layers
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         <motion.div
           key={active}
-          initial={{ opacity: 0, scale: 0.9, y: 10, filter: 'blur(10px)' }}
+          initial={{ opacity: 0, scale: 0.95, y: isMobile ? 5 : 10, filter: isMobile ? 'blur(4px)' : 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, scale: 1.05, y: -10, filter: 'blur(10px)' }}
+          exit={{ opacity: 0, scale: 1.02, y: isMobile ? -5 : -10, filter: isMobile ? 'blur(4px)' : 'blur(10px)' }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="relative w-[380px] h-[380px] md:w-[600px] md:h-[600px] flex items-center justify-center"
         >
@@ -543,6 +552,15 @@ const IndustrialArchitecture = () => {
   const [active, setActive] = useState(0);
   const total = layers.length;
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section
       id="architecture"
@@ -580,9 +598,9 @@ const IndustrialArchitecture = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, x: -10, filter: 'blur(5px)' }}
+                initial={{ opacity: 0, x: -10, filter: isMobile ? 'blur(2px)' : 'blur(5px)' }}
                 animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, x: 5, filter: 'blur(5px)' }}
+                exit={{ opacity: 0, x: 5, filter: isMobile ? 'blur(2px)' : 'blur(5px)' }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 className="space-y-4 md:space-y-8"
               >
