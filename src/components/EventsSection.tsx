@@ -35,7 +35,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
         const fetchEvents = async () => {
             try {
                 // Fetch upcoming events first, ordered by date
-                const query = `*[_type == "event"] | order(eventDate asc) [0...${limit}] {
+                const query = `*[_type == "protocolEvent"] | order(eventDate asc) [0...${limit}] {
           _id,
           title,
           slug,
@@ -47,7 +47,21 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
         }`;
 
                 const data = await client.fetch(query);
-                setEvents(data);
+                if (data && data.length > 0) {
+                    setEvents(data);
+                } else {
+                    // Fallback for the 10k ANS Event if Sanity is empty
+                    setEvents([{
+                        _id: 'default-airdrop',
+                        title: '10,000 ANS Airdrop Sequence',
+                        slug: { current: '10k-ans-minting-event' },
+                        eventDate: new Date().toISOString(),
+                        location: 'Universal Identity Layer',
+                        excerpt: 'Claim your free Anylayer Name Service (ANS) identity and start your reputation journey. First 10,000 users only.',
+                        mainImage: null,
+                        rsvpLink: '/events/10k-ans-minting-event'
+                    }]);
+                }
             } catch (error) {
                 console.error('Error fetching protocol events:', error);
             } finally {

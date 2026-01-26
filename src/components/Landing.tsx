@@ -502,7 +502,6 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           </div>
         </section>
 
-        <AIAgents />
 
         <EventsSection
           limit={3}
@@ -510,6 +509,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
           subtitle="Join us at upcoming hackathons, conferences, and community gatherings."
           dark={false}
         />
+
+        <AIAgents />
 
         <ParallelCards sectionId="dimension" />
 
