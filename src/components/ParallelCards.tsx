@@ -21,7 +21,7 @@ const data = [
   {
     title: "Wallet activity rotation",
     description:
-      "Wallet Trust reflects address‑level behavior and operational hygiene. It is built from wallet age, repayments and collateral health, trading integrity, liquidity activity, and address age—summarized without exposing balances.",
+      "Wallet Trust reflects address‑level behavior and operational hygiene. It is built from wallet age, repayments and collateral health, trading integrity, liquidity activity and assets holdings, summarized without exposing balances.",
     line2: "",
     image: "/wallet-activity.svg",
     signals: [

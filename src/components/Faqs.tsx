@@ -1,6 +1,7 @@
 import { Plus, Minus } from "lucide-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const FAQs = [
   {
@@ -127,15 +128,15 @@ const Faqs = () => {
               </p>
             </div>
             <div className="hidden md:block pb-1">
-              <a
-                href="mailto:hello@anylayer.org"
+              <Link
+                href="/contact"
                 className="group flex items-center gap-3 text-primaryText/40 hover:text-primaryText transition-all text-sm"
               >
                 <span className="uppercase tracking-widest font-semibold">Contact Us</span>
                 <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-lightblueprimary/30 group-hover:bg-lightblueprimary/5 transition-all">
                   <Plus className="w-3.5 h-3.5 rotate-45 text-lightblueprimary" />
                 </div>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -161,9 +162,9 @@ const Faqs = () => {
 
         {/* Mobile Contact Link */}
         <div className="mt-10 md:hidden text-center">
-          <a href="mailto:hello@anylayer.org" className="text-xs uppercase tracking-widest font-bold text-lightblueprimary underline decoration-lightblueprimary/30 underline-offset-4">
+          <Link href="/contact" className="text-xs uppercase tracking-widest font-bold text-lightblueprimary underline decoration-lightblueprimary/30 underline-offset-4">
             Still have questions? Contact Support
-          </a>
+          </Link>
         </div>
       </div>
     </section>

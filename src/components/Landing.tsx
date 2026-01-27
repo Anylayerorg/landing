@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Image from 'next/image';
+import { ComingSoonModal } from './ComingSoonModal';
 import ClientsLogo from './ClientsLogo';
 import ParallelCards from './ParallelCards';
 import CodeIntegration from './CodeIntegration';
@@ -129,8 +130,8 @@ const trustScoreFeatures = [
     icon: '/robotic.svg'
   },
   {
-    title: "zero-knowledge prove",
-    description: "zero-knowledge proof verify identity, reputation, and trust without exposing personal data",
+    title: "zero-knowledge proof",
+    description: "zero-knowledge proofs verify identity, reputation, and trust without exposing personal data",
     icon: '/circle-lock.svg',
     isPurple: true
   },
@@ -150,6 +151,7 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ enableRevolvingAnimation = false }: LandingPageProps = {}) {
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
   const words = ['Humans', 'Wallets', 'AI Agents'];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -272,20 +274,18 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                   </p>
                   <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
-                    <a
-                      href="https://app.anylayer.org"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
+                    <button
+                      onClick={() => setIsComingSoonOpen(true)}
+                      className="group relative max-w-72 md:max-w-60 w-full active:translate-y-0.5 transition-all text-left"
                     >
                       <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
                       <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
-                        <span>Create ID</span>
+                        <span className="whitespace-nowrap">Register a Name</span>
                         <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
                       </div>
-                    </a>
+                    </button>
                     <a
-                      href="https://drive.google.com/file/d/1yACxELpR1Qt34hMYH0DDyi6sHTQuZjVG/view?usp=sharing"
+                      href="https://docs.anylayer.org"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative max-w-72 md:max-w-44 w-full active:translate-y-0.5 transition-all"
@@ -537,6 +537,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <AutoPopupModal />
       </div>
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </>
   );
 }

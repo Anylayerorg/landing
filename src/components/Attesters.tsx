@@ -34,7 +34,7 @@ const Attesters = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-2xl md:text-3xl text-white/60 font-serif lowercase max-w-2xl leading-relaxed"
+                            className="text-2xl md:text-3xl text-white/60 font-serif lowercase max-w-2xl leading-relaxed italic"
                         >
                             {copy.p1}
                         </motion.p>
@@ -50,10 +50,15 @@ const Attesters = () => {
                                 <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                                 <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Earn trust by accuracy, not permission</span>
                             </div>
-                            <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
-                                Become an Attester
+                            <a
+                                href="https://docs.anylayer.org"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
+                            >
+                                Documentation
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </a>
                         </motion.div>
                     </div>
                 </div>

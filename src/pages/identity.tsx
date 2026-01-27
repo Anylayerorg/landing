@@ -4,29 +4,14 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
-import {
-  ShieldCheck,
-  Users,
-  Fingerprint,
-  FileCheck,
-  CreditCard,
-  Verified,
-  Award,
-  History,
-  PenTool,
-  CheckCircle2,
-  ChevronRight,
-  Plus,
-  ArrowRight,
-  X,
-  Sparkles
-} from 'lucide-react';
+import { ArrowRight, Fingerprint, Shield, Zap, Globe, Cpu, Check, Lock, ChevronRight, X, ExternalLink, Mail, MessageSquare, Twitter, Github, Linkedin, Award, Activity, Search, Filter, Layers, Zap as ZapIcon, Info, Terminal, Users, Share2, Download, Copy, RefreshCw, Smartphone, BookOpen, ShieldCheck, Database, Key, CreditCard, Verified, History, PenTool, CheckCircle2, Plus, Sparkles, FileCheck } from 'lucide-react';
+import { ComingSoonModal } from '../components/ComingSoonModal';
 
-const SectionTag = ({ label }: { label: string }) => (
+const SectionLabel = ({ text }: { text: string }) => (
   <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-4">
     <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
     <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
-      {label}
+      {text}
     </span>
   </div>
 );
@@ -78,7 +63,7 @@ const IdentityHero = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
             className="space-y-12"
           >
             <div className="space-y-8">
-              <SectionTag label="CORE PROTOCOL" />
+              <SectionLabel text="CORE PROTOCOL" />
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
                 Be <span className="text-lightblueprimary">Anything.</span>
               </h1>
@@ -97,11 +82,21 @@ const IdentityHero = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
                 onClick={onTriggerModal}
                 className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
               >
-                <span className="text-[11px] font-black uppercase tracking-[0.3em]">
-                  Free Claim
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
+                  Register a Name
                 </span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </button>
+
+              <a
+                href="https://docs.anylayer.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.4em]">View Developer Docs</span>
+                <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -300,7 +295,7 @@ const EverydayUses = () => {
   );
 };
 
-const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }) => {
+const DeveloperIntegration = () => {
   return (
     <Section className="bg-black text-white py-24 md:py-32 border-t border-white/5" id="integrate">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -381,12 +376,14 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
               <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
-              <button
-                onClick={onTriggerModal}
+              <a
+                href="https://docs.anylayer.org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-12 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl"
               >
                 View Developer Docs
-              </button>
+              </a>
             </div>
           </div>
 
@@ -675,116 +672,50 @@ const FinalClosing = () => (
 );
 
 
-const ComingSoonModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
-          >
-            <div className="w-full max-w-[500px] bg-[#0A0A0E] border border-white/10 rounded-[32px] p-8 md:p-12 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 p-6">
-                <button onClick={onClose} className="text-white/20 hover:text-white transition-colors">
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <div className="w-12 h-12 bg-lightblueprimary/10 rounded-2xl flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-lightblueprimary" />
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white">
-                    Coming <br /> <span className="text-lightblueprimary">Soon.</span>
-                  </h2>
-                  <p className="text-white/40 text-sm font-medium leading-relaxed">
-                    We're finalising this feature. In the meantime, join our community to stay updated on the latest releases.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <a
-                    href="https://x.com/anylayerorg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.06] transition-all group"
-                  >
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white/60 group-hover:text-white">Follow our X</span>
-                    <ArrowRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-colors" />
-                  </a>
-                  <a
-                    href="https://discord.gg/anylayer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.06] transition-all group"
-                  >
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white/60 group-hover:text-white">Join Discord</span>
-                    <ArrowRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-colors" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-};
-
 export default function IdentityPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
+    <div className="min-h-screen bg-black text-white font-geist selection:bg-lightblueprimary/30">
       <SEO
         title="ANS Identity"
         description="One Identity. Any App. Any Chain. Privacy-first onchain identity by Anylayer."
         image="/identity-layer.svg"
       />
-
       <Header />
+      <main>
+        <IdentityHero onTriggerModal={() => setIsComingSoonOpen(true)} />
 
-      <IdentityHero onTriggerModal={() => setIsModalOpen(true)} />
+        <IdentityProblem />
 
-      <IdentityProblem />
+        <IdentityDefinition />
 
-      <IdentityDefinition />
+        <UseCaseReel />
 
-      <UseCaseReel />
+        <IdentityHomeSection />
 
-      <IdentityHomeSection />
-
-      <div className="pb-24">
-        <BlogWidget
-          category="Identitty Layer"
-          limit={3}
-          title="Identity Insights"
-          subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
-          dark={false}
-        />
-      </div>
+        <div className="pb-24">
+          <BlogWidget
+            category="Identitty Layer"
+            limit={3}
+            title="Identity Insights"
+            subtitle="The latest updates on privacy-first onchain identity and ZK infrastructure."
+            dark={false}
+          />
+        </div>
 
 
-      <EverydayUses />
+        <EverydayUses />
 
-      <DeveloperIntegration onTriggerModal={() => setIsModalOpen(true)} />
+        <DeveloperIntegration />
 
-      <FinalClosing />
-
+        <FinalClosing />
+      </main>
       <Footer />
-
-      <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ComingSoonModal
+        isOpen={isComingSoonOpen}
+        onClose={() => setIsComingSoonOpen(false)}
+      />
     </div>
   );
 }

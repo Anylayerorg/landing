@@ -8,7 +8,8 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
-import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio, X } from "lucide-react";
+import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio, X, Mail } from "lucide-react";
+import { ComingSoonModal } from "../ComingSoonModal";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -414,19 +415,17 @@ export function Header() {
                                     </div>
                                   </Link>
 
-                                  <button onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
+                                  <Link href="/contact" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors shrink-0">
-                                        <div className="w-5 h-5 border-2 border-white/20 rounded-md flex items-center justify-center group-hover:border-lightblueprimary/60 transition-colors">
-                                          <div className="w-1 h-1 bg-white/40 group-hover:bg-lightblueprimary transition-colors rounded-full" />
-                                        </div>
+                                        <Mail size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Media Kit</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Brand assets, guidelines, and press materials.</p>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Contact Us</h5>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Get in touch for partnerships, support, or inquiries.</p>
                                       </div>
                                     </div>
-                                  </button>
+                                  </Link>
                                 </div>
                               </div>
 
@@ -446,7 +445,7 @@ export function Header() {
                                     </div>
                                   </Link>
 
-                                  <a href="https://docs.onzks.com" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <FileText size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
@@ -465,7 +464,7 @@ export function Header() {
                                       </div>
                                       <div>
                                         <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Governance & Rules</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Official rules for .any identity, privacy, and terms.</p>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Official rules for identity, privacy, and terms.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -649,7 +648,7 @@ export function Header() {
                               {[
                                 { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore", isComingSoon: true },
                                 { label: "Protocol Events", desc: "Summits & Sessions", icon: <Radio size={20} />, href: "/events" },
-                                { label: "Media Kit", desc: "Brand assets", icon: <FileText size={20} />, id: "media-kit" },
+                                { label: "Contact Us", desc: "Get in touch", icon: <Mail size={20} />, href: "/contact" },
                                 { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
                                 { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.anylayer.org" },
                                 { label: "Official Policies", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
@@ -695,10 +694,6 @@ export function Header() {
 
                                 return (
                                   <button key={idx} className="block w-full text-left" onClick={() => {
-                                    if (item.id === "media-kit") {
-                                      setIsMobileMenuOpen(false);
-                                      return;
-                                    }
                                     if (item.id) {
                                       scrollToSection(item.id);
                                       setIsMobileMenuOpen(false);
@@ -735,81 +730,7 @@ export function Header() {
         </div>
       </motion.div >
 
-      {/* Coming Soon Modal */}
-      <AnimatePresence>
-        {isComingSoonOpen && (
-          <DropdownPortal>
-            <div className="fixed inset-0 z-[1000] flex items-center justify-center p-6">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsComingSoonOpen(false)}
-                className="absolute inset-0 bg-black/40 backdrop-blur-[12px]"
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-[380px] bg-[#0D0D12]/90 border border-white/10 rounded-[40px] p-10 shadow-3xl overflow-hidden backdrop-blur-2xl"
-              >
-                {/* Visual Polish: Top Accent Glow */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-32 bg-lightblueprimary/10 blur-[80px] rounded-full pointer-events-none" />
-
-                <div className="relative flex flex-col items-center">
-                  {/* Close button integration */}
-                  <button
-                    onClick={() => setIsComingSoonOpen(false)}
-                    className="absolute -top-4 -right-4 p-2 text-white/10 hover:text-white transition-colors"
-                  >
-                    <X size={20} />
-                  </button>
-
-                  <div className="space-y-4 text-center mb-10">
-                    <h3 className="text-[2.5rem] font-black uppercase tracking-tighter text-white leading-[0.9]">
-                      Private <br />
-                      <span className="text-lightblueprimary">Access.</span>
-                    </h3>
-                    <p className="text-[#9494a3] text-sm font-medium leading-relaxed max-w-[240px] mx-auto opacity-60">
-                      We're currently in a gated beta. Join our community to secure your spot for the public launch.
-                    </p>
-                  </div>
-
-                  {/* Social Buttons: Simplified & Unique */}
-                  <div className="w-full space-y-3">
-                    <a
-                      href="https://x.com/anylayerorg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between w-full px-7 py-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group/link"
-                    >
-                      <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#9494a3] group-hover/link:text-white transition-colors">Follow on X</span>
-                      <ArrowUpRight size={18} className="text-[#9494a3] group-hover/link:text-white transition-all group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                    </a>
-                    <a
-                      href="https://discord.gg/anylayer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between w-full px-7 py-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group/link"
-                    >
-                      <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#9494a3] group-hover/link:text-white transition-colors">Join Discord</span>
-                      <ArrowUpRight size={18} className="text-[#9494a3] group-hover/link:text-white transition-all group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                    </a>
-                  </div>
-
-                  <button
-                    onClick={() => setIsComingSoonOpen(false)}
-                    className="mt-8 text-[10px] font-black uppercase tracking-[0.4em] text-[#636475] hover:text-white transition-colors cursor-pointer"
-                  >
-                    Dismiss
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-          </DropdownPortal>
-        )}
-      </AnimatePresence>
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </motion.header >
   );
 }
