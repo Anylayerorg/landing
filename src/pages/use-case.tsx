@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import IndustrialCapital from '../components/IndustrialCapital';
+import { BlogWidget } from '../components/BlogWidget';
 import { motion } from 'framer-motion';
 
 export default function UseCasePage() {
@@ -30,6 +31,15 @@ export default function UseCasePage() {
                 >
                     <IndustrialCapital />
                 </motion.div>
+
+                <div className="border-t border-white/5 bg-[#08080C]">
+                    <BlogWidget
+                        limit={3}
+                        title="Ecosystem Updates"
+                        subtitle="Explore how the reputation layer is transforming diverse industries."
+                        dark={true}
+                    />
+                </div>
             </main>
 
             <Footer />

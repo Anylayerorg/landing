@@ -28,33 +28,6 @@ import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
 
 const BuilderPage = () => {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
-  const handleWaitlist = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setStatus('loading');
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, type: 'developer' }),
-      });
-
-      if (!response.ok) throw new Error('Waitlist submission failed');
-
-      setStatus('success');
-      setEmail('');
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch (error) {
-      console.error('Waitlist error:', error);
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
-  };
-
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -106,14 +79,24 @@ const BuilderPage = () => {
                 <div className="space-y-2">
                   <label className="text-[10px] font-mono text-white/20 uppercase tracking-widest block">Destination_Address</label>
                   <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <motion.span
-                        initial={{ width: 0 }}
-                        animate={{ width: "auto" }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }}
                         className="text-white font-bold tracking-tight overflow-hidden whitespace-nowrap border-r-2 border-lightblueprimary h-6"
                       >
-                        whale.any
+                        {"whale.any".split("").map((char, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                              duration: 0.05,
+                              delay: i * 0.1,
+                              ease: "linear"
+                            }}
+                          >
+                            {char}
+                          </motion.span>
+                        ))}
                       </motion.span>
                     </div>
                     <Fingerprint className="text-white/10 w-4 h-4" />
@@ -277,10 +260,10 @@ const BuilderPage = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <a href="#waitlist" className="group relative px-10 py-4 overflow-hidden rounded-full transition-all">
+                  <a href="/contact" className="group relative px-10 py-4 overflow-hidden rounded-full transition-all">
                     <div className="absolute inset-0 bg-white" />
                     <div className="relative flex items-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]">
-                      Join Early Access
+                      Contact Us
                       <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                   </a>
@@ -477,15 +460,15 @@ const BuilderPage = () => {
                 transition={{ delay: i * 0.1 }}
                 className="border-b border-white/5 transition-all duration-300"
               >
-                <div className="flex flex-col md:flex-row md:items-center py-8 gap-4 md:gap-12 px-4">
-                  <div className="flex items-center gap-6 min-w-[140px]">
+                <div className="flex flex-col md:flex-row md:items-center py-8 gap-4 md:gap-12 px-4 group">
+                  <div className="flex items-center gap-6 min-w-[80px]">
                     <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.4em]">{item.id}</span>
-                    <div className="text-lightblueprimary/40">
-                      {item.icon}
-                    </div>
                   </div>
 
-                  <div className="md:w-1/3">
+                  <div className="md:w-1/3 flex items-center gap-4">
+                    <div className="text-white/20 md:group-hover:text-lightblueprimary transition-colors">
+                      {item.icon}
+                    </div>
                     <h3 className="text-lg font-bold uppercase tracking-tight">
                       {item.title}
                     </h3>
@@ -621,16 +604,15 @@ const BuilderPage = () => {
                 Wallet teams, protocols, marketplaces, consumer apps, and infrastructure builders exploring trust‑based features.
               </p>
             </div>
-            <a href="#waitlist" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
-              Join Waitlist
+            <a href="/contact" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
+              Contact Us
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </section>
 
-        {/* --- WAITLIST: REFINED BUILDER PROGRAM --- */}
-        <section id="waitlist" className="max-w-7xl mx-auto px-6 mb-60">
-          <div className="flex flex-col items-center text-center space-y-16">
+        <section className="max-w-7xl mx-auto px-6 mb-60">
+          <div className="flex flex-col items-center text-center space-y-12">
             <div className="max-w-3xl space-y-6">
               <div className="flex flex-col items-center gap-4">
                 <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
@@ -638,57 +620,20 @@ const BuilderPage = () => {
                   <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Builder Ecosystem</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
-                  Join the <span className="text-lightblueprimary">Builder Waitlist.</span>
+                  Get in <span className="text-lightblueprimary">Contact.</span>
                 </h2>
               </div>
               <p className="text-white/30 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-                Be the first to integrate Anylayer. Get early access to our trust primitives, SDKs, and developer grants.
+                Ready to integrate Anylayer? Get in touch to discuss early access, SDKs, and developer grants.
               </p>
             </div>
 
-            <div className="w-full max-w-xl">
-              <form onSubmit={handleWaitlist} className="space-y-8">
-                <div className="relative group">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email Address"
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-8 py-6 text-xl font-light focus:outline-none focus:border-lightblueprimary focus:bg-white/[0.05] transition-all placeholder:text-white/10 text-center"
-                    disabled={status === 'loading' || status === 'success'}
-                  />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-lightblueprimary/5 to-transparent opacity-0 group-focus-within:opacity-100 pointer-events-none transition-opacity" />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading' || status === 'success'}
-                  className="group relative w-full py-6 rounded-2xl overflow-hidden transition-all hover:bg-white/90 active:scale-[0.99] bg-white text-black font-black uppercase tracking-[0.4em] text-[11px]"
-                >
-                  <div className="relative flex items-center justify-center gap-3">
-                    {status === 'loading' ? (
-                      <>Processing <Loader2 className="animate-spin" size={16} /></>
-                    ) : status === 'success' ? (
-                      <>Success <CheckCircle2 size={16} /></>
-                    ) : (
-                      <>Submit <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" /></>
-                    )}
-                  </div>
-                </button>
-
-                <AnimatePresence>
-                  {status === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded-xl bg-green-500/5 border border-green-500/20"
-                    >
-                      <p className="text-sm text-green-400 font-medium">Thank you. We will contact you soon.</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </form>
-            </div>
+            <a
+              href="/contact"
+              className="group relative px-12 py-6 rounded-2xl overflow-hidden transition-all hover:bg-white/90 active:scale-[0.99] bg-white text-black font-black uppercase tracking-[0.4em] text-[12px] flex items-center justify-center gap-4"
+            >
+              Contact Us <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </section>
 

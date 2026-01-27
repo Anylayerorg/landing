@@ -455,33 +455,7 @@ const RegistryGrid = ({ fadeIn }: any) => (
 
 
 const AttestersPage = () => {
-    const [email, setEmail] = useState('');
     const [activeWhoCanBecome, setActiveWhoCanBecome] = useState(1);
-
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
-    const handleWaitlist = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!email) return;
-        setStatus('loading');
-        try {
-            const response = await fetch('/api/subscribe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, type: 'attester' }),
-            });
-
-            if (!response.ok) throw new Error('Waitlist submission failed');
-
-            setStatus('success');
-            setEmail('');
-            setTimeout(() => setStatus('idle'), 5000);
-        } catch (error) {
-            console.error('Waitlist error:', error);
-            setStatus('error');
-            setTimeout(() => setStatus('idle'), 5000);
-        }
-    };
 
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
@@ -539,11 +513,11 @@ const AttestersPage = () => {
                                     className="flex items-center gap-8"
                                 >
                                     <a
-                                        href="#initiate"
+                                        href="/contact"
                                         className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                     >
                                         <span className="text-[11px] font-black uppercase tracking-[0.3em]">
-                                            Join The Network
+                                            Get in Touch
                                         </span>
                                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                     </a>
@@ -647,36 +621,19 @@ const AttestersPage = () => {
                 <section id="initiate" className="max-w-3xl mx-auto py-40 px-6 text-center">
                     <motion.div {...fadeIn}>
                         <SectionLabel text="Gateway" />
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-[1.1] mb-8">
-                            Join the <span className="text-lightblueprimary">Waitlist.</span>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-[1.1] mb-12">
+                            Ready to <span className="text-lightblueprimary">Attest?</span>
                         </h2>
-                        <form onSubmit={handleWaitlist} className="max-w-md mx-auto space-y-12">
-                            <div className="relative group">
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Enter Organization Email"
-                                    className="w-full bg-transparent border-b border-white/10 py-6 text-center text-xl focus:outline-none focus:border-lightblueprimary transition-colors placeholder:text-white/5"
-                                    disabled={status === 'loading' || status === 'success'}
-                                />
-                                <div className="absolute bottom-0 left-0 w-0 h-px bg-lightblueprimary group-focus-within:w-full transition-all duration-700" />
-                            </div>
 
-                            <button
-                                type="submit"
-                                disabled={status === 'loading' || status === 'success'}
-                                className="w-full py-5 rounded-full bg-white text-black font-black uppercase tracking-[0.3em] text-[11px] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-4 disabled:opacity-50"
-                            >
-                                {status === 'loading' ? (
-                                    <>Processing <Loader2 className="animate-spin" size={14} /></>
-                                ) : status === 'success' ? (
-                                    <>Confirmed <CheckCircle2 size={14} /></>
-                                ) : (
-                                    "Join The Waitlist"
-                                )}
-                            </button>
-                        </form>
+                        <a
+                            href="/contact"
+                            className="group relative inline-flex items-center gap-6 px-12 py-6 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                        >
+                            <span className="text-[12px] font-black uppercase tracking-[0.4em]">
+                                Get in Touch
+                            </span>
+                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        </a>
                     </motion.div>
                 </section>
 
