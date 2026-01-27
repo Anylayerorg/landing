@@ -240,11 +240,6 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
   return (
     <>
-      <SEO
-        title="Anylayer"
-        description="The zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more."
-        image="/banner.png"
-      />
       <div className="relative w-full min-w-full font-geist">
         {/* Header & Banner */}
         <Header />
