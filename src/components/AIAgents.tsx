@@ -8,7 +8,7 @@ import {
 
 const AGENT_CONTENT = {
   hook: "Today’s agents can act, but they can’t credibly signal how trustworthy they are.",
-  solution: "Anylayer changes that. Agents build reputation from task outcomes—execution success, slippage control, incident rate, user satisfaction, audit feedback—anchored privately and provable on demand.",
+  solution: "Anylayer changes that. Agents build reputation from task outcomes, execution success, slippage control, incident rate, user satisfaction, audit feedback anchored privately and provable on demand.",
   visibility: "What users see: a reliability score and relevant sub‑metrics (e.g., “90‑day success rate ≥ 98%” or “no incidents in last 30 days”).",
   ecosystem: "Anylayer provides the ground to grow reputation and carry it across ecosystems.",
   metrics: [

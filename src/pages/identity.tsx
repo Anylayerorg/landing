@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { SEO } from '@/components/layout/SEO';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/layout/Header';
@@ -17,12 +17,14 @@ import {
   CheckCircle2,
   ChevronRight,
   Plus,
-  ArrowRight
+  ArrowRight,
+  X,
+  Sparkles
 } from 'lucide-react';
 
 const SectionTag = ({ label }: { label: string }) => (
   <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-4">
-    <div className="w-1.5 h-1.5 rounded-full bg-[#A855F7]" />
+    <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
     <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
       {label}
     </span>
@@ -51,7 +53,7 @@ const Section = React.forwardRef<HTMLElement, { children: React.ReactNode, class
 );
 Section.displayName = "Section";
 
-const IdentityHero = () => (
+const IdentityHero = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
   <section className="relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-32 pb-20">
     {/* Simple Atmospheric Background */}
     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.03),transparent_70%)]" />
@@ -75,9 +77,9 @@ const IdentityHero = () => (
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-12"
           >
-            <div className="space-y-10">
+            <div className="space-y-8">
               <SectionTag label="CORE PROTOCOL" />
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] max-w-4xl">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
                 Be <span className="text-lightblueprimary">Anything.</span>
               </h1>
               <p className="text-base md:text-xl text-white/40 max-w-xl leading-relaxed font-light tracking-tight">
@@ -92,10 +94,11 @@ const IdentityHero = () => (
               className="flex items-center gap-8"
             >
               <button
+                onClick={onTriggerModal}
                 className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
               >
                 <span className="text-[11px] font-black uppercase tracking-[0.3em]">
-                  Create an ANS <span className="opacity-40">(COMING SOON)</span>
+                  Free Claim
                 </span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </button>
@@ -116,7 +119,7 @@ const IdentityProblem = () => {
           <span className="hidden md:block text-white/40 font-mono text-[10px] uppercase tracking-[0.5em]">
             The Current State
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
+          <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">
             Today, Identity Onchain is <span className="text-lightblueprimary">Broken.</span>
           </h2>
         </div>
@@ -129,7 +132,7 @@ const IdentityProblem = () => {
               className="bg-black p-8 space-y-6 hover:bg-white/[0.02] transition-colors group cursor-default"
             >
               <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-mono text-lightblueprimary/40 uppercase tracking-[0.3em] group-hover:text-lightblueprimary transition-colors">
+                <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] group-hover:text-white transition-colors">
                   Case 0{i + 1} // {p.title}
                 </span>
                 <h3 className="text-xl font-black uppercase tracking-tight text-white/90">
@@ -144,14 +147,14 @@ const IdentityProblem = () => {
         </div>
 
         {/* The Fix - Minimalist and Integrated */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-white/5">
-          <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 leading-snug">
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border-t border-white/5">
+          <p className="text-lg md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 leading-snug">
             {PROBLEM_DATA.solution}
           </p>
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lightblueprimary animate-pulse" />
-            <span className="hidden md:inline-block text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">Solving Exposure</span>
           </div>
         </div>
       </div>
@@ -165,7 +168,7 @@ const IdentityDefinition = () => {
   const closing = "It stays with you as everything else changes.";
 
   return (
-    <Section className="bg-black text-white py-24 md:py-40" id="definition">
+    <Section className="bg-black text-white pt-24 pb-48 md:py-40" id="definition">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -176,8 +179,8 @@ const IdentityDefinition = () => {
           {/* Content Side */}
           <div className="flex-1 space-y-8">
             <div className="space-y-2">
-              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Identity Abstract</span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase opacity-90">
+              <span className="text-white/60 font-mono text-[10px] uppercase tracking-[0.4em] font-black">Identity Abstract</span>
+              <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter leading-[0.9] uppercase opacity-90 text-white">
                 One You. <br /> Every App.
               </h2>
             </div>
@@ -201,8 +204,8 @@ const IdentityDefinition = () => {
                 <span className="text-lightblueprimary font-black text-4xl tracking-tighter">.any</span>
               </div>
             </div>
-            <div className="absolute bottom-0 right-0 p-6 bg-black border border-white/10 rounded-2xl shadow-2xl">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary mb-2">Stability Check</p>
+            <div className="absolute bottom-[-50px] md:bottom-0 right-0 p-6 bg-black border border-white/10 rounded-2xl shadow-2xl">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-white/60 mb-2">Stability Check</p>
               <p className="text-xs font-bold text-white/80">{closing}</p>
             </div>
           </div>
@@ -255,10 +258,10 @@ const EverydayUses = () => {
   return (
     <Section className="bg-[#08080C] text-white py-32 border-t border-white/5" id="uses">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 gap-8 text-left">
           <div className="space-y-4">
-            <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Utility Set</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
+            <span className="text-white/60 font-black font-mono text-[10px] uppercase tracking-[0.5em]">Utility Set</span>
+            <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
           </div>
           <p className="text-white/30 text-sm max-w-[320px] font-medium leading-relaxed pb-1 border-l border-white/10 pl-6">
             An ANS identity is more than a name. It's your verified toolkit for an authentic digital life.
@@ -277,7 +280,7 @@ const EverydayUses = () => {
                 } rounded-2xl p-8 flex flex-col justify-between hover:bg-opacity-90 transition-all duration-500 group cursor-default`}
             >
               <div className="flex justify-end items-start mb-12">
-                <span className={`text-[10px] font-mono uppercase tracking-widest ${i === 0 ? 'text-black/40' : 'text-lightblueprimary/20 group-hover:text-lightblueprimary/40'} transition-colors`}>
+                <span className={`text-[10px] font-mono uppercase tracking-widest ${i === 0 ? 'text-black/40' : 'text-white/20 group-hover:text-white/40'} transition-colors`}>
                   Case 0{i + 1}
                 </span>
               </div>
@@ -297,17 +300,17 @@ const EverydayUses = () => {
   );
 };
 
-const DeveloperIntegration = () => {
+const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }) => {
   return (
     <Section className="bg-black text-white py-24 md:py-32 border-t border-white/5" id="integrate">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header Block */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-lightblueprimary font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
+        <div className="text-center md:text-left max-w-3xl mx-auto md:mx-0 space-y-4 px-4">
+          <span className="text-white/60 font-black font-mono text-[10px] uppercase tracking-[0.5em]">Developers</span>
+          <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">
             Integrate <span className="text-lightblueprimary">ANS</span> <br /> Into Your Apps.
           </h2>
-          <p className="text-white/40 text-base font-medium leading-relaxed">
+          <p className="text-white/40 text-sm md:text-base font-medium leading-relaxed mx-auto md:mx-0">
             ANS is built to plug directly into wallets, dApps, and applications.
           </p>
         </div>
@@ -378,7 +381,10 @@ const DeveloperIntegration = () => {
               <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
-              <button className="px-12 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl">
+              <button
+                onClick={onTriggerModal}
+                className="px-12 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl"
+              >
                 View Developer Docs
               </button>
             </div>
@@ -457,10 +463,10 @@ const IdentityHomeSection = () => (
 
       {/* Hero Content */}
       <div className="space-y-4 max-w-4xl mx-auto">
-        <span className="text-lightblueprimary font-bold text-sm tracking-tight uppercase">
+        <span className="text-white/60 font-bold text-sm tracking-tight uppercase">
           Core Structure
         </span>
-        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase">
+        <h2 className="text-3xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase text-black">
           What Your <br className="hidden md:block" /> Identity Holds
         </h2>
         <p className="text-black/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
@@ -506,7 +512,7 @@ const IdentityHomeSection = () => (
             <div className="flex flex-col gap-3">
               {item.icon}
               <div className="flex flex-col">
-                <h3 className="text-lg font-black tracking-tight uppercase leading-tight">{item.title}</h3>
+                <h3 className="text-lg font-black tracking-tighter uppercase leading-tight">{item.title}</h3>
                 <span className="text-black/40 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
               </div>
             </div>
@@ -526,6 +532,15 @@ const UseCaseReel = () => {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 80,
@@ -570,7 +585,7 @@ const UseCaseReel = () => {
             );
 
             // Radius of the cylinder
-            const radius = 350;
+            const radius = isMobile ? 240 : 350;
 
             // Calculate Y (Vertical) and Z (Depth) based on angle
             const y = useTransform(angle, (a) => Math.sin(a * (Math.PI / 180)) * radius);
@@ -588,7 +603,7 @@ const UseCaseReel = () => {
             // Scale: subtle shrink as it recedes
             const scale = useTransform(angle,
               [-85, 0, 85],
-              [0.7, 1.25, 0.7]
+              isMobile ? [0.75, 1.15, 0.75] : [0.7, 1.25, 0.7]
             );
 
             // Color: Black when active, Gray when receding
@@ -610,7 +625,7 @@ const UseCaseReel = () => {
                   position: "absolute",
                   transformStyle: "preserve-3d"
                 } as any}
-                className="text-6xl md:text-[140px] font-black tracking-tighter uppercase whitespace-nowrap leading-none text-center"
+                className="text-5xl md:text-[140px] font-black tracking-tighter uppercase whitespace-nowrap leading-none text-center"
               >
                 {word}
               </motion.h2>
@@ -632,8 +647,8 @@ const FinalClosing = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9]">
-          A Better Internet <br /> <span className="text-lightblueprimary">Starts With Identity.</span>
+        <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white text-center">
+          A Better Internet <br /> <span className="text-white">Starts With Identity.</span>
         </h2>
       </motion.div>
 
@@ -649,8 +664,8 @@ const FinalClosing = () => (
         </p>
 
         <div className="flex flex-col items-center gap-6">
-          <div className="h-12 w-px bg-gradient-to-b from-lightblueprimary to-transparent" />
-          <p className="text-lightblueprimary font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] font-black">
+          <div className="h-12 w-px bg-gradient-to-b from-white/10 to-transparent" />
+          <p className="text-white/40 font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] font-black">
             One identity. No exposure. No compromise.
           </p>
         </div>
@@ -660,7 +675,76 @@ const FinalClosing = () => (
 );
 
 
+const ComingSoonModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+          >
+            <div className="w-full max-w-[500px] bg-[#0A0A0E] border border-white/10 rounded-[32px] p-8 md:p-12 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 p-6">
+                <button onClick={onClose} className="text-white/20 hover:text-white transition-colors">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 bg-lightblueprimary/10 rounded-2xl flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-lightblueprimary" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white">
+                    Coming <br /> <span className="text-lightblueprimary">Soon.</span>
+                  </h2>
+                  <p className="text-white/40 text-sm font-medium leading-relaxed">
+                    We're finalising this feature. In the meantime, join our community to stay updated on the latest releases.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  <a
+                    href="https://x.com/anylayerorg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.06] transition-all group"
+                  >
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white/60 group-hover:text-white">Follow our X</span>
+                    <ArrowRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-colors" />
+                  </a>
+                  <a
+                    href="https://discord.gg/anylayer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.06] transition-all group"
+                  >
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white/60 group-hover:text-white">Join Discord</span>
+                    <ArrowRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-colors" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
 export default function IdentityPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#08080C] text-white selection:bg-lightblueprimary selection:text-black font-geist">
       <SEO
@@ -671,7 +755,7 @@ export default function IdentityPage() {
 
       <Header />
 
-      <IdentityHero />
+      <IdentityHero onTriggerModal={() => setIsModalOpen(true)} />
 
       <IdentityProblem />
 
@@ -694,11 +778,13 @@ export default function IdentityPage() {
 
       <EverydayUses />
 
-      <DeveloperIntegration />
+      <DeveloperIntegration onTriggerModal={() => setIsModalOpen(true)} />
 
       <FinalClosing />
 
       <Footer />
+
+      <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

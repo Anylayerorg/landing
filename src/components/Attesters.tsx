@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 const Attesters = () => {
     const copy = {
         title: "Become an Attester",
-        p1: "Attesters are the backbone of Anylayer. They observe real behavior—on‑chain, off‑chain, or autonomous—and turn it into verifiable reputation without exposing raw data.",
+        p1: "Attesters are the backbone of Anylayer. They observe real behavior and turn it into verifiable reputation without exposing raw data.",
         p2: "Any protocol, application, or organization that can verifiably observe real outcomes can become an attester—trust is earned by accuracy, not permission."
     };
 
@@ -24,7 +24,7 @@ const Attesters = () => {
                             className="space-y-6"
                         >
                             <h2 className="text-5xl md:text-6xl font-light tracking-tighter text-white uppercase">
-                                Become an Attester
+                                Attestation
                             </h2>
                             <div className="w-20 h-px bg-white/20 mx-auto" />
                         </motion.div>
