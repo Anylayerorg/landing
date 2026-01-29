@@ -110,7 +110,7 @@ const IndustrialCapital = () => {
             </h2>
           </motion.div>
           <div className="flex flex-col justify-end">
-            <p className="text-white/40 text-xl font-light leading-relaxed max-w-xl border-l border-white/10 pl-10">
+            <p className="text-white/60 text-xl font-light leading-relaxed max-w-xl border-l border-white/10 pl-10">
               Unlock the potential of DeFi and growth with a trust layer built on four interconnected pillars. We bridge Identity and Reputation with ZK-Proofs to create programmable application Utility.
             </p>
           </div>
@@ -174,7 +174,7 @@ const IndustrialCapital = () => {
                     <div className="flex-1 md:max-w-xl">
                       {!isActive && <div className="h-0 overflow-hidden" />}
                       {isActive && (
-                        <p className="text-white/40 text-lg font-light leading-relaxed">{content.description}</p>
+                        <p className="text-white/60 text-lg font-light leading-relaxed">{content.description}</p>
                       )}
                     </div>
 
@@ -206,7 +206,7 @@ const IndustrialCapital = () => {
                             >
                               <div className="text-[10px] font-mono text-lightblueprimary/60 font-black">CAPABILITY 0{i + 1}</div>
                               <div className="text-sm font-bold text-white tracking-tight">{f.title}</div>
-                              <div className="text-[11px] text-white/20 leading-relaxed">{f.description}</div>
+                              <div className="text-[11px] text-white/60 leading-relaxed">{f.description}</div>
                             </motion.div>
                           ))}
                         </div>

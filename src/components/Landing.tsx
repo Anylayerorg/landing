@@ -109,7 +109,7 @@ const ProcessFlow = () => {
                 <div className="h-px flex-1 bg-white/10 group-hover:bg-lightblueprimary/40 transition-colors" />
               </div>
               <h3 className="text-2xl font-black uppercase tracking-tighter text-white">{p.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed font-medium">{p.desc}</p>
+              <p className="text-white/60 text-sm leading-relaxed font-medium">{p.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -256,17 +256,17 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               >
                 <div className="space-y-6 z-10 text-center">
                   <div className="mb-6">
-                    <SectionTag label="Core" subtitle="Identity & Reputation Layer" />
+                    <SectionTag label="Core" subtitle="The Trust Engine" />
                   </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
-                    Multi-layered Trust Engine for{' '}
+                    The Trust Engine for{' '}
                     <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                       {currentText}
                       <span className="animate-pulse">|</span>
                     </span>
                   </h1>
-                  <p className="text-primaryText/60 text-sm md:text-lg tracking-[-2%]">
-                    A zero-knowledge trust layer that powers capital-efficient applications — from authentication to payments, launches, lending and more.
+                  <p className="text-primaryText/80 text-sm md:text-lg tracking-[-2%]">
+                    A zero-knowledge trust protocol that powers capital-efficient applications — from authentication to payments, launches, lending and more.
                   </p>
                   <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
                     <button
@@ -394,7 +394,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                 {" "}
                 Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
               </h2>
-              <p className="text-primaryText/60 text-base text-center px-10 ">
+              <p className="text-primaryText/80 text-base text-center px-10 ">
                 Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
               </p>
             </div>

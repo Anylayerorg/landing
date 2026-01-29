@@ -34,7 +34,7 @@ const Attesters = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-2xl md:text-3xl text-white/60 font-serif lowercase max-w-2xl leading-relaxed italic"
+                            className="text-2xl md:text-3xl text-white/80 font-serif lowercase max-w-2xl leading-relaxed italic"
                         >
                             {copy.p1}
                         </motion.p>
