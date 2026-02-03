@@ -83,4 +83,13 @@ jspm_packages/
 # Package lock files (if using yarn/pnpm)
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 .pnpm-store/
+
+# Sub-projects (Excluded from landing push)
+anyscan/
+dashboard/
+
+# Design docs
+ai_agent_marketplace_design.md
+anylayer_protocol_website.md

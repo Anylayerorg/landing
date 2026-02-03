@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
+import Link from 'next/link';
 import {
   ShieldCheck,
 } from 'lucide-react';
@@ -69,14 +70,16 @@ const AIAgents = () => {
                 <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-black/40">{AGENT_CONTENT.ecosystem}</span>
               </div>
 
-              <button className="group relative flex items-center gap-3 bg-lightblueprimary text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
-                <span>See More Info About AI Agents</span>
-                <div className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14m-7-7 7 7-7 7" />
-                  </svg>
-                </div>
-              </button>
+              <Link href="/agents">
+                <button className="group relative flex items-center gap-3 bg-lightblueprimary text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]">
+                  <span>See More Info About AI Agents</span>
+                  <div className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14m-7-7 7 7-7 7" />
+                    </svg>
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

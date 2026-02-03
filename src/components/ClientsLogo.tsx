@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import React from 'react'
 import Marquee from "react-fast-marquee";
+import { cn } from '@/lib/utils';
 
 const partners = [
-    { name: "Ethereum", logo: "/ethereum.svg" },
-    { name: "Google Cloud", logo: "/google-cloud.svg" },
-    { name: "Infura", logo: "/infura.svg" },
-    { name: "Alchemy", logo: "/alchemy.svg" },
-    { name: "Base", logo: "/base.svg" },
-    { name: "BNB Chain", logo: "/bnb-chain.svg" },
-    { name: "Hyper EVM", logo: "/hyper-evm.svg" },
-    // Add more partners as needed
+  { name: "Ethereum", logo: "/ethereum.svg" },
+  { name: "Google Cloud", logo: "/google-cloud.svg" },
+  { name: "Infura", logo: "/infura.svg" },
+  { name: "Alchemy", logo: "/alchemy.svg" },
+  { name: "Base", logo: "/base.svg" },
+  { name: "BNB Chain", logo: "/bnb-chain.svg" },
+  { name: "Hyper EVM", logo: "/hyper-evm.svg" },
+  // Add more partners as needed
 ];
 
-const ClientsLogo = () => {
+const ClientsLogo = ({ className }: { className?: string }) => {
   return (
-    <section className="relative text-white py-11 overflow-hidden">
+    <section className={cn("relative text-white py-11 overflow-hidden", className)}>
 
       <div className="relative max-w-screen-xl mx-auto px-5">
         {/* Marquee Slider */}
