@@ -267,7 +267,7 @@ const BuilderPage = () => {
                 >
                   Integrate <br />
                   <span className="text-lightblueprimary">Verified</span> <br />
-                  <span className="text-white/10 outline-text">Behavior.</span>
+                  <span className="text-white outline-text">Behavior.</span>
                 </motion.h1>
 
                 <motion.div
@@ -303,7 +303,7 @@ const BuilderPage = () => {
         <section className="mb-80 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-24">
-              <HUDLabel text="INTEGRATION_PIPELINE" />
+              <HUDLabel text="INTEGRATION PIPELINE" />
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
                 Bring Trust into <br /> <span className="text-lightblueprimary">Your Execution Stack.</span>
               </h2>
@@ -362,8 +362,8 @@ const BuilderPage = () => {
                       <p className="text-white/40 text-sm leading-relaxed font-light">{item.desc}</p>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-[#121119] border border-white/5 font-mono text-[10px] text-lightblueprimary/90 transition-colors">
-                      {item.code}
+                    <div className="px-6 py-3 rounded-full bg-white/[0.03] border border-white/5 backdrop-blur-md inline-block w-full text-center">
+                      <span className="text-[11px] font-mono text-white/60 tracking-tight">{item.code}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -375,7 +375,7 @@ const BuilderPage = () => {
         {/* --- CAPABILITIES: COMPACT LIST --- */}
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-20">
-            <HUDLabel text="CAPABILITY_REGISTRY" />
+            <HUDLabel text="CAPABILITY REGISTRY" />
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
               Building With <br /> <span className="text-lightblueprimary">Verified Trust.</span>
             </h2>
@@ -461,9 +461,9 @@ const BuilderPage = () => {
 
               <div className="space-y-8 pt-8 border-t border-white/5">
                 {[
-                  { label: "REAL_TIME_LOOKUP", val: "Instant Identity Resolution", status: "Active" },
-                  { label: "SECURE_RES_VECTOR", val: "Cross-Chain Reputation", status: "Enabled" },
-                  { label: "TRUST_BAND_METRIC", val: "8631 Precision Score", status: "Verified" }
+                  { label: "REAL TIME LOOKUP", val: "Instant Identity Resolution", status: "Active" },
+                  { label: "SECURE RES VECTOR", val: "Cross-Chain Reputation", status: "Enabled" },
+                  { label: "TRUST BAND METRIC", val: "Precision Score", status: "Verified" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between group">
                     <div className="space-y-1">
@@ -510,7 +510,7 @@ const BuilderPage = () => {
         {/* --- DEVELOPER PROGRAM: THE COLLABORATION --- */}
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-24">
-            <HUDLabel text="DEVELOPER_PROGRAM" />
+            <HUDLabel text="DEVELOPER PROGRAM" />
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
               Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
             </h2>
@@ -600,7 +600,7 @@ const BuilderPage = () => {
         </section>
 
         {/* --- CLOSING: THE TRUST STATEMENT --- */}
-        <section className="max-w-4xl mx-auto py-60 text-center relative">
+        <section className="max-w-4xl mx-auto py-32 text-center relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-lightblueprimary to-transparent" />
 
           <motion.div {...fadeIn} className="space-y-12">
@@ -610,16 +610,12 @@ const BuilderPage = () => {
             <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">
               Anylayer provides the trust layer for the next generation of safer, smarter products.
             </p>
-            <div className="flex justify-center gap-12">
-              <Share2 className="text-white/5 w-6 h-6" />
-              <Network className="text-white/5 w-6 h-6" />
-              <Activity className="text-white/5 w-6 h-6" />
-            </div>
+            {/* Icons removed as per user request */}
           </motion.div>
         </section>
 
         {/* --- NEWS WIDGET --- */}
-        <div className="border-t border-white/5 pt-20">
+        <div className="pt-20">
           <BlogWidget
             category="Developers"
             limit={3}

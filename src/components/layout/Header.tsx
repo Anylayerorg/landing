@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
-import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio, X, Mail } from "lucide-react";
+import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio, X, Mail, Bot } from "lucide-react";
 import { ComingSoonModal } from "../ComingSoonModal";
 
 export function Header() {
@@ -230,20 +230,93 @@ export function Header() {
 
                             {/* Right: Structured Navigation */}
                             <div className="col-span-8">
-                              <div className="max-w-md">
-                                <div className="space-y-8">
-                                  <Link href="/identity" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Fingerprint size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Identity</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Private, human-readable on-chain identity for the digital self.</p>
-                                      </div>
+                              <div className="grid grid-cols-2 gap-x-12 gap-y-8">
+                                <Link href="/identity" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <Fingerprint size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                     </div>
-                                  </Link>
-                                </div>
+                                    <div>
+                                      <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Identity</h5>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Private, human-readable on-chain identity for the digital self.</p>
+                                    </div>
+                                  </div>
+                                </Link>
+
+                                <a href="https://reputation.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <Award size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Reputation</h5>
+                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Decentralized reputation scores based on verified behavior.</p>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="https://proof.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <ShieldCheck size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Proof</h5>
+                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Cryptographic proofs of real-world data and social status.</p>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="https://ecosystem.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <Globe size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Ecosystem</h5>
+                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">A growing network of dApps and services powered by Anylayer.</p>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="https://scan.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <Map size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
+                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
+                                    </div>
+                                  </div>
+                                </a>
+
+                                <a href="https://ai.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
+                                      <Bot size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">AI Agents</h5>
+                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">The trust layer for autonomous agents and decentralized intelligence.</p>
+                                    </div>
+                                  </div>
+                                </a>
                               </div>
                             </div>
                           </div>
@@ -333,21 +406,6 @@ export function Header() {
                               <div>
                                 <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 mb-6">Ecosystem Status</h4>
                                 <div className="space-y-8">
-                                  <button onClick={() => { scrollToSection('trustscore'); setIsResourcesDropdownOpen(false); }} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors relative">
-                                        <Globe size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-lightblueprimary rounded-full border-2 border-[#0D0D12]" />
-                                      </div>
-                                      <div>
-                                        <div className="flex items-center gap-2">
-                                          <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
-                                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Coming Soon</span>
-                                        </div>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
-                                      </div>
-                                    </div>
-                                  </button>
 
                                   <Link href="/events" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -509,14 +567,24 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
+                              { label: "Explorer", desc: "Track trust signals", icon: <Map size={20} />, href: "https://scan.anylayer.org", isExternal: true },
+                              { label: "AI Agents", desc: "Trust for agents", icon: <Bot size={20} />, href: "https://ai.anylayer.org", isExternal: true },
+                              { label: "Reputation", desc: "Decentralized scores", icon: <Award size={20} />, href: "https://reputation.anylayer.org", isExternal: true },
+                              { label: "Proof", desc: "Cryptographic proofs", icon: <ShieldCheck size={20} />, href: "https://proof.anylayer.org", isExternal: true },
+                              { label: "Ecosystem", desc: "Partner network", icon: <Globe size={20} />, href: "https://ecosystem.anylayer.org", isExternal: true },
                             ].map((item, idx) => {
                               const MobileContent = (
                                 <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
                                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-lightblueprimary">
                                     {item.icon}
                                   </div>
-                                  <div className="flex flex-col">
-                                    <span className="text-white font-medium">{item.label}</span>
+                                  <div className="flex-1 flex flex-col">
+                                    <div className="flex items-center justify-between">
+                                      <span className="text-white font-medium">{item.label}</span>
+                                      {item.isExternal && (
+                                        <ArrowUpRight size={14} className="text-white/20" />
+                                      )}
+                                    </div>
                                     <span className="text-[#636475] text-xs">{item.desc}</span>
                                   </div>
                                 </div>
@@ -532,8 +600,9 @@ export function Header() {
 
                               return (
                                 <button key={idx} className="block w-full text-left" onClick={() => {
-                                  if (item.id) {
-                                    scrollToSection(item.id);
+                                  const anyItem = item as any;
+                                  if (anyItem.id) {
+                                    scrollToSection(anyItem.id);
                                     setIsMobileMenuOpen(false);
                                   }
                                 }}>
@@ -588,7 +657,6 @@ export function Header() {
                           >
                             <div className="p-4 space-y-4">
                               {[
-                                { label: "Explorer", desc: "Track trust signals", icon: <Globe size={20} />, id: "trustscore", isComingSoon: true },
                                 { label: "Protocol Events", desc: "Summits & Sessions", icon: <Radio size={20} />, href: "/events" },
                                 { label: "Contact Us", desc: "Get in touch", icon: <Mail size={20} />, href: "/contact" },
                                 { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
@@ -609,7 +677,7 @@ export function Header() {
                                     <div className="flex-1 flex flex-col">
                                       <div className="flex items-center justify-between">
                                         <span className="text-white font-medium">{item.label}</span>
-                                        {item.isComingSoon && (
+                                        {(item as any).isComingSoon && (
                                           <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                         )}
                                       </div>
@@ -636,8 +704,9 @@ export function Header() {
 
                                 return (
                                   <button key={idx} className="block w-full text-left" onClick={() => {
-                                    if (item.id) {
-                                      scrollToSection(item.id);
+                                    const anyItem = item as any;
+                                    if (anyItem.id) {
+                                      scrollToSection(anyItem.id);
                                       setIsMobileMenuOpen(false);
                                     }
                                   }}>

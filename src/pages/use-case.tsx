@@ -5,13 +5,14 @@ import { Footer } from '../components/layout/Footer';
 import IndustrialCapital from '../components/IndustrialCapital';
 import { BlogWidget } from '../components/BlogWidget';
 import { motion } from 'framer-motion';
+import { UtilityHero } from '../components/UtilityHero';
 
 export default function UseCasePage() {
     return (
         <div className="bg-[#08080C] min-h-screen font-geist selection:bg-lightblueprimary/30">
             <Head>
                 <title>Use Cases | Anylayer</title>
-                <meta name="description" content="Unlock capital, not your data. Explore the diverse use cases of Anylayer's trust protocol across DeFi, payments, and commerce." />
+                <meta name="description" content="Utility Layer: Programmable reputation for the new internet. Explore the diverse use cases of Anylayer's trust protocol across DeFi, payments, and commerce." />
             </Head>
 
             {/* Atmospheric Background Controls */}
@@ -23,10 +24,13 @@ export default function UseCasePage() {
 
             <Header />
 
-            <main className="relative z-10 pt-32">
+            <main className="relative z-10">
+                <UtilityHero />
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 >
                     <IndustrialCapital />

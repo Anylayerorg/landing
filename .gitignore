@@ -83,9 +83,9 @@ jspm_packages/
 # Package lock files (if using yarn/pnpm)
 package-lock.json
 yarn.lock
-.pnpm-store/
 pnpm-lock.yaml
+.pnpm-store/
 
-# Exclude specific modules
+# Custom ignores
 anyscan/
 dashboard/
