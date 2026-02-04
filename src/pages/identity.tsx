@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
+import { IdentityHero } from '../components/IdentityHero';
 import { ArrowRight, Fingerprint, Shield, Zap, Globe, Cpu, Check, Lock, ChevronRight, X, ExternalLink, Mail, MessageSquare, Twitter, Github, Linkedin, Award, Activity, Search, Filter, Layers, Zap as ZapIcon, Info, Terminal, Users, Share2, Download, Copy, RefreshCw, Smartphone, BookOpen, ShieldCheck, Database, Key, CreditCard, Verified, History, PenTool, CheckCircle2, Plus, Sparkles, FileCheck } from 'lucide-react';
 import { ComingSoonModal } from '../components/ComingSoonModal';
 
@@ -27,7 +28,7 @@ const PROBLEM_DATA = {
     { id: "03", title: "Reputation", label: "Resets Everywhere", desc: "Your trust history vanishes every time you switch to a new application or chain." },
     { id: "04", title: "Privacy", label: "Optional", desc: "Onchain privacy is treated as a premium feature, not a default requirement." }
   ],
-  solution: "ANS exists to fix this — by separating identity from addresses, and trust from exposure."
+  solution: "ANS exists to fix this by separating identity from addresses, and trust from exposure."
 };
 
 const Section = React.forwardRef<HTMLElement, { children: React.ReactNode, className?: string, id?: string }>(
@@ -41,72 +42,6 @@ const Section = React.forwardRef<HTMLElement, { children: React.ReactNode, class
 );
 Section.displayName = "Section";
 
-const IdentityHero = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
-  <section className="relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-32 pb-20">
-    {/* Simple Atmospheric Background */}
-    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_40%,rgba(166,131,255,0.03),transparent_70%)]" />
-
-    <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-      <div className="flex gap-12 lg:gap-24">
-        {/* Vertical Accent Label */}
-        <div className="hidden lg:flex flex-col items-center gap-6">
-          <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-white/5" />
-          <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
-            ANYLAYER NETWORK
-          </span>
-          <div className="h-24 w-px bg-gradient-to-t from-transparent via-white/10 to-white/5" />
-        </div>
-
-        {/* Main Hero Content */}
-        <div className="flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-12"
-          >
-            <div className="space-y-8">
-              <SectionTag label="CORE PROTOCOL" />
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
-                Be <span className="text-lightblueprimary">Anything.</span>
-              </h1>
-              <p className="text-base md:text-xl text-white/60 max-w-xl leading-relaxed font-light tracking-tight">
-                Your Identity, Your Control. <span className="text-white/80">Separate reputation from exposure, and trust from fixed addresses.</span>
-              </p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8"
-            >
-              <button
-                onClick={onTriggerModal}
-                className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
-              >
-                <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
-                  Register a Name
-                </span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <a
-                href="https://docs.anylayer.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-white/40 hover:text-white transition-all whitespace-nowrap"
-              >
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] border-b border-white/0 group-hover:border-white/20 pb-0.5 transition-all">Documentation</span>
-                <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-white/40" />
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
 
 const IdentityProblem = () => {
   return (
@@ -125,10 +60,10 @@ const IdentityProblem = () => {
           {PROBLEM_DATA.problems.map((p, i) => (
             <div
               key={i}
-              className="bg-black p-8 space-y-6 hover:bg-white/[0.02] transition-colors group cursor-default"
+              className="bg-black p-8 space-y-6 cursor-default"
             >
               <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] group-hover:text-white transition-colors">
+                <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] transition-colors">
                   Case 0{i + 1} // {p.title}
                 </span>
                 <h3 className="text-xl font-black uppercase tracking-tight text-white/90">
@@ -327,7 +262,7 @@ const DeveloperIntegration = () => {
                     <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
                     <div className="flex items-center gap-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-black text-white">whale.ans</span>
+                      <span className="text-[10px] font-black text-white">whale.any</span>
                     </div>
                   </div>
                   <div className="h-px w-full bg-white/5" />
@@ -403,7 +338,7 @@ const DeveloperIntegration = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
-                    <h4 className="text-[10px] font-black uppercase text-white">alex.ans</h4>
+                    <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
                     <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
                   </div>
                   <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
@@ -437,7 +372,7 @@ const DeveloperIntegration = () => {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center text-[9px]">
                   <span className="text-white/40">Initiator</span>
-                  <span className="text-lightblueprimary font-black">alpha.ans</span>
+                  <span className="text-lightblueprimary font-black">alpha.any</span>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="flex justify-between items-center text-[9px]">

@@ -61,7 +61,7 @@ const AutoPopupModal = () => {
                 <div className='flex items-center justify-between mb-10'>
                   {/* Logo */}
                   <div className="flex items-center gap-4 md:gap-9">
-                    <Image src="/base-white.svg" alt="Base Logo" width={72} height={18} />
+                    <Image src="/hyper-evm-white.svg" alt="HyperEVM Logo" width={72} height={18} />
                     <Image src="/anylayer-logo.svg" alt="Anylayer Logo" width={130} height={18} />
                   </div>
 

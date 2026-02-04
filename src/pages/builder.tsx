@@ -26,6 +26,7 @@ import {
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogWidget } from '@/components/BlogWidget';
+import { BuilderHero } from '@/components/BuilderHero';
 
 const BuilderPage = () => {
   const fadeIn = {
@@ -202,6 +203,7 @@ const BuilderPage = () => {
     );
   };
 
+
   const HUDLabel = ({ text }: { text: string }) => (
     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
       <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
@@ -227,74 +229,7 @@ const BuilderPage = () => {
       <Header />
 
       <main className="relative">
-        {/* --- HERO BACKGROUND WITH BLENDING --- */}
-        <div className="absolute inset-0 h-[1000px] w-full overflow-hidden">
-          <div
-            className="absolute inset-0 bg-[url('/buld.jpg')] bg-cover bg-center opacity-40"
-            style={{
-              maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#08080C]/20 via-[#08080C]/40 to-[#08080C]" />
-        </div>
-
-        <div className="pt-44 pb-32 relative z-10">
-          {/* --- DYNAMIC BACKGROUND ELEMENTS --- */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
-            <div className="absolute top-0 right-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
-          </div>
-
-          {/* --- HERO: ARCHITECTURAL DECONSTRUCTION --- */}
-          <section className="max-w-7xl mx-auto px-6 relative text-center">
-            <div className="flex flex-col items-center space-y-12">
-              <div className="max-w-4xl space-y-12">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm"
-                >
-                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Build v1.0 // Trust Layer Protocol</span>
-                </motion.div>
-
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.85] text-white"
-                >
-                  Integrate <br />
-                  <span className="text-lightblueprimary">Verified</span> <br />
-                  <span className="text-white outline-text">Behavior.</span>
-                </motion.h1>
-
-                <motion.div
-                  {...fadeIn}
-                  transition={{ delay: 0.2 }}
-                  className="max-w-3xl space-y-12"
-                >
-                  <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-2xl mx-auto">
-                    Anylayer is the trust primitive for developers. Build applications where decisions are based on verified behavior rather than assumptions.
-                  </p>
-
-                  <div className="flex flex-wrap gap-6 pt-8 justify-center">
-                    <a href="/contact" className="group relative px-10 py-4 overflow-hidden rounded-full transition-all bg-white hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                      <div className="relative flex items-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]">
-                        Contact Us
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </a>
-                    <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="group px-10 py-4 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/[0.03]">
-                      <span className="text-white/60 group-hover:text-white font-black uppercase tracking-[0.2em] text-[11px]">Read Specs</span>
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-        </div>
+        <BuilderHero />
       </main>
 
       <div className="bg-[#08080C] relative z-20">
@@ -566,8 +501,8 @@ const BuilderPage = () => {
                 Wallet teams, protocols, marketplaces, consumer apps, and infrastructure builders exploring trust‑based features.
               </p>
             </div>
-            <a href="/contact" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
-              Contact Us
+            <a href="https://core.anylayer.org" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
+              Anylayer Core
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
