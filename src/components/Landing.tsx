@@ -256,10 +256,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               >
                 <div className="space-y-6 z-10 text-center">
                   <div className="mb-6">
-                    <SectionTag label="Core" subtitle="The Trust Engine" />
+                    <SectionTag label="Core" subtitle="Identity & Reputation Layer" />
                   </div>
                   <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
-                    The Trust Engine for{' '}
+                    Multi-layered Trust Engine for{' '}
                     <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                       {currentText}
                       <span className="animate-pulse">|</span>

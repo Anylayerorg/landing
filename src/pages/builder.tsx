@@ -214,128 +214,90 @@ const BuilderPage = () => {
       <Head>
         <title>Developers | Anylayer — Build with Verified Trust</title>
         <meta name="description" content="Integrate trust, reputation, and proofs into your product with Anylayer's SDKs and APIs." />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .outline-text {
+              -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+              color: transparent;
+            }
+          `
+        }} />
       </Head>
 
       <Header />
 
-      <main className="relative pt-44">
-        {/* --- DYNAMIC BACKGROUND ELEMENTS --- */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
-          <div className="absolute top-0 right-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
+      <main className="relative">
+        {/* --- HERO BACKGROUND WITH BLENDING --- */}
+        <div className="absolute inset-0 h-[1000px] w-full overflow-hidden">
+          <div
+            className="absolute inset-0 bg-[url('/buld.jpg')] bg-cover bg-center opacity-40"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#08080C]/20 via-[#08080C]/40 to-[#08080C]" />
         </div>
 
-        {/* --- HERO: ARCHITECTURAL DECONSTRUCTION --- */}
-        <section className="max-w-7xl mx-auto px-6 mb-32 relative">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-12">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm"
-              >
-                <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Build v1.0 // Trust Layer Protocol</span>
-              </motion.div>
+        <div className="pt-44 pb-32 relative z-10">
+          {/* --- DYNAMIC BACKGROUND ELEMENTS --- */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
+            <div className="absolute top-0 right-1/4 w-[1px] h-screen bg-gradient-to-b from-white/[0.05] via-transparent to-transparent" />
+          </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.8]"
-              >
-                Integrate <br />
-                <span className="text-lightblueprimary">Verified</span> <br />
-                <span className="text-white/10 outline-text">Behavior.</span>
-              </motion.h1>
-
-              <motion.div
-                {...fadeIn}
-                transition={{ delay: 0.2 }}
-                className="max-w-xl space-y-8"
-              >
-                <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed border-l border-white/10 pl-8">
-                  Anylayer is the trust primitive for developers.
-                  Build applications where decisions are based on verified behavior rather than assumptions.
-                </p>
-
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <a href="/contact" className="group relative px-10 py-4 overflow-hidden rounded-full transition-all">
-                    <div className="absolute inset-0 bg-white" />
-                    <div className="relative flex items-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]">
-                      Contact Us
-                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </a>
-                  <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="group px-10 py-4 rounded-full border border-white/10 hover:border-lightblueprimary/40 transition-all">
-                    <span className="text-white/60 group-hover:text-white font-black uppercase tracking-[0.2em] text-[11px]">Read Specs</span>
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="lg:col-span-5 relative hidden lg:block scale-[0.8] origin-right">
-              {/* Abstract Technical Visual */}
-              <div className="relative aspect-square">
-                {/* Outer Ring - More visible, active rotation */}
+          {/* --- HERO: ARCHITECTURAL DECONSTRUCTION --- */}
+          <section className="max-w-7xl mx-auto px-6 relative text-center">
+            <div className="flex flex-col items-center space-y-12">
+              <div className="max-w-4xl space-y-12">
                 <motion.div
-                  animate={{ rotate: 360, scale: [1, 1.02, 1] }}
-                  transition={{
-                    rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-                    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                  className="absolute inset-0 border-[1.5px] border-white/20 rounded-full"
-                />
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm"
+                >
+                  <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
+                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Build v1.0 // Trust Layer Protocol</span>
+                </motion.div>
 
-                {/* Middle Ring - Dashed, counter-rotation */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="text-6xl md:text-[80px] font-black tracking-tighter uppercase leading-[0.85] text-white"
+                >
+                  Integrate <br />
+                  <span className="text-lightblueprimary">Verified</span> <br />
+                  <span className="text-white/10 outline-text">Behavior.</span>
+                </motion.h1>
+
                 <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-8 border-[1.5px] border-white/10 rounded-full border-dashed"
-                />
+                  {...fadeIn}
+                  transition={{ delay: 0.2 }}
+                  className="max-w-3xl space-y-12"
+                >
+                  <p className="text-lg md:text-xl text-white/60 font-medium leading-relaxed max-w-2xl mx-auto">
+                    Anylayer is the trust primitive for developers. Build applications where decisions are based on verified behavior rather than assumptions.
+                  </p>
 
-                {/* Inner Ring - Scanning effect */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-16 border border-lightblueprimary/30 rounded-full border-t-transparent border-l-transparent"
-                />
-
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    {/* Removed blur/glow, kept clean icon with subtle float */}
-                    <motion.div
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <Activity className="text-lightblueprimary/60 w-16 h-16" />
-                    </motion.div>
+                  <div className="flex flex-wrap gap-6 pt-8 justify-center">
+                    <a href="/contact" className="group relative px-10 py-4 overflow-hidden rounded-full transition-all bg-white hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                      <div className="relative flex items-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]">
+                        Contact Us
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </a>
+                    <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="group px-10 py-4 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/[0.03]">
+                      <span className="text-white/60 group-hover:text-white font-black uppercase tracking-[0.2em] text-[11px]">Read Specs</span>
+                    </a>
                   </div>
-                </div>
-
-                {/* Floating Technical Tags */}
-                {[
-                  { icon: <ShieldCheck size={12} />, label: "ZK_PROOF", top: "15%", left: "10%" },
-                  { icon: <Database size={12} />, label: "DATA_VECTOR", top: "20%", right: "5%" },
-                  { icon: <Fingerprint size={12} />, label: "ID_RESOLVER", bottom: "25%", left: "5%" },
-                  { icon: <Network size={12} />, label: "NODE_MESH", bottom: "15%", right: "10%" }
-                ].map((tag, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + (i * 0.1) }}
-                    className="absolute flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/5 px-3 py-1.5 rounded-lg"
-                    style={{ top: tag.top, left: tag.left, right: tag.right, bottom: tag.bottom }}
-                  >
-                    <div className="text-lightblueprimary/60">{tag.icon}</div>
-                    <span className="text-[8px] font-mono uppercase tracking-widest text-white/40">{tag.label}</span>
-                  </motion.div>
-                ))}
+                </motion.div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+      </main>
+
+      <div className="bg-[#08080C] relative z-20">
 
         {/* --- PIPELINE: THE INTEGRATION FLOW --- */}
         <section className="mb-80 relative overflow-hidden">
@@ -666,10 +628,9 @@ const BuilderPage = () => {
             dark={true}
           />
         </div>
-      </main>
-
+      </div>
       <Footer />
-    </div >
+    </div>
   );
 };
 

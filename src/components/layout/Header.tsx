@@ -229,9 +229,8 @@ export function Header() {
                             </div>
 
                             {/* Right: Structured Navigation */}
-                            <div className="col-span-8 grid grid-cols-2 gap-x-16 gap-y-12">
-                              {/* Column 1 */}
-                              <div>
+                            <div className="col-span-8">
+                              <div className="max-w-md">
                                 <div className="space-y-8">
                                   <Link href="/identity" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -244,59 +243,6 @@ export function Header() {
                                       </div>
                                     </div>
                                   </Link>
-
-                                  <button onClick={() => { scrollToSection('reputation'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Award size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Reputation</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Portable on-chain credibility and trust metrics that grow with you.</p>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                              </div>
-
-                              {/* Column 2 */}
-                              <div>
-                                <div className="space-y-8">
-                                  <button onClick={() => { scrollToSection('architecture'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <ShieldCheck size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Proof</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Zero-knowledge attestations to verify status without revealing data.</p>
-                                      </div>
-                                    </div>
-                                  </button>
-
-                                  {/* <Link href="/attesters" onClick={() => setIsFeaturesDropdownOpen(false)} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Radio size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Attesters</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Verify outcomes and issue trust signals for the network.</p>
-                                      </div>
-                                    </div>
-                                  </Link> */}
-
-                                  <button onClick={() => { scrollToSection('dimension'); setIsFeaturesDropdownOpen(false); }} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Cpu size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Utility</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Practical applications and tools for cross-chain interoperability.</p>
-                                      </div>
-                                    </div>
-                                  </button>
                                 </div>
                               </div>
                             </div>
@@ -563,10 +509,6 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                              // { label: "Attesters", desc: "Issue trust signals", icon: <Radio size={20} />, href: "/attesters" },
-                              { label: "Reputation", desc: "Trust metrics", icon: <Award size={20} />, id: "reputation" },
-                              { label: "Proof", desc: "ZK-attestations", icon: <ShieldCheck size={20} />, id: "architecture" },
-                              { label: "Utility", desc: "Interoperability tools", icon: <Cpu size={20} />, id: "dimension" }
                             ].map((item, idx) => {
                               const MobileContent = (
                                 <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
