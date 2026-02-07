@@ -89,6 +89,32 @@ const BlogPost = () => {
           <img src={urlFor(value).url()} alt="Content image" className="w-full h-auto" />
         </div>
       ),
+      table: ({ value }: any) => (
+        <div className="my-10 overflow-x-auto border border-white/5 rounded-2xl bg-white/[0.01]">
+          <table className="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr className="bg-white/[0.03] border-b border-white/5">
+                {value.rows[0].cells.map((cell: string, i: number) => (
+                  <th key={i} className="px-6 py-4 font-black uppercase tracking-widest text-[10px] text-lightblueprimary">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {value.rows.slice(1).map((row: any, i: number) => (
+                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
+                  {row.cells.map((cell: string, j: number) => (
+                    <td key={j} className="px-6 py-4 text-white/50 font-light">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ),
     },
   };
 
@@ -164,8 +190,8 @@ const BlogPost = () => {
               {/* Featured Image */}
               {post.mainImage && (
                 <div className="aspect-video bg-black border border-white/10 rounded-2xl overflow-hidden relative">
-                  <img 
-                    src={urlFor(post.mainImage).url()} 
+                  <img
+                    src={urlFor(post.mainImage).url()}
                     alt={post.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -195,7 +221,7 @@ const BlogPost = () => {
                   <h3 className="text-sm font-black uppercase tracking-wider text-white/30">
                     Continue Reading
                   </h3>
-                  
+
                   <div className="grid md:grid-cols-2 gap-5">
                     {post.related.map((related: any, index: number) => (
                       <Link key={index} href={`/blog/${related.slug}`}>
@@ -208,7 +234,7 @@ const BlogPost = () => {
                           <h4 className="text-lg font-black tracking-tight leading-tight group-hover:text-white/90 transition-colors mb-4">
                             {related.title}
                           </h4>
-                          
+
                           <div className="flex items-center gap-2 text-xs text-white/40 font-mono uppercase tracking-wider group-hover:text-white group-hover:gap-3 transition-all">
                             Read Article
                             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

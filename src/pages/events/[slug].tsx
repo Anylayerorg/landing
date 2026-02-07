@@ -77,6 +77,34 @@ const EventDetailPage = () => {
         listItem: {
             bullet: ({ children }: any) => <li className="text-white/40 font-light">{children}</li>,
         },
+        types: {
+            table: ({ value }: any) => (
+                <div className="my-10 overflow-x-auto border border-white/5 rounded-2xl bg-white/[0.01]">
+                    <table className="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr className="bg-white/[0.03] border-b border-white/5">
+                                {value.rows[0].cells.map((cell: string, i: number) => (
+                                    <th key={i} className="px-6 py-4 font-black uppercase tracking-widest text-[10px] text-lightblueprimary">
+                                        {cell}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {value.rows.slice(1).map((row: any, i: number) => (
+                                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
+                                    {row.cells.map((cell: string, j: number) => (
+                                        <td key={j} className="px-6 py-4 text-white/50 font-light">
+                                            {cell}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ),
+        },
     };
 
     const formattedDate = new Date(event.eventDate).toLocaleDateString('en-US', {

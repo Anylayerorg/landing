@@ -62,6 +62,10 @@ export default {
         {
           type: 'image',
         },
+        {
+          type: 'table',
+          title: 'Table',
+        },
       ],
     },
     {

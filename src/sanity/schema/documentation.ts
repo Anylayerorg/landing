@@ -59,6 +59,10 @@ export default {
                         withLineNumbers: true,
                     },
                 },
+                {
+                    type: 'table',
+                    title: 'Table',
+                },
             ],
         },
         {

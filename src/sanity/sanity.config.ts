@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { codeInput } from '@sanity/code-input';
+import { table } from '@sanity/table';
 import post from './schema/post';
 import author from './schema/author';
 import category from './schema/category';
@@ -25,5 +26,6 @@ export default defineConfig({
     }),
     visionTool(),
     codeInput(),
+    table(),
   ],
 });

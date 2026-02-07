@@ -64,6 +64,32 @@ const PortableTextComponents = {
         </SyntaxHighlighter>
       </div>
     ),
+    table: ({ value }: any) => (
+      <div className="my-10 overflow-x-auto border border-black/5 rounded-2xl shadow-sm">
+        <table className="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr className="bg-zinc-50 border-b border-black/5">
+              {value.rows[0].cells.map((cell: string, i: number) => (
+                <th key={i} className="px-6 py-4 font-black uppercase tracking-widest text-[10px] text-black">
+                  {cell}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {value.rows.slice(1).map((row: any, i: number) => (
+              <tr key={i} className="border-b border-black/5 last:border-0 hover:bg-zinc-50/50 transition-colors">
+                {row.cells.map((cell: string, j: number) => (
+                  <td key={j} className="px-6 py-4 text-zinc-600 font-medium">
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ),
   },
 };
 
