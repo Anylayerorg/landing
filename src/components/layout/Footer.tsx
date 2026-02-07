@@ -99,8 +99,17 @@ const Links = () => (
     <div className="space-y-6">
       <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Builders</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
-        {["Documentation", "SDK Reference", "Tutorials", "API Keys"].map(l => (
-          <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>
+        {[
+          { label: "Documentation", href: "/docs" },
+          { label: "SDK Reference", href: "#" },
+          { label: "Tutorials", href: "#" },
+          { label: "API Keys", href: "#" }
+        ].map(l => (
+          <li key={l.label}>
+            <Link href={l.href} className="hover:text-white transition-colors cursor-pointer">
+              {l.label}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
