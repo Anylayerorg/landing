@@ -27,7 +27,7 @@ const layers = [
     visualSrc: '/reputation-layer.svg',
     iconSrc: '/reputation-bgicon.svg',
     color: 'rgba(59, 130, 246, 1)',
-    link: 'https://docs.anylayer.org/any-library/reputation-and-scoring',
+    link: '/docs',
   },
   {
     id: '03',
@@ -38,7 +38,7 @@ const layers = [
     visualSrc: '/proof-layer.svg',
     iconSrc: '/proof-bgicon.svg',
     color: 'rgba(16, 185, 129, 1)',
-    link: 'https://docs.anylayer.org/any-library/privacy-and-zero-knowledge',
+    link: '/docs',
   },
   {
     id: '04',
@@ -49,7 +49,7 @@ const layers = [
     visualSrc: '/utility-layer.svg',
     iconSrc: '/utility-bgicon.svg',
     color: 'rgba(166, 131, 255, 1)',
-    link: 'https://docs.anylayer.org/introduction/ecosystem-layer',
+    link: '/docs',
   }
 ];
 

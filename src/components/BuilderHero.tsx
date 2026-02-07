@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Terminal, Cpu, Webhook, ShieldCheck, Zap, Database, Fingerprint } from 'lucide-react';
+import Link from 'next/link';
 
 const SectionTag = ({ label }: { label: string }) => (
     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border bg-white/[0.02] border-white/5 text-white/40 mb-4">
@@ -69,17 +70,15 @@ export const BuilderHero = () => {
                                 transition={{ delay: 0.6 }}
                                 className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8"
                             >
-                                <a
-                                    href="https://docs.anylayer.org"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    href="/docs"
                                     className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                 >
                                     <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
                                         Read Specs
                                     </span>
                                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                </a>
+                                </Link>
 
                                 <div className="flex items-center gap-6">
                                     {[

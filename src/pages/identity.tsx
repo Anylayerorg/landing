@@ -7,6 +7,7 @@ import { BlogWidget } from '@/components/BlogWidget';
 import { IdentityHero } from '../components/IdentityHero';
 import { ArrowRight, Fingerprint, Shield, Zap, Globe, Cpu, Check, Lock, ChevronRight, X, ExternalLink, Mail, MessageSquare, Twitter, Github, Linkedin, Award, Activity, Search, Filter, Layers, Zap as ZapIcon, Info, Terminal, Users, Share2, Download, Copy, RefreshCw, Smartphone, BookOpen, ShieldCheck, Database, Key, CreditCard, Verified, History, PenTool, CheckCircle2, Plus, Sparkles, FileCheck } from 'lucide-react';
 import { ComingSoonModal } from '../components/ComingSoonModal';
+import Link from 'next/link';
 
 const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtitle?: string, theme?: 'dark' | 'light' }) => (
   <div className={`inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border ${theme === 'dark'
@@ -313,7 +314,7 @@ const DeveloperIntegration = () => {
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
               <a
-                href="https://docs.anylayer.org"
+                href="https://core.anylayer.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"

@@ -449,7 +449,7 @@ export function Header() {
                                     </div>
                                   </Link>
 
-                                  <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                  <Link href="/docs" className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <FileText size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
@@ -459,7 +459,7 @@ export function Header() {
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
                                       </div>
                                     </div>
-                                  </a>
+                                  </Link>
 
                                   <Link href="/policy" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -660,7 +660,7 @@ export function Header() {
                                 { label: "Protocol Events", desc: "Summits & Sessions", icon: <Radio size={20} />, href: "/events" },
                                 { label: "Contact Us", desc: "Get in touch", icon: <Mail size={20} />, href: "/contact" },
                                 { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
-                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "https://docs.anylayer.org" },
+                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "/docs" },
                                 { label: "Official Policies", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
                               ].map((item, idx) => {
                                 const MobileContent = (

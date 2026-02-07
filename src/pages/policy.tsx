@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Clock
 } from 'lucide-react';
+import Link from 'next/link';
 
 const POLICIES = [
   {
@@ -920,10 +921,10 @@ const PolicyPage = () => {
               <div className="pt-12 border-t border-white/5 space-y-6">
                 <h4 className="text-[9px] uppercase tracking-widest font-black text-white/10">External</h4>
                 <div className="space-y-4">
-                  <a href="https://docs.anylayer.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-white/20 hover:text-white transition-colors">
+                  <Link href="/docs" className="flex items-center gap-2 text-xs text-white/20 hover:text-white transition-colors">
                     Developer Docs
                     <ExternalLink size={10} className="opacity-20" />
-                  </a>
+                  </Link>
                   <a href="https://github.com/anylayer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-white/20 hover:text-white transition-colors">
                     Security Audits
                     <ExternalLink size={10} className="opacity-20" />

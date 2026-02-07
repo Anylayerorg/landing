@@ -52,7 +52,7 @@ export const ComingSoonModal = ({ isOpen, onClose }: ComingSoonModalProps) => {
 
                                 <div className="w-full space-y-3">
                                     <a
-                                        href="https://x.com/dotanylayer"
+                                        href="https://x.com/anylayerorg"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-between w-full px-7 py-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group/link"

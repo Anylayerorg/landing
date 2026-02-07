@@ -9,7 +9,7 @@ const footerIcon = [
   { title: "Telegram", link: "https://t.me/dotanylayer", icon: "/telegram.svg", width: 17, height: 14 },
   { title: "Discord", link: "https://discord.gg/ZmnsPMKgjw", icon: "/discord.svg", width: 16, height: 14 },
   { title: "Linkedin", link: "https://www.linkedin.com/company/anylayer/", icon: "/linkedin.svg", width: 16, height: 16 },
-  { title: "X", link: "https://x.com/dotanylayer", icon: "/twitter.svg", width: 13, height: 13 },
+  { title: "X", link: "https://x.com/anylayerorg", icon: "/twitter.svg", width: 13, height: 13 },
 ];
 
 const Newsletter = () => {
