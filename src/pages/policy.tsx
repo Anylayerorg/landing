@@ -851,6 +851,7 @@ const PolicyPage = () => {
   const handlePolicyChange = (policy: typeof POLICIES[0]) => {
     setActivePolicy(policy);
     window.location.hash = policy.id;
+    window.scrollTo(0, 0);
   };
 
   const filteredPolicies = POLICIES.filter(p =>

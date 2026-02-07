@@ -147,6 +147,7 @@ const DocsPage = () => {
   const handleDocChange = (doc: DocContent) => {
     setActiveDoc(doc);
     window.location.hash = doc.slug.current;
+    window.scrollTo(0, 0);
   };
 
   const filteredDocs = docs.filter(d =>
