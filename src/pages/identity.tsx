@@ -232,7 +232,7 @@ const EverydayUses = () => {
   );
 };
 
-const DeveloperIntegration = () => {
+const DeveloperIntegration = ({ onDocumentationClick }: { onDocumentationClick: () => void }) => {
   return (
     <Section className="bg-black text-white py-24 md:py-32 border-t border-white/5" id="integrate">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -313,15 +313,13 @@ const DeveloperIntegration = () => {
               <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
-              <a
-                href="https://core.anylayer.org"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={onDocumentationClick}
                 className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
               >
                 <span>Documentation</span>
                 <ArrowRight size={12} className="text-white/40" />
-              </a>
+              </button>
             </div>
           </div>
 
@@ -407,13 +405,13 @@ const IdentityHomeSection = ({ onTriggerModal }: { onTriggerModal: () => void })
         </p>
 
         <div className="pt-6">
-          <button
-            onClick={onTriggerModal}
+          <Link
+            href="/docs"
             className="group inline-flex items-center gap-4 bg-black text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
           >
             <span>Get Started</span>
             <ArrowRight size={14} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -647,7 +645,7 @@ export default function IdentityPage() {
 
         <EverydayUses />
 
-        <DeveloperIntegration />
+        <DeveloperIntegration onDocumentationClick={() => setIsComingSoonOpen(true)} />
 
         <FinalClosing />
       </main>

@@ -85,8 +85,7 @@ const Links = () => (
       <ul className="space-y-3 text-sm text-white/40 font-light">
         {[
           { label: "Architecture", href: "/#architecture" },
-          { label: "Identity", href: "/identity" },
-          { label: "Reputation", href: "/#reputation" }
+          { label: "Identity", href: "/identity" }
         ].map(l => (
           <li key={l.label}>
             <Link href={l.href} className="hover:text-white transition-colors cursor-pointer">

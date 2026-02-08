@@ -63,15 +63,17 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                                 transition={{ delay: 0.6 }}
                                 className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8"
                             >
-                                <button
-                                    onClick={onTriggerModal}
+                                <a
+                                    href="https://ans.anylayer.org"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                 >
                                     <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
-                                        Register a Name
+                                        Reserve a Name
                                     </span>
                                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                </button>
+                                </a>
 
                                 <div className="flex items-center gap-6">
                                     {[

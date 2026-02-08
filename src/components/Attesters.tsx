@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-const Attesters = () => {
+const Attesters = ({ onDocumentationClick }: { onDocumentationClick?: () => void }) => {
     const copy = {
         title: "Become an Attester",
         p1: "Attesters are the backbone of Anylayer. They observe real behavior and turn it into verifiable reputation without exposing raw data.",
@@ -51,13 +51,13 @@ const Attesters = () => {
                                 <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                                 <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Earn trust by accuracy, not permission</span>
                             </div>
-                            <Link
-                                href="/docs"
+                            <button
+                                onClick={onDocumentationClick}
                                 className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
                             >
                                 Documentation
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            </button>
                         </motion.div>
                     </div>
                 </div>

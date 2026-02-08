@@ -171,6 +171,7 @@ export function Header() {
                 Home
               </Link>
 
+
               {/* Features Dropdown */}
               <div className="relative" ref={featuresRef}>
                 <button
@@ -180,7 +181,7 @@ export function Header() {
                   }}
                   className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] flex items-center gap-1.5 active:scale-95"
                 >
-                  Features
+                  Products
                   <svg
                     className={`w-3.5 h-3.5 transition-transform duration-300 ${isFeaturesDropdownOpen ? "rotate-180" : ""
                       }`}
@@ -221,7 +222,7 @@ export function Header() {
                               </div>
                               <h2 className="font-geist font-medium text-4xl text-white leading-tight tracking-tight mb-6">
                                 Core <br />
-                                <span className="text-[#636475]">Features.</span>
+                                <span className="text-[#636475]">Products.</span>
                               </h2>
                               <p className="text-[#9494a3] text-base font-normal leading-relaxed">
                                 Explore the four dimensions of trust and identity that power the Anylayer ecosystem.
@@ -243,66 +244,6 @@ export function Header() {
                                   </div>
                                 </Link>
 
-                                <a href="https://reputation.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
-                                  <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                      <Award size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                    </div>
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Reputation</h5>
-                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                      </div>
-                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Decentralized reputation scores based on verified behavior.</p>
-                                    </div>
-                                  </div>
-                                </a>
-
-                                <a href="https://proof.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
-                                  <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                      <ShieldCheck size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                    </div>
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Proof</h5>
-                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                      </div>
-                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Cryptographic proofs of real-world data and social status.</p>
-                                    </div>
-                                  </div>
-                                </a>
-
-                                <a href="https://ecosystem.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
-                                  <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                      <Globe size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                    </div>
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Ecosystem</h5>
-                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                      </div>
-                                      <p className="text-sm text-[#636475] mt-1 leading-snug">A growing network of dApps and services powered by Anylayer.</p>
-                                    </div>
-                                  </div>
-                                </a>
-
-                                <a href="https://scan.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
-                                  <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                      <Map size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                    </div>
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Network Explorer</h5>
-                                        <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                                      </div>
-                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
-                                    </div>
-                                  </div>
-                                </a>
-
                                 <a href="https://ai.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
                                   <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
@@ -310,13 +251,43 @@ export function Header() {
                                     </div>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">AI Agents</h5>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Axis (AI agents)</h5>
                                         <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                       </div>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">The trust layer for autonomous agents and decentralized intelligence.</p>
                                     </div>
                                   </div>
                                 </a>
+
+                                <div className="group block text-left opacity-50 cursor-not-allowed">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                      <Map size={20} className="text-[#636475]" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white">Network Explorer</h5>
+                                        <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="group block text-left opacity-50 cursor-not-allowed">
+                                  <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                      <Globe size={20} className="text-[#636475]" />
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2">
+                                        <h5 className="text-base font-medium text-white">Ecosystem</h5>
+                                        <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
+                                      </div>
+                                      <p className="text-sm text-[#636475] mt-1 leading-snug">A growing network of dApps and services powered by Anylayer.</p>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -331,7 +302,7 @@ export function Header() {
                 href="/use-case"
                 className="transition-all text-[#9494a3] hover:text-white cursor-pointer text-[13px] font-bold tracking-tight whitespace-nowrap px-4 py-2 rounded-lg hover:bg-white/[0.03] active:scale-95"
               >
-                Use Cases
+                Utility
               </Link>
 
 
@@ -437,29 +408,33 @@ export function Header() {
                               <div>
                                 <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 mb-6">Technical Resources</h4>
                                 <div className="space-y-8">
-                                  <Link href="/builder" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
-                                    <div className="flex items-start gap-4">
-                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
-                                        <Code2 size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
-                                      </div>
-                                      <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Developer Portal</h5>
-                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Integrate trust into your apps with our core APIs.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-
-                                  <Link href="/docs" className="group block text-left">
+                                  <Link href="/docs" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
                                       <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                         <FileText size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Technical Whitepaper</h5>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Documentation</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
                                       </div>
                                     </div>
                                   </Link>
+
+
+                                  <div className="group block text-left opacity-50 cursor-not-allowed">
+                                    <div className="flex items-start gap-4">
+                                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                        <FileText size={20} className="text-[#636475]" />
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center gap-2">
+                                          <h5 className="text-base font-medium text-white">Technical Whitepaper</h5>
+                                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
+                                        </div>
+                                        <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
+                                      </div>
+                                    </div>
+                                  </div>
 
                                   <Link href="/policy" onClick={() => setIsResourcesDropdownOpen(false)} className="group block text-left">
                                     <div className="flex items-start gap-4">
@@ -547,7 +522,7 @@ export function Header() {
                       onClick={() => setIsMobileFeaturesOpen(prev => !prev)}
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold flex items-center justify-between"
                     >
-                      Features
+                      Products
                       <svg
                         className={`w-5 h-5 transition-transform duration-300 ${isMobileFeaturesOpen ? "rotate-180" : ""}`}
                         fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -567,21 +542,21 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                              { label: "Explorer", desc: "Track trust signals", icon: <Map size={20} />, href: "https://scan.anylayer.org", isExternal: true },
-                              { label: "AI Agents", desc: "Trust for agents", icon: <Bot size={20} />, href: "https://ai.anylayer.org", isExternal: true },
-                              { label: "Reputation", desc: "Decentralized scores", icon: <Award size={20} />, href: "https://reputation.anylayer.org", isExternal: true },
-                              { label: "Proof", desc: "Cryptographic proofs", icon: <ShieldCheck size={20} />, href: "https://proof.anylayer.org", isExternal: true },
-                              { label: "Ecosystem", desc: "Partner network", icon: <Globe size={20} />, href: "https://ecosystem.anylayer.org", isExternal: true },
+                              { label: "Axis (AI agents)", desc: "Trust for agents", icon: <Bot size={20} />, href: "https://ai.anylayer.org", isExternal: true },
+                              { label: "Explorer", desc: "Track trust signals", icon: <Map size={20} />, isComingSoon: true },
+                              { label: "Ecosystem", desc: "Partner network", icon: <Globe size={20} />, isComingSoon: true },
                             ].map((item, idx) => {
                               const MobileContent = (
-                                <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                                <div className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${item.isComingSoon ? "opacity-50" : "hover:bg-white/5"}`}>
                                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 text-lightblueprimary">
                                     {item.icon}
                                   </div>
                                   <div className="flex-1 flex flex-col">
                                     <div className="flex items-center justify-between">
                                       <span className="text-white font-medium">{item.label}</span>
-                                      {item.isExternal && (
+                                      {item.isComingSoon ? (
+                                        <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
+                                      ) : item.isExternal && (
                                         <ArrowUpRight size={14} className="text-white/20" />
                                       )}
                                     </div>
@@ -620,7 +595,7 @@ export function Header() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
                     >
-                      Use Cases
+                      Utility
                     </Link>
 
 
@@ -631,6 +606,14 @@ export function Header() {
                       className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
                     >
                       Blog
+                    </Link>
+
+                    <Link
+                      href="/builder"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-full text-left text-[#9494a3] hover:text-white transition-all py-4 px-4 hover:bg-white/5 rounded-xl text-lg font-bold border border-transparent hover:border-white/5 block"
+                    >
+                      Builders
                     </Link>
 
                     <div className="pt-4 mt-4 border-t border-white/5">
@@ -657,10 +640,10 @@ export function Header() {
                           >
                             <div className="p-4 space-y-4">
                               {[
+                                { label: "Documentation", desc: "Technical guides", icon: <FileText size={20} />, href: "/docs" },
                                 { label: "Protocol Events", desc: "Summits & Sessions", icon: <Radio size={20} />, href: "/events" },
                                 { label: "Contact Us", desc: "Get in touch", icon: <Mail size={20} />, href: "/contact" },
-                                { label: "Developers", desc: "Core SDKs", icon: <Code2 size={20} />, href: "/builder" },
-                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, href: "/docs" },
+                                { label: "Whitepaper", desc: "Technical deep dive", icon: <FileText size={20} />, isComingSoon: true },
                                 { label: "Official Policies", desc: ".any ownership rules", icon: <Scale size={20} />, href: "/policy" }
                               ].map((item, idx) => {
                                 const MobileContent = (
