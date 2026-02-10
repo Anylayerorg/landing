@@ -32,7 +32,7 @@ const data = [
     ],
   },
   {
-    title: "Axis verified behavior",
+    title: "AI verified behavior",
     description:
       "Agent Trust captures outcome reliability for autonomous agents. It is built from task‑completion success, incident rates, execution quality (e.g., slippage/latency), and user feedback—provable without sharing logs or strategies.",
     line2: "",

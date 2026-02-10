@@ -11,6 +11,7 @@ import { Footer } from './layout/Footer';
 import IndustrialArchitecture from './IndustrialArchitecture';
 import { Header } from './layout/Header';
 import AutoPopupModal from './Popup';
+import AIAgents from './AIAgents';
 import Attesters from './Attesters';
 import { BlogWidget } from './BlogWidget';
 import { SEO } from './layout/SEO';
@@ -383,6 +384,116 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute bottom-96 left-0" />
         <Image src="/right-shade.svg" alt="Background Gradient" width="722" height="1966" className="absolute bottom-32 right-0" />
 
+        {/* Section 2 charts */}
+        <section id="reputation" className="px-5 py-10 md:py-20 max-w-screen-xl mx-auto">
+          <div className="flex flex-wrap justify-between items-center gap-2">
+            <div
+              className="max-w-[39rem] mx-auto flex flex-col items-center"
+            >
+              <div className="mb-6">
+                <SectionTag label="Signal" subtitle="Trust Analytics" />
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText mb-6 leading-[0.9] tracking-tighter text-center">
+                {" "}
+                Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
+              </h2>
+              <p className="text-primaryText/80 text-base text-center px-10 ">
+                Explore reputation growth, verify real users, and see what drives trust with clean visual insights and instant scoring.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-20">
+            {/* Wallet ID */}
+            <div
+              className='md:col-span-2'
+            >
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
+                <Image
+                  src="/updated-trust-cards.svg"
+                  alt="See what drives reputation clearly"
+                  width="400"
+                  height="319"
+                  className="w-full h-[240px] md:h-[319px] object-contain mb-6 md:mb-10"
+                />
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
+                  {"See what drives reputation clearly"}
+                </h3>
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
+                  {
+                    "Break down trust into identity, behavior, and wallet activity at a glance for everyone."
+                  }
+                </p>
+              </div>
+            </div>
+            <div
+              className="md:col-span-3"
+            >
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
+                <Image
+                  src="/line-chart.svg"
+                  alt="Real-time trust, always up-to-date"
+                  width="658"
+                  height="319"
+                  className="w-full h-[190px] md:h-[319px] object-contain mb-6 md:mb-10"
+                />
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
+                  {"Real-time trust, always up-to-date"}
+                </h3>
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
+                  {
+                    "Track every score change instantly across identity, wallets, and actions, allowing you to monitor growth, risks, and performance without revealing sensitive data."
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch mt-5">
+            <div
+              className="md:col-span-3"
+            >
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
+                <Image
+                  src="/trust-history.svg"
+                  alt="Follow every action that shapes trust"
+                  width="690"
+                  height="350"
+                  className="w-full h-[200px] md:h-[350px] object-contain"
+                />
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                  {"Follow every action that shapes trust"}
+                </h3>
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
+                  {
+                    "View history, scores, and signals from swaps, claims, bridges, and governance, helping you understand how each action contributes to reputation growth and long-term credibility."
+                  }
+                </p>
+              </div>
+            </div>
+            <div
+              className="md:col-span-2"
+            >
+              <div className="px-6 pb-7 pt-10 rounded-[20px] bg-[#121119] h-full">
+                <Image
+                  src="/chain-card-anylayer.svg"
+                  alt="Verify credibility anywhere on-chain"
+                  width="400"
+                  height="350"
+                  className="w-full h-[270px] md:h-[350px] object-contain"
+                />
+                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                  {"Verify credibility anywhere on-chain"}
+                </h3>
+                <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
+                  {
+                    "Gamified reputation building with rewards and special recognition."
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <ProcessFlow />
 
@@ -397,6 +508,8 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
 
 
+
+        <AIAgents />
 
         <ParallelCards sectionId="dimension" />
 
