@@ -868,11 +868,11 @@ const PolicyPage = () => {
       <div className="bg-white min-h-screen font-geist text-black">
         <Header />
 
-        <main className="pt-32 pb-24 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+        <main className="h-screen pt-32 pb-12 px-6 md:px-12 flex flex-col overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 min-h-0 w-full overflow-hidden">
 
             {/* Sidebar Navigation */}
-            <aside className="lg:w-64 space-y-12 shrink-0 lg:sticky lg:top-32 self-start">
+            <aside className="lg:w-64 space-y-12 shrink-0 h-full overflow-y-auto pr-4 scrollbar-hide">
               <div className="space-y-8">
                 <div>
                   <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Policies</h1>
@@ -935,7 +935,7 @@ const PolicyPage = () => {
             </aside>
 
             {/* Content Area */}
-            <article className="flex-1 min-w-0">
+            <article className="flex-1 min-w-0 h-full overflow-y-auto pr-4 scrollbar-hide pb-24">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activePolicy.id}
@@ -979,6 +979,10 @@ const PolicyPage = () => {
                         <FileText size={12} />
                       </button>
                     </div>
+
+                    <div className="pt-20">
+                      <Footer />
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -986,8 +990,6 @@ const PolicyPage = () => {
 
           </div>
         </main>
-
-        <Footer />
       </div>
     </>
   );

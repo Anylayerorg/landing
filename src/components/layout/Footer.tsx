@@ -139,8 +139,11 @@ export function Footer() {
           </div>
 
           <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-10">
-              <Image src="/logo-anylayer.svg" alt="Anylayer" width={120} height={30} className="opacity-40" />
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 opacity-40">
+                <Image src="/favicon-logo.svg" alt="" width={24} height={24} className="w-6 h-6 object-contain grayscale brightness-200" />
+                <span className="font-inter font-black text-white text-lg tracking-tighter uppercase leading-none">Anylayer</span>
+              </div>
               <p className="text-[10px] font-mono text-white/10 uppercase tracking-widest font-black">© 2026 Anylayer Logic</p>
             </div>
             <div className="flex gap-4">

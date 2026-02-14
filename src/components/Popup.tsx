@@ -62,7 +62,10 @@ const AutoPopupModal = () => {
                   {/* Logo */}
                   <div className="flex items-center gap-4 md:gap-9">
                     <Image src="/hyper-evm-white.svg" alt="HyperEVM Logo" width={72} height={18} />
-                    <Image src="/anylayer-logo.svg" alt="Anylayer Logo" width={130} height={18} />
+                    <div className="flex items-center gap-2">
+                      <Image src="/favicon-logo.svg" alt="" width={18} height={18} className="w-[18px] h-[18px] object-contain" />
+                      <span className="font-inter font-black text-white text-base tracking-tighter uppercase leading-none pt-0.5">Anylayer</span>
+                    </div>
                   </div>
 
                   {/* Close Button */}

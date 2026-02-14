@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Fira+Code:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 
@@ -13,7 +13,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-family: "Geist", "Inter", sans-serif;
   line-height: 1.6;
   color: #000000;
@@ -148,31 +149,45 @@ body {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(10px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes revolve {
-  from { 
+  from {
     transform: rotate(0deg);
   }
-  to { 
+
+  to {
     transform: rotate(360deg);
   }
 }
@@ -240,12 +255,12 @@ body {
   @apply bg-gradient-to-r from-red-400 to-pink-500;
 }
 
-.headerMain{
-     /* background: linear-gradient(to bottom, rgba(6, 10, 8, 0.95) 0%, rgba(8, 14, 10, 0.85) 60%, rgba(10, 18, 14, 0.0) 100%);
+.headerMain {
+  /* background: linear-gradient(to bottom, rgba(6, 10, 8, 0.95) 0%, rgba(8, 14, 10, 0.85) 60%, rgba(10, 18, 14, 0.0) 100%);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px); */
-    /* border-bottom: 1px solid rgba(30, 50, 35, 0.4); */
+  /* border-bottom: 1px solid rgba(30, 50, 35, 0.4); */
 }
 
 /* .headerMain::after {
@@ -260,39 +275,48 @@ body {
 
 /* No scrollbar utility */
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
+
+  .no-scrollbar,
+  .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Visible scrollbar for mobile navigation */
   .scrollbar-visible::-webkit-scrollbar {
     height: 4px;
   }
+
   .scrollbar-visible::-webkit-scrollbar-track {
     background: rgba(166, 131, 255, 0.1);
     border-radius: 2px;
   }
+
   .scrollbar-visible::-webkit-scrollbar-thumb {
     background: rgba(166, 131, 255, 0.4);
     border-radius: 2px;
   }
+
   .scrollbar-visible::-webkit-scrollbar-thumb:hover {
     background: rgba(166, 131, 255, 0.6);
   }
+
   .scrollbar-visible {
     scrollbar-width: thin;
     scrollbar-color: rgba(166, 131, 255, 0.4) rgba(166, 131, 255, 0.1);
   }
-  
+
   /* Hide scrollbar on desktop */
   @media (min-width: 768px) {
     .scrollbar-visible::-webkit-scrollbar {
       display: none;
     }
+
     .scrollbar-visible {
       scrollbar-width: none;
     }

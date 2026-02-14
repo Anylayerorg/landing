@@ -147,14 +147,19 @@ export function Header() {
           <div className="flex items-center justify-between h-14 md:h-16 gap-8">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Image
-                src="/anylayer-logo.svg"
-                alt="Anylayer logo"
-                width="140"
-                height="56"
-                className="w-auto h-8 md:h-10"
-                priority
-              />
+              <div className="flex items-center gap-2 group">
+                <Image
+                  src="/favicon-logo.svg"
+                  alt=""
+                  width={34}
+                  height={34}
+                  className="w-8 h-8 md:w-9 md:h-9 object-contain"
+                  priority
+                />
+                <span className="font-inter font-black text-white text-xl md:text-2xl tracking-tighter uppercase leading-none pb-0.5">
+                  Anylayer
+                </span>
+              </div>
             </div>
 
             {/* Desktop Navigation */}

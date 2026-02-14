@@ -71,7 +71,7 @@ const AIAgents = () => {
               </div>
 
               <a
-                href="https://ai.anylayer.org"
+                href="https://www.anylayer.org/docs#anylayer-ai-the-sovereign-machine-infrastructure"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center gap-3 bg-lightblueprimary text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]"

@@ -10,6 +10,7 @@ import {
   Search,
   Code,
   Terminal,
+  ExternalLink,
 } from 'lucide-react';
 
 // Types for Sanity Content
@@ -172,25 +173,25 @@ const DocsPage = () => {
       <div className="bg-white min-h-screen font-geist text-black selection:bg-lightblueprimary/20">
         <Header />
 
-        <main className="pt-40 pb-24 px-6 md:px-12 text-black">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
+        <main className="h-screen pt-40 pb-12 px-6 md:px-12 flex flex-col overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 min-h-0 w-full overflow-hidden">
 
-            {/* Documentation Sidebar */}
-            <aside className="lg:w-72 space-y-12 shrink-0 lg:sticky lg:top-40 self-start">
+            {/* Sidebar Navigation */}
+            <aside className="lg:w-64 space-y-12 shrink-0 h-full overflow-y-auto pr-4 scrollbar-hide">
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-4xl font-black uppercase tracking-tighter mb-2 not-italic">Docs</h1>
-                  <p className="text-zinc-700 text-[10px] uppercase font-mono tracking-widest">Protocol Version v1.0.4</p>
+                  <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Docs</h1>
+                  <p className="text-zinc-500 text-xs">Technical reference and integration guides for Anylayer.</p>
                 </div>
 
                 <div className="relative border-b border-black/10 pb-2">
-                  <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-black/20 w-3.5 h-3.5" />
+                  <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-zinc-400 w-3.5 h-3.5" />
                   <input
                     type="text"
                     placeholder="Search docs..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-transparent py-1 pl-6 pr-2 text-xs focus:outline-none placeholder:text-black/30"
+                    className="w-full bg-transparent py-1 pl-6 pr-2 text-xs focus:outline-none placeholder:text-zinc-300 text-black"
                   />
                 </div>
               </div>
@@ -205,7 +206,7 @@ const DocsPage = () => {
                   }, {} as Record<string, typeof filteredDocs>)
                 ).map(([category, items]) => (
                   <div key={category} className="space-y-5">
-                    <h4 className="text-[10px] uppercase tracking-[0.3em] font-black text-black">{category}</h4>
+                    <h4 className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-400">{category}</h4>
                     <div className="flex flex-col gap-4">
                       {items.map((doc) => (
                         <button
@@ -213,7 +214,7 @@ const DocsPage = () => {
                           onClick={() => handleDocChange(doc)}
                           className={`text-left transition-all relative ${activeDoc?._id === doc._id
                             ? 'text-black font-black'
-                            : 'text-zinc-700 hover:text-black font-medium'
+                            : 'text-zinc-500 hover:text-black font-medium'
                             } text-sm tracking-tight flex items-center gap-3`}
                         >
                           {activeDoc?._id === doc._id && (
@@ -230,84 +231,80 @@ const DocsPage = () => {
                 ))}
               </div>
 
-              <div className="pt-12 border-t border-black/10 space-y-6">
-                <h4 className="text-[9px] uppercase tracking-widest font-black text-zinc-600 tabular-nums">Resources</h4>
+              <div className="pt-12 border-t border-black/5 space-y-6">
+                <h4 className="text-[9px] uppercase tracking-widest font-black text-zinc-300">Community</h4>
                 <div className="space-y-4">
-                  <a href="#" className="flex items-center justify-between text-xs text-zinc-700 hover:text-lightblueprimary transition-colors group font-medium">
-                    Github Repo
-                    <Code size={12} className="opacity-40 group-hover:opacity-100" />
+                  <a href="https://github.com/anylayer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
+                    GitHub Repository
+                    <ExternalLink size={10} className="opacity-40" />
                   </a>
-                  <a href="#" className="flex items-center justify-between text-xs text-zinc-700 hover:text-lightblueprimary transition-colors group font-medium">
-                    API Reference
-                    <Terminal size={12} className="opacity-40 group-hover:opacity-100" />
+                  <a href="https://discord.gg/anylayer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
+                    Discord Server
+                    <ExternalLink size={10} className="opacity-40" />
                   </a>
                 </div>
               </div>
             </aside>
 
-            {/* Main Content Article */}
-            <article className="flex-1 min-w-0">
+            {/* Content Area */}
+            <article className="flex-1 min-w-0 h-full overflow-y-auto pr-4 scrollbar-hide pb-24">
               <AnimatePresence mode="wait">
-                {activeDoc && (
-                  <motion.div
-                    key={activeDoc._id}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -10 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="space-y-16"
-                  >
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/5 pb-10">
+                <motion.div
+                  key={activeDoc?._id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative"
+                >
+                  <div className="space-y-16">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/5 pb-12">
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                          <span className="text-lightblueprimary text-[10px] font-black uppercase tracking-widest tabular-nums">
-                            {activeDoc.category.title}
+                          <span className="text-lightblueprimary text-[10px] font-black uppercase tracking-widest">
+                            {activeDoc?.category.title}
                           </span>
-                          <div className="w-1 h-1 rounded-full bg-black/40" />
-                          <span className="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
-                            {activeDoc.slug.current}.docs
+                          <div className="w-1 h-1 rounded-full bg-black/10" />
+                          <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">
+                            v1.0.4-beta
                           </span>
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] not-italic">
-                          {activeDoc.title}
+                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                          {activeDoc?.title}
                         </h2>
                       </div>
-                      <div className="text-[10px] font-mono text-black/20 uppercase tracking-widest shrink-0 mb-2">
-                        Updated: {activeDoc.lastUpdated}
+                      <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest shrink-0">
+                        Last Updated: {activeDoc?.lastUpdated}
                       </div>
                     </div>
 
-                    <div className="max-w-none prose prose-zinc selection:bg-lightblueprimary/20">
+                    <div className="prose prose-zinc max-w-none prose-headings:text-black prose-p:text-zinc-600 prose-strong:text-black prose-code:text-lightblueprimary prose-pre:bg-black/5 prose-pre:border prose-pre:border-black/5">
                       <PortableText
-                        value={activeDoc.content}
+                        value={activeDoc?.content}
                         components={PortableTextComponents}
                       />
                     </div>
 
-                    {/* Footer Decoration */}
-                    <div className="pt-24 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-10">
-                      <div className="flex items-center gap-6">
-                        <p className="text-black/20 text-[9px] uppercase tracking-[0.3em] font-mono">
-                          © 2026 Anylayer Infrastructure
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-8">
-                        <button className="text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 text-black/20 hover:text-black transition-colors">
-                          Share <FileText size={12} />
-                        </button>
-                      </div>
+                    <div className="pt-20 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-8">
+                      <p className="text-zinc-300 text-[9px] uppercase tracking-widest font-mono">
+                        &copy; 2026 Anylayer Identity Foundation
+                      </p>
+                      <button className="text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 text-zinc-400 hover:text-black transition-colors">
+                        Share Link
+                        <ExternalLink size={12} />
+                      </button>
                     </div>
-                  </motion.div>
-                )}
+
+                    <div className="pt-20">
+                      <Footer />
+                    </div>
+                  </div>
+                </motion.div>
               </AnimatePresence>
             </article>
 
           </div>
         </main>
-
-        <div className="bg-[#08080C]">
-          <Footer />
-        </div>
       </div>
     </>
   );
