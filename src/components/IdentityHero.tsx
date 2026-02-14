@@ -100,15 +100,14 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                     className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden"
                 >
                     {[
-                        { label: "IDENTITY SYSTEM", val: ".ANY PAYNAMES", icon: <Fingerprint size={14} /> },
-                        { label: "DATA PRIVACY", val: "ZK-REACTION", icon: <Shield size={14} /> },
-                        { label: "SOCIAL GRAPH", val: "PORTABLE TRUST", icon: <Award size={14} /> },
-                        { label: "GLOBAL RESOLVER", val: "ANY ADDRESS", icon: <Globe size={14} /> }
+                        { label: "IDENTITY SYSTEM", val: ".ANY PAYNAMES" },
+                        { label: "DATA PRIVACY", val: "ZK-REACTION" },
+                        { label: "SOCIAL GRAPH", val: "PORTABLE TRUST" },
+                        { label: "GLOBAL RESOLVER", val: "ANY ADDRESS" }
                     ].map((item, i) => (
                         <div key={i} className="bg-black/40 p-6 space-y-2 cursor-default">
                             <div className="flex items-center justify-between text-[8px] font-mono text-white/20 uppercase tracking-[0.2em]">
                                 <span>{item.label}</span>
-                                <span className="text-lightblueprimary/40">{item.icon}</span>
                             </div>
                             <p className="text-lg font-black uppercase tracking-tight text-white/90">
                                 {item.val}

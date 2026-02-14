@@ -618,9 +618,8 @@ const IndustrialArchitecture = () => {
                     <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-white">
                       {layers[active].title.split(': ')[0]}
                       {layers[active].title.includes(': ') && (
-                        <span className="text-lightblueprimary block md:inline md:ml-4">
-                          <span className="inline md:hidden">:</span>
-                          <span className="hidden md:inline"> —</span> {layers[active].title.split(': ')[1]}
+                        <span className="text-lightblueprimary block mt-4">
+                          {layers[active].title.split(': ')[1]}
                         </span>
                       )}
                     </h3>

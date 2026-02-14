@@ -65,7 +65,7 @@ const IdentityProblem = () => {
             >
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] transition-colors">
-                  Case 0{i + 1} // {p.title}
+                  {p.title}
                 </span>
                 <h3 className="text-xl font-black uppercase tracking-tight text-white/90">
                   {p.label}
@@ -212,9 +212,6 @@ const EverydayUses = () => {
                 } rounded-2xl p-8 flex flex-col justify-between hover:bg-opacity-90 transition-all duration-500 group cursor-default`}
             >
               <div className="flex justify-end items-start mb-12">
-                <span className={`text-[10px] font-mono uppercase tracking-widest ${i === 0 ? 'text-black/40' : 'text-white/20 group-hover:text-white/40'} transition-colors`}>
-                  Case 0{i + 1}
-                </span>
               </div>
               <div className="space-y-3">
                 <h3 className={`text-xl font-black tracking-tighter uppercase leading-none ${i === 0 ? 'text-black' : 'text-white/90 group-hover:text-white'} transition-colors`}>
@@ -232,7 +229,7 @@ const EverydayUses = () => {
   );
 };
 
-const DeveloperIntegration = ({ onDocumentationClick }: { onDocumentationClick: () => void }) => {
+const DeveloperIntegration = () => {
   return (
     <Section className="bg-black text-white py-24 md:py-32 border-t border-white/5" id="integrate">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -313,13 +310,13 @@ const DeveloperIntegration = ({ onDocumentationClick }: { onDocumentationClick: 
               <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
                 "Integration is lightweight, modular, and designed for real‑world use."
               </p>
-              <button
-                onClick={onDocumentationClick}
+              <Link
+                href="/docs"
                 className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
               >
                 <span>Documentation</span>
                 <ArrowRight size={12} className="text-white/40" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -645,7 +642,7 @@ export default function IdentityPage() {
 
         <EverydayUses />
 
-        <DeveloperIntegration onDocumentationClick={() => setIsComingSoonOpen(true)} />
+        <DeveloperIntegration />
 
         <FinalClosing />
       </main>

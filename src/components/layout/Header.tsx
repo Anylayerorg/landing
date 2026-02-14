@@ -146,16 +146,17 @@ export function Header() {
         <div className="px-1 py-1">
           <div className="flex items-center justify-between h-14 md:h-16 gap-8">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 flex items-center gap-2.5 group transition-opacity hover:opacity-80">
               <Image
-                src="/anylayer-logo.svg"
-                alt="Anylayer logo"
-                width="140"
-                height="56"
-                className="w-auto h-8 md:h-10"
+                src="/favicon-logo.svg"
+                alt="Anylayer"
+                width={24}
+                height={24}
+                className="w-auto h-6"
                 priority
               />
-            </div>
+              <span className="text-white font-black text-xl tracking-tighter uppercase">ANYLAYER.</span>
+            </Link>
 
             {/* Desktop Navigation */}
             <motion.nav
