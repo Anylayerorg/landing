@@ -39,7 +39,7 @@ const AIAgents = () => {
               </div>
             </div>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#08080C] leading-[0.9]">
-              AI Agents — <br />
+              AI Agents <br />
               <span className="text-lightblueprimary text-3xl md:text-5xl">Trust Built on Proven Outcomes</span>
             </h2>
             <p className="text-black/40 text-xl md:text-2xl font-medium leading-relaxed border-l-2 border-black/10 pl-8">

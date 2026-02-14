@@ -146,21 +146,19 @@ export function Header() {
         <div className="px-1 py-1">
           <div className="flex items-center justify-between h-14 md:h-16 gap-8">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <div className="flex items-center gap-2 group">
-                <Image
-                  src="/favicon-logo.svg"
-                  alt=""
-                  width={34}
-                  height={34}
-                  className="w-8 h-8 md:w-9 md:h-9 object-contain"
-                  priority
-                />
-                <span className="font-inter font-black text-white text-xl md:text-2xl tracking-tighter uppercase leading-none pb-0.5">
-                  Anylayer
-                </span>
-              </div>
-            </div>
+            <Link href="/" className="flex-shrink-0 flex items-center gap-2 group transition-opacity hover:opacity-80">
+              <Image
+                src="/favicon-logo.svg"
+                alt="Anylayer"
+                width={34}
+                height={34}
+                className="w-8 h-8 md:w-9 md:h-9 object-contain"
+                priority
+              />
+              <span className="font-inter font-black text-white text-xl md:text-2xl tracking-tighter uppercase leading-none pb-0.5">
+                ANYLAYER.
+              </span>
+            </Link>
 
             {/* Desktop Navigation */}
             <motion.nav

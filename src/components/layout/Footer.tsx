@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { Layout1 } from '@/components/FooterLayouts';
 
 const footerIcon = [
   { title: "Telegram", link: "https://t.me/dotanylayer", icon: "/telegram.svg", width: 17, height: 14 },
@@ -124,37 +125,45 @@ const Links = () => (
 );
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'newsletter' }),
+      });
+
+      if (!response.ok) throw new Error('Subscription failed');
+
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
-    <footer className="relative bg-[#08080C] overflow-hidden pt-20 w-full">
+    <footer className="relative bg-[#08080C] overflow-hidden w-full pb-20">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
-      <div className="relative w-full max-w-screen-xl mx-auto px-4 md:px-6 py-20">
-        <div className="bg-[#0D0D12] border-t border-x border-white/5 rounded-t-[40px] md:rounded-t-[80px] p-8 md:p-24 relative overflow-hidden">
-          {/* Faceted Top Border Accent */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent" />
-
-          <div className="grid lg:grid-cols-2 gap-24 items-start relative z-10">
-            <Newsletter />
-            <Links />
-          </div>
-
-          <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 opacity-40">
-                <Image src="/favicon-logo.svg" alt="" width={24} height={24} className="w-6 h-6 object-contain grayscale brightness-200" />
-                <span className="font-inter font-black text-white text-lg tracking-tighter uppercase leading-none">Anylayer</span>
-              </div>
-              <p className="text-[10px] font-mono text-white/10 uppercase tracking-widest font-black">© 2026 Anylayer Logic</p>
-            </div>
-            <div className="flex gap-4">
-              {footerIcon.map(i => (
-                <a key={i.title} href={i.link} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-lightblueprimary hover:border-lightblueprimary transition-all group">
-                  <Image src={i.icon} alt="" width={16} height={16} className="invert group-hover:invert-0 transition-all" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="relative w-full max-w-screen-xl mx-auto px-4 md:px-6">
+        <Layout1
+          email={email}
+          setEmail={setEmail}
+          status={status}
+          handleSubscribe={handleSubscribe}
+          footerIcon={footerIcon}
+        />
       </div>
     </footer>
   );
