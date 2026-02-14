@@ -231,12 +231,12 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
       {/* Button - Moved below grid */}
       <div className="mt-24">
-        <Link
-          href="/docs"
-          className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-[filter,transform,box-shadow,background-color] duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]"
+        <button
+          onClick={() => setIsComingSoonOpen(true)}
+          className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 hover:scale-105 active:scale-[0.98] focus:outline-none shadow-[0_10px_30px_rgba(166,131,255,0.2)]"
         >
           Get Started
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -284,15 +284,15 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                         <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
                       </div>
                     </a>
-                    <Link
-                      href="/docs"
-                      className="group relative max-w-72 md:max-w-60 w-full active:translate-y-0.5 transition-all"
+                    <button
+                      onClick={() => setIsComingSoonOpen(true)}
+                      className="group relative max-w-72 md:max-w-60 w-full active:translate-y-0.5 transition-all focus:outline-none"
                     >
                       <div className="absolute inset-0 bg-white blur-2xl opacity-5 group-hover:opacity-10 transition-opacity" />
                       <div className="relative bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center">
                         Documentation
                       </div>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -513,9 +513,9 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
         <ParallelCards sectionId="dimension" />
 
-        <Attesters />
+        <Attesters onTriggerModal={() => setIsComingSoonOpen(true)} />
 
-        <CodeIntegration />
+        <CodeIntegration onTriggerModal={() => setIsComingSoonOpen(true)} />
 
         <BlogWidget
           limit={3}

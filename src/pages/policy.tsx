@@ -868,7 +868,7 @@ const PolicyPage = () => {
       <div className="bg-white min-h-screen font-geist text-black">
         <Header />
 
-        <main className="h-screen pt-32 pb-12 px-6 md:px-12 flex flex-col overflow-hidden">
+        <main className="min-h-[calc(100vh-80px)] pt-32 pb-12 px-6 md:px-12 flex flex-col">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 min-h-0 w-full overflow-hidden">
 
             {/* Sidebar Navigation */}
@@ -935,7 +935,7 @@ const PolicyPage = () => {
             </aside>
 
             {/* Content Area */}
-            <article className="flex-1 min-w-0 h-full overflow-y-auto pr-4 scrollbar-hide pb-24">
+            <article className="flex-1 min-w-0 pr-4 scrollbar-hide pb-24">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activePolicy.id}
@@ -981,7 +981,7 @@ const PolicyPage = () => {
                     </div>
 
                     <div className="pt-20">
-                      <Footer />
+                      {/* Footer removed from here */}
                     </div>
                   </div>
                 </motion.div>
@@ -990,6 +990,7 @@ const PolicyPage = () => {
 
           </div>
         </main>
+        <Footer />
       </div>
     </>
   );

@@ -150,12 +150,12 @@ export function Header() {
               <Image
                 src="/favicon-logo.svg"
                 alt="Anylayer"
-                width={34}
-                height={34}
-                className="w-8 h-8 md:w-9 md:h-9 object-contain"
+                width={24}
+                height={24}
+                className="w-auto h-6"
                 priority
               />
-              <span className="font-inter font-black text-white text-xl md:text-2xl tracking-tighter uppercase leading-none pb-0.5">
+              <span className="font-inter font-black text-white text-xl tracking-tighter uppercase leading-none pb-0.5">
                 ANYLAYER.
               </span>
             </Link>

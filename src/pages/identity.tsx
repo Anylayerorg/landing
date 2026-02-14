@@ -229,163 +229,152 @@ const EverydayUses = () => {
   );
 };
 
-const DeveloperIntegration = () => {
-  return (
-    <Section className="bg-black text-white py-24 md:py-32 border-t border-white/5" id="integrate">
-      <div className="max-w-6xl mx-auto space-y-12">
-        {/* Header Block */}
-        <div className="text-center md:text-left max-w-3xl mx-auto md:mx-0 space-y-4 px-4">
-          <SectionTag label="Developers" />
-          <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">
-            Integrate <span className="text-lightblueprimary">ANS</span> <br /> Into Your Apps.
-          </h2>
-          <p className="text-white/40 text-sm md:text-base font-medium leading-relaxed mx-auto md:mx-0">
-            ANS is built to plug directly into wallets, dApps, and applications.
-          </p>
+const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
+  <Section className="bg-black text-white py-24 md:py-32" id="developer">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="mb-20 text-center space-y-4">
+        <SectionTag label="Developer SDK" />
+        <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-[0.9]">
+          Build with <span className="text-lightblueprimary">Trust.</span>
+        </h2>
+        <p className="text-white/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+          Embed verified identity and reputation into your application with a few lines of code.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        {/* Left Column - Wallets & Auths */}
+        <div className="md:col-span-3 flex flex-col gap-4">
+          {/* 1. Wallets */}
+          <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[155px] flex flex-col justify-center group hover:bg-white/[0.05] transition-all relative overflow-hidden">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-widest text-white/20">
+                <span>Wallet UI</span>
+                <span className="text-lightblueprimary/40">Any Chain</span>
+              </div>
+              <div className="bg-white/5 rounded-lg p-3 border border-white/5 space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-[10px] font-black text-white">whale.any</span>
+                  </div>
+                </div>
+                <div className="h-px w-full bg-white/5" />
+                <div className="flex justify-between items-center text-[10px] font-bold text-white">
+                  <span className="text-white/40 font-mono">Amount</span>
+                  <span>4.20 ETH</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Auths */}
+          <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 h-[155px] flex flex-col justify-center group hover:bg-white/[0.05] transition-all relative overflow-hidden">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-widest text-white/20">
+                <span>Auth Portal</span>
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 rounded-full bg-lightblueprimary/40" />
+                  <div className="w-1 h-1 rounded-full bg-white/10" />
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="w-full h-10 bg-white rounded-xl flex items-center px-4 gap-3 border border-white/10 shadow-2xl group-hover:scale-[1.02] transition-transform">
+                  <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
+                    <span className="text-[9px] text-white font-black">ANS</span>
+                  </div>
+                  <div className="h-3 w-[1px] bg-black/10" />
+                  <span className="text-[10px] font-black text-black uppercase tracking-tighter">Connect Identity</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {/* Left Column - Wallets & Auths */}
-          <div className="md:col-span-3 flex flex-col gap-4">
-            {/* 1. Wallets (The Send Interface) */}
-            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 h-[155px] flex flex-col justify-center group hover:bg-white/[0.05] transition-all overflow-hidden relative">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-widest text-white/20">
-                  <span>Wallet UI</span>
-                  <span className="text-lightblueprimary/40">Any Chain</span>
-                </div>
-                <div className="bg-white/5 rounded-lg p-3 border border-white/5 space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-black text-white">whale.any</span>
-                    </div>
-                  </div>
-                  <div className="h-px w-full bg-white/5" />
-                  <div className="flex justify-between items-center text-[10px] font-bold text-white">
-                    <span className="text-white/40 font-mono">Amount</span>
-                    <span>4.20 ETH</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Middle Main Card - Center */}
+        <div className="md:col-span-6 bg-lightblueprimary text-black rounded-3xl p-10 pb-24 h-auto md:h-[326px] flex flex-col justify-between relative overflow-hidden text-center items-center">
+          <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.3),transparent_70%)]" />
+          <div className="relative z-10 space-y-4 pt-2">
+            <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> ANS Identity.</h3>
+          </div>
+          <div className="relative z-10 space-y-8 mt-8 md:mt-0">
+            <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
+              "Integration is lightweight, modular, and designed for real‑world use."
+            </p>
+            <button
+              onClick={onTriggerModal}
+              className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
+            >
+              <span>Documentation</span>
+              <ArrowRight size={12} className="text-white/40" />
+            </button>
+          </div>
+        </div>
 
-            {/* 2. Auths (Sign In Interface) */}
-            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 h-[155px] flex flex-col justify-center group hover:bg-white/[0.05] transition-all relative overflow-hidden">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-widest text-white/20">
-                  <span>Auth Portal</span>
-                  <div className="flex gap-1">
-                    <div className="w-1 h-1 rounded-full bg-lightblueprimary/40" />
-                    <div className="w-1 h-1 rounded-full bg-white/10" />
-                  </div>
+        {/* Right Column - DApps & Socials */}
+        <div className="md:col-span-3 flex flex-col gap-4">
+          {/* 3. DApps */}
+          <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
+            <div className="flex justify-between items-start">
+              <span className="text-[8px] font-mono uppercase text-white/20">DApp Component</span>
+              <Award size={12} className="text-lightblueprimary/40" />
+            </div>
+            <div className="flex items-center gap-3 bg-white/5 rounded-xl p-2 border border-white/5">
+              <div className="w-8 h-8 rounded-lg bg-lightblueprimary flex items-center justify-center">
+                <Users size={16} className="text-black" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
+                  <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
                 </div>
-                <div className="space-y-3">
-                  <div className="w-full h-10 bg-white rounded-xl flex items-center px-4 gap-3 border border-white/10 shadow-2xl group-hover:scale-[1.02] transition-transform">
-                    <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
-                      <span className="text-[9px] text-white font-black">ANS</span>
-                    </div>
-                    <div className="h-3 w-[1px] bg-black/10" />
-                    <span className="text-[10px] font-black text-black uppercase tracking-tighter">Connect Identity</span>
-                  </div>
-                  <div className="flex items-center justify-between px-1">
-                    <span className="text-[8px] font-mono text-white/20 uppercase">Protocol: v2.4</span>
-                    <span className="text-[8px] font-mono text-green-400/60 uppercase">Encrypted</span>
-                  </div>
+                <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
+                  <div className="h-full w-[90%] bg-lightblueprimary" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Middle Main Card - Centered with Button */}
-          <div className="md:col-span-6 bg-lightblueprimary text-black rounded-3xl p-10 h-auto md:h-[326px] flex flex-col justify-between relative overflow-hidden text-center items-center">
-            <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.3),transparent_70%)]" />
-            <div className="relative z-10 space-y-4 pt-2">
-              <SectionTag label="Identity SDK" theme="light" />
-              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> ANS Identity.</h3>
+          {/* 4. Socials */}
+          <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
+            <div className="flex justify-between items-start">
+              <span className="text-[8px] font-mono uppercase text-white/20">Social Graph</span>
+              <Fingerprint size={12} className="text-lightblueprimary/40" />
             </div>
-            <div className="relative z-10 space-y-8 mt-8 md:mt-0">
-              <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
-                "Integration is lightweight, modular, and designed for real‑world use."
-              </p>
-              <Link
-                href="/docs"
-                className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
-              >
-                <span>Documentation</span>
-                <ArrowRight size={12} className="text-white/40" />
-              </Link>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-[7px] font-bold">U1</div>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent" />
+              <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-[7px] font-bold">U2</div>
             </div>
           </div>
 
-          {/* Right Column - DApps, Socials, Payments */}
-          <div className="md:col-span-3 flex flex-col gap-4">
-            {/* 3. DApps (Identity Profile) */}
-            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
-              <div className="flex justify-between items-start">
-                <span className="text-[8px] font-mono uppercase text-white/20">DApp Component</span>
-                <Award size={12} className="text-lightblueprimary/40" />
-              </div>
-              <div className="flex items-center gap-3 bg-white/5 rounded-xl p-2 border border-white/5">
-                <div className="w-8 h-8 rounded-lg bg-lightblueprimary flex items-center justify-center">
-                  <Users size={16} className="text-black" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-center">
-                    <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
-                    <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
-                  </div>
-                  <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
-                    <div className="h-full w-[90%] bg-lightblueprimary" />
-                  </div>
-                </div>
-              </div>
+          {/* 5. Payments */}
+          <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
+            <div className="flex justify-between items-start">
+              <span className="text-[8px] font-mono uppercase text-white/20">Tx Attribution</span>
+              <History size={12} className="text-lightblueprimary/40" />
             </div>
-
-            {/* 4. Socials (Secure Connection) */}
-            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
-              <div className="flex justify-between items-start">
-                <span className="text-[8px] font-mono uppercase text-white/20">Social Graph</span>
-                <Fingerprint size={12} className="text-lightblueprimary/40" />
+            <div className="space-y-1.5">
+              <div className="flex justify-between items-center text-[9px]">
+                <span className="text-white/40">Initiator</span>
+                <span className="text-lightblueprimary font-black">alpha.any</span>
               </div>
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-[7px] font-bold">U1</div>
-                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-lightblueprimary/40 to-transparent relative">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 bg-[#08080C] text-[6px] font-mono text-lightblueprimary uppercase">Verified</div>
-                </div>
-                <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-[7px] font-bold">U2</div>
-              </div>
-            </div>
-
-            {/* 5. Payments (Clear Attribution) */}
-            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 h-[98px] flex flex-col justify-between group hover:bg-white/[0.05] transition-all relative overflow-hidden">
-              <div className="flex justify-between items-start">
-                <span className="text-[8px] font-mono uppercase text-white/20">Tx Attribution</span>
-                <History size={12} className="text-lightblueprimary/40" />
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex justify-between items-center text-[9px]">
-                  <span className="text-white/40">Initiator</span>
-                  <span className="text-lightblueprimary font-black">alpha.any</span>
-                </div>
-                <div className="h-px bg-white/5" />
-                <div className="flex justify-between items-center text-[9px]">
-                  <span className="text-white/40">Status</span>
-                  <div className="flex items-center gap-1">
-                    <div className="w-1 h-1 rounded-full bg-green-500" />
-                    <span className="text-white font-bold uppercase tracking-tighter">Settled</span>
-                  </div>
+              <div className="h-px bg-white/5" />
+              <div className="flex justify-between items-center text-[9px]">
+                <span className="text-white/40">Status</span>
+                <div className="flex items-center gap-1">
+                  <div className="w-1 h-1 rounded-full bg-green-500" />
+                  <span className="text-white font-bold uppercase tracking-tighter">Settled</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Section>
-  );
-};
+    </div>
+  </Section>
+);
 
 const IdentityHomeSection = ({ onTriggerModal }: { onTriggerModal: () => void }) => (
   <Section className="bg-[#EBEBEB] text-black border-t border-black/5 pt-4 pb-20 md:pt-6 md:pb-32" id="identity-holds">
@@ -402,13 +391,13 @@ const IdentityHomeSection = ({ onTriggerModal }: { onTriggerModal: () => void })
         </p>
 
         <div className="pt-6">
-          <Link
-            href="/docs"
-            className="group inline-flex items-center gap-4 bg-black text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl"
+          <button
+            onClick={onTriggerModal}
+            className="group inline-flex items-center gap-4 bg-black text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 focus:outline-none shadow-xl"
           >
             <span>Get Started</span>
             <ArrowRight size={14} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -642,7 +631,7 @@ export default function IdentityPage() {
 
         <EverydayUses />
 
-        <DeveloperIntegration />
+        <DeveloperIntegration onTriggerModal={() => setIsComingSoonOpen(true)} />
 
         <FinalClosing />
       </main>

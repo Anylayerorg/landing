@@ -23,7 +23,7 @@ const BentoTile = ({ children, className = "", span = "", noHover = false }: { c
    </div>
 );
 
-const CodeIntegration = () => {
+const CodeIntegration = ({ onTriggerModal }: { onTriggerModal?: () => void }) => {
    const [copied, setCopied] = useState(false);
    const codeSnippet = `import { Anylayer } from "@anylayer/sdk";
 
@@ -142,15 +142,15 @@ console.log(score); // 8,402`;
                   </h2>
 
                   {/* Tactile 3D Button - High Contrast */}
-                  <Link
-                     href="/docs"
-                     className="group relative mt-1 inline-block"
+                  <button
+                     onClick={onTriggerModal}
+                     className="group relative mt-1 inline-block outline-none focus:outline-none hover:scale-105 active:scale-95 transition-all rounded-full"
                   >
                      <div className="absolute inset-0 bg-black blur-2xl opacity-10" />
                      <div className="relative px-8 py-3 bg-black text-white font-semibold rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.2)] text-[12px] tracking-tight uppercase">
                         Documentation
                      </div>
-                  </Link>
+                  </button>
 
                   <p className="text-black/70 text-[12px] mt-10 font-light leading-relaxed max-w-md">
                      Deploy Sybil-resistant dApps using the <span className="text-black font-medium">TypeScript SDK</span>.

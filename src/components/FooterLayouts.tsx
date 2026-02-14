@@ -38,8 +38,8 @@ export const Layout1 = ({ email, setEmail, status, handleSubscribe, footerIcon }
         <div className="flex flex-col md:flex-row justify-between items-end gap-12">
             <div className="space-y-6 max-w-sm">
                 <div className="flex items-center gap-2 group">
-                    <Image src="/favicon-logo.svg" alt="Anylayer" width={24} height={24} className="w-6 h-6 object-contain" />
-                    <span className="font-inter font-black text-white text-lg tracking-tighter uppercase leading-none">ANYLAYER.</span>
+                    <Image src="/favicon-logo.svg" alt="Anylayer" width={24} height={24} className="w-auto h-6" />
+                    <span className="font-inter font-black text-white text-xl tracking-tighter uppercase leading-none">ANYLAYER.</span>
                 </div>
                 <p className="text-sm text-white/60 font-light leading-relaxed">Securing the digital internet through autonomous trust layers.</p>
             </div>
