@@ -247,20 +247,20 @@ export function Header() {
                                   </div>
                                 </Link>
 
-                                <a href="https://ai.anylayer.org" target="_blank" rel="noopener noreferrer" className="group block text-left">
+                                <Link href="/docs#anylayer-ai-the-sovereign-machine-infrastructure" className="group block text-left">
                                   <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-lightblueprimary/10 transition-colors">
                                       <Bot size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                     </div>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Axis (AI agents)</h5>
+                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">NolanOS</h5>
                                         <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                       </div>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">The trust layer for autonomous agents and decentralized intelligence.</p>
                                     </div>
                                   </div>
-                                </a>
+                                </Link>
 
                                 <div className="group block text-left opacity-50 cursor-not-allowed">
                                   <div className="flex items-start gap-4">
@@ -545,7 +545,7 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                              { label: "Axis (AI agents)", desc: "Trust for agents", icon: <Bot size={20} />, href: "https://ai.anylayer.org", isExternal: true },
+                              { label: "NolanOS", desc: "Trust for agents", icon: <Bot size={20} />, href: "/docs#anylayer-ai-the-sovereign-machine-infrastructure" },
                               { label: "Explorer", desc: "Track trust signals", icon: <Map size={20} />, isComingSoon: true },
                               { label: "Ecosystem", desc: "Partner network", icon: <Globe size={20} />, isComingSoon: true },
                             ].map((item, idx) => {

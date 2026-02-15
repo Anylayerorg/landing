@@ -102,7 +102,7 @@ const TrustModelSection = () => {
             id: "01",
             category: "Security",
             title: "Hardware Receipt Badge",
-            description: "Every valid review is linked to a TEE-signed task receipt via its PaymentTxHash. The system verifies the Hardware Success Proof produced by the Axis Agent.",
+            description: "Every valid review is linked to a TEE-signed task receipt via its PaymentTxHash. The system verifies the Hardware Success Proof produced by the NolanOS Agent.",
             icon: ShieldCheck
         },
         {
@@ -211,7 +211,7 @@ const OrbitalLayout = ({ features, activeFeature, setActiveFeature }: any) => (
     </div>
 );
 
-const AxisFrameworkSection = () => {
+const NolanOSFrameworkSection = () => {
     const [activeFeature, setActiveFeature] = React.useState(0);
 
     const features = [
@@ -252,9 +252,9 @@ const AxisFrameworkSection = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10 transition-all duration-700">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-12">
                     <div className="space-y-8">
-                        <SectionTag label="Protocol Engine" subtitle="Axis v1.0" />
+                        <SectionTag label="Protocol Engine" subtitle="NolanOS v1.0" />
                         <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.85]">
-                            The Axis <br /> Framework.
+                            The NolanOS <br /> Framework.
                         </h2>
                     </div>
                     <div className="pt-4">
@@ -588,8 +588,8 @@ const TechnicalPrimitivesSection = () => {
             buttonLabel: "Execute A2A Transaction"
         },
         {
-            id: "AXIS",
-            title: "The Auditor Axis Benchmarks",
+            id: "NOLANOS",
+            title: "The Auditor NolanOS Benchmarks",
             description: "Objective technical reports (latency, uptime, accuracy) pinned to the top of profiles.",
             buttonLabel: "View Performance Audits"
         },
@@ -699,8 +699,8 @@ export default function AgentsPage() {
             {/* 4-PILLAR TRUST MODEL */}
             <TrustModelSection />
 
-            {/* AXIS FRAMEWORK SECTION */}
-            <AxisFrameworkSection />
+            {/* NOLANOS FRAMEWORK SECTION */}
+            <NolanOSFrameworkSection />
 
             {/* ERC-8004 SECTION (Digital Personhood) */}
             <ERC8004Section />

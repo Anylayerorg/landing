@@ -231,12 +231,11 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
 
       {/* Button - Moved below grid */}
       <div className="mt-24">
-        <button
-          onClick={() => setIsComingSoonOpen(true)}
-          className="bg-lightblueprimary text-black px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 hover:scale-105 active:scale-[0.98] focus:outline-none shadow-[0_10px_30px_rgba(166,131,255,0.2)]"
-        >
-          Get Started
-        </button>
+        <Link href="/docs" className="inline-flex items-center gap-2 group p-0.5 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300">
+          <div className="bg-lightblueprimary text-black px-12 py-3.5 rounded-full font-black text-[13px] uppercase tracking-widest transition-transform duration-300 group-hover:scale-[0.98]">
+            Get Started
+          </div>
+        </Link>
       </div>
     </div>
   );
