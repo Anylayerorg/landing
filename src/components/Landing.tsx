@@ -376,7 +376,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
         </section>
 
         {/* Partner Logos */}
-        <ClientsLogo />
+        {/* <ClientsLogo /> */}
 
         <Image src="/header-purple-shade.svg" alt="Header Background Gradient" width="906" height="306" className="absolute top-0 left-0" />
         <Image src="/left-purple-shade.svg" alt="Background Gradient" width="622" height="1966" className="absolute top-96 left-0" />

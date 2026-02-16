@@ -687,7 +687,7 @@ export default function AgentsPage() {
                         transition={{ duration: 1, delay: 0.5 }}
                         className="pt-12 opacity-40 hover:opacity-100 transition-opacity duration-500"
                     >
-                        <ClientsLogo className="py-2" />
+                        {/* <ClientsLogo className="py-2" /> */}
                     </motion.div>
                 </div>
             </section>
