@@ -173,11 +173,11 @@ const DocsPage = () => {
       <div className="bg-white min-h-screen font-geist text-black selection:bg-lightblueprimary/20">
         <Header />
 
-        <main className="h-screen pt-40 pb-12 px-6 md:px-12 flex flex-col overflow-hidden">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 min-h-0 w-full overflow-hidden">
+        <main className="pt-40 pb-12 px-6 md:px-12 flex flex-col">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 w-full">
 
             {/* Sidebar Navigation */}
-            <aside className="lg:w-64 space-y-12 shrink-0 h-full overflow-y-auto pr-4 scrollbar-hide">
+            <aside className="lg:w-64 space-y-12 shrink-0 pr-4 lg:sticky lg:top-40 lg:h-[calc(100vh-12rem)] lg:overflow-y-auto scrollbar-hide">
               <div className="space-y-8">
                 <div>
                   <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Docs</h1>
@@ -247,7 +247,7 @@ const DocsPage = () => {
             </aside>
 
             {/* Content Area */}
-            <article className="flex-1 min-w-0 h-full overflow-y-auto pr-4 scrollbar-hide pb-24">
+            <article className="flex-1 min-w-0 pr-4 pb-24">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeDoc?._id}
@@ -294,17 +294,13 @@ const DocsPage = () => {
                         <ExternalLink size={12} />
                       </button>
                     </div>
-
-                    <div className="pt-20">
-                      <Footer />
-                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </article>
-
           </div>
         </main>
+        <Footer />
       </div>
     </>
   );

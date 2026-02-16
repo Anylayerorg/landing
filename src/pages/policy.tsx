@@ -869,10 +869,10 @@ const PolicyPage = () => {
         <Header />
 
         <main className="min-h-[calc(100vh-80px)] pt-32 pb-12 px-6 md:px-12 flex flex-col">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 min-h-0 w-full overflow-hidden">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 flex-1 w-full">
 
             {/* Sidebar Navigation */}
-            <aside className="lg:w-64 space-y-12 shrink-0 h-full overflow-y-auto pr-4 scrollbar-hide">
+            <aside className="lg:w-64 space-y-12 shrink-0 pr-4 lg:sticky lg:top-32 lg:h-[calc(100vh-8rem)] lg:overflow-y-auto scrollbar-hide">
               <div className="space-y-8">
                 <div>
                   <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Policies</h1>
