@@ -1,10 +1,53 @@
 import { StructureBuilder } from 'sanity/structure';
-import { Mail, Users, Code, Newspaper, Calendar } from 'lucide-react';
+import { Mail, Users, Code, Newspaper, Calendar, Gift } from 'lucide-react';
 
 export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Anylayer Content')
     .items([
+      // Airdrop Reviews Section
+      S.listItem()
+        .title('Airdrop Reviews')
+        .icon(Gift)
+        .child(
+          S.list()
+            .title('Airdrop Reviews')
+            .items([
+              S.listItem()
+                .title('⏳ Pending Review')
+                .child(
+                  S.documentList()
+                    .title('Pending Review')
+                    .filter('_type == "airdropSubmission" && status == "pending"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('✅ Approved')
+                .child(
+                  S.documentList()
+                    .title('Approved')
+                    .filter('_type == "airdropSubmission" && status == "approved"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('❌ Rejected')
+                .child(
+                  S.documentList()
+                    .title('Rejected')
+                    .filter('_type == "airdropSubmission" && status == "rejected"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.divider(),
+              S.listItem()
+                .title('All Submissions')
+                .child(
+                  S.documentTypeList('airdropSubmission').title('All Submissions')
+                ),
+            ])
+        ),
+
+      S.divider(),
+
       // Protocol Events Section
       S.listItem()
         .title('Protocol Events')
@@ -69,6 +112,6 @@ export const structure = (S: StructureBuilder) =>
 
       // Filter out types that we've already defined custom items for
       ...S.documentTypeListItems().filter(
-        (listItem) => !['post', 'author', 'category', 'subscriber', 'protocolEvent'].includes(listItem.getId() || '')
+        (listItem) => !['post', 'author', 'category', 'subscriber', 'protocolEvent', 'airdropSubmission'].includes(listItem.getId() || '')
       ),
     ]);

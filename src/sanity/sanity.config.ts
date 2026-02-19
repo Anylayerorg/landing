@@ -10,7 +10,9 @@ import subscriber from './schema/subscriber';
 import event from './schema/event';
 import contactSubmission from './schema/contactSubmission';
 import documentation from './schema/documentation';
+import airdropSubmission from './schema/airdropSubmission';
 import { structure } from './lib/structure';
+import { ApproveAction, RejectAction } from './actions/approveRejectAction';
 
 export default defineConfig({
   basePath: '/studio',
@@ -18,7 +20,7 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   title: 'Anylayer Content Studio v2',
   schema: {
-    types: [event, post, author, category, subscriber, contactSubmission, documentation],
+    types: [event, post, author, category, subscriber, contactSubmission, documentation, airdropSubmission],
   },
   plugins: [
     structureTool({
@@ -28,4 +30,10 @@ export default defineConfig({
     codeInput(),
     table(),
   ],
+  document: {
+    actions: (prev, context) => {
+      if (context.schemaType !== 'airdropSubmission') return prev;
+      return [ApproveAction, RejectAction, ...prev.filter((a) => a.action === 'delete')];
+    },
+  },
 });
