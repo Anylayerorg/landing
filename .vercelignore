@@ -1,2 +1,4 @@
 .git
 .parent-git
+pnpm-lock.yaml
+.pnpm-store/
