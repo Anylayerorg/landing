@@ -238,7 +238,7 @@ const DocsPage = () => {
                     GitHub Repository
                     <ExternalLink size={10} className="opacity-40" />
                   </a>
-                  <a href="https://discord.gg/anylayer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
+                  <a href="https://discord.gg/6h4GkXSx24" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
                     Discord Server
                     <ExternalLink size={10} className="opacity-40" />
                   </a>

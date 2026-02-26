@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { codeInput } from '@sanity/code-input';
 import { table } from '@sanity/table';
+import { definePlugin } from 'sanity';
 import post from './schema/post';
 import author from './schema/author';
 import category from './schema/category';
@@ -13,6 +14,18 @@ import documentation from './schema/documentation';
 import airdropSubmission from './schema/airdropSubmission';
 import { structure } from './lib/structure';
 import { ApproveAction, RejectAction } from './actions/approveRejectAction';
+import { BatchApproveTool } from './tools/BatchApproveTool';
+
+const batchApprovePlugin = definePlugin({
+  name: 'batch-approve',
+  tools: [
+    {
+      name: 'batch-approve',
+      title: 'Batch Approve',
+      component: BatchApproveTool,
+    },
+  ],
+});
 
 export default defineConfig({
   basePath: '/studio',
@@ -29,6 +42,7 @@ export default defineConfig({
     visionTool(),
     codeInput(),
     table(),
+    batchApprovePlugin(),
   ],
   document: {
     actions: (prev, context) => {

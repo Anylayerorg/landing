@@ -61,7 +61,7 @@ export const ComingSoonModal = ({ isOpen, onClose }: ComingSoonModalProps) => {
                                         <ArrowUpRight size={18} className="text-[#9494a3] group-hover/link:text-white transition-all group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                                     </a>
                                     <a
-                                        href="https://discord.gg/ZmnsPMKgjw"
+                                        href="https://discord.gg/6h4GkXSx24"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-between w-full px-7 py-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group/link"

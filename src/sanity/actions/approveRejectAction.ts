@@ -1,23 +1,23 @@
 import { useCallback, useState } from 'react'
 import { DocumentActionComponent, DocumentActionProps, useDocumentOperation, useClient } from 'sanity'
 
-const BACKEND_WEBHOOK_URL = process.env.SANITY_STUDIO_BACKEND_WEBHOOK_URL ||
-    'https://us-central1-zksscore.cloudfunctions.net/v2-airdropApi/sanity-webhook'
-const WEBHOOK_SECRET = process.env.SANITY_STUDIO_WEBHOOK_SECRET || ''
+const BACKEND_WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL ||
+    'https://airdropapi-jk4jk36aqq-uc.a.run.app/sanity-webhook'
+const WEBHOOK_SECRET = process.env.NEXT_PUBLIC_WEBHOOK_SECRET || ''
 
 async function callBackend(action: 'approve' | 'reject', doc: any) {
     const body = {
-        action,
         submissionId: doc.submissionId,
-        address: doc.address,
-        taskId: doc.taskId,
+        status: action === 'approve' ? 'approved' : 'rejected',
         reviewNote: doc.reviewNote || '',
-        secret: WEBHOOK_SECRET,
     }
 
     const res = await fetch(BACKEND_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${WEBHOOK_SECRET}`,
+        },
         body: JSON.stringify(body),
     })
 

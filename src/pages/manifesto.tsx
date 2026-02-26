@@ -1,278 +1,193 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { SEO } from '@/components/layout/SEO';
 
-const words = [
-    "on-chain Reputation",
-    "AI agents",
-    "Payments",
-    "Socials",
-    "Gaming",
-    "and many more."
-];
+const GoldAirdropIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 120 120" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#BF953F" />
+                <stop offset="25%" stopColor="#FFD700" />
+                <stop offset="50%" stopColor="#FFFACD" />
+                <stop offset="75%" stopColor="#FFD700" />
+                <stop offset="100%" stopColor="#BF953F" />
+            </linearGradient>
+        </defs>
+        {/* Parachute Canopy */}
+        <path
+            d="M10 50C10 22.3858 32.3858 0 60 0C87.6142 0 110 22.3858 110 50C110 55 105 60 100 60C95 60 90 55 90 50C90 55 85 60 80 60C75 60 70 55 70 50C70 55 65 60 60 60C55 60 50 55 50 50C50 55 45 60 40 60C35 60 30 55 30 50C30 55 25 60 20 60C15 60 10 55 10 50Z"
+            fill="url(#goldGrad)"
+        />
+        {/* Strings */}
+        <path d="M10 52L60 90M110 52L60 90M30 55L60 90M90 55L60 90M50 58L60 90M70 58L60 90" stroke="#FFD700" strokeWidth="1" opacity="0.6" />
+        {/* Crate */}
+        <rect x="45" y="90" width="30" height="25" rx="4" fill="#000" stroke="url(#goldGrad)" strokeWidth="3" />
+        <rect x="52" y="97" width="16" height="11" rx="1" stroke="#FFD700" strokeWidth="1" opacity="0.4" />
+    </svg>
+);
 
-const Screen1 = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => {
-    const [index, setIndex] = useState(0);
-    const [showWords, setShowWords] = useState(false);
-
-    useEffect(() => {
-        const initTimer = setTimeout(() => {
-            setShowWords(true);
-        }, 1000);
-        return () => clearTimeout(initTimer);
-    }, []);
-
-    useEffect(() => {
-        if (!showWords) return;
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % words.length);
-        }, 1500); // Faster cycle since it's an instant cut
-        return () => clearInterval(timer);
-    }, [showWords]);
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="w-full h-full flex flex-col items-center justify-center relative z-10 px-6"
-        >
-            <div className="flex flex-col md:flex-row items-center justify-center text-3xl md:text-5xl lg:text-6xl font-light tracking-tighter text-center leading-none w-full max-w-5xl h-[120px]">
-                <div className="md:w-1/2 flex justify-center md:justify-end pr-4">
-                    <motion.span
-                        initial={{ y: -50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                        className="text-white whitespace-nowrap"
-                    >
-                        For your
-                    </motion.span>
-                </div>
-
-                <div className="md:w-1/2 flex justify-center md:justify-start pl-4">
-                    {showWords && (
-                        <motion.div
-                            initial={{ y: -50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.6 }}
-                            className="font-black text-white text-left min-w-[300px] text-2xl md:text-4xl lg:text-5xl"
-                            style={{
-                                backgroundImage: 'linear-gradient(to bottom right, #ffffff, #22D3EE)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                            }}
-                        >
-                            {words[index]}
-                        </motion.div>
-                    )}
-                </div>
-            </div>
-
-        </motion.div>
-    );
-};
-
-const screen2Data = [
-    { label: "wallet addresses?", value1: "0x1B7401B5b6d8976F...2F9A", value2: "0x71C7656EC7ab88b09" },
-    { label: "AI agents?", value1: "0x8bA3297aC10...4C91", value2: "0x9cE1Bf...2A4F" },
-    { label: "IBANs?", value1: "UK89 ABCD 1234", value2: "5678 9012 BOFAUS3N" },
-    { label: "Payment IDs?", value1: "pay_req_1x9df2", value2: "kqw_992_amt_4200" }
-];
-
-const Screen2 = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % screen2Data.length);
-        }, 1500); // Shorter interval since it's instant
-        return () => clearInterval(timer);
-    }, []);
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="w-full h-full flex flex-col items-center justify-center relative z-10 px-6 gap-10"
-        >
-            <div className="flex flex-col md:flex-row items-center w-full max-w-4xl text-xl md:text-3xl lg:text-4xl font-light tracking-tight gap-4 md:gap-0">
-                <div className="md:w-1/2 flex justify-center md:justify-end md:pr-4">
-                    <span className="text-white whitespace-nowrap">still copy-pasting</span>
-                </div>
-                <div className="md:w-1/2 flex justify-center md:justify-start md:pl-4">
-                    <div className="px-5 py-2 rounded-xl bg-[#22D3EE] text-black font-bold shadow-[0_0_25px_rgba(34,211,238,0.5)] whitespace-nowrap min-w-[240px] text-center md:text-left flex items-center justify-center md:justify-start">
-                        {screen2Data[index].label}
-                    </div>
-                </div>
-            </div>
-
-            <div className="w-full max-w-3xl p-5 md:p-6 rounded-2xl border border-white/10 bg-[#08080C]/80 backdrop-blur-xl font-mono text-xs md:text-lg text-white/70 overflow-hidden whitespace-nowrap text-ellipsis flex items-center justify-start md:justify-center shadow-2xl">
-                <span className="text-white">{screen2Data[index].value1}</span>
-                <motion.div
-                    animate={{ opacity: [1, 0.4, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                    className="w-[2px] h-5 md:h-6 bg-[#22D3EE] mx-3 shadow-[0_0_12px_#22D3EE]"
-                />
-                <span className="text-[#22D3EE]/60">{screen2Data[index].value2}</span>
-            </div>
-
-            {/* Removed navigation hint for automation */}
-        </motion.div>
-    );
-};
-
-const screen3Prefixes = [
-    "ai", "x", "pay", "btc", "wallet",
-    "bet", "exchange", "predict", "game"
-];
-
-const Screen3 = ({ onPrev, onNext }: { onPrev: () => void; onNext: () => void }) => {
-    const [index, setIndex] = useState(0);
-    const [showPrefixes, setShowPrefixes] = useState(false);
-
-    useEffect(() => {
-        const initTimer = setTimeout(() => {
-            setShowPrefixes(true);
-        }, 1200); // Wait for the intro text to drop
-        return () => clearTimeout(initTimer);
-    }, []);
-
-    useEffect(() => {
-        if (!showPrefixes) return;
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % screen3Prefixes.length);
-        }, 1000); // 1 second instant replacement
-        return () => clearInterval(timer);
-    }, [showPrefixes]);
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0 }}
-            className="w-full h-full flex flex-col items-center justify-center relative z-10 px-6 gap-6"
-        >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-3xl md:text-5xl lg:text-6xl font-light tracking-tighter text-center">
-                <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
-                    <motion.span
-                        initial={{ y: -50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                        className="font-black text-[#22D3EE] px-2"
-                    >
-                        .any
-                    </motion.span>
-                    <motion.span
-                        initial={{ y: -50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.6 }}
-                        className="text-white px-2"
-                    >
-                        is all you need.
-                    </motion.span>
-                </div>
-            </div>
-
-            <div className="h-[60px] md:h-[90px] flex items-center justify-center w-full relative mt-2">
-                {showPrefixes && (
-                    <div
-                        className="absolute w-full flex text-4xl md:text-6xl lg:text-8xl font-black tracking-tighter leading-none"
-                    >
-                        <div className="w-1/2 flex justify-end text-right">
-                            {/* The cycling name part - NOW PLAIN WHITE */}
-                            <span className="text-white">
-                                {screen3Prefixes[index]}
-                            </span>
-                        </div>
-                        <div className="w-1/2 flex justify-start text-left">
-                            {/* The sticky .any part */}
-                            <span className="text-[#22D3EE]">
-                                .any
-                            </span>
-                        </div>
-                    </div>
-                )}
-            </div>
-
-            {/* Removed navigation hint for automation */}
-        </motion.div>
-    );
-};
-
-const Screen4 = ({ onPrev }: { onPrev: () => void }) => {
+const Screen5 = () => {
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-full h-full flex flex-col items-center justify-center relative z-10 px-6 gap-8"
+            className="w-full h-full flex flex-col items-center justify-center relative z-10 px-6 gap-0"
         >
-            <div className="flex flex-col items-center justify-center text-center gap-6">
-                <motion.div
-                    initial={{ y: -50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.2 }}
-                    className="text-4xl md:text-6xl lg:text-9xl font-black italic tracking-tighter flex items-center gap-4"
-                >
-                    <span className="text-[#22D3EE]">.any</span>
-                    <span className="text-white">names</span>
-                </motion.div>
-                <motion.div
+            <style jsx>{`
+                @keyframes twinkle {
+                    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); filter: blur(4px); }
+                    50% { opacity: 1; transform: scale(1.6) rotate(180deg); filter: blur(0px); }
+                }
+
+                @keyframes glide {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+
+                .gold-glitter-text {
+                    display: inline-block;
+                    position: relative;
+                    color: #FFD700 !important; /* Force gold color */
+                    background: linear-gradient(
+                        90deg,
+                        #BF953F 0%,
+                        #FFD700 25%,
+                        #FFFACD 50%,
+                        #FFD700 75%,
+                        #BF953F 100%
+                    );
+                    background-size: 200% auto;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent !important;
+                    animation: glide 4s linear infinite;
+                    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+                }
+
+                .star-brilliant {
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    background: #FFD700;
+                    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                    filter: drop-shadow(0 0 20px #FFD700) drop-shadow(0 0 40px #FFAD00);
+                    animation: twinkle 4s infinite ease-in-out;
+                    pointer-events: none;
+                    z-index: 20;
+                }
+            `}</style>
+
+            <div className="flex flex-col items-center justify-center text-center relative pointer-events-none">
+                {/* sparkling stars around the text */}
+                <div className="star-brilliant" style={{ top: '-20%', left: '10%', animationDelay: '0s' }} />
+                <div className="star-brilliant" style={{ top: '0%', right: '-5%', animationDelay: '1.2s', width: '25px', height: '25px' }} />
+                <div className="star-brilliant" style={{ bottom: '15%', left: '-10%', animationDelay: '2.4s', width: '35px', height: '35px' }} />
+                <div className="star-brilliant" style={{ top: '55%', right: '15%', animationDelay: '0.6s', width: '20px', height: '20px' }} />
+                <div className="star-brilliant" style={{ bottom: '-15%', left: '45%', animationDelay: '3s', width: '30px', height: '30px' }} />
+
+                <motion.h1
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="text-2xl md:text-4xl lg:text-5xl font-light text-white tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                    transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.3 }}
+                    className="text-[3.5rem] md:text-[6.5rem] lg:text-[11rem] font-black italic tracking-tighter"
                 >
-                    Reservation is live.
-                </motion.div>
+                    <span className="gold-glitter-text z-10 px-6 pr-8">
+                        $100,000
+                    </span>
+                </motion.h1>
             </div>
 
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
-                className="mt-12 flex flex-col items-center gap-4"
+                className="mt-2 flex flex-col items-center gap-4 relative z-[60]"
             >
-                <div className="flex items-center gap-2 opacity-40 hover:opacity-100 transition-opacity cursor-default group">
-                    <span className="text-[10px] uppercase tracking-widest font-mono text-white/50">Powered by</span>
-                    <div className="flex items-center gap-1.5 ml-1">
-                        <img src="/favicon-logo.svg" alt="Logo" className="w-5 h-5" />
-                        <span className="font-black text-white text-sm tracking-tighter uppercase leading-none">ANYLAYER.</span>
-                    </div>
+                <div className="flex flex-col md:flex-row items-center gap-1 md:gap-3 opacity-100 cursor-default">
+                    <span className="text-[10px] md:text-sm uppercase tracking-[0.4em] font-mono text-white/40">Anylayer's</span>
+                    <span className="font-black text-white text-base md:text-xl tracking-tighter uppercase leading-none">Credit.</span>
                 </div>
             </motion.div>
-
-            {/* Removed navigation hint for automation */}
         </motion.div>
     );
 };
 
 const ManifestoPage = () => {
-    const [currentScreen, setCurrentScreen] = useState(0);
+    const [isMounted, setIsMounted] = React.useState(false);
 
-    useEffect(() => {
-        const timings = [7000, 10000, 10000, 10000]; // Timing for each screen in ms
-
-        const timer = setTimeout(() => {
-            setCurrentScreen((prev) => (prev + 1) % 4);
-        }, timings[currentScreen]);
-
-        return () => clearTimeout(timer);
-    }, [currentScreen]);
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return (
-        <div className="bg-[#040406] min-h-screen font-geist text-white selection:bg-[#22D3EE] selection:text-black overflow-hidden relative">
+        <div className="bg-[#040406] min-h-screen font-geist text-white selection:bg-[#22D3EE] selection:text-black relative">
             <Head>
                 <title>Manifesto | Anylayer</title>
                 <meta name="description" content="One identity for everything." />
             </Head>
             <SEO title="Manifesto" description="One identity for everything." image="/dashboard.png" />
+
+            {/* Brute-Force Airdrop Layer - ABSOLUTE TOP */}
+            {isMounted && (
+                <div className="fixed inset-0 pointer-events-none z-[9999] overflow-visible">
+                    {/* Parachute 1 - Left */}
+                    <motion.div
+                        initial={{ top: '-20vh', left: '15vw', opacity: 1 }}
+                        animate={{
+                            top: '120vh',
+                            left: ['15vw', '25vw', '15vw'],
+                        }}
+                        transition={{
+                            duration: 15,
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                        className="absolute"
+                    >
+                        <GoldAirdropIcon className="w-48 md:w-72 drop-shadow-[0_0_50px_rgba(255,215,0,0.4)] brightness-125" />
+                    </motion.div>
+
+                    {/* Parachute 2 - Right */}
+                    <motion.div
+                        initial={{ top: '-25vh', left: '65vw', opacity: 1 }}
+                        animate={{
+                            top: '120vh',
+                            left: ['65vw', '55vw', '65vw'],
+                        }}
+                        transition={{
+                            duration: 18,
+                            delay: 4,
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                        className="absolute"
+                    >
+                        <GoldAirdropIcon className="w-40 md:w-60 brightness-110" />
+                    </motion.div>
+
+                    {/* Parachute 3 - Far Center */}
+                    <motion.div
+                        initial={{ top: '-30vh', left: '45vw', opacity: 1 }}
+                        animate={{
+                            top: '120vh',
+                            left: ['45vw', '48vw', '45vw'],
+                        }}
+                        transition={{
+                            duration: 22,
+                            delay: 8,
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                        className="absolute"
+                    >
+                        <GoldAirdropIcon className="w-32 md:w-48 opacity-60 blur-[0.5px]" />
+                    </motion.div>
+                </div>
+            )}
 
             {/* Cinematic Background Layer */}
             <div className="fixed inset-0 z-0 pointer-events-none">
@@ -289,23 +204,8 @@ const ManifestoPage = () => {
 
             {/* Screen Container */}
             <div className="relative w-full h-screen z-10 flex flex-col">
-                <AnimatePresence mode="wait">
-                    {currentScreen === 0 && (
-                        <Screen2 key="screen2" onPrev={() => { }} onNext={() => setCurrentScreen(1)} />
-                    )}
-                    {currentScreen === 1 && (
-                        <Screen3 key="screen3" onPrev={() => setCurrentScreen(0)} onNext={() => setCurrentScreen(2)} />
-                    )}
-                    {currentScreen === 2 && (
-                        <Screen1 key="screen1" onPrev={() => setCurrentScreen(1)} onNext={() => setCurrentScreen(3)} />
-                    )}
-                    {currentScreen === 3 && (
-                        <Screen4 key="screen4" onPrev={() => setCurrentScreen(2)} />
-                    )}
-                </AnimatePresence>
+                <Screen5 />
             </div>
-
-            {/* Pagination removed for Video Mode */}
         </div>
     );
 };
