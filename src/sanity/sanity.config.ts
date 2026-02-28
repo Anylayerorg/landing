@@ -21,7 +21,7 @@ const batchApprovePlugin = definePlugin({
   tools: [
     {
       name: 'batch-approve',
-      title: 'Batch Approve',
+      title: 'Batch Review',
       component: BatchApproveTool,
     },
   ],

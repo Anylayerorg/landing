@@ -1,45 +1,106 @@
 import { StructureBuilder } from 'sanity/structure';
 import { Mail, Users, Code, Newspaper, Calendar, Gift } from 'lucide-react';
 
+const taskSection = (S: StructureBuilder, taskId: string, taskTitle: string, emoji: string) =>
+  S.listItem()
+    .id(taskId)
+    .title(`${emoji} ${taskTitle}`)
+    .child(
+      S.list()
+        .id(`${taskId}-list`)
+        .title(taskTitle)
+        .items([
+          S.listItem()
+            .id(`${taskId}-pending`)
+            .title('⏳ Pending')
+            .child(
+              S.documentList()
+                .id(`${taskId}-pending-list`)
+                .title(`${taskTitle} — Pending`)
+                .filter(`_type == "airdropSubmission" && taskId == "${taskId}" && status == "pending"`)
+                .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+            ),
+          S.listItem()
+            .id(`${taskId}-approved`)
+            .title('✅ Approved')
+            .child(
+              S.documentList()
+                .id(`${taskId}-approved-list`)
+                .title(`${taskTitle} — Approved`)
+                .filter(`_type == "airdropSubmission" && taskId == "${taskId}" && status == "approved"`)
+                .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+            ),
+          S.listItem()
+            .id(`${taskId}-rejected`)
+            .title('❌ Rejected')
+            .child(
+              S.documentList()
+                .id(`${taskId}-rejected-list`)
+                .title(`${taskTitle} — Rejected`)
+                .filter(`_type == "airdropSubmission" && taskId == "${taskId}" && status == "rejected"`)
+                .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+            ),
+        ])
+    );
+
 export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Anylayer Content')
     .items([
-      // Airdrop Reviews Section
+      // ── Airdrop Reviews — per-task categories ─────────────────────────
       S.listItem()
         .title('Airdrop Reviews')
         .icon(Gift)
         .child(
           S.list()
+            .id('airdrop-reviews-root')
             .title('Airdrop Reviews')
             .items([
-              S.listItem()
-                .title('⏳ Pending Review')
-                .child(
-                  S.documentList()
-                    .title('Pending Review')
-                    .filter('_type == "airdropSubmission" && status == "pending"')
-                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
-                ),
-              S.listItem()
-                .title('✅ Approved')
-                .child(
-                  S.documentList()
-                    .title('Approved')
-                    .filter('_type == "airdropSubmission" && status == "approved"')
-                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
-                ),
-              S.listItem()
-                .title('❌ Rejected')
-                .child(
-                  S.documentList()
-                    .title('Rejected')
-                    .filter('_type == "airdropSubmission" && status == "rejected"')
-                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
-                ),
+              // Per-task sections
+              taskSection(S, 'make_post',       'Make a Post About ANS', '📝'),
+              taskSection(S, 'retweet_post',    'Retweet a Post',        '🔁'),
+              taskSection(S, 'comment_on_post', 'Comment on a Post',     '💬'),
+              taskSection(S, 'add_discord_tag', 'Add Discord Tag',       '🏷️'),
+
               S.divider(),
+
+              // Cross-task views
               S.listItem()
-                .title('All Submissions')
+                .id('all-pending')
+                .title('⏳ All Pending')
+                .child(
+                  S.documentList()
+                    .id('all-pending-list')
+                    .title('All Pending')
+                    .filter('_type == "airdropSubmission" && status == "pending"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+                ),
+              S.listItem()
+                .id('all-approved')
+                .title('✅ All Approved')
+                .child(
+                  S.documentList()
+                    .id('all-approved-list')
+                    .title('All Approved')
+                    .filter('_type == "airdropSubmission" && status == "approved"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+                ),
+              S.listItem()
+                .id('all-rejected')
+                .title('❌ All Rejected')
+                .child(
+                  S.documentList()
+                    .id('all-rejected-list')
+                    .title('All Rejected')
+                    .filter('_type == "airdropSubmission" && status == "rejected"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'asc' }])
+                ),
+
+              S.divider(),
+
+              S.listItem()
+                .id('all-submissions')
+                .title('📋 All Submissions')
                 .child(
                   S.documentTypeList('airdropSubmission').title('All Submissions')
                 ),
@@ -110,8 +171,11 @@ export const structure = (S: StructureBuilder) =>
             ])
         ),
 
-      // Filter out types that we've already defined custom items for
+      // Remaining types not explicitly handled
       ...S.documentTypeListItems().filter(
-        (listItem) => !['post', 'author', 'category', 'subscriber', 'protocolEvent', 'airdropSubmission'].includes(listItem.getId() || '')
+        (listItem) =>
+          !['post', 'author', 'category', 'subscriber', 'protocolEvent', 'airdropSubmission'].includes(
+            listItem.getId() || ''
+          )
       ),
     ]);
