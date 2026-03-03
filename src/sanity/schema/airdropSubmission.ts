@@ -72,7 +72,7 @@ export default {
             subtitle: 'address',
             status: 'status',
         },
-        prepare({ title, subtitle, status }: { title: string; subtitle: string; status: string }) {
+        prepare({ title, subtitle, status }: any) {
             const icon = status === 'approved' ? '✅' : status === 'rejected' ? '❌' : '⏳'
             return {
                 title: `${icon} ${title || 'Unknown Task'}`,

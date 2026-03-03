@@ -3,10 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
   typescript: {
-    ignoreBuildErrors: true, // Temporary for demo
+    ignoreBuildErrors: false, // Temporary for debugging
   },
   eslint: {
-    ignoreDuringBuilds: true, // Temporary for demo
+    ignoreDuringBuilds: false, // Temporary for debugging
   },
   images: {
     remotePatterns: [

@@ -559,7 +559,7 @@ export function Header() {
                                       <span className="text-white font-medium">{item.label}</span>
                                       {item.isComingSoon ? (
                                         <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
-                                      ) : item.isExternal && (
+                                      ) : (item as any).isExternal && (
                                         <ArrowUpRight size={14} className="text-white/20" />
                                       )}
                                     </div>

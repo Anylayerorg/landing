@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 
 const Counter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
