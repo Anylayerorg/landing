@@ -98,11 +98,11 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
                                 Calendar
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-none">
                             {title}
                         </h2>
                         {subtitle && (
-                            <p className={`${dark ? 'text-white/40' : 'text-black/40'} text-lg font-medium leading-relaxed max-w-xl`}>
+                            <p className={`${dark ? 'text-white/40' : 'text-black/40'} text-lg font-normal leading-relaxed max-w-xl`}>
                                 {subtitle}
                             </p>
                         )}
@@ -143,11 +143,11 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
                                         </div>
                                     </div>
 
-                                    <h3 className="text-2xl font-black tracking-tight leading-tight mb-4 group-hover:text-lightblueprimary transition-colors">
+                                    <h3 className="text-2xl font-bold tracking-tight leading-tight mb-4 group-hover:text-lightblueprimary transition-colors">
                                         {event.title}
                                     </h3>
 
-                                    <p className={`text-sm leading-relaxed mb-8 font-medium line-clamp-2 ${dark ? 'text-white/40' : 'text-black/40'}`}>
+                                    <p className={`text-sm leading-relaxed mb-8 font-normal line-clamp-2 ${dark ? 'text-white/40' : 'text-black/40'}`}>
                                         {event.excerpt}
                                     </p>
 
@@ -157,7 +157,7 @@ export const EventsSection: React.FC<EventsSectionProps> = ({
                                                 href={event.rsvpLink}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-lightblueprimary hover:text-lightblueprimary/80 transition-colors"
+                                                className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-lightblueprimary hover:text-lightblueprimary/80 transition-colors"
                                             >
                                                 RSVP Now
                                                 <ArrowUpRight size={16} />

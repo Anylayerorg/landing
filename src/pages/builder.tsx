@@ -72,8 +72,8 @@ const BuilderPage = () => {
               </div>
 
               <div className="space-y-0 mb-8">
-                <h3 className="text-3xl font-black uppercase tracking-tighter leading-none">Send</h3>
-                <h3 className="text-3xl font-black uppercase tracking-tighter leading-none text-white/20">Assets</h3>
+                <h3 className="text-3xl font-bold uppercase tracking-tighter leading-none">Send</h3>
+                <h3 className="text-3xl font-bold uppercase tracking-tighter leading-none text-white/20">Assets</h3>
               </div>
 
               <div className="space-y-4 flex-1">
@@ -121,7 +121,7 @@ const BuilderPage = () => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-xl font-black text-white tabular-nums">8631</p>
+                        <p className="text-xl font-bold text-white tabular-nums">8631</p>
                         <p className="text-[5px] font-mono text-white/20 uppercase tracking-[0.2em]">Trust_Score</p>
                       </div>
                     </div>
@@ -138,14 +138,14 @@ const BuilderPage = () => {
                 )}
 
                 <div className="text-center pt-8">
-                  <div className="text-5xl font-black tracking-tighter mb-1">523<span className="text-xl text-white/20 ml-2 uppercase">ANY</span></div>
+                  <div className="text-5xl font-bold tracking-tighter mb-1">523<span className="text-xl text-white/20 ml-2 uppercase">ANY</span></div>
                 </div>
               </div>
 
               <div className="pt-8" />
 
               <motion.div
-                className="w-full py-4 rounded-2xl bg-lightblueprimary flex items-center justify-center gap-3 text-black font-black uppercase tracking-[0.2em] text-[11px]"
+                className="w-full py-4 rounded-2xl bg-lightblueprimary flex items-center justify-center gap-3 text-black font-bold uppercase tracking-[0.2em] text-[11px]"
               >
                 {step === 'sending' ? (
                   <>Sending <Loader2 className="animate-spin" size={14} /></>
@@ -175,7 +175,7 @@ const BuilderPage = () => {
               </motion.div>
 
               <div className="space-y-2">
-                <h3 className="text-2xl font-black uppercase tracking-tighter">Transfer Sent</h3>
+                <h3 className="text-2xl font-bold uppercase tracking-tighter">Transfer Sent</h3>
                 <p className="text-white/40 text-[10px] font-mono uppercase tracking-[0.2em]">Transaction_Broadcasted</p>
               </div>
 
@@ -239,7 +239,7 @@ const BuilderPage = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-24">
               <HUDLabel text="INTEGRATION PIPELINE" />
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mt-4 leading-[0.9]">
                 Bring Trust into <br /> <span className="text-lightblueprimary">Your Execution Stack.</span>
               </h2>
             </div>
@@ -293,7 +293,7 @@ const BuilderPage = () => {
                     </div>
 
                     <div className="space-y-4">
-                      <h4 className="text-xl font-black uppercase tracking-tight">{item.title}</h4>
+                      <h4 className="text-xl font-bold uppercase tracking-tight">{item.title}</h4>
                       <p className="text-white/40 text-sm leading-relaxed font-light">{item.desc}</p>
                     </div>
 
@@ -311,7 +311,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-20">
             <HUDLabel text="CAPABILITY REGISTRY" />
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mt-4 leading-[0.9]">
               Building With <br /> <span className="text-lightblueprimary">Verified Trust.</span>
             </h2>
           </div>
@@ -387,7 +387,7 @@ const BuilderPage = () => {
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-12">
               <HUDLabel text="Protocol Support" />
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9]">
                 The Layer for <br /> <span className="text-lightblueprimary">Wallets.</span>
               </h2>
               <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-lg">
@@ -446,7 +446,7 @@ const BuilderPage = () => {
         <section className="max-w-7xl mx-auto px-6 mb-80">
           <div className="mb-24">
             <HUDLabel text="DEVELOPER PROGRAM" />
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mt-4 leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mt-4 leading-[0.9]">
               Empowering the <br /> <span className="text-lightblueprimary">Next Gen of Builders.</span>
             </h2>
             <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mt-8">
@@ -501,7 +501,7 @@ const BuilderPage = () => {
                 Wallet teams, protocols, marketplaces, consumer apps, and infrastructure builders exploring trust‑based features.
               </p>
             </div>
-            <a href="https://core.anylayer.org" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
+            <a href="https://core.anylayer.org" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98]">
               Anylayer Core
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </a>
@@ -516,7 +516,7 @@ const BuilderPage = () => {
                   <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                   <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40">Builder Ecosystem</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
+                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9]">
                   Get in <span className="text-lightblueprimary">Contact.</span>
                 </h2>
               </div>
@@ -527,7 +527,7 @@ const BuilderPage = () => {
 
             <a
               href="/contact"
-              className="group relative px-12 py-6 rounded-2xl overflow-hidden transition-all hover:bg-white/90 active:scale-[0.99] bg-white text-black font-black uppercase tracking-[0.4em] text-[12px] flex items-center justify-center gap-4"
+              className="group relative px-12 py-6 rounded-2xl overflow-hidden transition-all hover:bg-white/90 active:scale-[0.99] bg-white text-black font-bold uppercase tracking-[0.4em] text-[12px] flex items-center justify-center gap-4"
             >
               Contact Us <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
@@ -539,7 +539,7 @@ const BuilderPage = () => {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-lightblueprimary to-transparent" />
 
           <motion.div {...fadeIn} className="space-y-12">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9]">
               Start Building. <br /> <span className="text-lightblueprimary">Start Verifying.</span>
             </h2>
             <p className="text-white/40 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">

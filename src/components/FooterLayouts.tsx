@@ -39,7 +39,7 @@ export const Layout1 = ({ email, setEmail, status, handleSubscribe, footerIcon }
             <div className="space-y-6 max-w-sm flex flex-col items-center md:items-start">
                 <div className="flex items-center gap-2.5">
                     <Image src="/favicon-logo.svg" alt="Anylayer" width={24} height={24} className="w-auto h-7" />
-                    <span className="text-white font-black text-xl tracking-tighter uppercase">ANYLAYER.</span>
+                    <span className="text-white font-bold text-xl tracking-tighter uppercase">ANYLAYER.</span>
                 </div>
                 <p className="text-sm text-white/60 font-light leading-relaxed">Securing the digital internet through autonomous trust layers.</p>
             </div>

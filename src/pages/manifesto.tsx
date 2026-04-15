@@ -77,7 +77,7 @@ const Screen5 = () => {
                         height={28}
                         className="w-auto h-7"
                     />
-                    <span className="font-inter font-black text-white text-2xl tracking-tighter uppercase leading-none pb-0.5">
+                    <span className="font-inter font-bold text-white text-2xl tracking-tighter uppercase leading-none pb-0.5">
                         ANYLAYER.
                     </span>
                 </div>

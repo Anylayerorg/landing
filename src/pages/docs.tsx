@@ -33,7 +33,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const PortableTextComponents = {
   block: {
-    h3: ({ children }: any) => <h3 className="text-xl font-black text-black uppercase tracking-tight not-italic mt-12 mb-6">{children}</h3>,
+    h3: ({ children }: any) => <h3 className="text-xl font-bold text-black uppercase tracking-tight not-italic mt-12 mb-6">{children}</h3>,
     normal: ({ children }: any) => <p className="text-zinc-900 leading-relaxed font-normal mb-4">{children}</p>,
   },
   list: {
@@ -71,7 +71,7 @@ const PortableTextComponents = {
           <thead>
             <tr className="bg-zinc-50 border-b border-black/5">
               {value.rows[0].cells.map((cell: string, i: number) => (
-                <th key={i} className="px-6 py-4 font-black uppercase tracking-widest text-[10px] text-black">
+                <th key={i} className="px-6 py-4 font-bold uppercase tracking-widest text-[10px] text-black">
                   {cell}
                 </th>
               ))}
@@ -81,7 +81,7 @@ const PortableTextComponents = {
             {value.rows.slice(1).map((row: any, i: number) => (
               <tr key={i} className="border-b border-black/5 last:border-0 hover:bg-zinc-50/50 transition-colors">
                 {row.cells.map((cell: string, j: number) => (
-                  <td key={j} className="px-6 py-4 text-zinc-600 font-medium">
+                  <td key={j} className="px-6 py-4 text-zinc-600 font-normal">
                     {cell}
                   </td>
                 ))}
@@ -180,7 +180,7 @@ const DocsPage = () => {
             <aside className="lg:w-64 space-y-12 shrink-0 pr-4 lg:sticky lg:top-40 lg:h-[calc(100vh-12rem)] lg:overflow-y-auto scrollbar-hide">
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Docs</h1>
+                  <h1 className="text-3xl font-bold uppercase tracking-tighter mb-2 text-black">Docs</h1>
                   <p className="text-zinc-500 text-xs">Technical reference and integration guides for Anylayer.</p>
                 </div>
 
@@ -206,15 +206,15 @@ const DocsPage = () => {
                   }, {} as Record<string, typeof filteredDocs>)
                 ).map(([category, items]) => (
                   <div key={category} className="space-y-5">
-                    <h4 className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-400">{category}</h4>
+                    <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400">{category}</h4>
                     <div className="flex flex-col gap-4">
                       {items.map((doc) => (
                         <button
                           key={doc._id}
                           onClick={() => handleDocChange(doc)}
                           className={`text-left transition-all relative ${activeDoc?._id === doc._id
-                            ? 'text-black font-black'
-                            : 'text-zinc-500 hover:text-black font-medium'
+                            ? 'text-black font-bold'
+                            : 'text-zinc-500 hover:text-black font-normal'
                             } text-sm tracking-tight flex items-center gap-3`}
                         >
                           {activeDoc?._id === doc._id && (
@@ -232,7 +232,7 @@ const DocsPage = () => {
               </div>
 
               <div className="pt-12 border-t border-black/5 space-y-6">
-                <h4 className="text-[9px] uppercase tracking-widest font-black text-zinc-300">Community</h4>
+                <h4 className="text-[9px] uppercase tracking-widest font-bold text-zinc-300">Community</h4>
                 <div className="space-y-4">
                   <a href="https://github.com/anylayer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
                     GitHub Repository
@@ -261,7 +261,7 @@ const DocsPage = () => {
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/5 pb-12">
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                          <span className="text-lightblueprimary text-[10px] font-black uppercase tracking-widest">
+                          <span className="text-lightblueprimary text-[10px] font-bold uppercase tracking-widest">
                             {activeDoc?.category.title}
                           </span>
                           <div className="w-1 h-1 rounded-full bg-black/10" />
@@ -269,7 +269,7 @@ const DocsPage = () => {
                             v1.0.4-beta
                           </span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] text-black">
                           {activeDoc?.title}
                         </h2>
                       </div>
@@ -289,7 +289,7 @@ const DocsPage = () => {
                       <p className="text-zinc-300 text-[9px] uppercase tracking-widest font-mono">
                         &copy; 2026 Anylayer Identity Foundation
                       </p>
-                      <button className="text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 text-zinc-400 hover:text-black transition-colors">
+                      <button className="text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 text-zinc-400 hover:text-black transition-colors">
                         Share Link
                         <ExternalLink size={12} />
                       </button>

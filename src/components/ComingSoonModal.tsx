@@ -41,11 +41,11 @@ export const ComingSoonModal = ({ isOpen, onClose }: ComingSoonModalProps) => {
                                 </button>
 
                                 <div className="space-y-4 text-center mb-10">
-                                    <h3 className="text-[2.5rem] font-black uppercase tracking-tighter text-white leading-[0.9]">
+                                    <h3 className="text-[2.5rem] font-bold uppercase tracking-tighter text-white leading-[0.9]">
                                         Private <br />
                                         <span className="text-lightblueprimary">Access.</span>
                                     </h3>
-                                    <p className="text-[#9494a3] text-sm font-medium leading-relaxed max-w-[240px] mx-auto opacity-60">
+                                    <p className="text-[#9494a3] text-sm font-normal leading-relaxed max-w-[240px] mx-auto opacity-60">
                                         We're currently in a gated beta. Join our community to secure your spot for the public launch.
                                     </p>
                                 </div>

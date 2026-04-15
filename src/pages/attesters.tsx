@@ -18,7 +18,7 @@ import {
 const SectionLabel = ({ text }: { text: string }) => (
     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-3">
         <div className="w-1.5 h-1.5 rounded-full bg-[#A855F7]" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-normal">
             {text}
         </span>
     </div>
@@ -27,7 +27,7 @@ const SectionLabel = ({ text }: { text: string }) => (
 const SectionTag = ({ label }: { label: string }) => (
     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-4">
         <div className="w-1.5 h-1.5 rounded-full bg-[#A855F7]" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-normal">
             {label}
         </span>
     </div>
@@ -79,7 +79,7 @@ const WhoCanBecome_Layout1_SwissList = ({ fadeIn }: any) => (
     <div className="space-y-24">
         <div className="max-w-3xl space-y-8">
             <SectionLabel text="Eligibility & Admission" />
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9]">
                 Who Can Become <br />
                 <span className="text-lightblueprimary">an Attester</span>
             </h2>
@@ -92,7 +92,7 @@ const WhoCanBecome_Layout1_SwissList = ({ fadeIn }: any) => (
             {entities.map((entity, i) => (
                 <div key={i} className="group flex items-baseline gap-12 py-4 border-b border-white/5">
                     <span className="text-[10px] font-mono text-white/20">MODULE_0{i + 1}</span>
-                    <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white/40 group-hover:text-white group-hover:pl-4 transition-all duration-500 cursor-default">
+                    <span className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-white/40 group-hover:text-white group-hover:pl-4 transition-all duration-500 cursor-default">
                         {entity}
                     </span>
                 </div>
@@ -111,7 +111,7 @@ const WhoCanBecome_Layout2_OrbitalHub = ({ fadeIn }: any) => (
         <div className="flex flex-col lg:flex-row items-center gap-20">
             <div className="lg:w-1/2 space-y-8 text-center lg:text-left">
                 <SectionLabel text="Eligibility System" />
-                <h2 className="text-5xl font-black uppercase tracking-tighter leading-none">
+                <h2 className="text-5xl font-bold uppercase tracking-tighter leading-none">
                     Open <br /> Signal <br /> <span className="text-lightblueprimary">Access</span>
                 </h2>
                 <div className="h-px w-32 bg-lightblueprimary hidden lg:block" />
@@ -136,7 +136,7 @@ const WhoCanBecome_Layout2_OrbitalHub = ({ fadeIn }: any) => (
                             }}
                         >
                             <div className="w-2 h-px bg-white/20 group-hover:w-8 transition-all group-hover:bg-lightblueprimary" />
-                            <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/30 group-hover:text-white transition-colors whitespace-nowrap">
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/30 group-hover:text-white transition-colors whitespace-nowrap">
                                 {entity}
                             </span>
                         </div>
@@ -157,7 +157,7 @@ const WhoCanBecome_Layout2_OrbitalHub = ({ fadeIn }: any) => (
 const WhoCanBecome_Layout3_LogicPath = ({ fadeIn }: any) => (
     <div className="space-y-32">
         <div className="max-w-2xl space-y-6">
-            <h2 className="text-3xl font-black uppercase tracking-tight">ADMISSION_LOGIC_GATE_v1</h2>
+            <h2 className="text-3xl font-bold uppercase tracking-tight">ADMISSION_LOGIC_GATE_v1</h2>
             <p className="text-white/30 leading-relaxed">
                 Trust within Anylayer is earned through accuracy, consistency, and accountability, not permission. Any entity that can objectively verify outcomes may apply.
             </p>
@@ -169,7 +169,7 @@ const WhoCanBecome_Layout3_LogicPath = ({ fadeIn }: any) => (
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-px bg-white/20 group-hover:bg-lightblueprimary" />
                     <div className="space-y-2">
                         <span className="text-[9px] font-mono text-lightblueprimary/40">NODE_GATE_0{i + 1}</span>
-                        <h3 className="text-2xl font-black uppercase tracking-tighter text-white/80 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                        <h3 className="text-2xl font-bold uppercase tracking-tighter text-white/80 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
                             {entity}
                         </h3>
                     </div>
@@ -184,7 +184,7 @@ const WhoCanBecome_Layout3_LogicPath = ({ fadeIn }: any) => (
 const WhoCanBecome_Layout4_LayeredStack = ({ fadeIn }: any) => (
     <div className="flex flex-col md:flex-row gap-20 items-end">
         <div className="md:w-1/3 space-y-12">
-            <h2 className="text-6xl font-black leading-none uppercase tracking-tighter">
+            <h2 className="text-6xl font-bold leading-none uppercase tracking-tighter">
                 Who <br /> Qualifies?
             </h2>
             <div className="space-y-4">
@@ -202,7 +202,7 @@ const WhoCanBecome_Layout4_LayeredStack = ({ fadeIn }: any) => (
                     whileHover={{ x: 20 }}
                     className="relative py-8 flex items-center justify-between border-b border-white/10 group cursor-default"
                 >
-                    <span className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white/20 group-hover:text-white transition-colors italic">
+                    <span className="text-4xl md:text-5xl font-bold uppercase tracking-tighter text-white/20 group-hover:text-white transition-colors italic">
                         {entity}
                     </span>
                     <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all text-lightblueprimary" size={32} />
@@ -222,7 +222,7 @@ const WhoCanBecome_Layout5_IndustrialBlueprint = ({ fadeIn }: any) => (
             <div className="flex justify-between items-start">
                 <div className="space-y-4">
                     <span className="text-[10px] font-mono text-lightblueprimary uppercase tracking-[0.5em]">SYSTEM_ENTITIES</span>
-                    <h2 className="text-4xl font-black uppercase tracking-tighter">Attestation Protocols</h2>
+                    <h2 className="text-4xl font-bold uppercase tracking-tighter">Attestation Protocols</h2>
                 </div>
                 <div className="text-[9px] font-mono text-white/20 text-right">
                     REF_CODE: AL_ID_2024<br />
@@ -236,7 +236,7 @@ const WhoCanBecome_Layout5_IndustrialBlueprint = ({ fadeIn }: any) => (
                         <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border border-white/10 group-hover:border-lightblueprimary transition-colors flex items-center justify-center">
                             <div className="w-1 h-1 rounded-full bg-white/20 group-hover:bg-lightblueprimary" />
                         </div>
-                        <span className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/40 group-hover:text-white transition-all">
+                        <span className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white/40 group-hover:text-white transition-all">
                             {entity}
                         </span>
                         <div className="mt-2 h-px w-0 group-hover:w-full bg-lightblueprimary transition-all duration-700" />
@@ -261,7 +261,7 @@ const WhoCanBecome_Layout6_TypographicSplit = ({ fadeIn }: any) => (
     <div className="flex flex-col lg:flex-row border-y border-white/5">
         <div className="lg:w-1/2 p-12 lg:p-32 lg:border-r border-white/5 bg-white/[0.01]">
             <SectionLabel text="Who Can Apply" />
-            <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-white">
+            <h2 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85] text-white">
                 VERIFY <br /> EVERYTHING
             </h2>
             <p className="mt-12 text-lg text-white/40 font-light leading-relaxed max-w-sm">
@@ -271,7 +271,7 @@ const WhoCanBecome_Layout6_TypographicSplit = ({ fadeIn }: any) => (
         <div className="lg:w-1/2 flex flex-col divide-y divide-white/5">
             {entities.map((entity, i) => (
                 <div key={i} className="group relative p-12 hover:bg-black transition-all cursor-default overflow-hidden">
-                    <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white/10 group-hover:text-lightblueprimary transition-colors italic">
+                    <span className="text-3xl md:text-5xl font-bold uppercase tracking-tighter text-white/10 group-hover:text-lightblueprimary transition-colors italic">
                         {entity}
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-lightblueprimary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -288,7 +288,7 @@ const WhoCanBecome_Layout7_MinimalTimeline = ({ fadeIn }: any) => (
             <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-lightblueprimary shadow-[0_0_15px_rgba(168,85,247,0.5)]" />
             <div className="space-y-6">
                 <SectionLabel text="Network Eligibility" />
-                <h2 className="text-5xl font-black uppercase tracking-tighter">WHO QUALIFIES?</h2>
+                <h2 className="text-5xl font-bold uppercase tracking-tighter">WHO QUALIFIES?</h2>
                 <p className="text-white/40 max-w-xl">Trust within Anylayer is earned through accuracy and accountability, not permission.</p>
             </div>
 
@@ -299,7 +299,7 @@ const WhoCanBecome_Layout7_MinimalTimeline = ({ fadeIn }: any) => (
                             <span className="text-[10px] font-mono text-white/10">v0{i + 1}</span>
                             <div className="w-8 h-px bg-white/5 group-hover:bg-lightblueprimary transition-colors" />
                         </div>
-                        <span className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white/30 group-hover:text-white transition-all duration-500">
+                        <span className="text-2xl md:text-4xl font-bold uppercase tracking-tighter text-white/30 group-hover:text-white transition-all duration-500">
                             {entity}
                         </span>
                     </div>
@@ -323,7 +323,7 @@ const WhoCanBecome_Layout8_FloatingSignals = ({ fadeIn }: any) => {
         <div className="min-h-[800px] relative flex items-center justify-center p-12">
             <div className="text-center space-y-8 relative z-10 max-w-2xl">
                 <SectionLabel text="PERMISSIONLESS ACCESS" />
-                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none">
+                <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white leading-none">
                     BUILT BY <br /> <span className="text-lightblueprimary">NETWORK SIGNALS</span>
                 </h2>
                 <p className="text-white/40 mx-auto max-w-md italic">Trust within Anylayer is earned through accuracy, consistency, and accountability, not permission.</p>
@@ -346,7 +346,7 @@ const WhoCanBecome_Layout8_FloatingSignals = ({ fadeIn }: any) => {
                         {/* The Static Label */}
                         <div className="relative group">
                             <div className="px-8 py-4 border border-white/10 bg-black/40 backdrop-blur-3xl rounded-full hover:border-[#A855F7]/50 transition-all duration-500 shadow-2xl">
-                                <span className="text-xs font-black uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">
+                                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">
                                     {entity}
                                 </span>
                             </div>
@@ -396,7 +396,7 @@ const WhoCanBecomeSelector = ({ active, set }: { active: number, set: (i: number
         {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
             <button
                 key={i} onClick={() => set(i)}
-                className={`w-8 h-8 rounded-lg font-black text-xs transition-all ${active === i ? 'bg-white text-black' : 'text-white/40 hover:bg-white/10'}`}
+                className={`w-8 h-8 rounded-lg font-bold text-xs transition-all ${active === i ? 'bg-white text-black' : 'text-white/40 hover:bg-white/10'}`}
             >
                 {i}
             </button>
@@ -423,7 +423,7 @@ const RegistryGrid = ({ fadeIn }: any) => (
                         <div className={`flex ${i % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                             <SectionTag label={`Node Sequence 0x0${i + 1}`} />
                         </div>
-                        <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white/90 leading-tight">
+                        <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white/90 leading-tight">
                             {cat.title}
                         </h3>
                         <p className="text-xs md:text-sm text-white/40 font-light leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
@@ -480,7 +480,7 @@ const AttestersPage = () => {
                         {/* Vertical Accent Label */}
                         <div className="hidden lg:flex flex-col items-center gap-6">
                             <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-white/5" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
                                 ANYLAYER NETWORK
                             </span>
                             <div className="h-24 w-px bg-gradient-to-t from-transparent via-white/10 to-white/5" />
@@ -496,7 +496,7 @@ const AttestersPage = () => {
                             >
                                 <div className="space-y-10">
                                     <SectionTag label="CORE INFRASTRUCTURE" />
-                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.95] max-w-3xl">
+                                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase leading-[0.95] max-w-3xl">
                                         Scale Universal <br />
                                         <span className="text-lightblueprimary">Trust.</span>
                                     </h1>
@@ -516,7 +516,7 @@ const AttestersPage = () => {
                                         href="/contact"
                                         className="group relative inline-flex items-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                     >
-                                        <span className="text-[11px] font-black uppercase tracking-[0.3em]">
+                                        <span className="text-[11px] font-bold uppercase tracking-[0.3em]">
                                             Get in Touch
                                         </span>
                                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -532,7 +532,7 @@ const AttestersPage = () => {
                     <div className="grid md:grid-cols-2 gap-20 items-start p-12 md:p-20 rounded-[40px] border border-white/5 bg-black/40 backdrop-blur-xl">
                         <motion.div {...fadeIn} className="space-y-8">
                             <SectionLabel text="System Definition" />
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-[1.1]">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase leading-[1.1]">
                                 The <span className="text-lightblueprimary/60">Verification</span> <br /> Node.
                             </h2>
                             <p className="text-sm md:text-base text-white/40 leading-relaxed">
@@ -550,7 +550,7 @@ const AttestersPage = () => {
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col gap-4 p-6 border border-white/5 rounded-2xl bg-white/[0.02] hover:border-white/10 transition-colors">
                                     <div className="text-lightblueprimary/40">{item.icon}</div>
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">{item.label}</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">{item.label}</span>
                                 </div>
                             ))}
                         </motion.div>
@@ -584,7 +584,7 @@ const AttestersPage = () => {
                     <div className="space-y-32">
                         <motion.div {...fadeIn} className="space-y-10">
                             <SectionLabel text="THE REGISTRY STATUS" />
-                            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.8] max-w-6xl">
+                            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.8] max-w-6xl">
                                 Scale <br />
                                 Trust <span className="text-[#A855F7]">Onchain.</span>
                             </h2>
@@ -621,7 +621,7 @@ const AttestersPage = () => {
                 <section id="initiate" className="max-w-3xl mx-auto py-40 px-6 text-center">
                     <motion.div {...fadeIn}>
                         <SectionLabel text="Gateway" />
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-[1.1] mb-12">
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase leading-[1.1] mb-12">
                             Ready to <span className="text-lightblueprimary">Attest?</span>
                         </h2>
 
@@ -629,7 +629,7 @@ const AttestersPage = () => {
                             href="/contact"
                             className="group relative inline-flex items-center gap-6 px-12 py-6 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.1)]"
                         >
-                            <span className="text-[12px] font-black uppercase tracking-[0.4em]">
+                            <span className="text-[12px] font-bold uppercase tracking-[0.4em]">
                                 Get in Touch
                             </span>
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

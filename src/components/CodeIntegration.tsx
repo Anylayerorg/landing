@@ -79,7 +79,7 @@ console.log(score); // 8,402`;
                <BentoTile span="md:col-span-3 md:row-span-1" className="p-5 flex flex-col justify-between">
                   <div className="flex justify-between items-center text-[9px] font-bold text-white/20 uppercase tracking-[0.2em]">
                      <span>Trust Level</span>
-                     <span className="text-lightblueprimary font-mono font-black text-xs">700+</span>
+                     <span className="text-lightblueprimary font-mono font-bold text-xs">700+</span>
                   </div>
                   <div className="relative h-1 w-full bg-white/5 rounded-full">
                      <div className="absolute h-full w-[70%] bg-lightblueprimary/40 rounded-full shadow-[0_0_10px_rgba(166,131,255,0.3)]" />
@@ -118,10 +118,10 @@ console.log(score); // 8,402`;
                         <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                         <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-lightblueprimary/60">Reputation API</span>
                      </div>
-                     <div className="text-[11px] font-medium text-white/40 mt-4 leading-relaxed">
+                     <div className="text-[11px] font-normal text-white/40 mt-4 leading-relaxed">
                         Query high-fidelity identity data with sub-second latency.
                      </div>
-                     <div className="text-[2.5rem] font-medium tracking-tighter mt-2 text-white leading-none font-mono">8,402</div>
+                     <div className="text-[2.5rem] font-normal tracking-tighter mt-2 text-white leading-none font-mono">8,402</div>
                   </div>
 
                   <div className="h-20 w-full flex items-end gap-[2px] px-1 overflow-hidden">
@@ -137,7 +137,7 @@ console.log(score); // 8,402`;
 
                {/* 5. THE HERO CENTER (Build with SDK) */}
                <BentoTile span="md:col-span-6 md:row-span-2" className="p-8 md:p-10 flex flex-col items-center justify-center text-center bg-lightblueprimary relative overflow-hidden" noHover>
-                  <h2 className="text-2xl md:text-[2.25rem] font-medium tracking-tighter leading-tight mb-6 text-black">
+                  <h2 className="text-2xl md:text-[2.25rem] font-normal tracking-tighter leading-tight mb-6 text-black">
                      Build with <br /> <span className="text-black/60 font-light">Anylayer SDK.</span>
                   </h2>
 
@@ -153,7 +153,7 @@ console.log(score); // 8,402`;
                   </button>
 
                   <p className="text-black/70 text-[12px] mt-10 font-light leading-relaxed max-w-md">
-                     Deploy Sybil-resistant dApps using the <span className="text-black font-medium">TypeScript SDK</span>.
+                     Deploy Sybil-resistant dApps using the <span className="text-black font-normal">TypeScript SDK</span>.
                      Verify identity, reputation, and ZK-proofs via a single REST API.
                   </p>
 
@@ -190,7 +190,7 @@ console.log(score); // 8,402`;
                      </div>
 
                      <div className="pt-4 border-t border-white/5">
-                        <div className="text-lg font-medium tracking-tight text-white">Universal <span className="text-[10px] text-white/20 font-light uppercase tracking-[0.2em] ml-1">Endpoints</span></div>
+                        <div className="text-lg font-normal tracking-tight text-white">Universal <span className="text-[10px] text-white/20 font-light uppercase tracking-[0.2em] ml-1">Endpoints</span></div>
                      </div>
                   </div>
                </BentoTile>
@@ -231,9 +231,9 @@ console.log(score); // 8,402`;
 
                {/* 8. PROOF GENERATION (Narrow) */}
                <BentoTile span="md:col-span-3 md:row-span-1" className="p-5 flex flex-col justify-between">
-                  <div className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">ZK-Proof Time</div>
+                  <div className="text-[9px] font-bold text-white/20 uppercase tracking-[0.3em]">ZK-Proof Time</div>
                   <div className="flex items-end gap-1.5">
-                     <span className="text-2xl font-medium text-white tracking-tighter">1.2s</span>
+                     <span className="text-2xl font-normal text-white tracking-tighter">1.2s</span>
                      <span className="text-[9px] text-green-500 font-bold mb-1 uppercase">Instant</span>
                   </div>
                   <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
@@ -247,7 +247,7 @@ console.log(score); // 8,402`;
                      <Cpu size={18} className="text-white/20" />
                   </div>
                   <div className="flex flex-col">
-                     <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em]">ZK Node</span>
+                     <span className="text-[8px] font-bold text-white/20 uppercase tracking-[0.3em]">ZK Node</span>
                      <span className="text-xs font-bold text-white mt-0.5">Verified</span>
                   </div>
                </BentoTile>

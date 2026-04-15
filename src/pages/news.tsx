@@ -274,7 +274,7 @@ export default function NewsPage() {
               <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</Link>
               <Link href="/docs" className="text-gray-600 hover:text-gray-900 transition-colors">Docs</Link>
               <Link href="/builder" className="text-gray-600 hover:text-gray-900 transition-colors">Builder</Link>
-              <Link href="/news" className="text-gray-900 font-medium">News</Link>
+              <Link href="/news" className="text-gray-900 font-normal">News</Link>
             </nav>
           </div>
         </div>
@@ -309,7 +309,7 @@ export default function NewsPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full text-sm font-normal transition-colors ${
                     selectedCategory === category
                       ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -339,7 +339,7 @@ export default function NewsPage() {
                     <div className="aspect-video bg-gray-200 relative">
                       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 opacity-20"></div>
                       <div className="absolute top-4 left-4">
-                        <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-normal">
                           {article.category}
                         </span>
                       </div>
@@ -390,7 +390,7 @@ export default function NewsPage() {
                   <div className="aspect-video bg-gray-200 relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-20"></div>
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-normal">
                         {article.category}
                       </span>
                     </div>
@@ -427,7 +427,7 @@ export default function NewsPage() {
         {filteredNews.length === 0 && (
           <div className="text-center py-12">
             <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No articles found</h3>
+            <h3 className="text-lg font-normal text-gray-900 mb-2">No articles found</h3>
             <p className="text-gray-600">
               Try adjusting your search terms or category filter
             </p>

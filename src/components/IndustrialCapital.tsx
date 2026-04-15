@@ -88,7 +88,7 @@ const IndustrialCapital = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-white/5 pb-12">
             <div className="space-y-6">
               <SectionTag label="System Utility" />
-              <h2 className="text-5xl md:text-8xl font-black uppercase text-white tracking-tighter leading-none">
+              <h2 className="text-5xl md:text-8xl font-bold uppercase text-white tracking-tighter leading-none">
                 Industrial <br /> <span className="text-lightblueprimary">Capital.</span>
               </h2>
             </div>
@@ -129,7 +129,7 @@ const IndustrialCapital = () => {
               className="grid lg:grid-cols-2 gap-16 md:gap-32 items-start"
             >
               <div className="space-y-8">
-                <h3 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
+                <h3 className="text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-none">
                   {activeTab === 'marketplaces' ? (
                     <>Market <br /> Place</>
                   ) : tabContent[activeTab].title}
@@ -141,11 +141,11 @@ const IndustrialCapital = () => {
               <div className="space-y-10 md:space-y-12">
                 {tabContent[activeTab].features.map((f, i) => (
                   <div key={i} className="flex items-start gap-8 group">
-                    <span className="font-mono text-[9px] md:text-[10px] text-lightblueprimary/40 group-hover:text-lightblueprimary transition-colors font-black">
+                    <span className="font-mono text-[9px] md:text-[10px] text-lightblueprimary/40 group-hover:text-lightblueprimary transition-colors font-bold">
                       0{i + 1}
                     </span>
                     <div className="space-y-2">
-                      <div className="text-lg md:text-xl font-black text-white uppercase tracking-tight">
+                      <div className="text-lg md:text-xl font-bold text-white uppercase tracking-tight">
                         {f.title}
                       </div>
                       <p className="text-sm md:text-base text-white/40 leading-relaxed font-light">

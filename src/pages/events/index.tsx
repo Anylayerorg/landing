@@ -73,7 +73,7 @@ const EventsPage = () => {
                                 <Radio size={12} className="text-lightblueprimary animate-pulse" />
                                 <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">Protocol Events</span>
                             </motion.div>
-                            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-4">
+                            <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.9] mb-4">
                                 Network <span className="text-lightblueprimary">Convergance.</span>
                             </h1>
                             <p className="text-lg md:text-xl text-white/40 font-light leading-relaxed max-w-2xl mx-auto">
@@ -96,7 +96,7 @@ const EventsPage = () => {
                                         <div className="grid lg:grid-cols-2">
                                             <div className="p-10 md:p-16 space-y-8 flex flex-col justify-center">
                                                 <div className="flex items-center gap-4">
-                                                    <span className="px-4 py-1.5 bg-lightblueprimary text-black rounded-full text-[10px] font-black uppercase tracking-widest">
+                                                    <span className="px-4 py-1.5 bg-lightblueprimary text-black rounded-full text-[10px] font-bold uppercase tracking-widest">
                                                         Upcoming
                                                     </span>
                                                     <div className="flex items-center gap-2 text-white/40 text-[10px] font-mono uppercase tracking-widest">
@@ -105,11 +105,11 @@ const EventsPage = () => {
                                                     </div>
                                                 </div>
 
-                                                <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[0.95] group-hover:text-lightblueprimary transition-colors uppercase">
+                                                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[0.95] group-hover:text-lightblueprimary transition-colors uppercase">
                                                     {featuredEvent.title}
                                                 </h2>
 
-                                                <div className="flex items-center gap-2 text-white/60 font-medium">
+                                                <div className="flex items-center gap-2 text-white/60 font-normal">
                                                     <MapPin size={18} className="text-lightblueprimary" />
                                                     {featuredEvent.location}
                                                 </div>
@@ -119,7 +119,7 @@ const EventsPage = () => {
                                                 </p>
 
                                                 <div className="pt-4">
-                                                    <div className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-full group-hover:scale-105 transition-all">
+                                                    <div className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold uppercase text-xs tracking-[0.2em] rounded-full group-hover:scale-105 transition-all">
                                                         Event Details
                                                         <ArrowRight size={16} />
                                                     </div>
@@ -147,7 +147,7 @@ const EventsPage = () => {
                     <section className="px-6 md:px-12 pb-32">
                         <div className="max-w-6xl mx-auto">
                             <div className="flex items-center justify-between mb-12">
-                                <h2 className="text-xs font-black uppercase tracking-[0.3em] text-white/20">Historical & Future Sessions</h2>
+                                <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-white/20">Historical & Future Sessions</h2>
                                 <div className="h-px flex-1 bg-white/5 mx-8" />
                             </div>
 
@@ -171,7 +171,7 @@ const EventsPage = () => {
                                                     </div>
 
                                                     <div className="space-y-2">
-                                                        <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-lightblueprimary transition-colors">
+                                                        <h3 className="text-xl font-bold uppercase tracking-tight group-hover:text-lightblueprimary transition-colors">
                                                             {event.title}
                                                         </h3>
                                                         <p className="text-white/40 text-xs font-mono uppercase tracking-widest">

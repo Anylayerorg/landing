@@ -36,11 +36,11 @@ const HUDLabel = ({ text }: { text: string }) => (
 
 const Buttons = ({ primary, secondary }: { primary: string; secondary: string }) => (
     <div className="flex flex-wrap gap-6 pt-10">
-        <button className="group relative px-12 py-5 overflow-hidden rounded-full transition-all bg-white text-black font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 hover:scale-105 active:scale-95 shadow-2xl">
+        <button className="group relative px-12 py-5 overflow-hidden rounded-full transition-all bg-white text-black font-bold uppercase tracking-[0.3em] text-[10px] flex items-center gap-4 hover:scale-105 active:scale-95 shadow-2xl">
             {primary}
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
         </button>
-        <button className="group px-12 py-5 rounded-full border-b border-white/20 hover:border-white/60 transition-all text-white/40 hover:text-white font-black uppercase tracking-[0.3em] text-[10px]">
+        <button className="group px-12 py-5 rounded-full border-b border-white/20 hover:border-white/60 transition-all text-white/40 hover:text-white font-bold uppercase tracking-[0.3em] text-[10px]">
             {secondary}
         </button>
     </div>
@@ -54,7 +54,7 @@ const Variant1 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
             <div className="space-y-12">
                 <motion.div initial={{ x: -50 }} animate={{ x: 0 }} className="space-y-4">
                     <HUDLabel text="ORGANIC_FLOW_v1.0" />
-                    <h1 className="text-7xl md:text-[140px] font-black uppercase leading-[0.7] tracking-[-0.08em] text-white italic">
+                    <h1 className="text-7xl md:text-[140px] font-bold uppercase leading-[0.7] tracking-[-0.08em] text-white italic">
                         {heading}
                     </h1>
                 </motion.div>
@@ -82,10 +82,10 @@ const Variant2 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
                 <Orbit className="animate-spin-slow" size={60} />
                 <Waves className="animate-pulse" size={60} />
             </div>
-            <h1 className="text-6xl md:text-[110px] font-black uppercase tracking-tighter text-white leading-none">
+            <h1 className="text-6xl md:text-[110px] font-bold uppercase tracking-tighter text-white leading-none">
                 {heading}
             </h1>
-            <p className="mt-12 text-xl text-white/60 font-medium max-w-2xl mx-auto">{subheading}</p>
+            <p className="mt-12 text-xl text-white/60 font-normal max-w-2xl mx-auto">{subheading}</p>
             <div className="flex justify-center mt-12">
                 <Buttons primary={ctaPrimary} secondary={ctaSecondary} />
             </div>
@@ -100,13 +100,13 @@ const Variant3 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
             <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity }}
-                className="text-[120px] md:text-[180px] font-black text-white/10 leading-none select-none"
+                className="text-[120px] md:text-[180px] font-bold text-white/10 leading-none select-none"
             >
                 VERIFIED
             </motion.div>
             <div className="absolute bottom-12 left-0 space-y-8">
                 <HUDLabel text="DEPTH_VECTOR" />
-                <h1 className="text-5xl md:text-8xl font-black uppercase text-white leading-none">{heading}</h1>
+                <h1 className="text-5xl md:text-8xl font-bold uppercase text-white leading-none">{heading}</h1>
             </div>
         </div>
         <div className="space-y-12 pb-12">
@@ -122,7 +122,7 @@ const Variant4 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-full bg-gradient-to-b from-transparent via-[#A683FF] to-transparent opacity-20" />
         <div className="max-w-7xl mx-auto w-full z-10">
             <div className="space-y-24">
-                <h1 className="text-7xl md:text-[160px] font-black uppercase tracking-[-0.1em] text-white leading-[0.6]">
+                <h1 className="text-7xl md:text-[160px] font-bold uppercase tracking-[-0.1em] text-white leading-[0.6]">
                     {heading}
                 </h1>
                 <div className="flex flex-col md:flex-row items-end gap-16">
@@ -141,7 +141,7 @@ const Variant5 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
     <section className="min-h-screen flex items-center justify-between p-12 relative overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
         <div className="space-y-24 max-w-3xl">
-            <h1 className="text-7xl font-black uppercase tracking-widest text-white leading-tight">
+            <h1 className="text-7xl font-bold uppercase tracking-widest text-white leading-tight">
                 {heading}
             </h1>
             <Buttons primary={ctaPrimary} secondary={ctaSecondary} />
@@ -168,10 +168,10 @@ const Variant6 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
                     <Waves className="text-[#A683FF] w-12 h-12" />
                 </motion.div>
             </div>
-            <h1 className="text-6xl md:text-9xl font-black uppercase text-white tracking-widest leading-[0.8] mb-12">
+            <h1 className="text-6xl md:text-9xl font-bold uppercase text-white tracking-widest leading-[0.8] mb-12">
                 {heading}
             </h1>
-            <p className="text-white/40 max-w-xl mx-auto text-lg mb-12 font-medium">{subheading}</p>
+            <p className="text-white/40 max-w-xl mx-auto text-lg mb-12 font-normal">{subheading}</p>
             <Buttons primary={ctaPrimary} secondary={ctaSecondary} />
         </div>
     </section>
@@ -182,12 +182,12 @@ const Variant7 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
     <section className="min-h-screen flex items-center p-12 relative">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12">
             <div className="md:col-span-10 space-y-10">
-                <h1 className="text-6xl md:text-[130px] font-black uppercase text-white leading-none tracking-tighter z-20 relative">
+                <h1 className="text-6xl md:text-[130px] font-bold uppercase text-white leading-none tracking-tighter z-20 relative">
                     {heading}
                 </h1>
                 <div className="relative">
                     <div className="absolute -top-32 -left-20 w-[600px] h-[400px] bg-[#A683FF]/10 blur-[150px] -z-10" />
-                    <p className="text-3xl text-white/60 font-medium max-w-2xl leading-tight pl-24 border-l border-white/10 uppercase italic">
+                    <p className="text-3xl text-white/60 font-normal max-w-2xl leading-tight pl-24 border-l border-white/10 uppercase italic">
                         {subheading}
                     </p>
                 </div>
@@ -212,7 +212,7 @@ const Variant8 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
             </div>
         </div>
         <div className="max-w-5xl">
-            <h1 className="text-8xl md:text-[150px] font-black uppercase text-white leading-[0.7] mb-12">
+            <h1 className="text-8xl md:text-[150px] font-bold uppercase text-white leading-[0.7] mb-12">
                 {heading}
             </h1>
             <div className="flex flex-col md:flex-row gap-16 items-start">
@@ -230,7 +230,7 @@ const Variant9 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProps
             <Orbit className="animate-spin-slow w-[800px] h-[800px]" />
         </div>
         <div className="max-w-4xl mx-auto space-y-16">
-            <h1 className="text-6xl md:text-9xl font-black uppercase text-white leading-none tracking-tight">
+            <h1 className="text-6xl md:text-9xl font-bold uppercase text-white leading-none tracking-tight">
                 {heading}
             </h1>
             <div className="h-px w-32 bg-white/20 mx-auto" />
@@ -255,7 +255,7 @@ const Variant10 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProp
                 <div className="w-[1px] h-32 bg-white/20" />
             </div>
             <div className="space-y-12">
-                <h1 className="text-6xl md:text-[110px] font-black uppercase tracking-tight text-white leading-none">
+                <h1 className="text-6xl md:text-[110px] font-bold uppercase tracking-tight text-white leading-none">
                     {heading}
                 </h1>
                 <Buttons primary={ctaPrimary} secondary={ctaSecondary} />
@@ -270,7 +270,7 @@ const Variant11 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProp
         <div className="absolute top-0 right-0 w-[50vw] h-full bg-gradient-to-l from-white/5 to-transparent blur-[120px]" />
         <div className="max-w-7xl mx-auto w-full z-10 grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-8">
-                <h1 className="text-7xl md:text-[150px] font-black uppercase text-white leading-[0.75] tracking-tight">
+                <h1 className="text-7xl md:text-[150px] font-bold uppercase text-white leading-[0.75] tracking-tight">
                     {heading}
                 </h1>
             </div>
@@ -289,12 +289,12 @@ const Variant12 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProp
     <section className="min-h-screen flex items-center justify-center p-6 relative">
         <div className="relative z-10 text-center space-y-12">
             <HUDLabel text="SILHOUETTE_PROTO" />
-            <h1 className="text-5xl md:text-8xl font-black uppercase text-white tracking-[0.2em] leading-tight">
+            <h1 className="text-5xl md:text-8xl font-bold uppercase text-white tracking-[0.2em] leading-tight">
                 {heading}
             </h1>
             <div className="max-w-2xl mx-auto relative px-12">
                 <div className="absolute inset-0 bg-white/5 blur-2xl rounded-[100%] scale-110 -z-10" />
-                <p className="text-xl text-white/60 font-medium italic">{subheading}</p>
+                <p className="text-xl text-white/60 font-normal italic">{subheading}</p>
             </div>
             <div className="flex justify-center">
                 <Buttons primary={ctaPrimary} secondary={ctaSecondary} />
@@ -308,8 +308,8 @@ const Variant13 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProp
     <section className="min-h-screen py-40 px-12 flex flex-col justify-center relative bg-black">
         <div className="space-y-32">
             <div className="relative">
-                <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 2, repeat: Infinity }} className="absolute -top-20 -left-10 text-[180px] font-black text-[#A683FF]/5 rotate-1 select-none">TRUST</motion.div>
-                <h1 className="text-6xl md:text-[120px] font-black uppercase tracking-tighter text-white leading-[0.8] relative z-10 shadow-black shadow-2xl">
+                <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 2, repeat: Infinity }} className="absolute -top-20 -left-10 text-[180px] font-bold text-[#A683FF]/5 rotate-1 select-none">TRUST</motion.div>
+                <h1 className="text-6xl md:text-[120px] font-bold uppercase tracking-tighter text-white leading-[0.8] relative z-10 shadow-black shadow-2xl">
                     {heading}
                 </h1>
             </div>
@@ -333,7 +333,7 @@ const Variant14 = ({ heading, subheading, ctaPrimary, ctaSecondary }: LayoutProp
         />
         <div className="max-w-5xl mx-auto w-full relative z-10">
             <div className="space-y-16">
-                <h1 className="text-6xl md:text-9xl font-black uppercase text-white leading-[0.85] tracking-tight text-center md:text-left">
+                <h1 className="text-6xl md:text-9xl font-bold uppercase text-white leading-[0.85] tracking-tight text-center md:text-left">
                     {heading}
                 </h1>
                 <div className="flex flex-col md:flex-row items-center gap-16 pt-12">

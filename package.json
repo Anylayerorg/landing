@@ -10,6 +10,7 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "test": "jest",
+    "vercel-login": "npx --yes vercel@51.2.1 login",
     "deploy": "rm -rf .git && git init && git config user.email 'crayandre@users.noreply.github.com' && git config user.name 'crayandre' && git add . && git commit -m 'Deploy' --allow-empty && vercel --prod --yes --name standalone-web-app"
   },
   "dependencies": {

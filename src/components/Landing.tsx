@@ -46,7 +46,7 @@ const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtit
     : 'bg-black/[0.03] border-black/5 text-black/40'
     }`}>
     <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-    <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+    <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal">
       {label} {subtitle && `// ${subtitle}`}
     </span>
   </div>
@@ -89,7 +89,7 @@ const ProcessFlow = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center space-y-4">
           <SectionTag label="Architecture Flow" />
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-[0.9]">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase text-white leading-[0.9]">
             How it <span className="text-lightblueprimary">Works.</span>
           </h2>
         </div>
@@ -105,11 +105,11 @@ const ProcessFlow = () => {
               className="space-y-4 group"
             >
               <div className="flex items-center gap-3">
-                <span className="text-lightblueprimary font-mono text-[10px] font-black">{p.id}</span>
+                <span className="text-lightblueprimary font-mono text-[10px] font-bold">{p.id}</span>
                 <div className="h-px flex-1 bg-white/10 group-hover:bg-lightblueprimary/40 transition-colors" />
               </div>
-              <h3 className="text-2xl font-black uppercase tracking-tighter text-white">{p.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed font-medium">{p.desc}</p>
+              <h3 className="text-2xl font-bold uppercase tracking-tighter text-white">{p.title}</h3>
+              <p className="text-white/60 text-sm leading-relaxed font-normal">{p.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -198,7 +198,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       {/* Header Area */}
       <div className="mb-20 space-y-4">
         <SectionTag label="Trust Protocol" theme="light" />
-        <h2 className="text-4xl md:text-6xl font-black uppercase text-[#08080C] leading-[0.9] tracking-tighter max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-6xl font-bold uppercase text-[#08080C] leading-[0.9] tracking-tighter max-w-4xl mx-auto">
           Trustscore that <br className="hidden md:block" />
           unlocks <span className="text-lightblueprimary">Anything</span>
         </h2>
@@ -218,10 +218,10 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               />
             </div>
             <div className="space-y-2">
-              <h4 className="text-lg font-medium text-[#08080C] tracking-tight">
+              <h4 className="text-lg font-normal text-[#08080C] tracking-tight">
                 {f.title}
               </h4>
-              <p className="text-xs md:text-sm text-black/50 leading-relaxed font-medium max-w-[240px]">
+              <p className="text-xs md:text-sm text-black/50 leading-relaxed font-normal max-w-[240px]">
                 {f.description}
               </p>
             </div>
@@ -232,7 +232,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
       {/* Button - Moved below grid */}
       <div className="mt-24">
         <Link href="/docs" className="inline-flex items-center gap-2 group p-0.5 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300">
-          <div className="bg-lightblueprimary text-black px-12 py-3.5 rounded-full font-black text-[13px] uppercase tracking-widest transition-transform duration-300 group-hover:scale-[0.98]">
+          <div className="bg-lightblueprimary text-black px-12 py-3.5 rounded-full font-bold text-[13px] uppercase tracking-widest transition-transform duration-300 group-hover:scale-[0.98]">
             Get Started
           </div>
         </Link>
@@ -260,7 +260,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <div className="mb-6">
                     <SectionTag label="Core" subtitle="Identity & Utility Layer" />
                   </div>
-                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
+                  <h1 className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-bold uppercase leading-none text-primaryText tracking-tighter lg:tracking-[-0.05em]">
                     Multi-layered Trust Engine for{' '}
                     <span className="text-lightblueprimary inline-block leading-tight min-w-[214px] md:min-w-[357px] text-left">
                       {currentText}
@@ -272,14 +272,14 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   </p>
                   <div className="flex flex-col md:flex-row gap-6 items-center justify-center pt-4 md:pt-8">
                     <a
-                      href="https://ans.anylayer.org"
+                      href="https://ansnames.xyz"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative max-w-72 md:max-w-60 w-full active:translate-y-0.5 transition-all text-left"
                     >
                       <div className="absolute inset-0 bg-lightblueprimary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
                       <div className="relative bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-semibold px-8 py-3.5 rounded-full transition-all text-sm lg:text-base text-center flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(166,131,255,0.2)]">
-                        <span className="whitespace-nowrap">Reserve a Name</span>
+                        <span className="whitespace-nowrap">Search a Name</span>
                         <Image src="/button-arrow.svg" alt="launch app" width="14" height="14" className="w-3.5 h-3.5 lg:w-[14px] lg:h-[14px]" />
                       </div>
                     </a>
@@ -333,7 +333,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                     <Image src={'/knight-shield.svg'} alt='Shield' width={16} height={16} />
                   </div>
                   <div className='flex flex-col'>
-                    <span className="text-[#C9D1D9] text-xs font-medium font-geist">Current Tier</span>
+                    <span className="text-[#C9D1D9] text-xs font-normal font-geist">Current Tier</span>
                     <span className="text-lg font-bold text-[#CCD1E9] font-mono">Bronze</span>
                   </div>
                 </div>
@@ -354,7 +354,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   <div className="w-8 h-8 bg-[#CCD1E9]/5 rounded-full flex items-center justify-center">
                     <Image src={'/knight-shield.svg'} alt='Shield' width={16} height={16} />
                   </div>
-                  <span className="text-[#C9D1D9] text-xs font-medium font-geist">Total Trust Score</span>
+                  <span className="text-[#C9D1D9] text-xs font-normal font-geist">Total Trust Score</span>
                 </div>
               </div>
 
@@ -392,7 +392,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
               <div className="mb-6">
                 <SectionTag label="Signal" subtitle="Trust Analytics" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText mb-6 leading-[0.9] tracking-tighter text-center">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase text-primaryText mb-6 leading-[0.9] tracking-tighter text-center">
                 {" "}
                 Understand and verify <span className='text-lightblueprimary'> trust </span> across every <span className='text-lightblueprimary'> Signal</span>
               </h2>
@@ -415,7 +415,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   height="319"
                   className="w-full h-[240px] md:h-[319px] object-contain mb-6 md:mb-10"
                 />
-                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-normal mb-1 tracking-tighter">
                   {"See what drives reputation clearly"}
                 </h3>
                 <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
@@ -436,7 +436,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   height="319"
                   className="w-full h-[190px] md:h-[319px] object-contain mb-6 md:mb-10"
                 />
-                <h3 className="text-primaryText text-xl md:text-2xl font-medium mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-normal mb-1 tracking-tighter">
                   {"Real-time trust, always up-to-date"}
                 </h3>
                 <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
@@ -460,7 +460,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   height="350"
                   className="w-full h-[200px] md:h-[350px] object-contain"
                 />
-                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-normal mt-3 mb-1 tracking-tighter">
                   {"Follow every action that shapes trust"}
                 </h3>
                 <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">
@@ -481,7 +481,7 @@ export function LandingPage({ enableRevolvingAnimation = false }: LandingPagePro
                   height="350"
                   className="w-full h-[270px] md:h-[350px] object-contain"
                 />
-                <h3 className="text-primaryText text-xl md:text-2xl font-medium mt-3 mb-1 tracking-tighter">
+                <h3 className="text-primaryText text-xl md:text-2xl font-normal mt-3 mb-1 tracking-tighter">
                   {"Verify credibility anywhere on-chain"}
                 </h3>
                 <p className="text-primaryText/60 text-sm md:text-base tracking-tighter">

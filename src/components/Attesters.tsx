@@ -53,7 +53,7 @@ const Attesters = ({ onTriggerModal }: { onTriggerModal?: () => void }) => {
                             </div>
                             <button
                                 onClick={onTriggerModal}
-                                className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 hover:scale-105 transition-all duration-300 uppercase font-black text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)] focus:outline-none"
+                                className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full hover:bg-white/90 hover:scale-105 transition-all duration-300 uppercase font-bold text-[11px] tracking-[0.2em] shadow-[0_10px_30px_rgba(255,255,255,0.1)] focus:outline-none"
                             >
                                 Documentation
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

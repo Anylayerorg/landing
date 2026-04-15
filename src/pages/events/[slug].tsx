@@ -56,7 +56,7 @@ const EventDetailPage = () => {
         return (
             <div className="bg-[#08080C] min-h-screen font-geist text-white flex items-center justify-center">
                 <div className="text-center space-y-4">
-                    <h1 className="text-4xl font-black">Event Not Found</h1>
+                    <h1 className="text-4xl font-bold">Event Not Found</h1>
                     <Link href="/events" className="text-lightblueprimary hover:underline">
                         ← Back to Events
                     </Link>
@@ -67,8 +67,8 @@ const EventDetailPage = () => {
 
     const portableTextComponents = {
         block: {
-            h2: ({ children }: any) => <h2 className="text-3xl font-black text-white mt-12 mb-6 tracking-tight leading-tight uppercase">{children}</h2>,
-            h3: ({ children }: any) => <h3 className="text-2xl font-black text-white mt-10 mb-5 tracking-tight uppercase">{children}</h3>,
+            h2: ({ children }: any) => <h2 className="text-3xl font-bold text-white mt-12 mb-6 tracking-tight leading-tight uppercase">{children}</h2>,
+            h3: ({ children }: any) => <h3 className="text-2xl font-bold text-white mt-10 mb-5 tracking-tight uppercase">{children}</h3>,
             normal: ({ children }: any) => <p className="my-6 font-light leading-[1.8] text-white/50">{children}</p>,
         },
         list: {
@@ -84,7 +84,7 @@ const EventDetailPage = () => {
                         <thead>
                             <tr className="bg-white/[0.03] border-b border-white/5">
                                 {value.rows[0].cells.map((cell: string, i: number) => (
-                                    <th key={i} className="px-6 py-4 font-black uppercase tracking-widest text-[10px] text-lightblueprimary">
+                                    <th key={i} className="px-6 py-4 font-bold uppercase tracking-widest text-[10px] text-lightblueprimary">
                                         {cell}
                                     </th>
                                 ))}
@@ -152,12 +152,12 @@ const EventDetailPage = () => {
                                         className="space-y-6"
                                     >
                                         <div className="flex items-center gap-3">
-                                            <span className="px-3 py-1 bg-lightblueprimary/10 text-lightblueprimary border border-lightblueprimary/20 rounded-full font-black uppercase tracking-[0.15em] text-[10px]">
+                                            <span className="px-3 py-1 bg-lightblueprimary/10 text-lightblueprimary border border-lightblueprimary/20 rounded-full font-bold uppercase tracking-[0.15em] text-[10px]">
                                                 Protocol Session
                                             </span>
                                         </div>
 
-                                        <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase">
+                                        <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[0.9] uppercase">
                                             {event.title}
                                         </h1>
 
@@ -235,13 +235,13 @@ const EventDetailPage = () => {
                                                         href={event.rsvpLink}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="block w-full py-4 bg-white text-black text-center font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-lightblueprimary transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2"
+                                                        className="block w-full py-4 bg-white text-black text-center font-bold uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-lightblueprimary transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2"
                                                     >
                                                         RSVP NOW
                                                         <ExternalLink size={14} />
                                                     </a>
                                                 ) : (
-                                                    <div className="w-full py-4 bg-white/5 text-white/20 text-center font-black uppercase text-xs tracking-[0.2em] rounded-2xl cursor-not-allowed border border-white/5">
+                                                    <div className="w-full py-4 bg-white/5 text-white/20 text-center font-bold uppercase text-xs tracking-[0.2em] rounded-2xl cursor-not-allowed border border-white/5">
                                                         Registration Closed
                                                     </div>
                                                 )}
@@ -256,7 +256,7 @@ const EventDetailPage = () => {
                                         </div>
 
                                         <div className="p-8 bg-lightblueprimary/5 border border-lightblueprimary/10 rounded-3xl space-y-4">
-                                            <h4 className="text-[10px] font-black uppercase tracking-widest text-lightblueprimary">Protocol Note</h4>
+                                            <h4 className="text-[10px] font-bold uppercase tracking-widest text-lightblueprimary">Protocol Note</h4>
                                             <p className="text-xs text-white/40 leading-relaxed font-light">
                                                 Events are subject to change. Please ensure you are subscribed to our official channels for real-time schedule updates.
                                             </p>

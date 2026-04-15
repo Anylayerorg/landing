@@ -8,7 +8,7 @@ import Link from 'next/link';
 const SectionTag = ({ label }: { label: string }) => (
     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border bg-white/[0.02] border-white/5 text-white/40 mb-4">
         <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal">
             {label}
         </span>
     </div>
@@ -30,7 +30,7 @@ export const UtilityHero = () => {
                     {/* Vertical Accent Label */}
                     <div className="hidden lg:flex flex-col items-center gap-6">
                         <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-white/5" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
                             UTILITY LAYER v1.0
                         </span>
                         <div className="h-24 w-px bg-gradient-to-t from-transparent via-white/10 to-white/5" />
@@ -46,7 +46,7 @@ export const UtilityHero = () => {
                         >
                             <div className="space-y-8">
                                 <SectionTag label="APPLICATION UTILITY" />
-                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
+                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
                                     Programmable <br />
                                     <span className="text-lightblueprimary">Utility.</span>
                                 </h1>
@@ -65,7 +65,7 @@ export const UtilityHero = () => {
                                     href="/docs"
                                     className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                 >
-                                    <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] whitespace-nowrap">
                                         Start Building
                                     </span>
                                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -106,7 +106,7 @@ export const UtilityHero = () => {
                                 <span>{item.label}</span>
                                 <span className="text-lightblueprimary/40">{item.icon}</span>
                             </div>
-                            <p className="text-lg font-black uppercase tracking-tight text-white/90">
+                            <p className="text-lg font-bold uppercase tracking-tight text-white/90">
                                 {item.val}
                             </p>
                         </div>

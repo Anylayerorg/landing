@@ -35,14 +35,14 @@ const AIAgents = () => {
             <div className="mb-8">
               <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-black/[0.03] border border-black/5 backdrop-blur-sm">
                 <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-black/40">NolanOS // Protocol Verification</span>
+                <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal text-black/40">AI Agents // Protocol Verification</span>
               </div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#08080C] leading-[0.9]">
-              NolanOS <br />
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-[#08080C] leading-[0.9]">
+              AI Agents <br />
               <span className="text-lightblueprimary text-3xl md:text-5xl">Trust Built on Proven Outcomes</span>
             </h2>
-            <p className="text-black/40 text-xl md:text-2xl font-medium leading-relaxed border-l-2 border-black/10 pl-8">
+            <p className="text-black/40 text-xl md:text-2xl font-normal leading-relaxed border-l-2 border-black/10 pl-8">
               {AGENT_CONTENT.hook} <span className="text-black/80">{AGENT_CONTENT.solution}</span>
             </p>
           </div>
@@ -54,27 +54,27 @@ const AIAgents = () => {
                   <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
                   <span className="text-[8px] font-mono text-black/40 uppercase tracking-widest">Metric 0{i + 1}</span>
                 </div>
-                <h3 className="text-5xl font-black text-[#08080C] uppercase tracking-tighter">{m.value}</h3>
+                <h3 className="text-5xl font-bold text-[#08080C] uppercase tracking-tighter">{m.value}</h3>
                 <p className="text-black/30 text-sm font-bold uppercase tracking-widest">{m.label}</p>
               </div>
             ))}
           </div>
 
           <div className="max-w-3xl ml-auto text-right space-y-8">
-            <p className="text-black/40 text-lg md:text-xl font-medium leading-relaxed">
+            <p className="text-black/40 text-lg md:text-xl font-normal leading-relaxed">
               {AGENT_CONTENT.visibility}
             </p>
             <div className="flex flex-col items-end gap-6">
               <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-black/[0.03] border border-black/5">
                 <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-black/40">{AGENT_CONTENT.ecosystem}</span>
+                <span className="text-[9px] font-mono font-bold uppercase tracking-[0.4em] text-black/40">{AGENT_CONTENT.ecosystem}</span>
               </div>
 
               <Link
                 href="/docs#anylayer-ai-the-sovereign-machine-infrastructure"
                 className="group relative flex items-center gap-3 bg-lightblueprimary text-black px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_10px_30px_rgba(166,131,255,0.2)]"
               >
-                <span>See More Info About NolanOS</span>
+                <span>See More Info About AI Agents</span>
                 <div className="w-5 h-5 rounded-full bg-black/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14m-7-7 7 7-7 7" />

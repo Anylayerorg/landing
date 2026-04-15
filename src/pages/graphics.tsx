@@ -36,7 +36,7 @@ const LayoutWrapper = ({ children, variantName }: { children: React.ReactNode, v
     <div className="relative w-[1200px] h-[630px] bg-white overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-[#F0F0F5]">
         {children}
         <div className="absolute top-6 left-6 px-3 py-1 rounded-full bg-black/5 border border-black/5 backdrop-blur-md">
-            <span className="text-[8px] font-mono font-black uppercase tracking-[0.2em] text-black/40">Variant: {variantName}</span>
+            <span className="text-[8px] font-mono font-bold uppercase tracking-[0.2em] text-black/40">Variant: {variantName}</span>
         </div>
     </div>
 );
@@ -49,15 +49,15 @@ const CommonText = ({ centered = true, dark = true }: { centered?: boolean, dark
                 animate={{ opacity: 1, y: 0 }}
                 className="px-4 py-1.5 rounded-full bg-[#8B5CF6]/5 border border-[#8B5CF6]/10"
             >
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#8B5CF6]">PAYMENT LAYER</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#8B5CF6]">PAYMENT LAYER</span>
             </motion.div>
-            <h1 className={`text-8xl font-black tracking-[-0.05em] ${dark ? 'text-[#08080C]' : 'text-white'} leading-none`}>
+            <h1 className={`text-8xl font-bold tracking-[-0.05em] ${dark ? 'text-[#08080C]' : 'text-white'} leading-none`}>
                 {TITLE.split(' ')[0]}<span className="text-[#8B5CF6]">{TITLE.split(' ')[1]}</span>
             </h1>
         </div>
         <div className="space-y-2">
-            <p className={`text-2xl font-black tracking-tighter ${dark ? 'text-[#08080C]' : 'text-white'}`}>{TAGLINE}</p>
-            <p className={`text-base font-medium tracking-tight ${dark ? 'text-black/40' : 'text-white/40'}`}>{DESCRIPTION}</p>
+            <p className={`text-2xl font-bold tracking-tighter ${dark ? 'text-[#08080C]' : 'text-white'}`}>{TAGLINE}</p>
+            <p className={`text-base font-normal tracking-tight ${dark ? 'text-black/40' : 'text-white/40'}`}>{DESCRIPTION}</p>
         </div>
     </div>
 );
@@ -99,7 +99,7 @@ const Variant3 = () => (
                 <CommonText />
             </div>
         </div>
-        <div className="absolute bottom-12 right-12 text-[10px] font-mono font-black text-black/10 tracking-[0.5em] uppercase">
+        <div className="absolute bottom-12 right-12 text-[10px] font-mono font-bold text-black/10 tracking-[0.5em] uppercase">
             ARCH_UNIT_04
         </div>
     </LayoutWrapper>
@@ -159,7 +159,7 @@ const Variant7 = () => (
 const Variant8 = () => (
     <LayoutWrapper variantName="Cinematic Gradient">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F9F9FB] to-[#A683FF]/10" />
-        <div className="absolute top-[10%] right-[10%] opacity-5 text-[200px] font-black pointer-events-none">ANY</div>
+        <div className="absolute top-[10%] right-[10%] opacity-5 text-[200px] font-bold pointer-events-none">ANY</div>
         <div className="absolute inset-0 flex items-center justify-center">
             <CommonText />
         </div>
@@ -171,7 +171,7 @@ const Variant9 = () => (
         <div className="absolute inset-0 bg-white" />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-12">
             <div className="relative">
-                <h1 className="text-[12rem] font-black text-black/5 absolute inset-0 -translate-y-1/4 select-none">PAY</h1>
+                <h1 className="text-[12rem] font-bold text-black/5 absolute inset-0 -translate-y-1/4 select-none">PAY</h1>
                 <CommonText />
             </div>
         </div>
@@ -218,8 +218,8 @@ const GraphicsPage = () => {
                         <ChevronLeft size={24} />
                     </button>
                     <div className="flex flex-col items-center min-w-[200px]">
-                        <span className="text-[10px] font-mono font-black text-black/20 uppercase tracking-widest leading-none mb-1">Select Design</span>
-                        <span className="text-sm font-black text-black uppercase tracking-tight">{VARIANTS[currentIdx].name}</span>
+                        <span className="text-[10px] font-mono font-bold text-black/20 uppercase tracking-widest leading-none mb-1">Select Design</span>
+                        <span className="text-sm font-bold text-black uppercase tracking-tight">{VARIANTS[currentIdx].name}</span>
                     </div>
                     <button onClick={next} className="p-2 hover:bg-black/5 rounded-full transition-colors">
                         <ChevronRight size={24} />
@@ -246,7 +246,7 @@ const GraphicsPage = () => {
                             <button
                                 key={v.id}
                                 onClick={() => setCurrentIdx(i)}
-                                className={`px-4 py-3 rounded-xl border transition-all text-[10px] font-black uppercase tracking-tight text-center
+                                className={`px-4 py-3 rounded-xl border transition-all text-[10px] font-bold uppercase tracking-tight text-center
                             ${currentIdx === i
                                         ? 'bg-black text-white border-black'
                                         : 'bg-white text-black/40 border-black/5 hover:border-black/20'}`}
@@ -258,7 +258,7 @@ const GraphicsPage = () => {
                 </div>
 
                 <div className="max-w-xl text-center">
-                    <p className="text-xs text-black/20 font-medium uppercase tracking-[0.2em]">
+                    <p className="text-xs text-black/20 font-normal uppercase tracking-[0.2em]">
                         Note: These are banner blueprints (1200x630). Switch between variants to find the perfect professional Photoshop-style layout.
                     </p>
                 </div>

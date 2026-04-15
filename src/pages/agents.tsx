@@ -39,7 +39,7 @@ const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtit
             : "bg-black/[0.03] border-black/5 text-black/40"
     )}>
         <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal">
             {label} {subtitle && `// ${subtitle}`}
         </span>
     </div>
@@ -54,7 +54,7 @@ const LockFeature = ({ title, description, icon: Icon, label }: { title: string,
             <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
                 <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">{label}</span>
             </div>
-            <h3 className="text-2xl font-black uppercase text-primaryText tracking-tighter">{title}</h3>
+            <h3 className="text-2xl font-bold uppercase text-primaryText tracking-tighter">{title}</h3>
             <p className="text-white/40 text-sm leading-relaxed max-w-[280px]">{description}</p>
         </div>
     </div>
@@ -70,24 +70,24 @@ const AutonomousFrontier = () => {
         <section className="py-32 md:py-60 border-t border-white/5 bg-[#0C0C11] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-start gap-32 relative">
                 <div className="lg:w-1/2">
-                    <h2 className="text-[10rem] md:text-[15rem] font-black uppercase tracking-tight text-white/5 leading-[0.7] select-none pointer-events-none absolute -left-12 top-20">
+                    <h2 className="text-[10rem] md:text-[15rem] font-bold uppercase tracking-tight text-white/5 leading-[0.7] select-none pointer-events-none absolute -left-12 top-20">
                         TRUTH
                     </h2>
                     <div className="relative z-10 space-y-12">
                         <SectionTag label="The Nexus" subtitle="Agentic Economy" />
-                        <h3 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-white">
+                        <h3 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-none text-white">
                             The <br /> Agentic <br /> <span className="text-lightblueprimary">Economy.</span>
                         </h3>
                     </div>
                 </div>
                 <div className="lg:w-1/2 pt-24 relative z-10">
                     <div className="p-12 space-y-8">
-                        <p className="text-primaryText/40 text-2xl font-medium leading-tight">
+                        <p className="text-primaryText/40 text-2xl font-normal leading-tight">
                             {content.description}
                         </p>
                         <div className="flex items-center gap-6">
                             <div className="h-px w-20 bg-lightblueprimary" />
-                            <span className="text-[10px] font-mono text-lightblueprimary uppercase tracking-[0.5em] font-black">{content.ref}</span>
+                            <span className="text-[10px] font-mono text-lightblueprimary uppercase tracking-[0.5em] font-bold">{content.ref}</span>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ const TrustModelSection = () => {
             id: "01",
             category: "Security",
             title: "Hardware Receipt Badge",
-            description: "Every valid review is linked to a TEE-signed task receipt via its PaymentTxHash. The system verifies the Hardware Success Proof produced by the NolanOS Agent.",
+            description: "Every valid review is linked to a TEE-signed task receipt via its PaymentTxHash. The system verifies the Hardware Success Proof produced by the AI Agent.",
             icon: ShieldCheck
         },
         {
@@ -137,14 +137,14 @@ const TrustModelSection = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="mb-24 space-y-4 max-w-2xl">
                     <SectionTag label="Protocol Architecture" />
-                    <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">A systemic approach to autonomous trust.</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-white leading-tight">A systemic approach to autonomous trust.</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {pillars.map((pillar, i) => (
                         <div key={i} className="space-y-8 flex flex-col justify-between group">
                             <div className="space-y-6">
                                 <SectionTag label={"Protocol Layer 0" + pillar.id} />
-                                <h3 className="text-xl font-black text-white uppercase tracking-tight leading-tight">{pillar.title}</h3>
+                                <h3 className="text-xl font-bold text-white uppercase tracking-tight leading-tight">{pillar.title}</h3>
                                 <p className="text-primaryText/40 text-sm leading-relaxed">{pillar.description}</p>
                             </div>
                         </div>
@@ -184,7 +184,7 @@ const OrbitalLayout = ({ features, activeFeature, setActiveFeature }: any) => (
                         className="cursor-pointer group relative py-2"
                     >
                         <h3 className={cn(
-                            "text-4xl md:text-7xl font-black uppercase tracking-tight transition-colors duration-500",
+                            "text-4xl md:text-7xl font-bold uppercase tracking-tight transition-colors duration-500",
                             activeFeature === i ? "text-lightblueprimary" : "text-white/10"
                         )}>{feature.title}</h3>
 
@@ -197,7 +197,7 @@ const OrbitalLayout = ({ features, activeFeature, setActiveFeature }: any) => (
                                         exit={{ opacity: 0, y: -10 }}
                                         className="absolute top-2 left-0 pointer-events-none z-20"
                                     >
-                                        <p className="text-white/40 text-lg max-w-md font-medium leading-relaxed">
+                                        <p className="text-white/40 text-lg max-w-md font-normal leading-relaxed">
                                             {feature.description}
                                         </p>
                                     </motion.div>
@@ -211,7 +211,7 @@ const OrbitalLayout = ({ features, activeFeature, setActiveFeature }: any) => (
     </div>
 );
 
-const NolanOSFrameworkSection = () => {
+const AIAgentsFrameworkSection = () => {
     const [activeFeature, setActiveFeature] = React.useState(0);
 
     const features = [
@@ -252,13 +252,13 @@ const NolanOSFrameworkSection = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10 transition-all duration-700">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-12">
                     <div className="space-y-8">
-                        <SectionTag label="Protocol Engine" subtitle="NolanOS v1.0" />
-                        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.85]">
-                            The NolanOS <br /> Framework.
+                        <SectionTag label="Protocol Engine" subtitle="AI Agents v1.0" />
+                        <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter text-white leading-[0.85]">
+                            The AI Agents <br /> Framework.
                         </h2>
                     </div>
                     <div className="pt-4">
-                        <p className="text-white/40 text-xl font-medium leading-relaxed max-w-xl">
+                        <p className="text-white/40 text-xl font-normal leading-relaxed max-w-xl">
                             A minimalist Python SDK and orchestration layer that transforms standard models into hardware-verified assets. Pure performance, zero friction.
                         </p>
                     </div>
@@ -287,13 +287,13 @@ const ERC8004Section = () => {
                 <div className="w-full h-full flex items-center justify-center font-mono p-8">
                     <div className="w-full max-w-sm space-y-6">
                         <div className="space-y-2">
-                            <div className="text-[10px] uppercase font-black tracking-widest text-black/40">Verified_Identity</div>
+                            <div className="text-[10px] uppercase font-bold tracking-widest text-black/40">Verified_Identity</div>
                             <div className="text-sm font-bold truncate p-4 bg-black/5 rounded-xl border border-black/5">
                                 0x71C7656EC7ab88b098defB751B7401B5f6d8976F
                             </div>
                         </div>
                         <div className="flex items-center justify-between p-4 border border-black/[0.03] rounded-xl">
-                            <div className="text-[10px] uppercase font-black tracking-widest text-black/40">Asset_Type</div>
+                            <div className="text-[10px] uppercase font-bold tracking-widest text-black/40">Asset_Type</div>
                             <div className="text-xs font-bold uppercase">ERC-8004 COMPLIANT</div>
                         </div>
                         <motion.div
@@ -302,7 +302,7 @@ const ERC8004Section = () => {
                             className="flex items-center gap-2"
                         >
                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            <span className="text-[10px] uppercase font-black tracking-widest text-emerald-600/60">Registry_Status: Verified</span>
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-600/60">Registry_Status: Verified</span>
                         </motion.div>
                     </div>
                 </div>
@@ -316,7 +316,7 @@ const ERC8004Section = () => {
             visual: (
                 <div className="w-full h-full flex items-center justify-center font-mono">
                     <div className="space-y-4 w-full max-w-xs">
-                        <div className="flex items-center justify-between text-[10px] uppercase font-black tracking-widest text-black/40 px-2">
+                        <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-widest text-black/40 px-2">
                             <span>Source_Agent</span>
                             <span>Target_Agent</span>
                         </div>
@@ -365,7 +365,7 @@ const ERC8004Section = () => {
                             <div>)</div>
                         </div>
                         <div className="h-px bg-black/[0.03] w-full" />
-                        <div className="grid grid-cols-2 gap-2 text-[9px] uppercase font-black tracking-widest">
+                        <div className="grid grid-cols-2 gap-2 text-[9px] uppercase font-bold tracking-widest">
                             <div className="p-2 border border-black/5 rounded-md text-center">GPT-4o</div>
                             <div className="p-2 border border-black/5 rounded-md text-center">Claude 3.5</div>
                         </div>
@@ -388,8 +388,8 @@ const ERC8004Section = () => {
                             { label: 'Load', val: '0.42', color: 'text-black/60' }
                         ].map((stat, i) => (
                             <div key={i} className="p-4 bg-white border border-black/[0.03] rounded-xl space-y-1">
-                                <div className="text-[9px] uppercase font-black tracking-widest text-black/30">{stat.label}</div>
-                                <div className={cn("text-xs font-black", stat.color)}>{stat.val}</div>
+                                <div className="text-[9px] uppercase font-bold tracking-widest text-black/30">{stat.label}</div>
+                                <div className={cn("text-xs font-bold", stat.color)}>{stat.val}</div>
                             </div>
                         ))}
                     </div>
@@ -404,12 +404,12 @@ const ERC8004Section = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-32">
                     <div className="space-y-8">
                         <SectionTag label="Global Standard" subtitle="ERC-8004" theme="light" />
-                        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black leading-[0.85]">
+                        <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter text-black leading-[0.85]">
                             Digital <br /> Personhood.
                         </h2>
                     </div>
                     <div className="pt-4">
-                        <p className="text-black/40 text-xl font-medium leading-relaxed max-w-xl">
+                        <p className="text-black/40 text-xl font-normal leading-relaxed max-w-xl">
                             AnyLayer is fully compliant with ERC-8004, the definitive framework for autonomous AI identity and interoperability across the decentralized ecosystem.
                         </p>
                     </div>
@@ -461,10 +461,10 @@ const ERC8004Section = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <h3 className={cn("text-2xl md:text-3xl font-black uppercase tracking-tight pr-8 transition-transform group-hover:translate-x-1 duration-300 relative z-10", isA2A ? "text-black" : "text-black")}>
+                                    <h3 className={cn("text-2xl md:text-3xl font-bold uppercase tracking-tight pr-8 transition-transform group-hover:translate-x-1 duration-300 relative z-10", isA2A ? "text-black" : "text-black")}>
                                         {f.title}
                                     </h3>
-                                    <p className={cn("text-sm leading-relaxed relative z-10", isA2A ? "text-black/70 font-medium" : "text-black/40")}>
+                                    <p className={cn("text-sm leading-relaxed relative z-10", isA2A ? "text-black/70 font-normal" : "text-black/40")}>
                                         {f.description}
                                     </p>
                                 </div>
@@ -499,7 +499,7 @@ const FocusedRevealLayout = ({ primitives }: any) => {
                 >
                     <div className="absolute inset-0 p-12 flex flex-col justify-between">
                         <div className="relative">
-                            <span className="text-7xl font-black text-black/[0.03] transition-colors duration-500">0{i + 1}</span>
+                            <span className="text-7xl font-bold text-black/[0.03] transition-colors duration-500">0{i + 1}</span>
                             <motion.div
                                 animate={{
                                     opacity: hovered === i ? 1 : 0,
@@ -513,7 +513,7 @@ const FocusedRevealLayout = ({ primitives }: any) => {
                                 className="absolute top-4 left-0 pointer-events-none"
                             >
                                 <SectionTag label={p.id} theme="light" />
-                                <h3 className="text-4xl font-black uppercase tracking-tighter text-black mt-6 leading-none">{p.title}</h3>
+                                <h3 className="text-4xl font-bold uppercase tracking-tighter text-black mt-6 leading-none">{p.title}</h3>
                             </motion.div>
                         </div>
 
@@ -529,8 +529,8 @@ const FocusedRevealLayout = ({ primitives }: any) => {
                             }}
                             className="pointer-events-none"
                         >
-                            <p className="text-black/50 text-xl font-medium leading-tight max-w-md border-l-4 border-lightblueprimary pl-8 italic">"{p.description}"</p>
-                            <button className="mt-12 flex items-center gap-4 text-black font-black uppercase text-xs tracking-widest group pointer-events-auto">
+                            <p className="text-black/50 text-xl font-normal leading-tight max-w-md border-l-4 border-lightblueprimary pl-8 italic">"{p.description}"</p>
+                            <button className="mt-12 flex items-center gap-4 text-black font-bold uppercase text-xs tracking-widest group pointer-events-auto">
                                 <span className="border-b-2 border-lightblueprimary pb-1 group-hover:tracking-[0.2em] transition-all">{p.buttonLabel}</span>
                                 <div className="p-2 bg-black rounded-full text-white group-hover:rotate-45 transition-transform"><ArrowRight size={16} /></div>
                             </button>
@@ -544,7 +544,7 @@ const FocusedRevealLayout = ({ primitives }: any) => {
                                     exit={{ opacity: 0 }}
                                     className="absolute inset-0 flex items-center justify-center rotate-90"
                                 >
-                                    <span className="text-sm font-black uppercase tracking-[0.5em] text-black/20 whitespace-nowrap">{p.title}</span>
+                                    <span className="text-sm font-bold uppercase tracking-[0.5em] text-black/20 whitespace-nowrap">{p.title}</span>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -588,8 +588,8 @@ const TechnicalPrimitivesSection = () => {
             buttonLabel: "Execute A2A Transaction"
         },
         {
-            id: "NOLANOS",
-            title: "The Auditor NolanOS Benchmarks",
+            id: "AI_AGENTS",
+            title: "The Auditor AI Agents Benchmarks",
             description: "Objective technical reports (latency, uptime, accuracy) pinned to the top of profiles.",
             buttonLabel: "View Performance Audits"
         },
@@ -607,12 +607,12 @@ const TechnicalPrimitivesSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-24">
                     <div className="space-y-8">
                         <SectionTag label="Technical Primitives" subtitle="Infrastructure" theme="light" />
-                        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black leading-[0.85]">
+                        <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter text-black leading-[0.85]">
                             Functional <br /> Environment.
                         </h2>
                     </div>
                     <div className="pt-4">
-                        <p className="text-black/40 text-xl font-medium leading-relaxed max-w-xl">
+                        <p className="text-black/40 text-xl font-normal leading-relaxed max-w-xl">
                             AnyLayer offers more than a registry; it is a functional environment powered by technical primitives that scale with your autonomous assets.
                         </p>
                     </div>
@@ -651,7 +651,7 @@ export default function AgentsPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-black uppercase leading-none tracking-tighter lg:tracking-[-0.05em] max-w-5xl mx-auto text-primaryText"
+                        className="text-[3rem] md:text-[3.5rem] lg:text-[5rem] font-geist font-bold uppercase leading-none tracking-tighter lg:tracking-[-0.05em] max-w-5xl mx-auto text-primaryText"
                     >
                         Global Standard for <br className="hidden md:block" />
                         <span className="text-lightblueprimary">Autonomous AI Assets</span>
@@ -675,7 +675,7 @@ export default function AgentsPage() {
                         <button className="bg-gradient-to-r from-blueprimary to-lightblueprimary text-primaryText font-bold px-8 py-4 rounded-full transition-all text-sm uppercase tracking-wider shadow-[0_10px_30px_rgba(166,131,255,0.2)] hover:brightness-110 active:scale-[0.98]">
                             Launch Your Agent
                         </button>
-                        <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-medium px-8 py-4 rounded-full transition-all text-sm uppercase tracking-wider">
+                        <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-primaryText font-normal px-8 py-4 rounded-full transition-all text-sm uppercase tracking-wider">
                             Technical Docs
                         </button>
                     </motion.div>
@@ -699,8 +699,8 @@ export default function AgentsPage() {
             {/* 4-PILLAR TRUST MODEL */}
             <TrustModelSection />
 
-            {/* NOLANOS FRAMEWORK SECTION */}
-            <NolanOSFrameworkSection />
+            {/* AI AGENTS FRAMEWORK SECTION */}
+            <AIAgentsFrameworkSection />
 
             {/* ERC-8004 SECTION (Digital Personhood) */}
             <ERC8004Section />

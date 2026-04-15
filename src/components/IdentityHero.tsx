@@ -7,7 +7,7 @@ import { ArrowRight, Fingerprint, Shield, Award, Globe, Key, Users, Lock, Zap } 
 const SectionTag = ({ label }: { label: string }) => (
     <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full backdrop-blur-sm border bg-white/[0.02] border-white/5 text-white/40 mb-4">
         <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal">
             {label}
         </span>
     </div>
@@ -33,7 +33,7 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                     {/* Vertical Accent Label */}
                     <div className="hidden lg:flex flex-col items-center gap-6">
                         <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-white/5" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/10 rotate-180 [writing-mode:vertical-lr] shrink-0">
                             ANYLAYER NETWORK
                         </span>
                         <div className="h-24 w-px bg-gradient-to-t from-transparent via-white/10 to-white/5" />
@@ -49,7 +49,7 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                         >
                             <div className="space-y-8">
                                 <SectionTag label="CORE PROTOCOL" />
-                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
+                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight md:tracking-tighter uppercase leading-[0.9] max-w-4xl text-white">
                                     Be <span className="text-lightblueprimary">Anything.</span>
                                 </h1>
                                 <p className="text-base md:text-xl text-white/40 max-w-xl leading-relaxed font-light tracking-tight">
@@ -64,13 +64,13 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                                 className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8"
                             >
                                 <a
-                                    href="https://ans.anylayer.org"
+                                    href="https://ansnames.xyz"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 px-10 py-5 rounded-full bg-white text-black transition-all duration-300 hover:bg-white/90 active:scale-[0.98] shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                 >
-                                    <span className="text-[11px] font-black uppercase tracking-[0.3em] whitespace-nowrap">
-                                        Reserve a Name
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.3em] whitespace-nowrap">
+                                        Search a Name
                                     </span>
                                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                 </a>
@@ -109,7 +109,7 @@ export const IdentityHero = ({ onTriggerModal }: IdentityHeroProps) => {
                             <div className="flex items-center justify-between text-[8px] font-mono text-white/20 uppercase tracking-[0.2em]">
                                 <span>{item.label}</span>
                             </div>
-                            <p className="text-lg font-black uppercase tracking-tight text-white/90">
+                            <p className="text-lg font-bold uppercase tracking-tight text-white/90">
                                 {item.val}
                             </p>
                         </div>

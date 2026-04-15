@@ -96,7 +96,7 @@ const BlogPage = () => {
                 className="space-y-8"
               >
                 <div className="max-w-3xl">
-                  <h1 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.95] mb-5">
+                  <h1 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.95] mb-5">
                     Latest <span className="text-white/20">News</span>
                   </h1>
                   <p className="text-lg text-white/50 font-light leading-relaxed">
@@ -123,7 +123,7 @@ const BlogPage = () => {
                       <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] transition-all ${selectedCategory === category
+                        className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-[0.15em] transition-all ${selectedCategory === category
                           ? 'bg-white text-black'
                           : 'bg-white/[0.02] text-white/30 hover:bg-white/[0.08] hover:text-white/60 border border-white/10'
                           }`}
@@ -152,13 +152,13 @@ const BlogPage = () => {
                       {/* Content */}
                       <div className="p-8 md:p-10 space-y-5 flex flex-col justify-center">
                         <div className="flex items-center gap-3 text-[10px]">
-                          <span className="px-3 py-1 bg-white/[0.08] text-white border border-white/10 rounded-full font-black uppercase tracking-[0.15em]">
+                          <span className="px-3 py-1 bg-white/[0.08] text-white border border-white/10 rounded-full font-bold uppercase tracking-[0.15em]">
                             Featured
                           </span>
                           <span className="text-white/30 font-mono uppercase tracking-wider">{featuredPost.category}</span>
                         </div>
 
-                        <h2 className="text-2xl md:text-3xl font-black tracking-tight leading-tight group-hover:text-white/90 transition-colors">
+                        <h2 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight group-hover:text-white/90 transition-colors">
                           {featuredPost.title}
                         </h2>
 
@@ -203,7 +203,7 @@ const BlogPage = () => {
           <section className="px-6 md:px-12">
             <div className="max-w-6xl mx-auto">
               {regularPosts.length > 0 && (
-                <h2 className="text-sm font-black uppercase tracking-wider text-white/30 mb-8">
+                <h2 className="text-sm font-bold uppercase tracking-wider text-white/30 mb-8">
                   All Articles
                 </h2>
               )}
@@ -232,7 +232,7 @@ const BlogPage = () => {
 
                           {/* Category Badge */}
                           <div className="absolute top-3 left-3">
-                            <span className="px-2.5 py-0.5 bg-black/60 backdrop-blur-sm border border-white/10 text-white/80 rounded-full text-[9px] font-black uppercase tracking-[0.15em]">
+                            <span className="px-2.5 py-0.5 bg-black/60 backdrop-blur-sm border border-white/10 text-white/80 rounded-full text-[9px] font-bold uppercase tracking-[0.15em]">
                               {post.category}
                             </span>
                           </div>
@@ -240,7 +240,7 @@ const BlogPage = () => {
 
                         {/* Content */}
                         <div className="p-5 space-y-3">
-                          <h3 className="text-lg font-black tracking-tight leading-tight group-hover:text-white/90 transition-colors line-clamp-2">
+                          <h3 className="text-lg font-bold tracking-tight leading-tight group-hover:text-white/90 transition-colors line-clamp-2">
                             {post.title}
                           </h3>
 
@@ -290,7 +290,7 @@ const BlogPage = () => {
 
                 <div className="relative z-10 space-y-6">
                   <div className="space-y-3">
-                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">
+                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter">
                       Stay <span className="text-white/20">Updated</span>
                     </h3>
                     <p className="text-white/40 text-sm md:text-base max-w-xl mx-auto font-light leading-relaxed">
@@ -304,7 +304,7 @@ const BlogPage = () => {
                       placeholder="your@email.com"
                       className="flex-1 bg-white/[0.02] border border-white/10 rounded-xl py-3 px-4 text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.04] transition-all text-sm"
                     />
-                    <button className="px-6 py-3 bg-white text-black font-black rounded-xl hover:bg-white/90 transition-colors uppercase text-xs tracking-[0.15em] whitespace-nowrap">
+                    <button className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-white/90 transition-colors uppercase text-xs tracking-[0.15em] whitespace-nowrap">
                       Subscribe
                     </button>
                   </div>

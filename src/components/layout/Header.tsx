@@ -9,8 +9,6 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { DropdownPortal } from "./DropdownPortal";
 import { ArrowUpRight, Fingerprint, Award, ShieldCheck, Cpu, Globe, Map, Code2, FileText, Scale, Radio, X, Mail, Bot } from "lucide-react";
-import { ComingSoonModal } from "../ComingSoonModal";
-
 export function Header() {
   const { scrollY } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,8 +21,6 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
   const [isMobileFeaturesOpen, setIsMobileFeaturesOpen] = useState(false);
-  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
-
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -155,7 +151,7 @@ export function Header() {
                 className="w-auto h-6"
                 priority
               />
-              <span className="font-inter font-black text-white text-xl tracking-tighter uppercase leading-none pb-0.5">
+              <span className="font-inter font-bold text-white text-xl tracking-tighter uppercase leading-none pb-0.5">
                 ANYLAYER.
               </span>
             </Link>
@@ -223,7 +219,7 @@ export function Header() {
                                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
                                 <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">Technology</span>
                               </div>
-                              <h2 className="font-geist font-medium text-4xl text-white leading-tight tracking-tight mb-6">
+                              <h2 className="font-geist font-normal text-4xl text-white leading-tight tracking-tight mb-6">
                                 Core <br />
                                 <span className="text-[#636475]">Products.</span>
                               </h2>
@@ -241,7 +237,7 @@ export function Header() {
                                       <Fingerprint size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                     </div>
                                     <div>
-                                      <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Identity</h5>
+                                      <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">Identity</h5>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">Private, human-readable on-chain identity for the digital self.</p>
                                     </div>
                                   </div>
@@ -254,7 +250,7 @@ export function Header() {
                                     </div>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">NolanOS</h5>
+                                        <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">AI Agents</h5>
                                         <ArrowUpRight size={14} className="text-white/20 group-hover:text-lightblueprimary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                       </div>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">The trust layer for autonomous agents and decentralized intelligence.</p>
@@ -269,7 +265,7 @@ export function Header() {
                                     </div>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white">Network Explorer</h5>
+                                        <h5 className="text-base font-normal text-white">Network Explorer</h5>
                                         <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                       </div>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">Real-time tracking of on-chain trust signals and validation.</p>
@@ -284,7 +280,7 @@ export function Header() {
                                     </div>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2">
-                                        <h5 className="text-base font-medium text-white">Ecosystem</h5>
+                                        <h5 className="text-base font-normal text-white">Ecosystem</h5>
                                         <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                       </div>
                                       <p className="text-sm text-[#636475] mt-1 leading-snug">A growing network of dApps and services powered by Anylayer.</p>
@@ -365,7 +361,7 @@ export function Header() {
                                 <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary animate-pulse" />
                                 <span className="text-[10px] font-mono uppercase tracking-widest text-lightblueprimary">Knowledge Hub</span>
                               </div>
-                              <h2 className="font-geist font-medium text-4xl text-white leading-tight tracking-tight mb-6">
+                              <h2 className="font-geist font-normal text-4xl text-white leading-tight tracking-tight mb-6">
                                 The Trust <br />
                                 <span className="text-[#636475]">Infrastructure.</span>
                               </h2>
@@ -387,7 +383,7 @@ export function Header() {
                                         <Radio size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Protocol Events</h5>
+                                        <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">Protocol Events</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Global summits, hackathons, and protocol sessions.</p>
                                       </div>
                                     </div>
@@ -399,7 +395,7 @@ export function Header() {
                                         <Mail size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Contact Us</h5>
+                                        <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">Contact Us</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Get in touch for partnerships, support, or inquiries.</p>
                                       </div>
                                     </div>
@@ -417,7 +413,7 @@ export function Header() {
                                         <FileText size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Documentation</h5>
+                                        <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">Documentation</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
                                       </div>
                                     </div>
@@ -431,7 +427,7 @@ export function Header() {
                                       </div>
                                       <div>
                                         <div className="flex items-center gap-2">
-                                          <h5 className="text-base font-medium text-white">Technical Whitepaper</h5>
+                                          <h5 className="text-base font-normal text-white">Technical Whitepaper</h5>
                                           <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                         </div>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Deep dive into mathematical proofs and architecture.</p>
@@ -445,7 +441,7 @@ export function Header() {
                                         <Scale size={20} className="text-[#636475] group-hover:text-lightblueprimary transition-colors" />
                                       </div>
                                       <div>
-                                        <h5 className="text-base font-medium text-white group-hover:text-lightblueprimary transition-colors">Governance & Rules</h5>
+                                        <h5 className="text-base font-normal text-white group-hover:text-lightblueprimary transition-colors">Governance & Rules</h5>
                                         <p className="text-sm text-[#636475] mt-1 leading-snug">Official rules for identity, privacy, and terms.</p>
                                       </div>
                                     </div>
@@ -463,8 +459,10 @@ export function Header() {
             </motion.nav>
 
             <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsComingSoonOpen(true)}
+              <a
+                href="https://ansnames.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative hidden md:flex active:translate-y-0.5 transition-all"
               >
                 <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
@@ -477,7 +475,7 @@ export function Header() {
                     <ArrowUpRight size={16} strokeWidth={3} />
                   </motion.div>
                 </div>
-              </button>
+              </a>
 
               {/* Mobile Menu Button */}
               <button
@@ -545,7 +543,7 @@ export function Header() {
                           <div className="p-4 space-y-4">
                             {[
                               { label: "Identity", desc: "Private on-chain ID", icon: <Fingerprint size={20} />, href: "/identity" },
-                              { label: "NolanOS", desc: "Trust for agents", icon: <Bot size={20} />, href: "/docs#anylayer-ai-the-sovereign-machine-infrastructure" },
+                              { label: "AI Agents", desc: "Trust for agents", icon: <Bot size={20} />, href: "/docs#anylayer-ai-the-sovereign-machine-infrastructure" },
                               { label: "Explorer", desc: "Track trust signals", icon: <Map size={20} />, isComingSoon: true },
                               { label: "Ecosystem", desc: "Partner network", icon: <Globe size={20} />, isComingSoon: true },
                             ].map((item, idx) => {
@@ -556,7 +554,7 @@ export function Header() {
                                   </div>
                                   <div className="flex-1 flex flex-col">
                                     <div className="flex items-center justify-between">
-                                      <span className="text-white font-medium">{item.label}</span>
+                                      <span className="text-white font-normal">{item.label}</span>
                                       {item.isComingSoon ? (
                                         <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                       ) : (item as any).isExternal && (
@@ -662,7 +660,7 @@ export function Header() {
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                       <div className="flex items-center justify-between">
-                                        <span className="text-white font-medium">{item.label}</span>
+                                        <span className="text-white font-normal">{item.label}</span>
                                         {(item as any).isComingSoon && (
                                           <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/10 uppercase tracking-tighter">Soon</span>
                                         )}
@@ -706,19 +704,19 @@ export function Header() {
                       </AnimatePresence>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setIsComingSoonOpen(true);
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="group relative mt-8 w-full active:translate-y-0.5 transition-all"
+                    <a
+                      href="https://ansnames.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="group relative mt-8 w-full active:translate-y-0.5 transition-all block"
                     >
                       <div className="absolute inset-0 bg-white blur-xl opacity-10 group-hover:opacity-20 transition-opacity" />
                       <div className="relative w-full bg-white text-[#0D0D12] rounded-full font-bold flex items-center justify-center gap-3 py-4 shadow-[0_8px_30px_rgba(255,255,255,0.1)] transition-all">
                         Launch App
                         <ArrowUpRight size={20} strokeWidth={2.5} />
                       </div>
-                    </button>
+                    </a>
                   </div>
                 </motion.div>
               </DropdownPortal>
@@ -727,7 +725,6 @@ export function Header() {
         </div>
       </motion.div >
 
-      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </motion.header >
   );
 }

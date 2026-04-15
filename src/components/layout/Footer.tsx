@@ -82,7 +82,7 @@ const Newsletter = () => {
 const Links = () => (
   <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-24">
     <div className="space-y-6">
-      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Protocol</h4>
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-bold uppercase tracking-[0.4em]">Protocol</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
         {[
           { label: "Architecture", href: "/#architecture" },
@@ -97,7 +97,7 @@ const Links = () => (
       </ul>
     </div>
     <div className="space-y-6">
-      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Builders</h4>
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-bold uppercase tracking-[0.4em]">Builders</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
         {[
           { label: "Documentation", href: "/docs" },
@@ -114,7 +114,7 @@ const Links = () => (
       </ul>
     </div>
     <div className="space-y-6">
-      <h4 className="text-[10px] font-mono text-lightblueprimary font-black uppercase tracking-[0.4em]">Community</h4>
+      <h4 className="text-[10px] font-mono text-lightblueprimary font-bold uppercase tracking-[0.4em]">Community</h4>
       <ul className="space-y-3 text-sm text-white/40 font-light">
         {["Governance", "ZK DAO", "News", "Support"].map(l => (
           <li key={l} className="hover:text-white transition-colors cursor-pointer">{l}</li>

@@ -62,7 +62,7 @@ const FAQItem = ({ faq, isOpen, toggle, index }: { faq: any, isOpen: boolean, to
           <span className={`text-xs md:text-sm font-mono transition-colors duration-300 ${isOpen ? "text-lightblueprimary" : "text-primaryText/20"}`}>
             {(index + 1).toString().padStart(2, '0')}
           </span>
-          <span className={`text-lg md:text-xl font-medium tracking-tight transition-all duration-300 ${isOpen ? "text-primaryText" : "text-primaryText/60 group-hover:text-primaryText/80"
+          <span className={`text-lg md:text-xl font-normal tracking-tight transition-all duration-300 ${isOpen ? "text-primaryText" : "text-primaryText/60 group-hover:text-primaryText/80"
             }`}>
             {faq.question}
           </span>
@@ -117,10 +117,10 @@ const Faqs = () => {
               <div className="mb-6">
                 <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-sm">
                   <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium text-white/40">Support // Help Center</span>
+                  <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal text-white/40">Support // Help Center</span>
                 </div>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black uppercase text-primaryText leading-[0.9] tracking-tighter mb-4">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase text-primaryText leading-[0.9] tracking-tighter mb-4">
                 Common Questions
               </h2>
               <p className="text-primaryText/40 text-base md:text-lg font-light">

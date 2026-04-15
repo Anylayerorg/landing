@@ -72,11 +72,11 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
                 Journal
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-none">
               {title}
             </h2>
             {subtitle && (
-              <p className={`${dark ? 'text-white/40' : 'text-black/40'} text-lg font-medium leading-relaxed max-w-xl`}>
+              <p className={`${dark ? 'text-white/40' : 'text-black/40'} text-lg font-normal leading-relaxed max-w-xl`}>
                 {subtitle}
               </p>
             )}
@@ -112,17 +112,17 @@ export const BlogWidget: React.FC<BlogWidgetProps> = ({
                   <div className="p-6 space-y-4">
                     <div className="flex items-center gap-2">
                       {post.categories?.map((cat, idx) => (
-                        <span key={idx} className={`px-2.5 py-0.5 ${dark ? 'bg-white/5 text-white/60 border-white/10' : 'bg-black/5 text-black/60 border-black/10'} border rounded-full text-[9px] font-black uppercase tracking-[0.1em]`}>
+                        <span key={idx} className={`px-2.5 py-0.5 ${dark ? 'bg-white/5 text-white/60 border-white/10' : 'bg-black/5 text-black/60 border-black/10'} border rounded-full text-[9px] font-bold uppercase tracking-[0.1em]`}>
                           {cat.title}
                         </span>
                       ))}
                     </div>
 
-                    <h3 className="text-xl font-black tracking-tight leading-tight group-hover:text-lightblueprimary transition-colors line-clamp-2">
+                    <h3 className="text-xl font-bold tracking-tight leading-tight group-hover:text-lightblueprimary transition-colors line-clamp-2">
                       {post.title}
                     </h3>
 
-                    <p className={`text-xs leading-relaxed line-clamp-2 font-medium ${dark ? 'text-white/40' : 'text-black/40'}`}>
+                    <p className={`text-xs leading-relaxed line-clamp-2 font-normal ${dark ? 'text-white/40' : 'text-black/40'}`}>
                       {post.excerpt}
                     </p>
 

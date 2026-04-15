@@ -53,11 +53,11 @@ const IndustrialTrustScore = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary shadow-[0_0_12px_rgba(166,131,255,0.8)] animate-pulse" />
-              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-black">Velocity</span>
+              <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.4em] font-bold">Velocity</span>
               <div className="hidden md:block h-px w-8 bg-white/10" />
               <span className="hidden md:inline-block text-lightblueprimary/60 font-mono text-[10px] uppercase tracking-[0.4em]">Trust Engine</span>
             </div>
-            <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-black uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
+            <h2 className="text-[3.5rem] md:text-[5.5rem] font-geist font-bold uppercase text-primaryText mb-10 leading-[0.9] tracking-tighter lg:tracking-[-0.05em]">
               Trustscore that <br />
               <span className="text-lightblueprimary">unlocks</span> Anything
             </h2>
@@ -88,7 +88,7 @@ const IndustrialTrustScore = () => {
 
               <div className="flex justify-between items-center mb-12 pb-8 border-b border-white/5 relative z-10">
                 <div className="space-y-1">
-                  <div className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-black">Identity Module</div>
+                  <div className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-bold">Identity Module</div>
                   <div className="text-lightblueprimary/80 font-mono text-sm tracking-tighter uppercase">ID 0xA6...91F2</div>
                 </div>
                 <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center">
@@ -104,8 +104,8 @@ const IndustrialTrustScore = () => {
                   { label: "SECURITY", value: "ZKS ENCLAVE" }
                 ].map((item, i) => (
                   <div key={i} className="space-y-2">
-                    <div className="text-white/10 text-[10px] uppercase tracking-[0.2em] font-black">{item.label}</div>
-                    <div className="text-primaryText/70 text-base font-medium tracking-tight font-mono">{item.value}</div>
+                    <div className="text-white/10 text-[10px] uppercase tracking-[0.2em] font-bold">{item.label}</div>
+                    <div className="text-primaryText/70 text-base font-normal tracking-tight font-mono">{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -137,18 +137,18 @@ const IndustrialTrustScore = () => {
                   <Image src="/knight-shield.svg" alt="Shield" width={40} height={40} className="opacity-40" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-primaryText text-xl font-medium tracking-tight uppercase tracking-[0.15em]">Trust Score</h3>
+                  <h3 className="text-primaryText text-xl font-normal tracking-tight uppercase tracking-[0.15em]">Trust Score</h3>
                   <div className="flex items-center gap-2">
                     <div className="h-0.5 w-16 bg-lightblueprimary/60 rounded-full" />
-                    <span className="text-lightblueprimary/40 text-[10px] uppercase font-black tracking-widest font-mono">ENCRYPTED</span>
+                    <span className="text-lightblueprimary/40 text-[10px] uppercase font-bold tracking-widest font-mono">ENCRYPTED</span>
                   </div>
                 </div>
               </div>
 
               <div className="relative z-10 flex items-end justify-between border-t border-white/5 pt-8">
                 <div className="space-y-1">
-                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-black mb-2">INDEX VAL</div>
-                  <div className="text-8xl font-medium text-primaryText tracking-tighter flex items-baseline leading-none">
+                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/10 font-bold mb-2">INDEX VAL</div>
+                  <div className="text-8xl font-normal text-primaryText tracking-tighter flex items-baseline leading-none">
                     <Counter value={120} />
                   </div>
                 </div>

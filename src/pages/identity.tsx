@@ -15,7 +15,7 @@ const SectionTag = ({ label, subtitle, theme = 'dark' }: { label: string, subtit
     : 'bg-black/[0.03] border-black/5 text-black/40'
     } mb-4`}>
     <div className="w-1 h-1 rounded-full bg-lightblueprimary" />
-    <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-medium">
+    <span className="text-[9px] font-mono uppercase tracking-[0.3em] font-normal">
       {label} {subtitle && `// ${subtitle}`}
     </span>
   </div>
@@ -51,7 +51,7 @@ const IdentityProblem = () => {
         {/* Compact Title - Matching user's preferred style but smaller */}
         <div className="space-y-2">
           <SectionTag label="The Current State" />
-          <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">
+          <h2 className="text-2xl md:text-6xl font-bold tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">
             Today, Identity Onchain is <span className="text-lightblueprimary">Broken.</span>
           </h2>
         </div>
@@ -67,11 +67,11 @@ const IdentityProblem = () => {
                 <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] transition-colors">
                   {p.title}
                 </span>
-                <h3 className="text-xl font-black uppercase tracking-tight text-white/90">
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white/90">
                   {p.label}
                 </h3>
               </div>
-              <p className="text-white/60 text-xs leading-relaxed font-medium">
+              <p className="text-white/60 text-xs leading-relaxed font-normal">
                 {p.desc}
               </p>
             </div>
@@ -80,7 +80,7 @@ const IdentityProblem = () => {
 
         {/* The Fix - Minimalist and Integrated */}
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border-t border-white/5">
-          <p className="text-lg md:text-2xl font-medium tracking-tight max-w-2xl text-white/80 leading-snug">
+          <p className="text-lg md:text-2xl font-normal tracking-tight max-w-2xl text-white/80 leading-snug">
             {PROBLEM_DATA.solution}
           </p>
           <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent hidden md:block" />
@@ -112,7 +112,7 @@ const IdentityDefinition = () => {
           <div className="flex-1 space-y-8">
             <div className="space-y-2">
               <SectionTag label="Identity Abstract" />
-              <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter leading-[0.9] uppercase opacity-90 text-white">
+              <h2 className="text-2xl md:text-6xl font-bold tracking-tight md:tracking-tighter leading-[0.9] uppercase opacity-90 text-white">
                 One You. <br /> Every App.
               </h2>
             </div>
@@ -133,7 +133,7 @@ const IdentityDefinition = () => {
             <div className="absolute inset-0 bg-lightblueprimary/10 blur-[100px] rounded-full animate-pulse" />
             <div className="relative z-10 w-64 h-64 border-2 border-white/10 rounded-[64px] flex items-center justify-center rotate-45 group hover:rotate-90 transition-transform duration-1000">
               <div className="w-48 h-48 border border-lightblueprimary/30 rounded-[48px] flex items-center justify-center -rotate-45 group-hover:-rotate-90 transition-transform duration-1000">
-                <span className="text-lightblueprimary font-black text-4xl tracking-tighter">.any</span>
+                <span className="text-lightblueprimary font-bold text-4xl tracking-tighter">.any</span>
               </div>
             </div>
             <div className="absolute bottom-[-50px] md:bottom-0 right-0 p-6 bg-black border border-white/10 rounded-2xl shadow-2xl">
@@ -193,9 +193,9 @@ const EverydayUses = () => {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 gap-8 text-left">
           <div className="space-y-4">
             <SectionTag label="Utility Set" />
-            <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
+            <h2 className="text-2xl md:text-6xl font-bold tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white">Everyday <br /> <span className="text-lightblueprimary">Uses.</span></h2>
           </div>
-          <p className="text-white/50 text-sm max-w-[320px] font-medium leading-relaxed pb-1 border-l border-white/10 pl-6">
+          <p className="text-white/50 text-sm max-w-[320px] font-normal leading-relaxed pb-1 border-l border-white/10 pl-6">
             An ANS identity is more than a name. It's your verified toolkit for an authentic digital life.
           </p>
         </div>
@@ -214,10 +214,10 @@ const EverydayUses = () => {
               <div className="flex justify-end items-start mb-12">
               </div>
               <div className="space-y-3">
-                <h3 className={`text-xl font-black tracking-tighter uppercase leading-none ${i === 0 ? 'text-black' : 'text-white/90 group-hover:text-white'} transition-colors`}>
+                <h3 className={`text-xl font-bold tracking-tighter uppercase leading-none ${i === 0 ? 'text-black' : 'text-white/90 group-hover:text-white'} transition-colors`}>
                   {use.title}
                 </h3>
-                <p className={`text-xs font-medium leading-relaxed ${i === 0 ? 'text-black/70' : 'text-white/60 group-hover:text-white/80'} transition-colors`}>
+                <p className={`text-xs font-normal leading-relaxed ${i === 0 ? 'text-black/70' : 'text-white/60 group-hover:text-white/80'} transition-colors`}>
                   {use.detail}
                 </p>
               </div>
@@ -234,10 +234,10 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
     <div className="max-w-7xl mx-auto px-6">
       <div className="mb-20 text-center space-y-4">
         <SectionTag label="Developer SDK" />
-        <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white leading-[0.9]">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase text-white leading-[0.9]">
           Build with <span className="text-lightblueprimary">Trust.</span>
         </h2>
-        <p className="text-white/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+        <p className="text-white/40 text-lg font-normal max-w-xl mx-auto leading-relaxed">
           Embed verified identity and reputation into your application with a few lines of code.
         </p>
       </div>
@@ -257,7 +257,7 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
                   <span className="text-[9px] text-white/40 uppercase font-mono">To</span>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[10px] font-black text-white">whale.any</span>
+                    <span className="text-[10px] font-bold text-white">whale.any</span>
                   </div>
                 </div>
                 <div className="h-px w-full bg-white/5" />
@@ -282,10 +282,10 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
               <div className="space-y-3">
                 <div className="w-full h-10 bg-white rounded-xl flex items-center px-4 gap-3 border border-white/10 shadow-2xl group-hover:scale-[1.02] transition-transform">
                   <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
-                    <span className="text-[9px] text-white font-black">ANS</span>
+                    <span className="text-[9px] text-white font-bold">ANS</span>
                   </div>
                   <div className="h-3 w-[1px] bg-black/10" />
-                  <span className="text-[10px] font-black text-black uppercase tracking-tighter">Connect Identity</span>
+                  <span className="text-[10px] font-bold text-black uppercase tracking-tighter">Connect Identity</span>
                 </div>
               </div>
             </div>
@@ -296,15 +296,15 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
         <div className="md:col-span-6 bg-lightblueprimary text-black rounded-3xl p-10 pb-24 h-auto md:h-[326px] flex flex-col justify-between relative overflow-hidden text-center items-center">
           <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.3),transparent_70%)]" />
           <div className="relative z-10 space-y-4 pt-2">
-            <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-none">Build with <br /> ANS Identity.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase leading-none">Build with <br /> ANS Identity.</h3>
           </div>
           <div className="relative z-10 space-y-8 mt-8 md:mt-0">
-            <p className="text-black/60 text-xs font-medium leading-relaxed max-w-xs mx-auto">
+            <p className="text-black/60 text-xs font-normal leading-relaxed max-w-xs mx-auto">
               "Integration is lightweight, modular, and designed for real‑world use."
             </p>
             <button
               onClick={onTriggerModal}
-              className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-black text-white rounded-full font-bold text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl active:scale-95"
             >
               <span>Documentation</span>
               <ArrowRight size={12} className="text-white/40" />
@@ -326,7 +326,7 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
               </div>
               <div className="flex-1">
                 <div className="flex justify-between items-center">
-                  <h4 className="text-[10px] font-black uppercase text-white">alex.any</h4>
+                  <h4 className="text-[10px] font-bold uppercase text-white">alex.any</h4>
                   <span className="text-[8px] font-mono text-lightblueprimary">Trust: 98</span>
                 </div>
                 <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
@@ -358,7 +358,7 @@ const DeveloperIntegration = ({ onTriggerModal }: { onTriggerModal: () => void }
             <div className="space-y-1.5">
               <div className="flex justify-between items-center text-[9px]">
                 <span className="text-white/40">Initiator</span>
-                <span className="text-lightblueprimary font-black">alpha.any</span>
+                <span className="text-lightblueprimary font-bold">alpha.any</span>
               </div>
               <div className="h-px bg-white/5" />
               <div className="flex justify-between items-center text-[9px]">
@@ -383,17 +383,17 @@ const IdentityHomeSection = ({ onTriggerModal }: { onTriggerModal: () => void })
       {/* Hero Content */}
       <div className="space-y-4 max-w-4xl mx-auto">
         <SectionTag label="Core Structure" theme="light" />
-        <h2 className="text-3xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase text-black">
+        <h2 className="text-3xl md:text-6xl font-bold tracking-tighter leading-[0.9] uppercase text-black">
           What Your <br className="hidden md:block" /> Identity Holds
         </h2>
-        <p className="text-black/40 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+        <p className="text-black/40 text-lg font-normal max-w-xl mx-auto leading-relaxed">
           An ANS identity works like a secure digital home. Inside it lives your name, reputation, and proofs — organized and under your control.
         </p>
 
         <div className="pt-6">
           <button
             onClick={onTriggerModal}
-            className="group inline-flex items-center gap-4 bg-black text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 focus:outline-none shadow-xl"
+            className="group inline-flex items-center gap-4 bg-black text-white px-10 py-4 rounded-full font-bold text-[11px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 focus:outline-none shadow-xl"
           >
             <span>Get Started</span>
             <ArrowRight size={14} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all" />
@@ -433,7 +433,7 @@ const IdentityHomeSection = ({ onTriggerModal }: { onTriggerModal: () => void })
             <div className="flex flex-col gap-3">
               {item.icon}
               <div className="flex flex-col">
-                <h3 className="text-lg font-black tracking-tighter uppercase leading-tight">{item.title}</h3>
+                <h3 className="text-lg font-bold tracking-tighter uppercase leading-tight">{item.title}</h3>
                 <span className="text-black/40 font-mono text-[9px] uppercase tracking-widest">{item.subtitle}</span>
               </div>
             </div>
@@ -485,7 +485,7 @@ const UseCaseReel = () => {
           <div className="flex items-center gap-6 md:gap-12">
             {/* .any Logo Box */}
             <div className="w-20 h-20 md:w-32 md:h-32 bg-black rounded-[32px] md:rounded-[48px] flex items-center justify-center relative shadow-2xl">
-              <span className="text-white font-black text-2xl md:text-4xl tracking-tighter">.any</span>
+              <span className="text-white font-bold text-2xl md:text-4xl tracking-tighter">.any</span>
             </div>
           </div>
         </div>
@@ -546,7 +546,7 @@ const UseCaseReel = () => {
                   position: "absolute",
                   transformStyle: "preserve-3d"
                 } as any}
-                className="text-5xl md:text-[140px] font-black tracking-tighter uppercase whitespace-nowrap leading-none text-center"
+                className="text-5xl md:text-[140px] font-bold tracking-tighter uppercase whitespace-nowrap leading-none text-center"
               >
                 {word}
               </motion.h2>
@@ -568,7 +568,7 @@ const FinalClosing = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-2xl md:text-6xl font-black tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white text-center">
+        <h2 className="text-2xl md:text-6xl font-bold tracking-tight md:tracking-tighter uppercase leading-[0.9] text-white text-center">
           A Better Internet <br /> <span className="text-white">Starts With Identity.</span>
         </h2>
       </motion.div>
@@ -580,13 +580,13 @@ const FinalClosing = () => (
         transition={{ delay: 0.2, duration: 1 }}
         className="space-y-12"
       >
-        <p className="text-white/40 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
+        <p className="text-white/40 text-lg md:text-2xl font-normal leading-relaxed max-w-2xl mx-auto">
           ANS is building a future where identity is human‑readable, reputation is earned, and privacy is respected by default.
         </p>
 
         <div className="flex flex-col items-center gap-6">
           <div className="h-12 w-px bg-gradient-to-b from-white/10 to-transparent" />
-          <p className="text-white/40 font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] font-black">
+          <p className="text-white/40 font-mono text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold">
             One identity. No exposure. No compromise.
           </p>
         </div>

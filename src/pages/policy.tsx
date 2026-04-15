@@ -28,7 +28,7 @@ const POLICIES = [
         </div>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">1. Purpose and Scope</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>1.1 This Naming Policy governs the creation, allocation, renewal, transfer, and use of names within the <strong>ANS</strong> namespace (the “Namespace”), operated by Anylayer.</p>
             <p>1.2 The Policy applies to all applicants and registrants (collectively, “Registrants”), to accredited registrars acting on behalf of Anylayer (the “Registrar”), and to any person or entity asserting a claim or dispute concerning an ANS name (a “Claimant”).</p>
@@ -37,7 +37,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">2. Definitions</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">2. Definitions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             {[
               { term: "Name / Handle", def: "A unique identifier under the ANS Namespace (e.g., alex.ans)." },
@@ -58,7 +58,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">3. Ownership & Title</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>3.1 <strong>Namespace Ownership.</strong> Anylayer (and its licensors, where applicable) owns and controls the ANS Namespace, the associated registries, smart contracts, code, and marks. No title or intellectual property right in the Namespace is transferred to any Registrant by virtue of registration or use.</p>
             <p>3.2 <strong>License to Use.</strong> A registration confers a limited, revocable, time‑bounded license to use and resolve the registered Name in accordance with this Policy and applicable law. It does not confer a property right or any proprietary interest in the string of characters comprising the Name.</p>
@@ -71,7 +71,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">4. Terms of Use</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">4. Terms of Use</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>4.1 <strong>Acceptable Use.</strong> Registrants must use Names lawfully and in good faith. Prohibited uses include deception, phishing, malware distribution, and violations outlined in Sections 5 and 13.</p>
             <p>4.2 <strong>Representations.</strong> By registering or using a Name, a Registrant represents and warrants that (a) they have legal capacity and authority; (b) information provided to the Registrar is accurate and complete; and (c) use of the Name will not infringe third‑party rights or applicable law.</p>
@@ -84,7 +84,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">5. Eligibility</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">5. Eligibility</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>5.1 ANS Names are open to natural persons and legal entities that (a) accept this Policy and (b) are not prohibited by applicable law from owning or using such Names.</p>
             <p>5.2 Names that correspond to trademarks, public institutions, or otherwise sensitive terms may require additional verification prior to allocation or transfer.</p>
@@ -93,7 +93,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">6. Formatting and Technical Rules</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">6. Formatting and Technical Rules</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>6.1 <strong>Character Set and Length.</strong> Names must use the characters a–z (case-insensitive), digits 0–9, and hyphen -. Names must be 3–32 characters in length, exclusive of the ANS suffix.</p>
             <p>6.2 <strong>Case and Storage.</strong> Names are case-insensitive and shall be stored and displayed in lowercase by default.</p>
@@ -105,7 +105,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">7. Prohibited and Sensitive Strings</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">7. Prohibited and Sensitive Strings</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>7.1 The following are prohibited: (a) Names intended for impersonation or deception; (b) Names reserved for protocol operation (e.g., root, admin, null); (c) Names used for phishing, malware, or illegal content; (d) Names restricted by law or sanctions.</p>
             <p>7.2 Edge cases, including visually confusable strings and transliterations, may be reviewed under the Dispute Resolution procedure.</p>
@@ -114,7 +114,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">8. Allocation (Registration) Model</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">8. Allocation (Registration) Model</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>8.1 <strong>Standard Availability.</strong> Standard Names are allocated on a first-come, first-served (FCFS) basis upon payment of the applicable fee and compliance with this Policy.</p>
             <p>8.2 <strong>Premium and High-Demand Names.</strong> The Registrar may use time-bound auctions or other competitive allocation methods for Premium Names or high-demand releases.</p>
@@ -125,7 +125,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">9. Fees and Pricing</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">9. Fees and Pricing</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>9.1 <strong>Standard Fees.</strong> Standard Names are priced on a flat or tiered basis (e.g., by length).</p>
             <p>9.2 <strong>Premium Fees.</strong> Premium Names are priced using market-based tiers or catalogs published by the Registrar.</p>
@@ -136,7 +136,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">10. Term, Expiration, and Renewal</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">10. Term, Expiration, and Renewal</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>10.1 <strong>Term.</strong> Names are leased for fixed terms (e.g., one-year periods) recorded on-chain.</p>
             <p>10.2 <strong>Expiration and Grace.</strong> Names entering the Grace Period (default 30 days) may be renewed by the previous Registrant without losing the Name.</p>
@@ -147,7 +147,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">11. Transfers and Secondary Markets</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">11. Transfers and Secondary Markets</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>11.1 <strong>Direct Transfer.</strong> Registrants may transfer Names on-chain between wallets, provided all fees are current and no holds apply.</p>
             <p>11.2 <strong>Escrow.</strong> The Registrar may offer native escrow or integrate with third-party escrow.</p>
@@ -157,7 +157,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">12. Reserved and Premium Names</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">12. Reserved and Premium Names</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>12.1 <strong>Reserved Catalog.</strong> Anylayer maintains a catalog of Reserved Names (protocol terms, public-interest, protected brands) not available for FCFS registration.</p>
             <p>12.2 <strong>Claims and Verification.</strong> Verified rights holders may request matching Reserved Names by submitting evidence under the Dispute Resolution process.</p>
@@ -167,7 +167,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">13. Anti‑Squatting and Acceptable Use</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">13. Anti‑Squatting and Acceptable Use</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>13.1 <strong>Anti‑Hoarding.</strong> The Registrar may impose bulk limits and dynamic throttles to deter automated mass registrations.</p>
             <p>13.2 <strong>No Deception.</strong> Names must not be used to mislead, impersonate, or facilitate fraud (including look‑alikes like g00gle.ans).</p>
@@ -177,7 +177,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">14. Dispute Resolution</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">14. Dispute Resolution</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>14.1 <strong>Filing a Dispute.</strong> Claimants may file a dispute by submitting the Name, basis for claim, and supporting evidence.</p>
             <p>14.2 <strong>Process.</strong> Follows: Intake → Notice → Response → Adjudication → Outcome.</p>
@@ -190,7 +190,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">15. Compliance, Holds, and Legal Requests</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">15. Compliance, Holds, and Legal Requests</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>15.1 <strong>Administrative Holds.</strong> The Registrar may place a Name on hold in response to legal requests, abuse reports, or technical risks.</p>
             <p>15.2 <strong>Sanctions and Geo‑Restrictions.</strong> Privacy‑preserving screening may be used to block restricted registrations where required by law.</p>
@@ -199,7 +199,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">16. Privacy and Data Minimization</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">16. Privacy and Data Minimization</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>16.1 <strong>Wallet‑Based Identity.</strong> No personally identifiable information is collected by default.</p>
             <p>16.2 <strong>Verification Records.</strong> Verification evidence is provided via attestations; raw documents are not published on-chain.</p>
@@ -209,7 +209,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">17. Change Management and Versioning</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">17. Change Management and Versioning</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>17.1 <strong>Amendments.</strong> Material changes are proposed through a public RFC, followed by comment and governance vote.</p>
             <p>17.2 <strong>Notice.</strong> At least 14 days’ notice is provided before amendments take effect, except for urgent security needs.</p>
@@ -218,7 +218,7 @@ const POLICIES = [
         </section>
 
         <section className="pt-12 border-t border-black/5 space-y-8">
-          <h3 className="text-sm font-black text-black uppercase tracking-widest">Appendices (Non‑Binding Aids)</h3>
+          <h3 className="text-sm font-bold text-black uppercase tracking-widest">Appendices (Non‑Binding Aids)</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-[11px] text-zinc-400 leading-relaxed uppercase tracking-wider font-mono">
             <p>A. Premium/Reserved Catalog — Maintained by Registrar; updated via Change Management.</p>
             <p>B. Normalization & Collision Examples — Illustrative examples for implementers and users.</p>
@@ -230,10 +230,10 @@ const POLICIES = [
         {/* Why .any Section Highlights */}
         <section className="bg-lightblueprimary/5 border border-lightblueprimary/10 p-12 rounded-[32px] space-y-8">
           <div className="space-y-2">
-            <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] block font-black">
+            <span className="text-lightblueprimary font-mono text-[10px] uppercase tracking-[0.5em] block font-bold">
               Why ANS?
             </span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-black leading-[0.9]">
               One Identity. <br />
               <span className="text-black/20">Any App. Any Chain.</span>
             </h2>
@@ -254,12 +254,12 @@ const POLICIES = [
               zero-knowledge proofs. You can prove what matters—trust, status, eligibility—without
               revealing who you are or exposing sensitive data.
             </p>
-            <p className="text-black font-medium">
+            <p className="text-black font-normal">
               Short names are scarce. Prominent names are protected. Identity stays yours.
             </p>
           </div>
           <div className="pt-4">
-            <p className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-black">
+            <p className="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.9] text-black">
               ANS — <span className="text-lightblueprimary">identity, without limits.</span>
             </p>
           </div>
@@ -283,7 +283,7 @@ const POLICIES = [
         </div>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">1. Purpose and Scope</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>1.1 This Reputation Policy governs the collection, computation, issuance, update, and use of reputation and sub‑scores (collectively, “Reputation”) within the Anylayer ecosystem.</p>
             <p>1.2 The Policy applies to all subjects for whom Reputation may be computed, including humans, wallets, and AI agents (each, a “Subject”), to accredited attesters and data providers (each, an “Attester”), and to integrators that request or act upon Reputation (each, an “Integrator”).</p>
@@ -292,7 +292,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">2. Definitions</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">2. Definitions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             {[
               { term: "Reputation", def: "A vector of sub‑scores derived from permitted signals about a Subject (credit, trading, liquidity, etc.)." },
@@ -311,7 +311,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">3. Ownership & Title</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>3.1 <strong>System Ownership.</strong> Anylayer owns and controls the algorithms, models, registries, code, and interfaces used to compute and publish Reputation.</p>
             <p>3.2 <strong>License to Use.</strong> Integrators receive a limited, revocable license to access and use Reputation for lawful purposes and in accordance with this Policy and user consent.</p>
@@ -321,7 +321,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">4. Terms of Use</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">4. Terms of Use</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>4.1 <strong>Acceptable Use.</strong> Reputation may be used to price, tier, gate, or inform risk management but shall not be used to unlawfully discriminate.</p>
             <p>4.2 <strong>Representations.</strong> Attesters and Integrators represent that they have authority to use Reputation and will implement reasonable safeguards.</p>
@@ -332,7 +332,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">5. Principles</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">5. Principles</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
             {[
               { term: "Privacy by Design", def: "Inputs processed via commitments and ZK proofs. No raw data on-chain." },
@@ -350,7 +350,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">6. Permitted Signals (Inputs)</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">6. Permitted Signals (Inputs)</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>6.1 <strong>On‑Chain Activity.</strong> DEX swaps; lending repayment streaks; collateralization history; LP positions; governance participation.</p>
             <p>6.2 <strong>Off‑Chain Activity.</strong> Verified contribution records, audit outcomes, and third‑party attestations approved under the Attester Policy.</p>
@@ -360,7 +360,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">7. Computation & Weighting</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">7. Computation & Weighting</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>7.1 <strong>Sub‑Scores.</strong> Reputation is computed as a vector of sub‑scores (credit, trading, liquidity, compliance, agent reliability).</p>
             <p>7.2 <strong>Weighting.</strong> High‑quality Attesters and time‑proximity of Signals may receive higher weight per epoch.</p>
@@ -371,7 +371,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">8. Freshness, Validity & Revocation</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">8. Freshness, Validity & Revocation</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>8.1 <strong>Epoch Freshness.</strong> Integrators may require proofs generated within a defined epoch/window.</p>
             <p>8.2 <strong>Revocation.</strong> Attesters may revoke prior attestations; revocations propagate to updated Reputation.</p>
@@ -380,7 +380,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">9. Anti‑Gaming & Abuse Controls</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">9. Anti‑Gaming & Abuse Controls</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>9.1 <strong>Sybil Resistance.</strong> Rate‑limit nullifiers and uniqueness checks required for certain uses.</p>
             <p>9.2 <strong>Manipulation.</strong> Patterns indicative of wash‑trading or spoofing may reduce sub‑scores.</p>
@@ -389,7 +389,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">10. Publication & Access</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">10. Publication & Access</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>10.1 <strong>Commitments.</strong> Registry stores commitments to Reputation, not raw Signals.</p>
             <p>10.2 <strong>Access Methods.</strong> Integrators retrieve Reputation via SDK/API or verify ZK proofs.</p>
@@ -398,7 +398,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">11. AI Agent Reputation</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">11. AI Agent Reputation</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>11.1 <strong>Scope.</strong> Anylayer aggregates sub‑scores reflecting task outcomes and reliability; it does not define agent behavior.</p>
             <p>11.2 <strong>Outcome Metrics.</strong> Completion rates, incident rates, instruction adherence, and slippage control.</p>
@@ -408,7 +408,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">12. Subject Rights & Consent</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">12. Subject Rights & Consent</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>12.1 <strong>Consent.</strong> Subjects control disclosure via selective proofs.</p>
             <p>12.2 <strong>Access.</strong> Subjects may request a summary of inputs and computation logic.</p>
@@ -418,7 +418,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">13. Attesters</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">13. Attesters</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>13.1 <strong>Accreditation.</strong> Attesters must be accredited and maintain required bonds.</p>
             <p>13.2 <strong>Duties.</strong> Attesters must issue accurate attestations and cooperate in audits.</p>
@@ -427,7 +427,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">14. Review, Disputes & Appeals</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">14. Review, Disputes & Appeals</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>14.1 <strong>Subject Review.</strong> Subjects may request review for material inaccuracies.</p>
             <p>14.2 <strong>Process.</strong> Intake → Notice → Evidence → Determination.</p>
@@ -437,7 +437,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">15. Security & Audit</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">15. Security & Audit</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>15.1 <strong>Security.</strong> Anylayer implements measures to protect computation pipelines.</p>
             <p>15.2 <strong>Audits.</strong> Models and circuits subject to periodic independent audits.</p>
@@ -446,7 +446,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">16. Compliance</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">16. Compliance</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>16.1 <strong>Legal Holds.</strong> Components may be held in response to legal orders.</p>
             <p>16.2 <strong>Jurisdictional Filters.</strong> Allow/deny checks applied where legally required.</p>
@@ -455,7 +455,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">17. Change Management & Versioning</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">17. Change Management & Versioning</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>17.1 <strong>Amendments.</strong> Material changes follow RFC and governance vote.</p>
             <p>17.2 <strong>Notice.</strong> 14 days’ notice provided before amendments take effect.</p>
@@ -464,7 +464,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">18. Governing Law & Forum</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">18. Governing Law & Forum</h3>
           <p className="text-zinc-500 font-light">18.1 Published by Anylayer governance [placeholder].</p>
         </section>
       </div>
@@ -486,7 +486,7 @@ const POLICIES = [
         </div>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">1. Purpose and Scope</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>1.1 This Proof Validity Policy (the "Policy") defines the rules under which cryptographic proofs ("Proofs") are generated, submitted, verified, accepted, rejected, and revoked within the Anylayer ecosystem.</p>
             <p>1.2 The Policy applies to Subjects (humans, wallets, AI agents), Integrators (dApps, protocols, wallets), and Attesters (approved data providers) that request, produce, or rely on Proofs.</p>
@@ -495,7 +495,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">2. Definitions</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">2. Definitions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             {[
               { term: "Proof", def: "A zero‑knowledge or privacy‑preserving cryptographic statement attesting to a Claim without revealing underlying data." },
@@ -516,7 +516,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">3. Ownership & Title</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">3. Ownership & Title</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>3.1 Anylayer owns and controls the circuits, parameters, registries, and verification interfaces used for Proof handling, except for open‑source components which remain under their respective licenses.</p>
             <p>3.2 Integrators and Subjects receive a limited, revocable license to use Proof tooling in accordance with this Policy and applicable law. No proprietary right in circuits, parameters, or registries is transferred by use.</p>
@@ -524,7 +524,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">4. Terms of Use</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">4. Terms of Use</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>4.1 Proofs may be used to price, gate, or automate actions but shall not be used to unlawfully discriminate or contravene applicable law.</p>
             <p>4.2 Integrators must implement reasonable safeguards to validate freshness, bind context, and handle revocations.</p>
@@ -534,7 +534,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">5. Proof Types</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">5. Proof Types</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>5.1 <strong>Range Proofs.</strong> Demonstrate that a secret value lies within a range (e.g., score ≥ threshold, balance ≥ amount).</p>
             <p>5.2 <strong>Set‑Membership Proofs.</strong> Demonstrate that a value belongs to or is excluded from a set (e.g., allow/deny lists, attester quorum).</p>
@@ -545,7 +545,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">6. Freshness & Validity</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">6. Freshness & Validity</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>6.1 <strong>Epoch Freshness.</strong> Proofs must reference a current or Integrator‑accepted Epoch; out‑of‑window Proofs are invalid.</p>
             <p>6.2 <strong>TTL.</strong> Integrators may specify a maximum time‑to‑live (TTL) for acceptance.</p>
@@ -555,7 +555,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">7. Revocation & Updates</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">7. Revocation & Updates</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>7.1 <strong>Attestation Revocation.</strong> If an Attester revokes or amends an attestation, Proofs dependent on the revoked state are invalid from the revocation effective time.</p>
             <p>7.2 <strong>Error Correction.</strong> Material computation errors will result in updated commitments; Proofs against superseded commitments may be rejected.</p>
@@ -565,7 +565,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">8. Replay Protection & Context Binding</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">8. Replay Protection & Context Binding</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>8.1 <strong>Context Binding Required.</strong> Proofs must bind to an Integrator‑specified domain, contract address, session nonce, or similar scope.</p>
             <p>8.2 <strong>Single‑Use Nullifiers.</strong> Where entitlements are one‑time or limited, Proofs shall emit nullifiers to prevent reuse.</p>
@@ -574,7 +574,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">9. Selective Disclosure & Minimization</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">9. Selective Disclosure & Minimization</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>9.1 Proofs must disclose only the minimal information needed to satisfy the Claim; raw inputs and personal datasets are not exposed.</p>
             <p>9.2 Integrators shall not condition access on disclosure of unnecessary fields or raw data when a Proof can satisfy the Claim.</p>
@@ -582,7 +582,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">10. Generation & Verification Requirements</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">10. Generation & Verification Requirements</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>10.1 <strong>Trusted Parameters.</strong> Circuits and parameters must be published with version identifiers; where a setup is required, ceremony artifacts and transcripts will be referenced.</p>
             <p>10.2 <strong>Library Integrity.</strong> SDKs and APIs used for Proof generation/verification must be integrity‑checked (e.g., hashes, signatures).</p>
@@ -592,7 +592,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">11. Cryptographic Assumptions & Upgrades</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">11. Cryptographic Assumptions & Upgrades</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>11.1 <strong>Assumptions.</strong> Proof systems rely on stated cryptographic assumptions (e.g., soundness, knowledge‑of‑exponent). Anylayer will publish a summary of assumptions and circuit constraints.</p>
             <p>11.2 <strong>Upgrades.</strong> Critical parameter or circuit upgrades will follow the Change Management process with clear deprecation windows.</p>
@@ -601,7 +601,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">12. Misuse & Abuse</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">12. Misuse & Abuse</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>12.1 <strong>Forgery & Tampering.</strong> Attempted forging or tampering with Proof tooling is prohibited and may lead to account blocks, slashing (where applicable), and legal action.</p>
             <p>12.2 <strong>Coercion & Sale of Proofs.</strong> The sale or coercive transfer of context‑bound Proofs is prohibited; Integrators should bind Proofs to Sessions or recipients to reduce value for resale.</p>
@@ -610,7 +610,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">13. Subject Rights & Consent</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">13. Subject Rights & Consent</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>13.1 <strong>Consent Scope.</strong> Subjects define which Claims may be proven in which contexts; Integrators must request only the necessary Claims.</p>
             <p>13.2 <strong>Withdrawal.</strong> Subjects may withdraw consent prospectively; previously accepted Proofs are unaffected retroactively unless revoked for cause.</p>
@@ -619,7 +619,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">14. Integrator Obligations</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">14. Integrator Obligations</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>14.1 <strong>Policy Conformance.</strong> Integrators must implement freshness checks, revocation handling, context binding, and selective disclosure.</p>
             <p>14.2 <strong>Error Handling.</strong> Integrators must surface user‑readable reasons for rejection (e.g., stale Proof, mismatched context).</p>
@@ -628,7 +628,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">15. Security & Audit</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">15. Security & Audit</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>15.1 <strong>Audits.</strong> Circuits, registries, and critical interfaces are subject to periodic independent audit; public summaries may be provided.</p>
             <p>15.2 <strong>Incident Response.</strong> Material incidents are disclosed per Incident Response procedures; emergency parameter changes may be enacted with accelerated notice.</p>
@@ -636,7 +636,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">16. Compliance</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">16. Compliance</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>16.1 <strong>Legal Holds.</strong> Proof acceptance may be withheld to comply with lawful orders.</p>
             <p>16.2 <strong>Sanctions & Geo.</strong> Where required, privacy‑preserving allow/deny checks may be applied by Integrators.</p>
@@ -644,7 +644,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">17. Change Management & Versioning</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">17. Change Management & Versioning</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>17.1 <strong>Amendments.</strong> Material changes follow an RFC process with reasonable comment period and, where required, governance vote.</p>
             <p>17.2 <strong>Notice.</strong> Except for urgent security/legal updates, Anylayer will provide at least fourteen (14) days' notice before changes take effect.</p>
@@ -653,7 +653,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">18. Governing Law & Forum</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">18. Governing Law & Forum</h3>
           <p className="text-zinc-500 font-light">18.1 Governing law and forum for disputes shall be published by Anylayer governance <strong>[placeholder to be finalized]</strong>.</p>
         </section>
       </div>
@@ -675,7 +675,7 @@ const POLICIES = [
         </div>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">1. Purpose and Scope</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">1. Purpose and Scope</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>1.1 This Privacy & Consent Policy (the "Policy") describes how Anylayer handles information about <strong>Humans</strong>, <strong>Wallets</strong>, and <strong>AI Agents</strong> (collectively, "Participants") in connection with identity, reputation, and proof functions.</p>
             <p>1.2 The Policy focuses on <strong>data minimization</strong>, <strong>selective disclosure</strong>, <strong>user/agent consent</strong>, and <strong>portability/erasure</strong> in a zero‑knowledge trust environment.</p>
@@ -684,7 +684,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">2. Principles</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">2. Principles</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>2.1 <strong>Data Minimization.</strong> Collect, process, and share the least amount of information necessary to achieve a stated purpose.</p>
             <p>2.2 <strong>Selective Disclosure.</strong> Prefer cryptographic <strong>Proofs</strong> over raw data wherever feasible.</p>
@@ -697,7 +697,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">3. Categories of Information</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">3. Categories of Information</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light text-sm">
             <p>3.1 <strong>On‑Chain Signals.</strong> Public transaction metadata (e.g., swaps, lending, collateralization, holdings/transfers) referenced via commitments in Reputation computation.</p>
             <p>3.2 <strong>Off‑Chain Signals.</strong> Verifiable contribution records, audits, dispute outcomes, and other Attester‑issued statements.</p>
@@ -708,7 +708,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">4. Data Minimization Controls</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">4. Data Minimization Controls</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>4.1 <strong>Default to Proofs.</strong> Integrators must accept Proofs in lieu of raw inputs when a policy can be satisfied by a Claim.</p>
             <p>4.2 <strong>Purpose Binding.</strong> Each request must specify a legitimate purpose and scope (e.g., <em>credit ≥ threshold</em>).</p>
@@ -718,7 +718,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">5. Selective Disclosure</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">5. Selective Disclosure</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>5.1 <strong>Granular Claims.</strong> Participants disclose <strong>only</strong> the minimum needed (e.g., range proofs, set‑membership).</p>
             <p>5.2 <strong>Freshness Windows.</strong> Claims carry epochs/TTLs; Integrators must check freshness per the <strong>Proof Validity Policy</strong>.</p>
@@ -727,7 +727,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">6. Consent Management</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">6. Consent Management</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>6.1 <strong>Explicit Consent.</strong> Where required by law or policy, Participants provide explicit consent for the use of particular signals or Claims.</p>
             <p>6.2 <strong>Consent Records.</strong> Consent scopes (purpose, fields, duration) are recorded as signed statements or commitments; raw personal data is not placed on‑chain.</p>
@@ -737,7 +737,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">7. Portability</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">7. Portability</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>7.1 <strong>Export.</strong> Participants may export references to commitments, high‑level score summaries, and relevant proofs in a standard, documented format.</p>
             <p>7.2 <strong>Interoperability.</strong> Anylayer will document APIs/SDKs to allow Participants to port their permitted summaries between integrators and chains where supported.</p>
@@ -746,7 +746,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">8. Erasure & Revocation</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">8. Erasure & Revocation</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>8.1 <strong>Best‑Effort Erasure.</strong> For mutable off‑chain data and attestations, Anylayer will, upon valid request, instruct Attesters to revoke or update records and will update commitments accordingly.</p>
             <p>8.2 <strong>Immutable Records.</strong> Public on‑chain history cannot be erased; instead, new commitments supersede prior states and future disclosures are curtailed.</p>
@@ -755,7 +755,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">9. Participant Rights</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">9. Participant Rights</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>9.1 <strong>Access.</strong> Participants may request a high‑level summary of inputs and computation applicable to them, subject to anti‑gaming and privacy safeguards.</p>
             <p>9.2 <strong>Correction.</strong> Participants may submit evidence to correct factual errors or misattributions.</p>
@@ -765,7 +765,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">10. Integrator & Attester Obligations</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">10. Integrator & Attester Obligations</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>10.1 <strong>Least Disclosure.</strong> Request only the Claims necessary for a given action; accept Proofs over raw data.</p>
             <p>10.2 <strong>Security.</strong> Protect keys, SDKs, and interfaces; prevent unauthorized relay or storage of raw datasets.</p>
@@ -775,7 +775,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">11. Security Measures</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">11. Security Measures</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>11.1 <strong>Technical Controls.</strong> Encryption at rest/in transit for off‑chain elements; integrity checks for SDKs/APIs; rate‑limit and anomaly detection for Proof submission.</p>
             <p>11.2 <strong>Administrative Controls.</strong> Access controls, least‑privilege assignments, and change management for configuration and models.</p>
@@ -784,7 +784,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">12. Compliance</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">12. Compliance</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>12.1 <strong>Legal Requests.</strong> Anylayer responds to lawful requests in a manner consistent with data minimization, notifying Participants where permitted.</p>
             <p>12.2 <strong>Sanctions/Geo.</strong> Privacy‑preserving allow/deny checks may be applied where legally required.</p>
@@ -793,7 +793,7 @@ const POLICIES = [
         </section>
 
         <section className="space-y-6">
-          <h3 className="text-xl font-black text-black uppercase tracking-tight">13. Change Management & Versioning</h3>
+          <h3 className="text-xl font-bold text-black uppercase tracking-tight">13. Change Management & Versioning</h3>
           <div className="space-y-4 text-zinc-600 leading-relaxed font-light">
             <p>13.1 <strong>Amendments.</strong> Material changes follow an RFC process with community comment and, where required, governance vote.</p>
             <p>13.2 <strong>Notice.</strong> Except for urgent legal/security changes, Anylayer provides at least fourteen (14) days' notice before changes take effect.</p>
@@ -810,7 +810,7 @@ const POLICIES = [
     lastUpdated: 'Oct 2025',
     content: (
       <div className="space-y-8">
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-black">Terms of Service</h2>
+        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] text-black">Terms of Service</h2>
         <p className="text-zinc-500">General terms for using the Anylayer protocol and .any namespace.</p>
         <div className="p-12 bg-black/[0.02] border border-dashed border-black/10 rounded-2xl text-center">
           <p className="text-zinc-300 font-mono text-sm">Full Terms of Service document coming soon.</p>
@@ -875,7 +875,7 @@ const PolicyPage = () => {
             <aside className="lg:w-64 space-y-12 shrink-0 pr-4 lg:sticky lg:top-32 lg:h-[calc(100vh-8rem)] lg:overflow-y-auto scrollbar-hide">
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-3xl font-black uppercase tracking-tighter mb-2 text-black">Policies</h1>
+                  <h1 className="text-3xl font-bold uppercase tracking-tighter mb-2 text-black">Policies</h1>
                   <p className="text-zinc-500 text-xs">Official documentation and governance rules for Anylayer.</p>
                 </div>
 
@@ -900,15 +900,15 @@ const PolicyPage = () => {
                   }, {} as Record<string, typeof filteredPolicies>)
                 ).map(([category, policies]) => (
                   <div key={category} className="space-y-4">
-                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-black text-zinc-400">{category}</h4>
+                    <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-zinc-400">{category}</h4>
                     <div className="flex flex-col gap-3">
                       {policies.map((policy) => (
                         <button
                           key={policy.id}
                           onClick={() => handlePolicyChange(policy)}
                           className={`text-left transition-all ${activePolicy.id === policy.id
-                            ? 'text-black font-black'
-                            : 'text-zinc-500 hover:text-black font-medium'
+                            ? 'text-black font-bold'
+                            : 'text-zinc-500 hover:text-black font-normal'
                             } text-sm tracking-tight`}
                         >
                           {policy.title}
@@ -920,7 +920,7 @@ const PolicyPage = () => {
               </div>
 
               <div className="pt-12 border-t border-black/5 space-y-6">
-                <h4 className="text-[9px] uppercase tracking-widest font-black text-zinc-300">External</h4>
+                <h4 className="text-[9px] uppercase tracking-widest font-bold text-zinc-300">External</h4>
                 <div className="space-y-4">
                   <Link href="/docs" className="flex items-center gap-2 text-xs text-zinc-400 hover:text-black transition-colors">
                     Developer Docs
@@ -949,7 +949,7 @@ const PolicyPage = () => {
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/5 pb-12">
                       <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                          <span className="text-lightblueprimary text-[10px] font-black uppercase tracking-widest">
+                          <span className="text-lightblueprimary text-[10px] font-bold uppercase tracking-widest">
                             {activePolicy.category}
                           </span>
                           <div className="w-1 h-1 rounded-full bg-black/10" />
@@ -957,7 +957,7 @@ const PolicyPage = () => {
                             {activePolicy.id}.anylayer.org
                           </span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] text-black">
                           {activePolicy.title}
                         </h2>
                       </div>
@@ -974,7 +974,7 @@ const PolicyPage = () => {
                       <p className="text-zinc-300 text-[9px] uppercase tracking-widest font-mono">
                         &copy; 2026 Anylayer Identity Foundation
                       </p>
-                      <button className="text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 text-zinc-400 hover:text-black transition-colors">
+                      <button className="text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 text-zinc-400 hover:text-black transition-colors">
                         Download PDF
                         <FileText size={12} />
                       </button>

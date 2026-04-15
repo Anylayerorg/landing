@@ -28,7 +28,7 @@ const CONTACT_EMAILS = [
 const SectionLabel = ({ text }: { text: string }) => (
     <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full backdrop-blur-sm border bg-[#0A0A0E] border-white/5 text-white/40 mb-3">
         <div className="w-1.5 h-1.5 rounded-full bg-lightblueprimary" />
-        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-medium">
+        <span className="text-[9px] font-mono uppercase tracking-[0.4em] font-normal">
             {text}
         </span>
     </div>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                         >
                             <SectionLabel text="Collaboration" />
 
-                            <h1 className="text-6xl md:text-[90px] font-black uppercase tracking-tighter leading-[0.85]">
+                            <h1 className="text-6xl md:text-[90px] font-bold uppercase tracking-tighter leading-[0.85]">
                                 Get in <br />
                                 <span className="text-lightblueprimary">Contact.</span>
                             </h1>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                                                                         setFormData({ ...formData, category: cat });
                                                                         setIsDropdownOpen(false);
                                                                     }}
-                                                                    className="w-full text-left px-6 py-4 text-sm font-medium text-white/40 hover:text-white hover:bg-white/[0.03] transition-all flex items-center justify-between group"
+                                                                    className="w-full text-left px-6 py-4 text-sm font-normal text-white/40 hover:text-white hover:bg-white/[0.03] transition-all flex items-center justify-between group"
                                                                 >
                                                                     {cat}
                                                                     {formData.category === cat && (
@@ -243,7 +243,7 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={status === 'loading' || status === 'success'}
-                                        className="group relative inline-flex items-center gap-6 px-16 py-6 rounded-full overflow-hidden transition-all bg-white text-black font-black uppercase tracking-[0.4em] text-[12px] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 shadow-[0_0_50px_rgba(255,255,255,0.1)]"
+                                        className="group relative inline-flex items-center gap-6 px-16 py-6 rounded-full overflow-hidden transition-all bg-white text-black font-bold uppercase tracking-[0.4em] text-[12px] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 shadow-[0_0_50px_rgba(255,255,255,0.1)]"
                                     >
                                         <AnimatePresence mode="wait">
                                             {status === 'loading' ? (
